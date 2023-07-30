@@ -1,0 +1,55 @@
+.NavHeaderPhone {
+
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border: solid 2px  #cfab35;
+
+}
+
+.burger-logo-Phone {
+
+    display: flex;
+    align-items: center;
+    width: 195px;
+    margin-left: 15px;
+}
+
+
+.burger-menu{
+    
+    align-items: center;
+    width: 195px;
+    color: #cfab35;
+    margin-left: 15px;
+
+}
+
+.botonBurger{
+
+    background-color: black;
+    border: none;
+    color:black
+}
+
+.logoEnjDeco{
+
+    height: 60px;
+    padding-right: 40px;
+    padding-left: 40px;
+
+}
+
+
+@media (min-width:525px) {
+    /* FIJACION DEL HEADER a DESKTOP-- */
+    
+    .NavHeaderPhone {
+
+    
+        display:none
+    
+    }
+
+}
+    

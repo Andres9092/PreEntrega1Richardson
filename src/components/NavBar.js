@@ -1,23 +1,37 @@
 import React from 'react'
-import '../assets/css/App.css';
+
+import '../assets/css/NavBar.css';
+import imagenlogo from '../assets/images/logoEnj.png';
 import CartWidget from './CartWidget';
 
 
 function NavBar() { 
     return (  
       
-      <div className="App">   {/* etiqueta unica que contiene la aplicacion completa */}
+        <header className="NavHeaderPhone">   {/* etiqueta unica que contiene la aplicacion completa */}
   
-        <h1> Enjoying Deco - directo del NavBar </h1>
-        <CartWidget>
-  
+            <div className="burger-logo-Phone">   
 
-        </CartWidget>
+                <div className="burger-menu">
+    
+                    <button type="submit" className="botonBurger"><i className="fas fa-bars fa-2x"></i></button>
+        
+                </div>  
+        
+                <img className="logoEnjDeco" src={imagenlogo} alt="ImagenmLogo Enjoying Deco"/>
+                
+            </div>
+                        
+    
+        <div>
+            <CartWidget>          {/* Llamo a C Hijo 'CartWidget' */}
+    
 
-  
-  
-  
-      </div>
+            </CartWidget>
+
+        </div>
+
+    </header >
     )
   }
   

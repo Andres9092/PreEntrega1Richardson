@@ -1,12 +1,12 @@
 import React from 'react'
-import '../assets/css/App.css'
+import '../assets/css/NavBar.css';
 
 
 
 function CartWidget() { 
     return (  
       
-      <div className="App">   {/* etiqueta unica que contiene la aplicacion completa */}
+      <div>   {/* etiqueta unica que contiene la aplicacion completa */}
   
         <p> Esto es del Widget </p>
          
