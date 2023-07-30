@@ -6,9 +6,13 @@ import '../assets/css/NavBar.css';
 function CartWidget() { 
     return (  
       
-      <div>   {/* etiqueta unica que contiene la aplicacion completa */}
+      <div className="CartW">   {/* etiqueta unica que contiene la aplicacion completa */}
   
-        <p> Esto es del Widget </p>
+        <ul className = "logoCart">        
+          
+          <li><a className="iconoCarrito" href="aaaaa.html"><i class="fa-solid fa-cart-plus"></i></a></li>
+          <p className="numeroCart"> 1 </p>
+        </ul>
          
   
       </div>

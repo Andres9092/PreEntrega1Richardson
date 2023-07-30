@@ -1,9 +1,24 @@
+* {
+    font-family: nunito;
+  
+}
+
+* {
+    box-sizing: border-box;
+  
+}
+
+
 .NavHeaderPhone {
 
     display: flex;
     flex-direction: row;
-    background-color: white;
-    border: solid 2px  #cfab35;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(249, 245, 208);
+    border: solid 1px  #cfab35;
+    padding: 10px 0px 10px 0px;
+    align-items: center;
 
 }
 
@@ -11,25 +26,31 @@
 
     display: flex;
     align-items: center;
-    width: 195px;
+    width: 160px;
+    color:white;
     margin-left: 15px;
 }
 
 
 .burger-menu{
     
-    align-items: center;
-    width: 195px;
-    color: #cfab35;
-    margin-left: 15px;
-
+    color: white;
+    margin-left: 10px;
+    padding: 4px;
+    border: #cfab35 solid 1.5px;
+    border-radius: 3px;
+    margin-top: 5px;
+    
+    
 }
 
 .botonBurger{
-
-    background-color: black;
+    background-color: #cfab35;
     border: none;
-    color:black
+    color:white;
+    width: 40px;
+    height: 30px;
+
 }
 
 .logoEnjDeco{
@@ -37,9 +58,68 @@
     height: 60px;
     padding-right: 40px;
     padding-left: 40px;
+   
 
 }
 
+.linksyCarritoPhone{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+}
+
+.logosMargenDerechoPhone{
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.NavHeaderPhone a {
+    color: #cfab35;
+    text-decoration: none;
+}
+
+.linksPhone li {
+    
+    list-style: none;
+}
+
+
+.logo-wapp-desktop{
+
+    padding-left: 15px;
+}
+
+
+.CartW{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.CartW li{
+    list-style: none;
+
+}
+
+.logoCart{
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.iconoCarrito{
+    padding-right: 5px;
+}
+
+.numeroCart{
+    padding-right: 15px;
+    color: grey;
+}
 
 @media (min-width:525px) {
     /* FIJACION DEL HEADER a DESKTOP-- */
