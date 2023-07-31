@@ -8,14 +8,26 @@
   
 }
 
+.Header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
 
-.NavHeaderPhone {
+.NavInferior{
+
+    display: none;
+}
+
+
+.NavHeader {
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    background-color: rgb(249, 245, 208);
+    background-color: rgb(249, 247, 223);
     border: solid 1px  #cfab35;
     padding: 10px 0px 10px 0px;
     align-items: center;
@@ -77,9 +89,13 @@
 
 }
 
-.NavHeaderPhone a {
+.NavHeader a {
     color: #cfab35;
     text-decoration: none;
+}
+
+.barraBuscadora{
+    display: none;
 }
 
 .linksPhone li {
@@ -118,18 +134,110 @@
 
 .numeroCart{
     padding-right: 15px;
-    color: grey;
+    color: rgb(183, 180, 180);
+    font-weight: 800;
 }
 
 @media (min-width:525px) {
     /* FIJACION DEL HEADER a DESKTOP-- */
-    
-    .NavHeaderPhone {
 
+.NavHeader{
     
-        display:none
-    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.NavInferior{
+
+    display: block;
+    width: 100%;
+    background-color: rgb(249, 247, 223);
+    border: solid 1px  #cfab35;
+
+}
+
+
+
+.burger-menu{
+
+    display: none;
+}
+
+.iconoBuscarMargenDerecho   {
+
+    display: none;
+}
+
+
+.barraBuscadora{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 8px;
+    border: solid 1px white;
+    align-items: center;
+    justify-content: space-between;
+    width: 40vw
     }
 
+
+.textoBuscarEnBarra {
+        color: black;
+        font-size: 11px;
+        padding-left: 8px;
+        height: 20px;
+        border-radius: 8px;
+        width: 60%;
+        border: solid 0px white;
+        outline: none;
+        font-weight: 800;
+    
+            /*para sacar el borde negro del input al darle un click */
+    }
+    
+
+.botonSearch-Desktop{
+
+    background-color: white;
+    border: none;
+    position: relative;
+    right: 3px;
+  
+}
+
+
+.botonSearch-Desktop i{
+    color: #cfab35;
+    font-weight: 600;
+}
+
+
+.leftBottomHeader{
+
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+
+}
+
+
+.leftBottomHeader li{
+
+    list-style: none;
+
+}
+
+.leftBottomHeader a{
+
+    color: #cfab35;
+    text-decoration: none;
+    font-weight: 800;
+
+}
 }
     
