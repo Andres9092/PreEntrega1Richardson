@@ -70,8 +70,8 @@ function NavBar() {
                 
                     <i class="fa-brands fa-pagelines"></i>
                 
-                    <li ><a className="Productos" href="/">Productos</a></li>
-                    <li ><a className="Ofertas" href="Ofertas.html">Ofertas</a></li>                
+                    <li ><a className="Productos" href="/">Arreglos Florales</a></li>
+                    <li ><a className="Ofertas" href="Ofertas.html"> Nuestras Ofertas!</a></li>                
                 </ul>    
 
                 <ul className="rightBottomHeader">
