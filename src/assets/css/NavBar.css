@@ -1,5 +1,5 @@
 * {
-    font-family: nunito;
+    font-family: cursive;
   
 }
 
@@ -8,10 +8,21 @@
   
 }
 
+body{
+
+    margin:0px
+}
+
+
+
 .Header{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+    top: 0;   /* PARA QUE SE AJUSTE AL TOPDE VIEWPORT-- */
+    width:100vw;
+    z-index: 999;  /* PARA QUE QUEDE ADELANTE DE TODOS LOS ELEMENTOS------- */
     
 }
 
@@ -69,7 +80,7 @@
 
     height: 60px;
     padding-right: 40px;
-    padding-left: 40px;
+    padding-left: 25px;
    
 
 }
@@ -109,6 +120,16 @@
     padding-left: 15px;
 }
 
+.logo-favoritos{
+
+    padding-left: 15px;
+}
+
+
+.logo-user{
+
+    padding-left: 15px;
+}
 
 .CartW{
     display: flex;
@@ -138,6 +159,17 @@
     font-weight: 800;
 }
 
+
+@media (max-width:395px) {
+    /* FIJACION DEL HEADER a DESKTOP-- */
+    .logo-wapp-desktop{
+
+        display: none;
+    }
+    
+
+}
+
 @media (min-width:525px) {
     /* FIJACION DEL HEADER a DESKTOP-- */
 
@@ -147,15 +179,21 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    
 }
 
 
 .NavInferior{
 
-    display: block;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     width: 100%;
     background-color: rgb(249, 247, 223);
     border: solid 1px  #cfab35;
+    height: 50px;
+    align-items: center;
 
 }
 
@@ -165,6 +203,16 @@
 
     display: none;
 }
+
+.logoEnjDeco{
+
+    height: 60px;
+    padding-right: 40px;
+    padding-left: 20px;
+   
+
+}
+
 
 .iconoBuscarMargenDerecho   {
 
@@ -181,13 +229,14 @@
     border: solid 1px white;
     align-items: center;
     justify-content: space-between;
-    width: 40vw
+    width: 40vw;
+    height: 30px;
     }
 
 
 .textoBuscarEnBarra {
         color: black;
-        font-size: 11px;
+        font-size: 13px;
         padding-left: 8px;
         height: 20px;
         border-radius: 8px;
@@ -222,6 +271,8 @@
     flex-direction: row;
     align-items:center;
     justify-content: space-around;
+    margin-left: 20px;
+    padding: 0 40px 0 40px;
 
 }
 
@@ -230,14 +281,50 @@
 
     list-style: none;
 
+
 }
 
-.leftBottomHeader a{
+.Blog, .Sucursales, .Contacto{
 
     color: #cfab35;
     text-decoration: none;
-    font-weight: 800;
+    font-weight: 600;
+    padding: 0 15px 0 15px;
 
 }
+
+.Productos{
+
+    color: #cfab35;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0 15px 0 8px;
+
+}
+
+.Ofertas{
+
+font-weight: 1000;
+color: rgb(176, 142, 142);
+padding-left: 20px;
+
+}
+
+.rightBottomHeader{
+
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+
+}
+
+.rightBottomHeader li{
+
+    list-style: none;
+
+}
+
+
 }
     

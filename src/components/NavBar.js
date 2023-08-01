@@ -47,8 +47,8 @@ function NavBar() {
                             
                             <li><a className="iconoBuscarMargenDerecho" href="aaaaa.html"><i className="fa-solid fa-magnifying-glass"></i></a></li>
                             <li><a className="logo-wapp-desktop" href="aaaaa.html"><i className="fa-brands fa-whatsapp"></i></a></li>
-                            <li><a className="logo-wapp-desktop" href="aaaaa.html"><i class="fa-regular fa-heart"></i></a></li>
-                            <li><a className="logo-wapp-desktop" href="aaaaa.html"><i class="fa-solid fa-user"></i></a></li>
+                            <li><a className="logo-favoritos" href="aaaaa.html"><i class="fa-regular fa-heart"></i></a></li>
+                            <li><a className="logo-user" href="aaaaa.html"><i class="fa-regular fa-user"></i></a></li>
                         </ul>
 
                     </div>
@@ -67,14 +67,20 @@ function NavBar() {
             <div className="NavInferior">
    
                 <ul className="leftBottomHeader">
+                
+                    <i class="fa-brands fa-pagelines"></i>
+                
+                    <li ><a className="Productos" href="/">Productos</a></li>
+                    <li ><a className="Ofertas" href="Ofertas.html">Ofertas</a></li>                
+                </ul>    
 
-                    <li ><a className="Inicio" href="/">Inicio</a></li>
-                    <li ><a className="Ofertas" href="Ofertas.html">Ofertas</a></li>
+                <ul className="rightBottomHeader">
+
                     <li ><a className="Blog" href="Blog.html">Blog</a></li>
                     <li ><a className="Sucursales" href="Sucursales.html">Sucursales</a></li>
                     <li ><a className="Contacto" href="Contacto.html">Contacto</a></li>
                 
-                </ul>                                   
+                </ul>                                    
                 
             </div>
 

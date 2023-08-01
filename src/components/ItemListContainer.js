@@ -1,12 +1,12 @@
 import React from 'react'
-import '../assets/css/App.css'
+import '../assets/css/ItemList.css'
 
 function ItemListContainer(props) { 
     return (  
       
-      <div className="App">   {/* etiqueta unica que contiene la aplicacion completa */}
+      <div className="ItemList">   {/* etiqueta unica que contiene la aplicacion completa */}
   
-        <h1> {props.greeting} </h1>  {/* importo prop "greeting" con valor de saludo enviado desde Componente App para Comp. ItemListContainer  */}
+        <h1 className="greeting"> {props.greeting} </h1>  {/* importo prop "greeting" con valor de saludo enviado desde Componente App para Comp. ItemListContainer  */}
        
   
       </div>

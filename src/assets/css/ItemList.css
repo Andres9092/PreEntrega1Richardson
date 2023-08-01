@@ -1,0 +1,13 @@
+.ItemList{
+    background-color: lightgray;
+    border: solid 1px grey;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.greeting{
+
+    font-size: 20px;
+
+}
