@@ -68,19 +68,16 @@ function NavBar() {
    
                 <ul className="leftBottomHeader">
                 
-                    <i class="fa-brands fa-pagelines"></i>
-                
-                    <li ><a className="Productos" href="/">Arreglos Florales</a></li>
-                    <li ><a className="Ofertas" href="Ofertas.html"> Nuestras Ofertas!</a></li>                
-                </ul>    
-
-                <ul className="rightBottomHeader">
-
+                    
+                    <li ><a className="Productos" href="/">Ramos</a></li>
+                    <li ><a className="Categorias" href="/">Categorias</a></li>
+                    <li ><a className="Ofertas" href="Ofertas.html">Ofertas!</a></li>
                     <li ><a className="Blog" href="Blog.html">Blog</a></li>
                     <li ><a className="Sucursales" href="Sucursales.html">Sucursales</a></li>
-                    <li ><a className="Contacto" href="Contacto.html">Contacto</a></li>
-                
-                </ul>                                    
+                    <li ><a className="Contacto" href="Contacto.html">Contacto</a></li>                
+                </ul>    
+
+                                           
                 
             </div>
 
