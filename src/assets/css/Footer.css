@@ -1,0 +1,58 @@
+.footer{
+
+    background-color:rgb(249, 247, 223);
+    height: 400px;
+    display:flex ;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.logoEnjDecoFooter{
+
+    height: 70px;
+    margin-top: 30px;
+    margin-bottom: 30px
+    
+   
+}
+
+.linea{
+    border-top: 1px solid black;
+    height: 0px;
+    width: 70vw;
+    padding: 0;
+   
+    background-color: black;
+  }   
+
+
+  .zocalo-phone{
+
+    background-color:rgb(241, 228, 93);
+    height: 100px;
+    display:flex ;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    margin-top: 260px;
+}
+
+.dataFiscal-phone{
+
+    width: 40px;
+    height: 40px;
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+
+}
+
+.infoSocalo li{
+
+    font-size: 10px;
+    color:black;
+    list-style: none;
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import '../assets/css/App.css';
 import NavBar from './NavBar';
 import ItemListContainer from './ItemListContainer';
+import Footer from './Footer';
 
 function App() { 
   return (  
@@ -15,6 +16,10 @@ function App() {
         <ItemListContainer greeting ="Bienvenido!">  {/* Paso al C hijo de su interior (ItemListContainer) la props llamada 'greeting' y su valor 'Bienvenido'. La props es un objeto, clave -valor.*/}
 
         </ItemListContainer>
+
+        <Footer>
+
+        </Footer>
 
 
     </div>
