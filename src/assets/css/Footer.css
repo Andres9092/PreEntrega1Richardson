@@ -20,26 +20,26 @@
 .linea{
     border-top: 1px solid black;
     height: 0px;
-    width: 70vw;
+    width: 40vw;
     padding: 0;
-   
+    border-color:#b59118;
     background-color: black;
   }   
 
 
   .zocalo-phone{
 
-    background-color:rgb(241, 228, 93);
+    background-color: #eed995;
     height: 100px;
     display:flex ;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     width: 100vw;
-    margin-top: 260px;
+    margin-top: 30px;
 }
 
-.dataFiscal-phone{
+.dataFiscal{
 
     width: 40px;
     height: 40px;
@@ -52,7 +52,187 @@
 
 .infoSocalo li{
 
-    font-size: 10px;
-    color:black;
+    font-size: 10.5px;
+    color:#6f5602;
     list-style: none;
 }
+
+
+.logosRedes{
+    margin-top: 20px;
+    margin-bottom:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    width: 30vw;
+
+}
+
+.logosRedes li{
+list-style: none;
+
+
+}
+
+.logosRedes i{
+    color: #cfab35;
+    
+}
+.logosRedes700px{
+    display:none;
+}
+
+
+.logosTarjetas{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+
+
+.logosTarjetas li{
+
+  list-style: none;
+}
+
+.mediosPago{
+
+    width: 32px;
+    height: 32px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+
+.logosTarjetas700{
+
+    display:none;
+   
+}
+
+.divlogosWappZocalo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 90vw;
+}
+
+.logosWappZocalo li{
+    list-style: none;
+}
+
+
+.logosWappZocalo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #14e990;
+    border: 1px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+}
+
+.logosWappZocalo i{
+    color: white;
+    
+}
+/* ------------------------------------------------------------------ */
+
+@media (min-width:540px) {
+    .infoSocalo li{
+
+        font-size: 16px;
+        margin-left: 10px;
+    }
+
+    .dataFiscal{
+    
+        margin-left: 50px;
+     
+}   
+}
+/* ------------------------------------------------------------------ */
+
+    @media (min-width:700px) {
+
+        .logoEnjDecoFooter{
+
+            height: 80px;
+            margin-top: 30px;
+            margin-bottom: 30px
+            
+           
+        }
+        .logosRedes{
+            display: none;
+        }
+
+        .logosRedes700px{
+            margin-top: 20px;
+            margin-bottom:20px;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between;
+            align-items: center;
+            width: 30vw;
+        
+        }
+        
+        .logosRedes700px li{
+        list-style: none;
+        
+        
+        }
+        
+        .logosRedes700px i{
+            color: #cfab35;
+            
+            }
+
+        .logosTarjetas{
+
+                display:none;
+               
+            }
+
+        .logosTarjetas700{
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+                margin-bottom:20px;
+            }
+
+
+
+            .logosTarjetas700 li{
+
+                list-style: none;
+              }
+              
+
+              .mediosPago{
+
+                width: 40px;
+                height: 40px;
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+            
+            
+            .logosWappZocalo{
+               height: 35px;
+                width: 35px;
+                border-radius: 100%;
+            }
+    }

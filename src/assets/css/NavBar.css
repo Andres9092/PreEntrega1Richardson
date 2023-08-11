@@ -162,7 +162,7 @@ body{
 
 /* ------------------------------------------------------------------ */
 @media (max-width:430px) {
-    /* FIJACION DEL HEADER a DESKTOP-- */
+
     .logo-wapp-desktop{
 
         display: none;
@@ -183,8 +183,7 @@ body{
 
 /* ------------------------------------------------------------------ */
 @media (min-width:525px) {
-    /* FIJACION DEL HEADER a DESKTOP-- */
-
+  
 .NavHeader{
     
     display: flex;
@@ -261,9 +260,9 @@ body{
             /*para sacar el borde negro del input al darle un click */
     }
 
-    .textoBuscarEnBarra::placeholder {
-        color:rgb(181, 164, 116);
-       }
+.textoBuscarEnBarra::placeholder {
+    color:rgb(181, 164, 116);
+}
     
 
 .botonSearch-Desktop{
@@ -340,7 +339,7 @@ padding: 0  0  0 20px;
     
 /* ------------------------------------------------------------------ */
 @media (min-width:650px) {
-    /* FIJACION DEL HEADER a DESKTOP-- */
+
     .logoEnjDeco{
 
         height: 70px;
@@ -353,9 +352,9 @@ padding: 0  0  0 20px;
     }
 
 }
-
+/* ------------------------------------------------------------------ */
 @media (min-width:700px) {
-    /* FIJACION DEL HEADER a DESKTOP-- */
+
 
     .logoEnjDeco{
 
@@ -398,7 +397,7 @@ padding: 0  0  0 20px;
     }
 }
 
-
+/* ------------------------------------------------------------------ */
 @media (min-width:740px) {
 
     
@@ -429,9 +428,8 @@ padding: 0  0  0 20px;
 }
 
 
-
+/* ------------------------------------------------------------------ */
 @media (min-width:900px) {
-    /* FIJACION DEL HEADER a DESKTOP-- */
 
     .logoEnjDeco{
 
