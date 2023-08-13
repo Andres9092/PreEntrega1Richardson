@@ -5,7 +5,7 @@ import imageDF from '../assets/images/dataFiscal.png';
 import imageVISA from '../assets/images/VISA.png';
 import imageAMEX from '../assets/images/AMEX (1).png';
 import imageMP from '../assets/images/MP.png';
-
+import Accordion from './Accordion';
 
 
 function Footer() { 
@@ -49,7 +49,18 @@ function Footer() {
                            
             </div> 
 
+            <div>  
+                <Accordion>
 
+                </Accordion>
+
+         
+            </div> 
+
+            <div className="linea"> </div>
+            <div className="mediosP">- Medios de Pago -</div>
+             
+                            
             <div className="logosTarjetas">                  
                     
                 <li ><a href="Inicio.html"><img className="mediosPago" src={imageVISA} alt="Tarjeta VISA"/></a></li>
@@ -57,8 +68,9 @@ function Footer() {
                 <li ><a href="Blog.html"><img className="mediosPago" src={imageMP} alt="MERCADO PAGO"/></a></li>
                     
             </div>  
-
-
+                    
+         
+                
             <div className="logosTarjetas700">                  
                     
                 <li ><a href="Inicio.html"><img className="mediosPago" src={imageVISA} alt="Tarjeta VISA"/></a></li>
@@ -67,9 +79,7 @@ function Footer() {
                     
             </div> 
  
-            <div className="linea">                  
-                               
-            </div>
+        
 
             <div className="divlogosWappZocalo">
                 <div className="logosWappZocalo">                  

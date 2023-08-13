@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  position: relative;
+  height: 1192px;
 }
 
 
@@ -19,6 +21,9 @@
   color: #61dafb;
 }
 
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -26,4 +31,57 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* ------------------------------------------------------------------ */
+
+@media (min-width:500px) {
+
+  .App {
+    text-align: center;
+    position: relative;
+    height: 1227px;
+  }
+  
+
+}
+
+
+
+/* ------------------------------------------------------------------ */
+
+@media (min-width:525px) {
+
+  .App {
+    text-align: center;
+    position: relative;
+    height: 1280px;
+  }
+  
+
+}
+
+
+
+@media (min-width:630px) {
+
+  .App {
+    text-align: center;
+    position: relative;
+    height: 1290px;
+  }
+  
+
+}
+
+@media (min-width:700px) {
+
+  .App {
+    text-align: center;
+    position: relative;
+    height: 1330px;
+  }
+  
+
 }

@@ -1,0 +1,43 @@
+.szh-accordion {
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #cfab35;
+    font-weight: 600;
+}
+
+.szh-accordion__item-heading {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #c99d0b;
+    font-weight: 600;
+    background-color: #fbebb1;
+
+    padding-bottom: 5px;
+    font-size: 16px;
+   
+
+
+}
+
+
+.szh-accordion__item-content{
+    color: #6f5602;
+    font-size: 14px;
+    padding: 10px 0px 10px 0px;
+}
+
+
+@media (min-width:700px) {
+    .szh-accordion__item-heading {
+     font-size: 18px;
+    
+    }
+    
+    
+    .szh-accordion__item-content{
+        
+        font-size: 17px;
+       
+    }
+}
