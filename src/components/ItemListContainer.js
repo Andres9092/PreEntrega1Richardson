@@ -1,5 +1,6 @@
 import React from 'react'
-import '../assets/css/ItemList.css'
+import '../assets/css/ItemListContainer.css'
+import ItemDetail from './ItemDetail';
 
 function ItemListContainer(props) { 
     return (  
@@ -11,7 +12,16 @@ function ItemListContainer(props) {
 
         <h1 className="text-3xl  text-orange-500"> {props.greeting} </h1>  {/* importo prop "greeting" con valor de saludo enviado desde Componente App para Comp. ItemListContainer  */}
      
+        <ItemDetail>
+        
+        </ItemDetail>
+
+
+
       </div>
+
+
+      
     )
   }
   

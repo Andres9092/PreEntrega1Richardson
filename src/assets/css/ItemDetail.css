@@ -1,0 +1,169 @@
+
+.ItemDet{
+    margin: 30px 25px 0px 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.divContenedorPhone{
+    border: 1px solid #cfab35;
+    border-radius: 5px;
+    background-color: rgb(249, 247, 223);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.divContenedorDesktop{
+    display: none;
+}
+
+
+.divFotoDetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px #cfab35;
+    border-radius: 5px;
+    width: 90%;
+    
+}
+
+.ramo{
+    width: 100%;
+    height: 100%
+}
+
+.detailProd{
+        margin-top: 20px ;
+        font-style: italic;
+
+}
+
+.nombreProd{
+    padding-bottom:15px ;
+}
+
+
+.precioProd{
+    padding-bottom:15px ;
+    font-weight: 600;
+}
+
+
+.divDescripProd{
+
+    width: 60%;
+    margin-bottom: 15px;
+  
+}
+
+.descrip{
+    text-align: justify;
+    
+}
+
+
+
+@media (min-width:630px) {
+
+    .divContenedorPhone{
+      
+        display: none;
+      
+    }
+    
+
+    
+    .divContenedorDesktop{
+   
+    background-color: rgb(241, 234, 193);
+    padding: 45px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    border: 1px solid #cfab35;
+    border-radius: 5px;
+    background-color: rgb(249, 247, 223);
+    width:100%;
+    height: 600px
+  
+}
+
+    .divDetailProdDesktop{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-between;
+        width:100%;
+
+    }
+  
+
+.divFotoDetailDesktop{
+    align-items: center;
+    border: solid 2px #cfab35;
+    border-radius: 5px;
+    width: 850px;
+    height: 500px;
+    box-sizing: border-box;
+    
+    
+  }
+
+  .ramo{
+    width:100%;
+    height: 100%
+
+  }
+
+
+.divProdDesktop{
+    padding-bottom: 35px;
+
+
+}
+
+.divprecioDektop{
+    padding-bottom: 35px;
+
+
+}
+  .divDescripDektop{
+    text-align: justify;
+    width: 80%;
+
+  }
+  
+  .tituloProdDesktop{
+    font-style: italic;
+  }
+
+  .precioDesk{
+    font-weight: 600;
+  }
+
+}
+
+@media (min-width:850px) {
+
+    .divContenedorDesktop{
+   
+        width:85%;
+        height: 600px
+      
+    }
+
+    .divDetailProdDesktop{
+        width:99%;
+
+    }
+}

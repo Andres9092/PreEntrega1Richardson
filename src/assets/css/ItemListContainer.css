@@ -3,7 +3,8 @@
     border: solid 1px grey;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    height: 1200px;
+    margin-top: 160px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
 }
 
 

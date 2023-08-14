@@ -19,7 +19,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    position: fixed;    
     top: 0;   /* PARA QUE SE AJUSTE AL TOPDE VIEWPORT-- */
     width:100vw;
     z-index: 999;  /* PARA QUE QUEDE ADELANTE DE TODOS LOS ELEMENTOS------- */
