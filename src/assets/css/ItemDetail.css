@@ -158,7 +158,8 @@
     .divContenedorDesktop{
    
         width:85%;
-        height: 600px
+        height: 600px;
+        padding-left: 40px;
       
     }
 
