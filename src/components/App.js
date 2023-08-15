@@ -1,9 +1,9 @@
 import React from 'react'
 import '../assets/css/App.css';
 import NavBar from './NavBar';
-import ItemListContainer from './ItemListContainer';
+import Main from './Main';
 import Footer from './Footer';
-import {BrowserRouter, Link, Switch, Route} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 
 function App() { 
   return (  
@@ -13,7 +13,7 @@ function App() {
 
         <NavBar></NavBar>  {/* C Padre que contiene a C hijo 'CartsWidget' en su interior. */}
 
-        <ItemListContainer greeting ="Bienvenido!"> </ItemListContainer> {/* Paso al C hijo de su interior (ItemListContainer) la props llamada 'greeting' y su valor 'Bienvenido'. La props es un objeto, clave -valor.*/}
+        <Main></Main>
         
         <Footer></Footer>
 
