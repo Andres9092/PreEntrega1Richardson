@@ -1,0 +1,7 @@
+.mainContainer{
+    background-color: lightgray;
+    align-items: center;
+    justify-content: center;
+    padding: 160px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+
+}

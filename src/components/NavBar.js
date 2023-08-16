@@ -2,7 +2,7 @@ import React from 'react'
 import '../assets/css/NavBar.css';
 import imagenlogo from '../assets/images/logoEnj.png';
 import CartWidget from './CartWidget';
-import {Link, Switch, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 function NavBar() { 

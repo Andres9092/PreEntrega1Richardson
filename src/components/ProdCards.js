@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../assets/css/ProdCards.css'
 
 
 function ProdCards(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
@@ -7,8 +8,8 @@ function ProdCards(props){ /* Las props vienen definidas por el Componente padre
 
 return(
 
-        <section>
-            <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
+        <section className="ContenedorDeTarjetas">
+         
                
             {props.nombrePropProducts.length ==0
 

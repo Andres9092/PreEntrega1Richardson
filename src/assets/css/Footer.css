@@ -1,7 +1,7 @@
 .footer{
 
     background-color:rgb(249, 247, 223);
-    height: 552px;
+    height: 640px;
     display:flex ;
     flex-direction: column;
     align-items: center;
@@ -35,10 +35,7 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    margin-top: 5px;
-    position: absolute;
-    bottom: 0;   /* PARA QUE SE AJUSTE AL bottom fijo-- */
-
+ 
 }
 
 .dataFiscal{
@@ -167,13 +164,7 @@ list-style: none;
 /* ------------------------------------------------------------------ */
 
     @media (min-width:500px) {
-
-        .footer{
-
-            height: 586px;
-            
-        }
-        
+      
 
         .logoEnjDecoFooter{
 
@@ -251,17 +242,6 @@ list-style: none;
     }
 
 
-/* ------------------------------------------------------------------ */
-
-
-@media (min-width:525px) {
-    .footer{
-
-        height: 590px;
-    
-    }
-}
-
 
 /* ------------------------------------------------------------------ */
 @media (min-width:540px) {
@@ -282,20 +262,6 @@ list-style: none;
 
 /* ------------------------------------------------------------------ */
 
-
-
-/* ------------------------------------------------------------------ */
-@media (min-width:630px) {
-    .footer{
-
-        height: 600px;
-    
-    }
-}
-
-
-/* ------------------------------------------------------------------ */
-
 @media (min-width:700px) {
     
     .mediosP {
@@ -304,12 +270,6 @@ list-style: none;
    
        
     }
-    
-    .footer{
 
-        height: 620px;
-    
-    }
-    
     
 }

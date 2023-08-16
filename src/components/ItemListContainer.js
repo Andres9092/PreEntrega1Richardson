@@ -77,7 +77,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
       
   return (  
       
-      <div className="ItemList">   {/* etiqueta unica que contiene la aplicacion completa */}
+      <div>   {/* etiqueta unica que contiene la aplicacion completa */}
   
 
                           {/* etiqueta className generada con TAILWIND*/}
@@ -88,14 +88,14 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
           
           {/* -----------------------------------SECTION CARDS------------------------------------*/}
 
-          <section class="cards"> 
+          <section class="seccionCards"> 
 
-            <div className="categoriasProd">
-                
+            
+                <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
+               
                 <ProdCards nombrePropProducts = {products}/>
                       
-            </div>
-                      
+         
           </section>
   
       </div>
