@@ -2,24 +2,79 @@ import React from 'react'
 import {useEffect, useState} from 'react';
 import '../assets/css/ItemListContainer.css'
 import ProdCards from './ProdCards';
+import ramo1 from '../assets/images/Ramo1.jpg';
+import ramo2 from '../assets/images/Ramo2.jpg';
+import ramo3 from '../assets/images/Ramo3.jpg';
+import ramo4 from '../assets/images/Ramo4.jpg';
 
 
-function ItemListContainer(props) { 
+function ItemListContainer(props) { // Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido!
 
-  const [product, setProduct] = useState([])
+  const [products, setProduct] = useState([])
   
-  useEffect( () => {   // npm i cors  INSTALADO EN TERMINAL DEL BACKEND PARA QUE FUNCIONE EL FETCH DE LA API Y SE VEA POR NAVEGADOR LOS RESULTADOS.
-      fetch("http://localhost:4000/api/products")
-      .then(response => response.json())
-      .then(data => {
-            setProduct(JSON.parse(JSON.stringify(data.products)))
-            console.log(data)
-      })
-      .catch(error => console.log(error))
+  useEffect( () => {      // Hoof para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
+        
+    getProducts (products)
 
   }, [])
 
-    
+  const getProducts = () => {
+
+    console.log('Arranca el pedido a la API..')
+
+    setTimeout( () => {
+
+      console.log('Termina el pedido a la API..')
+      let products = [
+        {
+        id: 1,
+        nombre: 'ramo 1',
+        descripcion: 'A',
+        tamanio: 'S',
+        precio: 100,
+        foto:ramo1
+
+      },
+      {
+        id: 2,
+        nombre: 'ramo 2',
+        descripcion: 'B',
+        tamanio: 'M',
+        precio: 150,
+        foto:ramo2
+
+      },
+      {
+        id: 3,
+        nombre: 'ramo 3',
+        descripcion: 'C',
+        tamanio: 'L',
+        precio: 200,
+        foto:ramo3
+
+      },
+      {
+        id: 4,
+        nombre: 'ramo 4',
+        descripcion: 'D',
+        tamanio: 'XL',
+        precio: 250,
+        foto:ramo4
+
+      }]
+      setProduct(products)
+    },2000)
+
+      {/*fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a")  // npm i cors  INSTALADO EN TERMINAL DEL BACKEND PARA QUE FUNCIONE EL FETCH DE LA API Y SE VEA POR NAVEGADOR LOS RESULTADOS.
+        .then(response => response.json())
+        .then(data => {
+              setProduct(JSON.parse(JSON.stringify(data.meals)))
+              console.log(data)
+        })
+        .catch(error => console.log(error))*/}
+
+  }
+      
   return (  
       
       <div className="ItemList">   {/* etiqueta unica que contiene la aplicacion completa */}
@@ -36,9 +91,8 @@ function ItemListContainer(props) {
           <section class="cards"> 
 
             <div className="categoriasProd">
-                <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
-               
-                <ProdCards data = {...product} key={i}/>
+                
+                <ProdCards nombrePropProducts = {products}/>
                       
             </div>
                       

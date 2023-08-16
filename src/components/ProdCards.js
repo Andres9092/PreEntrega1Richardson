@@ -2,21 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-function ProdCards(props){
-    return(
+function ProdCards(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
+    console.log(props)
 
-        <div className="BoxProdPadre1">
-            
-                <div className="ImagenProdCard">
-                    <img className="imagenProd1" src={props.imagesURL} alt="Imagen del producto"/>     
-                </div>
-                        
-                <div className="Name&PriceProd">
-                        <p className="">{props.name}</p>
-                        <p className="">{props.description}</p>
-                </div>
-          
-        </div>
+return(
+
+        <section>
+            <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
+               
+            {props.nombrePropProducts.length ==0
+
+                ? <p>Cargando...</p>
+                : props.nombrePropProducts.map(
+                    (item,i) => {
+                        console.log(item,i)
+                        return(
+                            <div Key={i} className="BoxProdPadre1">
+                            
+                                <div className="ImagenProdCard">
+                                    <img className="imagenProd1" src = {item.foto} alt="Imagen del producto"/>     
+                                </div>
+                                        
+                                <div className="nombreDescripcion">
+                                        <p className="">{item.nombre}</p>
+                                        <p className="">{item.descripcion}</p>
+                                </div>
+                                <div className="precioTamanio">
+                                        <p className="">{item.precio}</p>
+                                        <p className="">{item.tamanio}</p>
+                                </div>
+                
+                            </div>
+                        )
+                    }
+                )
+                } 
+        </section>
         
     )
 }
@@ -24,18 +45,24 @@ function ProdCards(props){
 /* DEFINICIÓN DE PROPIEDADES POR DEFAULT */
 
 ProdCards.defaultProps = {
-    image: 'Imagen no disponible',
-    name: 'Nombre no disponible',
-    price: 'Precio no disponible'  
+    nombre: 'Nombre no disponible',
+    descripcion: 'Descripcion no disponible',
+    tamanio: 'Tamanio no disponible',
+    precio: 'Precio no disponible' ,
+    foto: 'Foto no disponible' 
 }
 
 /* PROPTYPES */
 
 ProdCards.propTypes = {
     attributes: PropTypes.shape({
-        image: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        price: PropTypes.oneOfType([
+        foto: PropTypes.string.isRequired,
+        nombre: PropTypes.string.isRequired,
+        tamanio: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]).isRequired,
+        precio: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
         ]).isRequired        

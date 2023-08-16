@@ -1,6 +1,6 @@
 import React from 'react'
 import '../assets/css/ItemDetail.css';
-import imagenRamo from '../assets/images/Ramo.jpg';
+import imagenRamo from '../assets/images/Ramo1.jpg';
 
 
 
