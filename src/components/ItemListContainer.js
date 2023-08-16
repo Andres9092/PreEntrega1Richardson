@@ -28,7 +28,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
       let products = [
         {
         id: 1,
-        nombre: 'ramo 1',
+        nombre: 'Taormina',
         descripcion: 'A',
         tamanio: 'S',
         precio: 100,
@@ -37,7 +37,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
       },
       {
         id: 2,
-        nombre: 'ramo 2',
+        nombre: 'Bellagio',
         descripcion: 'B',
         tamanio: 'M',
         precio: 150,
@@ -46,7 +46,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
       },
       {
         id: 3,
-        nombre: 'ramo 3',
+        nombre: 'Milano',
         descripcion: 'C',
         tamanio: 'L',
         precio: 200,
@@ -55,7 +55,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
       },
       {
         id: 4,
-        nombre: 'ramo 4',
+        nombre: 'Eucalipto',
         descripcion: 'D',
         tamanio: 'XL',
         precio: 250,

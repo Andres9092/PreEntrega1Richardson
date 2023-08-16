@@ -18,19 +18,19 @@ return(
                     (item,i) => {
                         console.log(item,i)
                         return(
-                            <div Key={i} className="BoxProdPadre1">
+                            <div Key={i} className="boxTarjeta">
                             
-                                <div className="ImagenProdCard">
-                                    <img className="imagenProd1" src = {item.foto} alt="Imagen del producto"/>     
+                                <div className="imagenProdCard">
+                                    <img className="imagenProd" src = {item.foto} alt="Imagen del producto"/>     
                                 </div>
                                         
                                 <div className="nombreDescripcion">
-                                        <p className="">{item.nombre}</p>
-                                        <p className="">{item.descripcion}</p>
+                                        <p className="nombreProd">-{item.nombre}-</p>
+                                        <p className="descripProd">{item.descripcion}</p>
                                 </div>
                                 <div className="precioTamanio">
-                                        <p className="">{item.precio}</p>
-                                        <p className="">{item.tamanio}</p>
+                                        <p className="precioProd"> $ {item.precio}</p>
+                                        <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
                 
                             </div>

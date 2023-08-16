@@ -3,3 +3,40 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 16px;
 }
+
+.boxTarjeta{
+
+    border: solid 2px #cfab35;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: wheat;
+    box-sizing: border-box;
+
+}
+
+
+.imagenProdCard{
+    padding-bottom: 5px;
+ 
+}
+
+
+.nombreProd{
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 5px;
+
+}
+
+.precioProd{
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.tamanioProd{
+    margin-top: 8px;
+}
