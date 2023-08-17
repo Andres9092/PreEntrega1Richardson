@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/css/ProdCards.css'
+import {Link} from 'react-router-dom';
+
 
 
 function ProdCards(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
@@ -21,7 +23,8 @@ return(
                             <div Key={i} className="boxTarjeta">
                             
                                 <div className="imagenProdCard">
-                                    <img className="imagenProd" src = {item.foto} alt="Imagen del producto"/>     
+                                
+                                <Link to ="/productos/:id"><img className="imagenProd" src = {item.foto} alt="Imagen del producto"/></Link> 
                                 </div>
                                         
                                 <div className="nombreDescripcion">
@@ -30,6 +33,12 @@ return(
                                 <div className="precioTamanio">
                                         <p className="precioProd"> $ {item.precio}</p>
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
+                                </div>
+
+                                <div className="botonADetalleProd"> 
+
+                                    <li><Link className="productos" to ="/productos/:id">Productos</Link></li>
+
                                 </div>
                 
                             </div>

@@ -61,6 +61,40 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         precio: 250,
         foto:ramo4
 
+      },
+      {
+        id: 5,
+        nombre: 'Eucalipto',
+        descripcion: 'D',
+        tamanio: 'XL',
+        precio: 250,
+        foto:ramo4
+
+      },{
+        id: 6,
+        nombre: 'Eucalipto',
+        descripcion: 'D',
+        tamanio: 'XL',
+        precio: 250,
+        foto:ramo4
+
+      },{
+        id: 7,
+        nombre: 'Eucalipto',
+        descripcion: 'D',
+        tamanio: 'XL',
+        precio: 250,
+        foto:ramo4
+
+      },
+      {
+        id: 8,
+        nombre: 'Eucalipto',
+        descripcion: 'D',
+        tamanio: 'XL',
+        precio: 250,
+        foto:ramo4
+
       }]
       setProduct(products)
     },2000)
@@ -82,7 +116,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
 
                           {/* etiqueta className generada con TAILWIND*/}
 
-          <h1 className="text-3xl  text-orange-500"> {props.greeting} </h1>  {/* importo prop "greeting" con valor de saludo enviado desde Componente 'Main' para Comp. ItemListContainer  */}
+          <h1 className="text-3xl pt-7 ... text-[#cfab35]"> {props.greeting} </h1>  {/* importo prop "greeting" con valor de saludo enviado desde Componente 'Main' para Comp. ItemListContainer  */}
      
           {/* -----------------------------------GREETING-BEINVENIDA------------------------------------*/}
           

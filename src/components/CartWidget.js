@@ -6,11 +6,10 @@ import {Link} from 'react-router-dom';
 function CartWidget() { 
     return (  
       
-      <div className="CartW">   {/* etiqueta unica que contiene la aplicacion completa */}
-  
+      <div className="CartW">   
         <ul className = "logoCart">        
             
-            <li><Link className="iconoCarrito" to = "/Cart"><i class="fa-solid fa-cart-plus"></i></Link></li>
+            <li><Link className="iconoCarrito" to = "/carrito"><i class="fa-solid fa-cart-plus"></i></Link></li>
             <p className="numeroCart"> 1 </p>
         </ul>
          

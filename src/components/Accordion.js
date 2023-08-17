@@ -9,10 +9,10 @@ export default function Example() {
       <AccordionItem className= "divCate" header="- Categorias -">
         <ul className="listaCategorias">                  
                     
-                    <li><Link  to="/Categorias">Productos</Link></li>
-                    <li><Link  to="/Ofertas">Sale - Ofertas</Link></li>
-                    <li><Link  to="/Sucursales">Sucursal</Link></li>  
-                    <li><Link  to="/Preguntas">Preguntas frecuentes</Link></li>   
+                    <li><Link  to="/categorias">Productos</Link></li>
+                    <li><Link  to="/cfertas">Sale - Ofertas</Link></li>
+                    <li><Link  to="/sucursales">Sucursal</Link></li>  
+                    <li><Link  to="/preguntas">Preguntas frecuentes</Link></li>   
         </ul>  
     
       </AccordionItem>
