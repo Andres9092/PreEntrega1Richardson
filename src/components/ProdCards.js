@@ -11,7 +11,7 @@ return(
         <section className="ContenedorDeTarjetas">
          
                
-            {props.nombrePropProducts.length ==0
+            {props.nombrePropProducts.length === 0
 
                 ? <p>Cargando...</p>
                 : props.nombrePropProducts.map(
@@ -26,7 +26,6 @@ return(
                                         
                                 <div className="nombreDescripcion">
                                         <p className="nombreProd">-{item.nombre}-</p>
-                                        <p className="descripProd">{item.descripcion}</p>
                                 </div>
                                 <div className="precioTamanio">
                                         <p className="precioProd"> $ {item.precio}</p>

@@ -1,12 +1,16 @@
+
+
+
 .ContenedorDeTarjetas{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-gap: 16px;
+    
 }
 
 .boxTarjeta{
 
-    border: solid 2px #cfab35;
+    border: solid 3px #cfab35;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -20,8 +24,18 @@
 .imagenProdCard{
     padding-bottom: 5px;
  
+ 
 }
 
+
+.imagenProd{
+   
+    border: 2px solid #b59118 ;
+    
+
+ 
+ 
+}
 
 .nombreProd{
     font-weight: 600;
