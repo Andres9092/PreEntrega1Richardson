@@ -29,7 +29,7 @@ function ItemDetail() {
             
             <div className = "detailProdPhone">                   
                 <p className="precioProdPhone" >$3000</p>
-                <p className="tamanioProdPhone" >Tamanio: Large</p>
+                <p className="tamanioProdPhone">Tamanio: Large</p>
                 
             </div>
 
@@ -60,56 +60,66 @@ function ItemDetail() {
 
         </div>
 
+
+        {/* -----------------------------------------DESKTOP----------------------------------------- */}
+
         <div className="divContenedorDesktop">
             
-                 
-            <div className="divFotoDetailDesktop">                  
+            <div className="divFotoDesktop">                  
                         
-                <img className="ramo" src="/productos/:id" alt="Ramo"/>
-                            
-            </div>
+                <img className="ramoDesktop" src={ramo1} alt = "Ramo"/>
+                                    
+            </div>  
+
+            <div className="divCuerpoDerechoDesktop">
             
-            
-            <div className = "divDetailProdDesktop">        
-                
-                <div className = "divProdDesktop"> 
-                    <h1 className="tituloProdDesktop" href="aaaaa.html">a</h1>
-                </div> 
-
-                <div className = "divprecioDektop"> 
-                    <p className="precioDesk">$ a</p>
-                </div>
-
-                <div className = "divTamanioDektop"> 
-                    <p className="tamanioProd">a</p>
-                </div>
-
-                <br/>
-                <br/>
-          
-               
-                <div className = "botonesDetalle"> 
-
-                    <div>
-                        <Link to ="/carrito"> <Button className="botonAgregarCarrito">Agregar al Carrito </Button> </Link >
+                <div className = "divNombreVolverDesktop">        
                         
+                    <h1 className="nombreProdDesktop">-Bellagio-</h1>
+                    <Link to ="/productos"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
+                    
+                </div>
+                    
+            
+                <div className = "divDetailProdDesktop">        
+                    
+
+                    <div className = "divPrecioDektop"> 
+                        <p className="precioDesktop">$3000</p>
                     </div>
 
-                    
-                    <div>
-                        <Link to ="/products"> <Button className="botonUnidadesDisponibles">Unidades disponibles</Button></Link >
-                    </div>                 
-                    
+                    <div className = "divTamanioDektop"> 
+                        <p className="tamanioProd">Tamanio: Large</p>
+                    </div>
 
-                </div>
+                    <br/>
+                    <br/>
+                            
+                    <div className = "botonesDetalleDesktop"> 
 
-                <div className = "divDescripDektop"> 
-                    <p className="descripDesk"> Soft pastel tones set in a mini gold pot with a wooden stand. Featuring preserved Colombian Roses, Hydrangeas, Ruscus, Ming Ferns and Palms.
+                        <div>
+                            <Link to ="/carrito"> <Button className="botonAgregarCarritoDesktop">Agregar al Carrito </Button> </Link >
+                            
+                        </div>
+
+                        <div className = "contadorStockDesktop">
+                            <div className = "numeroContador"> 1 </div>
+                            <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Unidades disponibles</Button></Link >
+                        </div>                 
+                 
+                        
+
+                    </div>
+
+                    <div className = "divDescripDektop"> 
+                        <p className="descripDesk"> Soft pastel tones set in a mini gold pot with a wooden stand. Featuring preserved Colombian Roses, Hydrangeas, Ruscus, Ming Ferns and Palms.
+                    
+                        Size approximately 35cm high x 35cm wide. </p>
+                    </div>
                 
-                    Size approximately 35cm high x 35cm wide. </p>
-                </div>
-            
-            </div> 
+                </div> 
+
+            </div>
 
         </div>
          

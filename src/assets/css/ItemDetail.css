@@ -72,10 +72,11 @@
 
 .detailProdPhone{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content:space-between;
     align-items: center;
     width: 80%;
+    padding-top: 10px;
 }
 
 .precioProdPhone{
@@ -139,7 +140,81 @@
 
 /* -------------------------------------------PHONE----------------------------------------- */
 
-.botonAgregarCarrito{
+
+@media (min-width:620px) {
+
+    .divContenedorPhone{
+      
+        display: none;
+      
+    }
+
+
+
+.divContenedorDesktop{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 1px solid #cfab35;
+    padding: 20px 20px 20px 20px;
+    border-radius: 5px;
+    background-color: rgb(249, 247, 223)
+}
+
+
+.divFotoDesktop{
+
+    border: solid 2px #cfab35;
+    border-radius: 5px;
+    height: 70%
+   
+    
+}
+
+
+.divCuerpoDerechoDesktop{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-start;
+}
+
+.divNombreVolverDesktop{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.botonVolverDesktop{
+    width: 30vw;
+    font-size: 14px;
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+}
+
+.divDetailProdDesktop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    width:100%;
+
+}
+
+.botonesDetalle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+
+.botonAgregarCarritoDesktop{
     background-color:rgb(170, 194, 119);
     border: 1px solid;
     padding: 6px 6px 6px 6px;
@@ -148,32 +223,35 @@
     width: 250px;
 }
 
-.botonVolver{
-    background-color: rgb(198, 164, 136);
-    border: 1px solid;
-    padding: 2px 2px 2px 2px;
-    border-radius: 3px;
-    margin: 10px 0px 10px 0px;
-    font-size: 12px;
+.contadorStockDesktop{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 
-.botonUnidadesDisponibles{
+.botonUnidadesDisponiblesDesktop{
     background-color: rgb(198, 164, 136);
     border: 1px solid;
     padding: 6px 6px 6px 6px;
     border-radius: 3px;
     margin: 10px 0px 10px 0px;
     }
+    
 
-.detailProdPhone{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15px;
+.divDescripDektop{
+        text-align: justify;
+        width: 80%;
+    
+      }
+
+
+
 }
 
+/* 
 @media (min-width:620px) {
 
     .divContenedorPhone{
@@ -305,4 +383,4 @@
         border-radius: 3px;
         margin: 20px 0px 0px 0px;
     }
-}
+} */
