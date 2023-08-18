@@ -2,6 +2,38 @@
     background-color: #f1eac1;
     align-items: center;
     justify-content: center;
-    padding: 160px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    padding: 100px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
 
+}
+
+
+@media (min-width:525px) {
+
+    .mainContainer{
+  
+        padding: 145px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    
+    }
+    
+}
+
+
+@media (min-width:650px) {
+
+    .mainContainer{
+    
+        padding: 165px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    
+    }
+    
+}
+
+@media (min-width:700px) {
+
+    .mainContainer{
+    
+        padding: 175px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    
+    }
+    
 }

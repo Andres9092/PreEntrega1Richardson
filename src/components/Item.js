@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../assets/css/ProdCards.css'
+import '../assets/css/Item.css'
 import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 
 
 
-function ProdCards(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
+function Item(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
     console.log(props)
 
 return(
@@ -21,7 +21,7 @@ return(
                     (item,i) => {
                         console.log(item,i)
                         return(
-                            <div Key={i} className="boxTarjeta">
+                            <div key={i} className="boxTarjeta">
                             
                                 <div className="imagenProdCard">
                                     <img className="imagenProd" src = {item.foto} alt="Imagen del producto"/>
@@ -35,7 +35,7 @@ return(
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
 
-                                <Link to ="/productos/:{item.id}"> <Button className="botonDetalle">
+                                <Link to ="/productos/:id"> <Button className="botonDetalle">
                                     Ver Detalle
                                 </Button> </Link >
       
@@ -52,7 +52,7 @@ return(
 
 /* DEFINICIÓN DE PROPIEDADES POR DEFAULT */
 
-ProdCards.defaultProps = {
+Item.defaultProps = {
     nombre: 'Nombre no disponible',
     descripcion: 'Descripcion no disponible',
     tamanio: 'Tamanio no disponible',
@@ -62,7 +62,7 @@ ProdCards.defaultProps = {
 
 /* PROPTYPES */
 
-ProdCards.propTypes = {
+Item.propTypes = {
     attributes: PropTypes.shape({
         foto: PropTypes.string.isRequired,
         nombre: PropTypes.string.isRequired,
@@ -77,4 +77,4 @@ ProdCards.propTypes = {
     })
 }
 
-export default ProdCards;
+export default Item;

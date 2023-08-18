@@ -1,6 +1,6 @@
 
 .ItemDet{
-    margin: 30px 25px 0px 25px;
+    margin: 30px 5px 0px 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -24,8 +24,37 @@
     display: none;
 }
 
+.nombreVolverPhone{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 10px;
+}
 
-.divFotoDetail{
+
+
+.nombreProdPhone{
+    font-size: 5vw;
+    font-style: italic;
+}
+
+
+.botonVolverPhone{
+
+    width: 30vw;
+    font-size: 14px;
+
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+   
+}
+
+.divFotoDetailPhone{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,43 +65,116 @@
     
 }
 
-.ramo{
+.ramoPhone{
     width: 100%;
     height: 100%
 }
 
-.detailProd{
-        margin-top: 20px ;
-        font-style: italic;
-
+.detailProdPhone{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    width: 80%;
 }
 
-.nombreProd{
-    padding-bottom:15px ;
-}
-
-
-.precioProd{
+.precioProdPhone{
     padding-bottom:15px ;
     font-weight: 600;
 }
 
+.botonesDetallePhone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    width: 100%;
+}
 
-.divDescripProd{
+.contadorStockPhone{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.botonUnidadesDisponiblesPhone{
+    padding-left: 10px;
+
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 10px;
+}
+
+.numeroContador{
+    background-color: white;
+    border: solid 1px;
+    border-radius: 2px;
+    padding: 6px 8px 6px 8px;
+}
+
+
+.divDescripProdPhone{
 
     width: 60%;
     margin-bottom: 15px;
   
 }
 
-.descrip{
+.descripPhone{
     text-align: justify;
     
 }
 
 
+.detailProd{
+    margin-top: 20px ;
+    font-style: italic;
 
-@media (min-width:630px) {
+}
+
+/* -------------------------------------------PHONE----------------------------------------- */
+
+.botonAgregarCarrito{
+    background-color:rgb(170, 194, 119);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+    width: 250px;
+}
+
+.botonVolver{
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+    font-size: 12px;
+}
+
+
+.botonUnidadesDisponibles{
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+    }
+
+.detailProdPhone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+@media (min-width:620px) {
 
     .divContenedorPhone{
       
@@ -166,5 +268,41 @@
     .divDetailProdDesktop{
         width:99%;
 
+    }
+}
+
+
+@media (min-width:1090px) {
+
+    .botonesDetalle{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    
+    .botonAgregarCarrito{
+        background-color: rgb(170, 194, 119);
+        border: 1px solid;
+        padding: 6px 6px 6px 6px;
+        border-radius: 3px;
+        margin: 0px 10px 0px 0px;
+    }
+    
+    .botonVolver{
+        background-color: rgb(199, 128, 70);
+        border: 1px solid;
+        padding: 6px 6px 6px 6px;
+        border-radius: 3px;
+        margin: 0px 0px 0px 10px;
+    }
+    
+    .botonUnidadesDisponibles{
+        background-color: rgb(109, 95, 84);
+        border: 1px solid;
+        padding: 6px 6px 6px 6px;
+        border-radius: 3px;
+        margin: 20px 0px 0px 0px;
     }
 }
