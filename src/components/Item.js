@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap'
 
 
 
+
 function Item(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
     console.log(props)
 

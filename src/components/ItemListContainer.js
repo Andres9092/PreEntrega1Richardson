@@ -30,9 +30,10 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         id: 1,
         nombre: 'Taormina',
         descripcion: 'A',
-        tamanio: 'S',
+        tamanio: 'M',
         precio: 100,
-        foto:ramo1
+        foto:ramo1,
+        eucalipto: 'si'
 
       },
       {
@@ -41,7 +42,8 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         descripcion: 'B',
         tamanio: 'M',
         precio: 150,
-        foto:ramo2
+        foto:ramo2,
+        eucalipto: 'si'
 
       },
       {
@@ -50,50 +52,56 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         descripcion: 'C',
         tamanio: 'L',
         precio: 200,
-        foto:ramo3
+        foto:ramo3,
+        eucalipto: 'no'
 
       },
       {
         id: 4,
         nombre: 'Eucalipto',
         descripcion: 'D',
-        tamanio: 'XL',
+        tamanio: 'L',
         precio: 250,
-        foto:ramo4
+        foto:ramo4,
+        eucalipto: 'no'
 
       },
       {
         id: 5,
         nombre: 'Eucalipto',
         descripcion: 'D',
-        tamanio: 'XL',
+        tamanio: 'L',
         precio: 250,
-        foto:ramo4
+        foto:ramo4,
+        eucalipto: 'si'
 
       },{
         id: 6,
         nombre: 'Eucalipto',
         descripcion: 'D',
-        tamanio: 'XL',
+        tamanio: 'M',
         precio: 250,
-        foto:ramo4
+        foto:ramo4,
+        eucalipto: 'no'
 
       },{
         id: 7,
         nombre: 'Eucalipto',
         descripcion: 'D',
-        tamanio: 'XL',
+        tamanio: 'M',
         precio: 250,
-        foto:ramo4
+        foto:ramo4,
+        eucalipto: 'si'
 
       },
       {
         id: 8,
         nombre: 'Eucalipto',
         descripcion: 'D',
-        tamanio: 'XL',
+        tamanio: 'M',
         precio: 250,
-        foto:ramo4
+        foto:ramo4,
+        eucalipto: 'no'
 
       }]
       setProduct(products)

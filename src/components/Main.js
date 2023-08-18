@@ -1,6 +1,8 @@
 import React from 'react'
 import ItemListContainer from './ItemListContainer';
 import ItemDetail from './ItemDetail';
+import ItemCategory1 from './ItemCategory1';
+import ItemCategory2 from './ItemCategory2';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -20,7 +22,10 @@ function Main() {
 
                 <Route path = "/productos/:id" element = {<ItemDetail/>}/>  
                 
-                <Route path = "/categorias/:id" element = {<p>Hola</p>}/>   
+                <Route path = "/categorias/1" element = {<ItemCategory1/>}/>
+                <Route path = "/categorias/2" element = {<ItemCategory2/>}/>      
+
+                <Route path = "/carrito" element = {<p>Hola</p>} />   
 
                 <Route path = "/favoritos" element = {<p>Hola</p>} />   
 
@@ -28,9 +33,7 @@ function Main() {
 
                 <Route path = "/sucursales" element = {<p>Hola</p>} />   
 
-                <Route path = "/preguntas" element = {<p>Hola</p>}/>   
-
-                <Route path = "/carrito" element = {<p>Hola</p>} />   
+                <Route path = "/preguntas" element = {<p>Hola</p>}/>                   
 
                 <Route path = "/blog" element = {<p>Hola</p>} />   
 

@@ -75,11 +75,20 @@ function NavBar() {
                         <li ><Link className="iconos-pala" to = "/productos">Productos</Link></li>
                     </div>
 
-                    <div className = "icono-palabra">
-                        <li ><i class="fa-solid fa-list"></i></li>
-                        <li ><Link className="iconos-pala"  to = "/categorias">Categorias</Link></li>
+                    <div className = "icono-palabraCate">
+                        <div className = "palabraIcono">
+                      
+                            <button class="dropbtn">Categorias<i class="fa fa-caret-down"></i></button>
+                            
+                        </div>
+                        <div class="dropdown-content">
+                            <Link className="iconos-pala" to = "/categorias/1">Tamanio Large (L)</Link>
+                            <Link className="iconos-pala" to = "/categorias/2">Tamanio Medium (M)</Link>
+                        </div>
+
                     </div>
 
+                        
                     <div className = "icono-palabra">
                         <li ><i class="fa-solid fa-burst"></i></li>
                         <li ><Link className="iconos-pala" to = "/ofertas">Ofertas!</Link></li>

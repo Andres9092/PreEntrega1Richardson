@@ -2,7 +2,7 @@
     background-color: #f1eac1;
     align-items: center;
     justify-content: center;
-    padding: 100px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    padding: 120px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
 
 }
 
@@ -11,7 +11,7 @@
 
     .mainContainer{
   
-        padding: 145px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 180px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
     
     }
     
@@ -22,7 +22,7 @@
 
     .mainContainer{
     
-        padding: 165px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 200px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
     
     }
     
@@ -32,7 +32,20 @@
 
     .mainContainer{
     
-        padding: 175px 10px 30px 10px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 205px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    
+    }
+    
+}
+
+
+@media (min-width:1000px) {
+
+    .mainContainer{
+    
+        padding: 205px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        display: flex;
+        align-items: center;
     
     }
     
