@@ -9,7 +9,7 @@ import ramo1 from '../assets/images/Ramo1.jpg';
 function ItemDetail() { 
     return (  
       
-      <div className="ItemDet">  
+    <div className="ItemDet">  
   
         <div className="divContenedorPhone">
 
@@ -72,59 +72,59 @@ function ItemDetail() {
             </div>  
 
             <div className="divCuerpoDerechoDesktop">
-            
-                <div className = "divNombreVolverDesktop">        
-                        
-                    <h1 className="nombreProdDesktop">-Bellagio-</h1>
-                    <Link to ="/productos"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
-                    
-                </div>
-                    
-            
-                <div className = "divDetailProdDesktop">        
-                    
-
-                    <div className = "divPrecioDektop"> 
-                        <p className="precioDesktop">$3000</p>
-                    </div>
-
-                    <div className = "divTamanioDektop"> 
-                        <p className="tamanioProd">Tamanio: Large</p>
-                    </div>
-
-                    <br/>
-                    <br/>
-                            
-                    <div className = "botonesDetalleDesktop"> 
-
-                        <div>
-                            <Link to ="/carrito"> <Button className="botonAgregarCarritoDesktop">Agregar al Carrito </Button> </Link >
-                            
-                        </div>
-
-                        <div className = "contadorStockDesktop">
-                            <div className = "numeroContador"> 1 </div>
-                            <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Unidades disponibles</Button></Link >
-                        </div>                 
-                 
-                        
-
-                    </div>
-
-                    <div className = "divDescripDektop"> 
-                        <p className="descripDesk"> Soft pastel tones set in a mini gold pot with a wooden stand. Featuring preserved Colombian Roses, Hydrangeas, Ruscus, Ming Ferns and Palms.
-                    
-                        Size approximately 35cm high x 35cm wide. </p>
-                    </div>
                 
-                </div> 
+                <div className = "divCuerpoVolverDesktop">        
+                         
+                        <div className = "divDetailProdDesktop">  
 
+                            <h1 className="nombreProdDesktop">-Bellagio-</h1>       
+                            
+
+                            <div className = "divPrecioDektop"> 
+                                <p className="precioDesktop">$3000</p>
+                            </div>
+
+                            <div className = "divTamanioDektop"> 
+                                <p className="tamanioProd">Tamanio: Large</p>
+                            </div>
+
+                            <br/>
+                            <br/>
+                                    
+                            <div className = "botonesDetalleDesktop"> 
+
+                                <div>
+                                    <Link to ="/carrito"> <Button className="botonAgregarCarritoDesktop">Agregar al Carrito </Button> </Link >
+                                    
+                                </div>
+
+                                <div className = "contadorStockDesktop">
+                                    <div className = "numeroContador"> 1 </div>
+                                    <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Unidades disponibles</Button></Link >
+                                </div>                 
+                        
+                                
+
+                            </div>
+
+                            <div className = "divDescripDektop"> 
+                                <p className="descripDesk"> Soft pastel tones set in a mini gold pot with a wooden stand. Featuring preserved Colombian Roses, Hydrangeas, Ruscus, Ming Ferns and Palms.
+                            
+                                Size approximately 35cm high x 35cm wide. </p>
+                            </div>
+                        
+                        </div> 
+
+                </div>
+
+                <div>
+                    <Link to ="/productos"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
+                </div>
+
+                
             </div>
-
         </div>
-         
-  
-      </div>
+    </div>  
     )
   }
   
