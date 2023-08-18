@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/css/ProdCards.css'
 import {Link} from 'react-router-dom';
+import { Button } from 'react-bootstrap'
 
 
 
@@ -23,8 +24,7 @@ return(
                             <div Key={i} className="boxTarjeta">
                             
                                 <div className="imagenProdCard">
-                                
-                                <Link to ="/productos/:id"><img className="imagenProd" src = {item.foto} alt="Imagen del producto"/></Link> 
+                                    <img className="imagenProd" src = {item.foto} alt="Imagen del producto"/>
                                 </div>
                                         
                                 <div className="nombreDescripcion">
@@ -35,11 +35,10 @@ return(
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
 
-                                <div className="botonADetalleProd"> 
-
-                                    <li><Link className="productos" to ="/productos/:id">Productos</Link></li>
-
-                                </div>
+                                <Link to ="/productos/:{item.id}"> <Button className="botonDetalle">
+                                    Ver Detalle
+                                </Button> </Link >
+      
                 
                             </div>
                         )

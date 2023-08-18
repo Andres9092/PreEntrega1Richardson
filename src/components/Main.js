@@ -2,18 +2,19 @@ import React from 'react'
 import ItemListContainer from './ItemListContainer';
 import ItemDetail from './ItemDetail';
 import '../assets/css/Main.css'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 
 
 function Main() { 
     return (  
         <div className="mainContainer">
-            
-            
+       
+
             <Routes>
+              
 
                              {/*If URL del navegador = al path, entonces mostrar el Componente deseado. */}
-                <Route path = "/" element = {<ItemListContainer greeting = "Bienvenido!"/>}/> 
+                <Route path = "/" exact={true}   element = {<ItemListContainer greeting = "Bienvenido!"/>}/> 
 
                 <Route path = "/productos" element = {<ItemListContainer/>}/>       
 

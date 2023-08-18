@@ -69,7 +69,7 @@ function NavBar() {
    
                 <ul className="leftBottomHeader">
                 
-                    
+      
                     <div className = "icono-palabra">
                         <li ><i class="fa-brands fa-pagelines"></i></li>
                         <li ><Link className="iconos-pala" to = "/productos">Productos</Link></li>

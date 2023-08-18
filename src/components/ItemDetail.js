@@ -1,10 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import '../assets/css/ItemDetail.css';
-import imagenRamo from '../assets/images/Ramo1.jpg';
 
 
-
-function ItemDetail() { 
+function ItemDetail(props) { 
     return (  
       
       <div className="ItemDet">  
@@ -13,17 +12,18 @@ function ItemDetail() {
             
             <div className="divFotoDetail">                  
                         
-                <img className="ramo" src={imagenRamo} alt="Ramo"/>
+                <img className="ramo" src="/productos/:id" alt = "Ramo"/>
                             
             </div>  
             
             
-            <div className = "detailProd">        
+            {/* <div className = "detailProd">        
                 
-                <h1 className="nombreProd">-Nombre del producto-</h1>
-                <p className="precioProd" >$ Precio del producto</p>
+                <h1 className="nombreProd">{item.nombre}</h1>
+                <p className="precioProd" >${item.precio}</p>
+                <p className="tamanioProd" >{item.tamanio}</p>
                 
-            </div>
+            </div> */}
 
             <div className = "divDescripProd"> 
 
@@ -37,9 +37,9 @@ function ItemDetail() {
         <div className="divContenedorDesktop">
             
                       
-            <div className="divFotoDetailDesktop">                  
+            {/* <div className="divFotoDetailDesktop">                  
                         
-                <img className="ramo" src={imagenRamo} alt="Ramo"/>
+                <img className="ramo" src={item.foto} alt="Ramo"/>
                             
             </div>  
             
@@ -47,11 +47,15 @@ function ItemDetail() {
             <div className = "divDetailProdDesktop">        
                 
                 <div className = "divProdDesktop"> 
-                    <h1 className="tituloProdDesktop" href="aaaaa.html">-Nombre del producto-</h1>
+                    <h1 className="tituloProdDesktop" href="aaaaa.html">{item.nombre}</h1>
                 </div> 
 
                 <div className = "divprecioDektop"> 
-                    <p className="precioDesk">$ Precio del producto</p>
+                    <p className="precioDesk">$ {item.precio}</p>
+                </div>
+
+                <div className = "divTamanioDektop"> 
+                    <p className="tamanioProd">{item.tamanio}</p>
                 </div>
 
                 <br/>
@@ -62,7 +66,7 @@ function ItemDetail() {
                 
                     Size approximately 35cm high x 35cm wide. </p>
                 </div>
-            </div>
+            </div> */}
 
         </div>
          
