@@ -160,9 +160,7 @@ body{
     font-weight: 800;
 }
 
-.fa-list{
-    display: none;
-  }
+
 
 /* ------------------------------------------------------------------ */
 @media (max-width:430px) {
@@ -196,22 +194,6 @@ body{
     justify-content: space-between;
     
 }
-
-
-.NavInferior{
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    background-color: rgb(249, 247, 223);
-    border: solid 1px  #cfab35;
-    height: 50px;
-    align-items: center;
-
-}
-
 
 
 .burger-menu{
@@ -285,8 +267,13 @@ body{
     font-weight: 600;
 }
 
+ 
+ }
 
-.leftBottomHeader{
+
+ @media (min-width:600px) {
+
+ .leftBottomHeader{
 
     display: flex;
     flex-direction: row;
@@ -298,86 +285,29 @@ body{
 
 }
 
+.NavInferior{
 
-.leftBottomHeader li{
-
-    list-style: none;
-
-
-}
-
-.Blog, .Sucursales, .Contacto, .Categorias{
-
-    color: #cfab35;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0 0 0 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(249, 247, 223);
+    border: solid 1px  #cfab35;
+    height: 50px;
+    align-items: center;
 
 }
 
 
-.Ofertas{
-
-font-weight: 1000;
-color: rgb(176, 142, 142);
-padding: 0  0  0 20px;
-
-}
-
-.leftBottomHeader i{
-
-    display: none;
-}
-
-.iconos-pala{
-
-    color: #cfab35;
-    text-decoration: none;
-    font-weight: 400;
-    padding: 0 0 0 6px;
-    font-size: 14px;
-
-}
-
-.icono-palabraCate {
+.DivExternoIconoPalabraCate {
     float: left;
     overflow: hidden;
   
   }
-  .palabraIcono {
-   
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
 
-  .palabraIcono i{
-    color: #cfab35;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-
-  .palabraIcono:hover .dropbtn {
-    background-color: red;
-  }
-
-  .dropbtn{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
- 
-  }
-
-  .dropbtn i{
-    padding-left: 10px;
-  }
-
- 
-
-  .icono-palabraCate .dropbtn {
+  
+  .DivExternoIconoPalabraCate .BotonCategorias,  .DivExternoIconoPalabraNoCate {
     font-size: 16px;
     border: none;
     outline: none;
@@ -388,12 +318,57 @@ padding: 0  0  0 20px;
     margin: 0; /* Important for vertical align on mobile phones */
   }
 
+  .DivExternoIconoPalabraCate:hover .dropdown-content {
+    display: block;
+  }
 
 
+  .DivInternoBotonCate {
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .DivInternoBotonCate i{
+    color: #cfab35;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .DivInternoBotonCate:hover .BotonCategorias {
+    background-color:  #f0d374;
+  }
+
+
+  .BotonCategorias{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+ 
+  }
+
+  .BotonCategorias i{
+    padding-left: 10px;
+  }
+
+
+  .categoria{
+
+    color: #cfab35;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0 0 0 6px;
   
 
-  /* Dropdown content (hidden by default) */
-  .dropdown-content {
+}
+
+ /* Dropdown content (hidden by default) */
+ .dropdown-content {
     display: none;
     position: absolute;
     background-color:   rgb(249, 247, 223);
@@ -414,17 +389,52 @@ padding: 0  0  0 20px;
   
   /* Add a grey background color to dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color:  #f0d374;
   }
   
   /* Show the dropdown menu on hover */
-  .icono-palabraCate:hover .dropdown-content {
-    display: block;
+
+
+
+
+
+.DivExternoIconoPalabraNoCate {
+    float: left;
+    overflow: hidden;
+  
+  }
+
+.DivInternoNoCate {
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #cfab35;
+  }
+
+  .DivInternoNoCate i{
+    display: none
+  
+  }
+
+  .DivExternoIconoPalabraNoCate:hover{
+    background-color:  #f0d374;
   }
 
 
-}
+
+  .titulosNoCate{
+    color: #cfab35;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0 0 0 6px;
+
     
+    }
+  
+
+}
+   
 /* ------------------------------------------------------------------ */
 @media (min-width:650px) {
 
@@ -435,11 +445,17 @@ padding: 0  0  0 20px;
         padding-right: 40px;
         padding-left: 10px;
         
+       }
+
        
-    
-    }
+    .fa-brands, .fa-list, .fa-burst, .fa-book, .fa-house, .fa-list, .fa-phone{
+
+        display: none
 
 }
+
+}
+
 /* ------------------------------------------------------------------ */
 @media (min-width:700px) {
 
@@ -450,8 +466,7 @@ padding: 0  0  0 20px;
         width: 100vW;
         padding-right: 40px;
         padding-left: 0px;
-       
-    
+          
     }
 
 
@@ -476,46 +491,16 @@ padding: 0  0  0 20px;
     }
 
     
-    .iconos-pala{
-
-      
-        font-size: 16px
-      
-    
-    }
-}
-
-/* ------------------------------------------------------------------ */
-@media (min-width:740px) {
-
-    
-    .leftBottomHeader i{
-        display: flex;
-    }
-    .icono-palabra{
-
+    .DivInternoNoCate i{
+   
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
-    }
-
-    .iconos-pala{
-
         color: #cfab35;
-        text-decoration: none;
-        font-weight: 400;
-        padding: 0 0 0 6px;
-    
-    }
+      }
 
-    .fa-brands, .fa-list, .fa-burst, .fa-book, .fa-house, .fa-list, .fa-phone{
 
-        color: #cfab35
-    }
 }
-
-
 /* ------------------------------------------------------------------ */
 @media (min-width:900px) {
 

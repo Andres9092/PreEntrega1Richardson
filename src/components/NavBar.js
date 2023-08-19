@@ -70,44 +70,55 @@ function NavBar() {
                 <ul className="leftBottomHeader">
                 
       
-                    <div className = "icono-palabra">
-                        <li ><i class="fa-brands fa-pagelines"></i></li>
-                        <li ><Link className="iconos-pala" to = "/productos">Productos</Link></li>
+                    <div className = "DivExternoIconoPalabraNoCate">
+                        <div className = "DivInternoNoCate">
+                            <i class="fa-brands fa-pagelines"></i>
+                           <Link className="titulosNoCate" to = "/productos">Productos</Link>
+                        </div>
                     </div>
 
-                    <div className = "icono-palabraCate">
-                        <div className = "palabraIcono">
+                    <div className = "DivExternoIconoPalabraCate">
+                        <div className = "DivInternoBotonCate">
                       
-                            <button class="dropbtn">Categorias<i class="fa fa-caret-down"></i></button>
+                            <button class="BotonCategorias">Categorias<i class="fa fa-caret-down"></i></button>
                             
                         </div>
                         <div class="dropdown-content">
-                            <Link className="iconos-pala" to = "/categorias/1">Tamanio Large (L)</Link>
-                            <Link className="iconos-pala" to = "/categorias/2">Tamanio Medium (M)</Link>
+                            <Link className="categoria" to = "/categorias/1">Tamanio Large (L)</Link>
+                            <Link className="categoria" to = "/categorias/2">Tamanio Medium (M)</Link>
                         </div>
 
                     </div>
 
                         
-                    <div className = "icono-palabra">
-                        <li ><i class="fa-solid fa-burst"></i></li>
-                        <li ><Link className="iconos-pala" to = "/ofertas">Ofertas!</Link></li>
+                    <div className = "DivExternoIconoPalabraNoCate">
+                        <div className = "DivInternoNoCate">
+                            <i class="fa-solid fa-burst"></i>
+                            <Link className="titulosNoCate" to = "/ofertas">Ofertas!</Link>
+                        </div>
                     </div>
 
                  
-                    <div className = "icono-palabra">
-                        <li ><i class="fa-solid fa-book"></i></li>
-                        <li ><Link className="iconos-pala" to = "/blog">Blog</Link></li>
+                    <div className = "DivExternoIconoPalabraNoCate">
+                        <div className = "DivInternoNoCate">
+                            <i class="fa-solid fa-book"></i>
+                            <Link className="titulosNoCate" to = "/blog">Blog</Link>
+                        </div>
                     </div>
 
-                    <div className = "icono-palabra">
-                    <li ><i class="fa-solid fa-house"></i></li>
-                    <li ><Link className="iconos-pala" to = "sucursales">Sucursales</Link></li>
+                    <div className = "DivExternoIconoPalabraNoCate">
+
+                        <div className = "DivInternoNoCate">
+                            <i class="fa-solid fa-house"></i>
+                            <Link className="titulosNoCate" to = "sucursales">Sucursales</Link>
+                        </div>
                     </div>
 
-                    <div className = "icono-palabra">
-                    <li ><i class="fa-solid fa-phone"></i></li>
-                    <li ><Link className="iconos-pala" to = "/contacto">Contacto</Link></li>  
+                    <div className = "DivExternoIconoPalabraNoCate">
+                        <div className = "DivInternoNoCate">
+                            <i class="fa-solid fa-phone"></i>
+                            <Link className="titulosNoCate" to = "/contacto">Contacto</Link>
+                        </div>
                     </div>              
                 </ul>    
 
@@ -115,7 +126,7 @@ function NavBar() {
                 
             </div>
 
-        </header >
+        </header>
     )
   }
   
