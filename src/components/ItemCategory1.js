@@ -7,12 +7,16 @@ import ramo2 from '../assets/images/Ramo2.jpg';
 import ramo3 from '../assets/images/Ramo3.jpg';
 import ramo4 from '../assets/images/Ramo4.jpg';
 import '../assets/css/Item.css'
-
+import {useParams} from 'react-router-dom';
 
 
 function ItemCategory1() { 
 
-    const [products,setProduct] = useState([])
+    const resultado = useParams()
+    console.log(resultado)
+  
+  
+  const [products,setProduct] = useState([])
      
     useEffect( () => {      // Hoof para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
           

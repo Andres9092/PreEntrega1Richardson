@@ -73,7 +73,7 @@ function NavBar() {
                     <div className = "DivExternoIconoPalabraNoCate">
                         <div className = "DivInternoNoCate">
                             <i class="fa-brands fa-pagelines"></i>
-                           <Link className="titulosNoCate" to = "/productos">Productos</Link>
+                           <Link className="titulosNoCate" to = "/item">Productos</Link>
                         </div>
                     </div>
 

@@ -3,26 +3,34 @@ import '../assets/css/ItemDetail.css';
 import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 import ramo1 from '../assets/images/Ramo1.jpg';
-
+import ramo2 from '../assets/images/Ramo2.jpg';
+import ramo3 from '../assets/images/Ramo3.jpg';
+import ramo4 from '../assets/images/Ramo4.jpg';
+import {useParams} from 'react-router-dom';
 
 
 function ItemDetail() { 
+  
+    const resultado = useParams()
+    console.log(resultado)
+   
     return (  
       
     <div className="ItemDet">  
   
         <div className="divContenedorPhone">
 
+            
             <div className = "nombreVolverPhone">        
                     
                 <h1 className="nombreProdPhone">-Bellagio-</h1>
-                <Link to ="/productos"> <Button className="botonVolverPhone">Volver a Listado</Button></Link>
+                <Link to ="/item"> <Button className="botonVolverPhone">Volver a Listado</Button></Link>
                 
             </div>
             
             <div className="divFotoDetailPhone">                  
                         
-                <img className="ramoPhone" src={ramo1} alt = "Ramo"/>
+                <img className="ramoPhone" src="../assets/images/:id" alt = "Ramo"/>
                             
             </div>  
             
@@ -44,7 +52,7 @@ function ItemDetail() {
 
                 <div className = "contadorStockPhone">
                     <div className = "numeroContador"> 1 </div>
-                    <Link to ="/products"> <Button className="botonUnidadesDisponiblesPhone">Unidades disponibles</Button></Link >
+                    <Link to ="/"> <Button className="botonUnidadesDisponiblesPhone">Unidades disponibles</Button></Link >
                 </div>                 
 
 
@@ -118,7 +126,7 @@ function ItemDetail() {
                 </div>
 
                 <div>
-                    <Link to ="/productos"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
+                    <Link to ="/item"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
                 </div>
 
                 

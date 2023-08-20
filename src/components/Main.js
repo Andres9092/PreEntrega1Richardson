@@ -18,9 +18,9 @@ function Main() {
                              {/*If URL del navegador = al path, entonces mostrar el Componente deseado. */}
                 <Route path = "/" exact={true}   element = {<ItemListContainer greeting = "Bienvenido!"/>}/> 
 
-                <Route path = "/productos" element = {<ItemListContainer/>}/>       
+                <Route path = "/item" element = {<ItemListContainer/>}/>       
 
-                <Route path = "/productos/:id" element = {<ItemDetail/>}/>  
+                <Route path = "/item/:joreg" element = {<ItemDetail/>}/>  
                 
                 <Route path = "/categorias/1" element = {<ItemCategory1/>}/>
                 <Route path = "/categorias/2" element = {<ItemCategory2/>}/>      

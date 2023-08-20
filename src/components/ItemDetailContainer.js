@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../assets/css/Item.css'
 import {Link} from 'react-router-dom';
-import { Button } from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 
 
 
 
-function Item(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
+function ItemDetailContainer(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
     console.log(props)
 
 return(
@@ -36,7 +36,7 @@ return(
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
 
-                                <Link to ="/productos/:id"> <Button className="botonDetalle">
+                                <Link to ="/item/:{item.id}"> <Button className="botonDetalle">
                                     Ver Detalle
                                 </Button> </Link >
       
@@ -53,7 +53,7 @@ return(
 
 /* DEFINICIÓN DE PROPIEDADES POR DEFAULT */
 
-Item.defaultProps = {
+ItemDetailContainer.defaultProps = {
     nombre: 'Nombre no disponible',
     descripcion: 'Descripcion no disponible',
     tamanio: 'Tamanio no disponible',
@@ -63,7 +63,7 @@ Item.defaultProps = {
 
 /* PROPTYPES */
 
-Item.propTypes = {
+ItemDetailContainer.propTypes = {
     attributes: PropTypes.shape({
         foto: PropTypes.string.isRequired,
         nombre: PropTypes.string.isRequired,
@@ -78,4 +78,4 @@ Item.propTypes = {
     })
 }
 
-export default Item;
+export default ItemDetailContainer;

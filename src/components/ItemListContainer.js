@@ -1,7 +1,7 @@
 import React from 'react'
 import {useEffect, useState} from 'react';
 import '../assets/css/ItemListContainer.css'
-import Item from './Item';
+import ItemDetailContainer from './ItemDetailContainer';
 import ramo1 from '../assets/images/Ramo1.jpg';
 import ramo2 from '../assets/images/Ramo2.jpg';
 import ramo3 from '../assets/images/Ramo3.jpg';
@@ -135,7 +135,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
             
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
                
-                <Item nombrePropProducts = {products}/>
+                <ItemDetailContainer nombrePropProducts = {products}/>
                       
          
           </section>
