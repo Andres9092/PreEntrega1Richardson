@@ -20,7 +20,7 @@ function Main() {
 
                 <Route path = "/item" element = {<ItemListContainer/>}/>       
 
-                <Route path = "/item/:id" element = {<ItemDetail/>}/>     {/* id es la 'clave' del 'value'  capturado por en URL por el objeto useParams */}
+                <Route path = "/item/:id" element = {<ItemDetail/>}/>     {/* id es la 'clave' del 'value' capturado por en URL por useParams */}
                 
                 <Route path = "/categorias/1" element = {<ItemCategory1/>}/>
                 <Route path = "/categorias/2" element = {<ItemCategory2/>}/>      
