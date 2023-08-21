@@ -7,18 +7,18 @@ import {Button} from 'react-bootstrap'
 
 
 
-function ItemDetailContainer(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada con el 'fetch' */
+function ItemDetailContainer(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada nombrePropProducts = {products} */
     console.log(props)
 
-return(
+return(   
 
         <section className="ContenedorDeTarjetas">
          
                
-            {props.nombrePropProducts.length === 0
+            {props.nombrePropProducts.length === 0  /* Si el array 'nombrePropProducts' esta vacio */
 
                 ? <p>Cargando...</p>
-                : props.nombrePropProducts.map(
+                : props.nombrePropProducts.map(   /* Si el array 'nombrePropProducts' NO ESTA vacio, mapeo cada objeto del array y crea la tarjeta con la data respectiva a cada 'value' para cada 'key' */
                     (item,i) => {
                         console.log(item,i)
                         return(
@@ -36,9 +36,11 @@ return(
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
 
-                                <Link to ="/item/:{item.id}"> <Button className="botonDetalle">
-                                    Ver Detalle
-                                </Button> </Link >
+                               
+                                    <Link to ={`${item.id}`}> <Button className="botonDetalle"> {/* Al darle click al boton, redirije a la ruta ->  /item/:id , es decir conduce al Comp ItemDetail, definido en C Main. Cada id sera capturado luego de la URL por el useParams y reflejado en Comp ItemDetail */}
+                                        Ver Detalle
+                                    </Button> </Link >
+                               
       
                 
                             </div>

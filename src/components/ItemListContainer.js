@@ -6,23 +6,27 @@ import ramo1 from '../assets/images/Ramo1.jpg';
 import ramo2 from '../assets/images/Ramo2.jpg';
 import ramo3 from '../assets/images/Ramo3.jpg';
 import ramo4 from '../assets/images/Ramo4.jpg';
+import ramo5 from '../assets/images/Ramo5.jpg';
+import ramo6 from '../assets/images/Ramo6.jpg';
+import ramo7 from '../assets/images/Ramo7.jpg';
+import ramo8 from '../assets/images/Ramo8.jpg';
+             
 
-
-function ItemListContainer(props) { // Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido!
+function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido! */}
 
   const [products, setProduct] = useState([])
-  
-  useEffect( () => {      // Hoof para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
+    {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
+  useEffect( () => {      
         
-    getProducts (products)
+    getProducts (products)  
 
   }, [])
-
-  const getProducts = () => {
+                     {/*Se crea la fc */}
+  const getProducts = () => {   
 
     console.log('Arranca el pedido a la API..')
-
-    setTimeout( () => {
+                              {/*Retardo de carga de data para simular pedido a API */}
+    setTimeout( () => {  
 
       console.log('Termina el pedido a la API..')
       let products = [
@@ -31,7 +35,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Taormina',
         descripcion: 'A',
         tamanio: 'M',
-        precio: 100,
+        precio: 3500,
         foto:ramo1,
         eucalipto: 'si'
 
@@ -41,7 +45,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Bellagio',
         descripcion: 'B',
         tamanio: 'M',
-        precio: 150,
+        precio: 6000,
         foto:ramo2,
         eucalipto: 'si'
 
@@ -51,7 +55,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Milano',
         descripcion: 'C',
         tamanio: 'L',
-        precio: 200,
+        precio: 2000,
         foto:ramo3,
         eucalipto: 'no'
 
@@ -61,7 +65,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Eucalipto',
         descripcion: 'D',
         tamanio: 'L',
-        precio: 250,
+        precio: 4300,
         foto:ramo4,
         eucalipto: 'no'
 
@@ -71,8 +75,8 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Eucalipto',
         descripcion: 'D',
         tamanio: 'L',
-        precio: 250,
-        foto:ramo4,
+        precio: 3600,
+        foto:ramo5,
         eucalipto: 'si'
 
       },{
@@ -80,8 +84,8 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Eucalipto',
         descripcion: 'D',
         tamanio: 'M',
-        precio: 250,
-        foto:ramo4,
+        precio: 5200,
+        foto:ramo6,
         eucalipto: 'no'
 
       },{
@@ -89,8 +93,8 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Eucalipto',
         descripcion: 'D',
         tamanio: 'M',
-        precio: 250,
-        foto:ramo4,
+        precio: 2600,
+        foto:ramo7,
         eucalipto: 'si'
 
       },
@@ -99,14 +103,14 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
         nombre: 'Eucalipto',
         descripcion: 'D',
         tamanio: 'M',
-        precio: 250,
-        foto:ramo4,
+        precio: 4500,
+        foto:ramo8,
         eucalipto: 'no'
 
-      }]
-      setProduct(products)
-    },2000)
-
+      }]          
+      setProduct(products)  
+    },2000)                 
+ {/*Modifico edo vacio inicial de 'products */}
       {/*fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a")  // npm i cors  INSTALADO EN TERMINAL DEL BACKEND PARA QUE FUNCIONE EL FETCH DE LA API Y SE VEA POR NAVEGADOR LOS RESULTADOS.
         .then(response => response.json())
         .then(data => {
@@ -119,7 +123,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
       
   return (  
       
-      <div>   {/* etiqueta unica que contiene la aplicacion completa */}
+      <div> 
   
 
                           {/* etiqueta className generada con TAILWIND*/}
@@ -135,7 +139,7 @@ function ItemListContainer(props) { // Las Props vienen definidas por el Compone
             
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
                
-                <ItemDetailContainer nombrePropProducts = {products}/>
+                <ItemDetailContainer nombrePropProducts = {products}/>  
                       
          
           </section>
