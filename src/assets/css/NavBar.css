@@ -26,12 +26,149 @@ body{
     
 }
 
+/* ------------------------------------------------------------------ */
 .NavInferior{
 
-    display: none;
+flex-flow: column nowrap;
+background-color: rgb(249, 247, 223);
+position: fixed;
+top:0;
+left: 0;
+height: 100vh;
+width: 187px;
+padding-top: 5.5rem;
+
+
+}
+
+.leftBottomHeader{
+    display: flex;
+    flex-direction: column;
 }
 
 
+
+.DivExternoIconoPalabraCate {
+    float: left;
+    overflow: hidden;
+
+  }
+
+  
+  .DivExternoIconoPalabraCate .BotonCategorias,  .DivExternoIconoPalabraNoCate {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: #cfab35;
+    padding: 14px 8px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+
+  .DivExternoIconoPalabraCate:hover .dropdown-content {
+    display: block;
+  }
+
+
+  .DivInternoBotonCate {
+   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .DivInternoBotonCate i{
+    color: #cfab35;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+  .DivInternoBotonCate:hover .BotonCategorias {
+    background-color:  #f0d374;
+  }
+
+
+  .BotonCategorias{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+ 
+  }
+
+  .BotonCategorias i{
+    padding-left: 10px;
+  }
+
+
+  .categoria{
+
+    color: #cfab35;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0 0 0 6px;
+  
+
+}
+
+ /* Dropdown content (hidden by default) */
+ .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color:   rgb(249, 247, 223);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+  }
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    float: none;
+    color:  #cfab35;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color:  #f0d374;
+  }
+  
+  /* Show the dropdown menu on hover */
+
+.DivInternoNoCate {
+    
+    color: #cfab35;
+  }
+
+
+
+  .DivExternoIconoPalabraNoCate:hover{
+    background-color:  #f0d374;
+  }
+
+
+
+  .titulosNoCate{
+    color: #cfab35;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 0 0 0 6px;
+
+    
+    }
+  
+
+
+
+/* ------------------------------------------------------------------ */
 .NavHeader {
 
     display: flex;
@@ -196,10 +333,7 @@ body{
 }
 
 
-.burger-menu{
 
-    display: none;
-}
 
 .logoEnjDeco{
 
@@ -271,6 +405,7 @@ body{
  }
 
 
+/* ------------------------------------------------------------------ */
  @media (min-width:600px) {
 
  .leftBottomHeader{
@@ -296,10 +431,16 @@ body{
     border: solid 1px  #cfab35;
     height: 50px;
     align-items: center;
+    top:90px;
+    width: 105%;
+    padding-top: 0;
 
 }
 
+.burger-menu{
 
+    display: none;
+}
 .DivExternoIconoPalabraCate {
     float: left;
     overflow: hidden;
@@ -454,6 +595,14 @@ body{
 
 }
 
+.NavInferior{
+
+    top:100px;
+    width: 105%;
+
+}
+
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -468,6 +617,14 @@ body{
         padding-left: 0px;
           
     }
+
+    .NavInferior{
+
+        top:110px;
+        width: 105%;
+    
+    }
+    
 
 
     .logo-wapp-desktop{
