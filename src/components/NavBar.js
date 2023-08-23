@@ -1,8 +1,11 @@
 import React from 'react'
 import '../assets/css/NavBar.css';
+import '../assets/css/Burger.css';
 import imagenlogo from '../assets/images/logoEnj.png';
 import CartWidget from './CartWidget';
+import Burger from './Burger';
 import {Link} from 'react-router-dom';
+
 
 
 function NavBar() { 
@@ -15,11 +18,7 @@ function NavBar() {
             <div className="NavHeader">
                 <div className="burger-logo-Phone">   
 
-                    <div className="burger-menu">
-        
-                        <button type="submit" className="botonBurger"><i className="fas fa-bars fa-2x"></i></button>
-            
-                    </div>  
+                   <Burger/>
             
                 
                     <Link to ="/"><img className="logoEnjDeco" src={imagenlogo} alt="ImagenmLogo Enjoying Deco"/></Link>

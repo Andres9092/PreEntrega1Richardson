@@ -3,7 +3,7 @@ import '../assets/css/Accordion.css';
 import {Link} from 'react-router-dom';
 
 
-export default function Example() {
+function Example() {
   return (
     <Accordion>
       <AccordionItem className= "divCate" header="- Categorias -">
@@ -29,5 +29,6 @@ export default function Example() {
       </AccordionItem>
 
     </Accordion>
-  );
+  )
 }
+export default Example
