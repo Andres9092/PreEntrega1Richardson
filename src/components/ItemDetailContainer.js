@@ -37,7 +37,7 @@ return(
                                 </div>
 
                                
-                                    <Link to ={`${item.id}`}> <Button className="botonDetalle"> {/* Al darle click al boton, redirije a la ruta ->  /item/:id , es decir conduce al Comp ItemDetail, definido en C Main. Cada id sera capturado luego de la URL por el useParams y reflejado en Comp ItemDetail */}
+                                    <Link to ={`/item/${item.id}`}> <Button className="botonDetalle"> {/* Al darle click al boton, redirije a la ruta ->  /item/:id , es decir conduce al Comp ItemDetail, definido en C Main. Cada id sera capturado luego de la URL por el useParams y reflejado en Comp ItemDetail */}
                                         Ver Detalle
                                     </Button> </Link >
                                
