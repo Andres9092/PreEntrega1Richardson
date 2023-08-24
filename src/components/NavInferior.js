@@ -1,73 +1,125 @@
 import '../assets/css/NavBar.css';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
+const DIV = styled.div`
 
+@media (max-width: 600px){
 
-function NavInferior() { 
-    return (  
-      
-        <div className="NavInferior">
-   
-        <ul className="leftBottomHeader">
-        
+    flex-flow: column nowrap;
+    background-color: rgb(249, 247, 223);
+    top:91px;
+    left: 0px;
+    height: 106vh;
+    width: 187px;
+    padding-top:0;
+    border: 1px solid #cfab35;
+    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(10%)'};   
+    transition: transform 0.3s easy-in-out;
+    
+    };
 
-            <div className = "DivExternoIconoPalabraNoCate">
-                <div className = "DivInternoNoCate">
-                    <i class="fa-brands fa-pagelines"></i>
-                   <Link className="titulosNoCate" to = "/item">Productos</Link>
-                </div>
-            </div>
-
-            <div className = "DivExternoIconoPalabraCate">
-                <div className = "DivInternoBotonCate">
-              
-                    <button class="BotonCategorias">Categorias<i class="fa fa-caret-down"></i></button>
-                    
-                </div>
-                <div class="dropdown-content">
-                    <Link className="categoria" to = "/categorias/1">Tamanio Large (L)</Link>
-                    <Link className="categoria" to = "/categorias/2">Tamanio Medium (M)</Link>
-                </div>
-
-            </div>
-
-                
-            <div className = "DivExternoIconoPalabraNoCate">
-                <div className = "DivInternoNoCate">
-                    <i class="fa-solid fa-burst"></i>
-                    <Link className="titulosNoCate" to = "/ofertas">Ofertas!</Link>
-                </div>
-            </div>
-
+    @media (min-width:600px) {
          
-            <div className = "DivExternoIconoPalabraNoCate">
-                <div className = "DivInternoNoCate">
-                    <i class="fa-solid fa-book"></i>
-                    <Link className="titulosNoCate" to = "/blog">Blog</Link>
-                </div>
-            </div>
+           
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          align-items: center;
+          width: 100%;
+          background-color: rgb(249, 247, 223);
+          border: solid 1px  #cfab35;
+          height: 50px;
+          align-items: center;
+          top:90px;
+          width: 105%;
+          padding-top: 0;
+      
+      };
 
-            <div className = "DivExternoIconoPalabraNoCate">
+      @media (min-width:650px) {
+            
+         
+          top:100px;
+          width: 105%;
+      
+      };
 
-                <div className = "DivInternoNoCate">
-                    <i class="fa-solid fa-house"></i>
-                    <Link className="titulosNoCate" to = "sucursales">Sucursales</Link>
-                </div>
-            </div>
-
-            <div className = "DivExternoIconoPalabraNoCate">
-                <div className = "DivInternoNoCate">
-                    <i class="fa-solid fa-phone"></i>
-                    <Link className="titulosNoCate" to = "/contacto">Contacto</Link>
-                </div>
-            </div>              
-        </ul>    
-
-                                   
+      @media (min-width:700px) {
         
-    </div>
+            top:110px;
+            width: 105%;
+        
+        }
+        
+
+    `;
+
+function NavInferior({open}) { 
+    return (  
+        
+            <DIV className="NavInferior" open = {open}>
+    
+            <ul className="leftBottomHeader">
+            
+
+                <div className = "DivExternoIconoPalabraNoCate">
+                    <div className = "DivInternoNoCate">
+                        <i class="fa-brands fa-pagelines"></i>
+                    <Link className="titulosNoCate" to = "/item">Productos</Link>
+                    </div>
+                </div>
+
+                <div className = "DivExternoIconoPalabraCate">
+                    <div className = "DivInternoBotonCate">
+                
+                        <button class="BotonCategorias">Categorias<i class="fa fa-caret-down"></i></button>
+                        
+                    </div>
+                    <div class="dropdown-content">
+                        <Link className="categoria" to = "/categorias/1">Tamanio Large (L)</Link>
+                        <Link className="categoria" to = "/categorias/2">Tamanio Medium (M)</Link>
+                    </div>
+
+                </div>
+
+                    
+                <div className = "DivExternoIconoPalabraNoCate">
+                    <div className = "DivInternoNoCate">
+                        <i class="fa-solid fa-burst"></i>
+                        <Link className="titulosNoCate" to = "/ofertas">Ofertas!</Link>
+                    </div>
+                </div>
+
+            
+                <div className = "DivExternoIconoPalabraNoCate">
+                    <div className = "DivInternoNoCate">
+                        <i class="fa-solid fa-book"></i>
+                        <Link className="titulosNoCate" to = "/blog">Blog</Link>
+                    </div>
+                </div>
+
+                <div className = "DivExternoIconoPalabraNoCate">
+
+                    <div className = "DivInternoNoCate">
+                        <i class="fa-solid fa-house"></i>
+                        <Link className="titulosNoCate" to = "sucursales">Sucursales</Link>
+                    </div>
+                </div>
+
+                <div className = "DivExternoIconoPalabraNoCate">
+                    <div className = "DivInternoNoCate">
+                        <i class="fa-solid fa-phone"></i>
+                        <Link className="titulosNoCate" to = "/contacto">Contacto</Link>
+                    </div>
+                </div>              
+            </ul>    
+            </DIV>
+                                    
+            
+     
 
     )
   }
   
-  export default NavInferior;
+  export default NavInferior

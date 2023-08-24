@@ -9,8 +9,6 @@ function Burger() {
 const [open, setOpen] = useState(false)
 
 
-
-
   return (
     
     <div className="burger-menu">
@@ -18,7 +16,7 @@ const [open, setOpen] = useState(false)
       <button className="botonBurger" open = {open} onClick={() => setOpen(!open)}><i className="fas fa-bars fa-2x"></i></button>
 
     </div>  
-  );
+  )
 }
 
 export default Burger

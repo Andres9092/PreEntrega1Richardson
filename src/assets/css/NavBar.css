@@ -27,19 +27,7 @@ body{
 }
 
 /* ------------------------------------------------------------------ */
-.NavInferior{
 
-flex-flow: column nowrap;
-background-color: rgb(249, 247, 223);
-position: fixed;
-top:92px;
-left: 1px;
-height: 106vh;
-width: 187px;
-padding-top:0;
-
-
-}
 
 .leftBottomHeader{
     display: flex;
@@ -454,22 +442,6 @@ padding-top:0;
 
 }
 
-.NavInferior{
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    background-color: rgb(249, 247, 223);
-    border: solid 1px  #cfab35;
-    height: 50px;
-    align-items: center;
-    top:90px;
-    width: 105%;
-    padding-top: 0;
-
-}
 
 .burger-menu{
 
@@ -629,12 +601,7 @@ padding-top:0;
 
 }
 
-.NavInferior{
 
-    top:100px;
-    width: 105%;
-
-}
 
 
 }
@@ -651,14 +618,6 @@ padding-top:0;
         padding-left: 0px;
           
     }
-
-    .NavInferior{
-
-        top:110px;
-        width: 105%;
-    
-    }
-    
 
 
     .logo-wapp-desktop{
