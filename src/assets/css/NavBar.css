@@ -32,11 +32,11 @@ body{
 flex-flow: column nowrap;
 background-color: rgb(249, 247, 223);
 position: fixed;
-top:0;
-left: 0;
-height: 100vh;
+top:92px;
+left: 1px;
+height: 106vh;
 width: 187px;
-padding-top: 5.5rem;
+padding-top:0;
 
 
 }
@@ -189,6 +189,7 @@ padding-top: 5.5rem;
     width: 160px;
     color:white;
     margin-left: 15px;
+    justify-content: flex-end;
 }
 
 
@@ -216,7 +217,7 @@ padding-top: 5.5rem;
 .logoEnjDeco{
 
     height: 60px;
-    
+    padding-left: 30px;
     margin-left: 25px;
    
 
@@ -322,6 +323,18 @@ padding-top: 5.5rem;
 
 /* ------------------------------------------------------------------ */
 @media (min-width:525px) {
+
+  .logoEnjDeco{
+
+    height: 60px;
+    padding-left: 40px;
+    margin-left: 25px;
+    padding-right: 0px;
+    margin-right: 0px;
+   
+
+}
+
   
 .NavHeader{
     
@@ -360,7 +373,7 @@ padding-top: 5.5rem;
     border: solid 1px white;
     align-items: center;
     justify-content: space-between;
-    width: 40vw;
+    width: 30vw;
     height: 30px;
     }
 
@@ -403,11 +416,32 @@ padding-top: 5.5rem;
 
  
  }
+/* ------------------------------------------------------------------ */
+ @media (min-width:530px) {
 
+  .logoEnjDeco{
 
+    height: 60px;
+    padding-left: 40px;
+   
+    padding-right: 0px;
+    margin-right: 0px;
+   
+
+}
+ }
 /* ------------------------------------------------------------------ */
  @media (min-width:600px) {
 
+
+  .logoEnjDeco{
+
+   
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 40px;
+    
+   }
  .leftBottomHeader{
 
     display: flex;
