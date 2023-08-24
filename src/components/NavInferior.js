@@ -14,7 +14,7 @@ const DIV = styled.div`
     width: 187px;
     padding-top:0;
     border: 1px solid #cfab35;
-    transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(10%)'};   
+    transform: ${({ open }) => open ? 'translateX(-110%)' : 'translateX(0%)'};   
     transition: transform 0.3s easy-in-out;
     
     };
@@ -27,6 +27,7 @@ const DIV = styled.div`
           justify-content: space-around;
           align-items: center;
           width: 100%;
+          position:fixed;
           background-color: rgb(249, 247, 223);
           border: solid 1px  #cfab35;
           height: 50px;
@@ -58,7 +59,7 @@ const DIV = styled.div`
 function NavInferior({open}) { 
     return (  
         
-            <DIV className="NavInferior" open = {open}>
+        <DIV  open = {open}>
     
             <ul className="leftBottomHeader">
             
@@ -66,7 +67,7 @@ function NavInferior({open}) {
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
                         <i class="fa-brands fa-pagelines"></i>
-                    <Link className="titulosNoCate" to = "/item">Productos</Link>
+                    <Link className="titulosNoCate" to = "/productos">Productos</Link>
                     </div>
                 </div>
 
@@ -114,7 +115,7 @@ function NavInferior({open}) {
                     </div>
                 </div>              
             </ul>    
-            </DIV>
+        </DIV>
                                     
             
      

@@ -138,7 +138,7 @@ function ItemCategory2() {
                                   <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                           </div>
 
-                          <Link to ={`/item/${item.id}`}> <Button className="botonDetalle">
+                          <Link to ={`/productos/${item.id}`}> <Button className="botonDetalle">
                               Ver Detalle
                           </Button> </Link >
 

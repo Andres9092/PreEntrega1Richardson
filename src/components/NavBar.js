@@ -57,16 +57,14 @@ function NavBar() {
                                                     
                 
                     <div>
-                        <CartWidget>          {/* Llamo a C Hijo 'CartWidget' */}
-
-                        </CartWidget>
+                        <CartWidget/>          {/* Llamo a C Hijo 'CartWidget' */}
 
                     </div>
+               
                 </div>
             
             </div>
-
-                <NavInferior></NavInferior>
+                <NavInferior/>
         </header>
     )
   }
