@@ -11,9 +11,9 @@ function App() {
     
     <BrowserRouter className="App"> {/* Etiqueta unica que contiene la aplicacion completa. Dentro del C Padre App(), se incluyen el resto de los Componentes Hijos de la aplicacion, sobre los cuales iran nuevos C Hijos ta su vez. */}
 
-        <NavBar></NavBar>  {/* C Padre que contiene a C hijo 'CartsWidget' en su interior. */}
+        <NavBar></NavBar>  {/* C Padre que contiene a Compts hijos 'CartsWidget', 'NavInferior' en su interior. */}
 
-        <Main></Main>
+        <Main></Main>      {/* C que define las rutas de las vistas que cambian en la aplicacion */}
         
         <Footer></Footer>
 

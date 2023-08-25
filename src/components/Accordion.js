@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 function Example() {
   return (
     <Accordion>
-      <AccordionItem className= "divCate" header="- Categorias -">
+      <AccordionItem className= "divCate" header="-> Categorias <-">
         <ul className="listaCategorias">                  
                     
                     <li><Link  to="/item">Productos</Link></li>
@@ -17,7 +17,7 @@ function Example() {
     
       </AccordionItem>
 
-      <AccordionItem className= "divContact" header="- Contacto -">
+      <AccordionItem className= "divContact" header="-> Contacto <-">
           <ul className="listaContacto">                  
                    
                     <li><a href="https://api.whatsapp.com/send?phone=+5491168532662" target="_blank">+54 911-6853-2662</a></li>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import '../assets/css/Item.css'
 import {Link} from 'react-router-dom';
 import {Button} from 'react-bootstrap'
+import '../assets/css/ItemDetail.css';
+
 
 
 

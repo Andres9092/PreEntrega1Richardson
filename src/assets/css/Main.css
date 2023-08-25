@@ -2,7 +2,7 @@
     background-color: #f1eac1;
     align-items: center;
     justify-content: center;
-    padding: 120px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+    padding: 100px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
 
 }
 
@@ -11,18 +11,18 @@
 
     .mainContainer{
   
-        padding: 180px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 100px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
     
     }
     
 }
 
 
-@media (min-width:650px) {
+@media (min-width:600px) {
 
     .mainContainer{
     
-        padding: 200px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 140px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
     
     }
     
@@ -32,7 +32,7 @@
 
     .mainContainer{
     
-        padding: 205px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 160px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
     
     }
     
@@ -43,7 +43,7 @@
 
     .mainContainer{
     
-        padding: 205px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
+        padding: 160px 30px 30px 30px;  /* PARA QUE EL MAIN NO QUEDE TAPADO INICIALMENTE POR EL HEADER------- */
         display: flex;
         align-items: center;
     
