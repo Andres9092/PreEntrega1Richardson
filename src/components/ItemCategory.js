@@ -14,19 +14,45 @@ import '../assets/css/Item.css'
 import {useParams} from 'react-router-dom';
 
 
-function ItemCategory1() { 
-
-    const resultado = useParams()
-    console.log(resultado)
+function ItemCategory() { 
   
   
   const [products,setProduct] = useState([])
+
+  const resultado = useParams()   // { VALORES POSIBLES PARA EL OBJETO useParams.-> {} si se pasa la ruta /, {id: M} si se pasa la ruta /categoria/M, {id: L} si se pasa la ruta /categoria/L}
+  console.log(resultado)
+
+  const id = resultado.id
+  console.log(id)   //{ VALORES POSIBLES PARA EL OBJETO useParams.-> 'undefined' si se pasa la ruta /, M si se pasa la ruta /categoria/M, L si se pasa la ruta /categoria/L}
+  const productosFiltrados = []
+    useEffect( () => {      // Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
+         
+      getProducts (products)
+
+      
+      if (id) {
+
+        console.log("Filtro talle:" + id)
+
+        for(let i=0; i < products.length; i++){
+          const prod = products[i]
+          if(prod.talle === id){
+            productosFiltrados.push(prod)
+          }
+        }
+
      
-    useEffect( () => {      // Hoof para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
-          
-    getProducts (products)
-  
-    }, [])
+      console.log(productosFiltrados)
+      setProduct(productosFiltrados)
+    
+      }else{
+       
+        console.log(productosFiltrados)
+        setProduct(productosFiltrados)
+      }
+    
+ 
+    }, [id])    // Corre todo el efecto del pedido a la 'API' cada vez que se clique en otro link de categoria.
   
     const getProducts = () => {
   
@@ -122,9 +148,9 @@ function ItemCategory1() {
       
       <div className="CartW">   {/* etiqueta unica que contiene la aplicacion completa */}
   
-        <section className="ContenedorDeTarjetas">
+        <section className="ContenedorDeTarjetas">   {/* {products.filter(prod => prod.tamanio == 'L') */}
               
-          {products.filter(prod => prod.tamanio == 'L').map(
+          {products.map(
               (item,i) => {
                   console.log(item,i)
                   return(
@@ -142,7 +168,7 @@ function ItemCategory1() {
                                   <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                           </div>
 
-                          <Link to ={`/productos/${item.id}`}> <Button className="botonDetalle">
+                          <Link to ={`/${item.id}`}> <Button className="botonDetalle">
                               Ver Detalle
                           </Button> </Link >
 
@@ -158,4 +184,4 @@ function ItemCategory1() {
     )
   }
   
-  export default ItemCategory1;
+  export default ItemCategory;

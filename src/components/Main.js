@@ -1,8 +1,8 @@
 import React from 'react'
 import ItemListContainer from './ItemListContainer';
 import ItemDetail from './ItemDetail';
-import ItemCategory1 from './ItemCategory1';
-import ItemCategory2 from './ItemCategory2';
+import ItemCategory from './ItemCategory';
+import Ejemplo from './Ejemplo';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -16,20 +16,18 @@ function Main() {
                                               
 
                              {/*If URL del navegador = al path, entonces mostrar el Componente deseado. */}
-                <Route path = "/" exact={true}   element = {<ItemListContainer />}/>   {/*Si le paso por la ruta, dentro de ItemListContainer -> greeting = "Bienvenido!", lo puedo tomar por props. */}
-
-                <Route path = "/productos" element = {<ItemListContainer/>}/>       
+                <Route path = "/" exact={true}   element = {<ItemListContainer />}/>   {/*Si le paso por la ruta, dentro de ItemListContainer -> greeting = "Bienvenido!", lo puedo tomar por props. */}              
 
                 <Route path = "/productos/:id" element = {<ItemDetail/>}/>     {/* id es la 'clave' del 'value' capturado por en URL por useParams */}
                 
-                <Route path = "/categorias/:id" element = {<ItemCategory1/>}/>
-                <Route path = "/categorias/:id" element = {<ItemCategory2/>}/>      
+                <Route path = "/categorias/:id" element = {<ItemCategory/>}/>
+                                                                                        {/* <Route path = "/categorias/:id" element = {<ItemCategory2/>}/>       */}
 
                 <Route path = "/carrito" element = {<p>Hola</p>} />   
 
                 <Route path = "/favoritos" element = {<p>Hola</p>} />   
 
-                <Route path = "/ofertas" element = {<p>Hola</p>}/>   
+                <Route path = "/ofertas" element = {<Ejemplo/>}/>   
 
                 <Route path = "/sucursales" element = {<p>Hola</p>} />   
 

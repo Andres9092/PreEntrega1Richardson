@@ -111,7 +111,7 @@ function ItemDetail() {
             <div className = "nombreVolverPhone">        
                     
                 <h1 className="nombreProdPhone">{producto.nombre}</h1>
-                <Link to ="/productos"> <Button className="botonVolverPhone">Volver a Listado</Button></Link>
+                <Link to ="/"> <Button className="botonVolverPhone">Volver a Listado</Button></Link>
                 
             </div>
             
@@ -213,7 +213,7 @@ function ItemDetail() {
                 </div>
 
                 <div>
-                    <Link to ="/productos"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
+                    <Link to ="/"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
                 </div>
 
                 

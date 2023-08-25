@@ -67,7 +67,7 @@ function NavInferior({open}) {
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
                         <i class="fa-brands fa-pagelines"></i>
-                    <Link className="titulosNoCate" to = "/productos">Productos</Link>
+                    <Link className="titulosNoCate" to = "/">Productos</Link>
                     </div>
                 </div>
 
@@ -78,8 +78,8 @@ function NavInferior({open}) {
                         
                     </div>
                     <div class="dropdown-content">
-                        <Link className="categoria" to = "/categorias/1">Tamanio Large (L)</Link>
-                        <Link className="categoria" to = "/categorias/2">Tamanio Medium (M)</Link>
+                        <Link className="categoria" to = "/categorias/L">Tamanio Large (L)</Link>
+                        <Link className="categoria" to = "/categorias/M">Tamanio Medium (M)</Link>
                     </div>
 
                 </div>
