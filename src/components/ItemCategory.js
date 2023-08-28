@@ -147,7 +147,7 @@ function ItemCategory() {
                    
     return (  
       
-      <div className="CartW">   {/* etiqueta unica que contiene la aplicacion completa */}
+      <div className="ComponenteCOntenedorTarjetas">   {/* etiqueta unica que contiene la aplicacion completa */}
   
         <section className="ContenedorDeTarjetas">   {/* {products.filter(prod => prod.tamanio == 'L') */}
               

@@ -3,6 +3,7 @@ import ItemListContainer from './ItemListContainer';
 import ItemDetail from './ItemDetail';
 import ItemCategory from './ItemCategory';
 import Ejemplo from './Ejemplo';
+import Carrito from './Carrito';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ function Main() {
                 <Route path = "/categorias/:id" element = {<ItemCategory/>}/>
                                                                                         {/* <Route path = "/categorias/:id" element = {<ItemCategory2/>}/>       */}
 
-                <Route path = "/carrito" element = {<p>Hola</p>} />   
+                <Route path = "/carrito" element = {<Carrito/>} />   
 
                 <Route path = "/favoritos" element = {<p>Hola</p>} />   
 
