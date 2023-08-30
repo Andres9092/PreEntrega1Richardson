@@ -12,11 +12,11 @@ const [open, setOpen] = useState(false)
 
   return (
     <>
-      <div className="burger-menu" >
-          
-        <button className="botonBurger" open = {open} onClick={() => setOpen(!open)}><i className="fas fa-bars fa-2x"></i></button>
-       
-      </div>  
+        <div className="burger-menu" >
+            
+          <button className="botonBurger" open = {open} onClick={() => setOpen(!open)}><i className="fas fa-bars fa-2x"></i></button>
+        
+        </div>  
 
                        {/* <NavInferior open = {open}/> */}
 
