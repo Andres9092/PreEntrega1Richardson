@@ -284,8 +284,9 @@ body{
 
 .numeroCart{
     padding-right: 15px;
-    color: rgb(183, 180, 180);
+    color: rgb(118, 96, 25);
     font-weight: 800;
+    font-size: 13px;
 }
 
 
