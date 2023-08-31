@@ -12,10 +12,14 @@ import ramo7 from '../assets/images/Ramo7.jpg';
 import ramo8 from '../assets/images/Ramo8.jpg';
 import { Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import {useContext} from 'react';
+import {contexto} from './CustomProvider';
 
              
                                                    {/* Si se esta logueado como 'Admin', aparecera el boton para agregar productos nuevos.*/}
-function ItemListContainer({props, admin = true})  {    {/*Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido! */}
+function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido! */}
+  
+  const valorDelContexto = useContext(contexto)
 
   const [products, setProduct] = useState([])
     {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
@@ -169,7 +173,7 @@ function ItemListContainer({props, admin = true})  {    {/*Las Props vienen defi
 
             <div className = "TituloPpal-BotonAgregarProducto">
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
-                {admin && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
+                {valorDelContexto.user === 'admin' && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
             </div>
                 <ItemDetailContainer nombrePropProducts = {products}/>  
                       

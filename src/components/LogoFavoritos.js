@@ -1,11 +1,15 @@
 import React from 'react'
 import '../assets/css/NavBar.css';
 import {Link} from 'react-router-dom';
+import {useContext} from 'react';
+import {contexto} from './CustomProvider';
 
-export function LogoFavoritos({user = false}) { //Si estoy logueado como 'admin' no se muestra el logo de wapp.
 
+export function LogoFavoritos() { //Si estoy logueado como 'admin' no se muestra el logo de wapp.
+
+  const valorDelContexto = useContext(contexto)
     
-  if (! user){
+  if ((valorDelContexto.user) === 'admin'){
     console.log('No se muestra el logo de favoritos')
   
     return(

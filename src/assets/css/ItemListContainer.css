@@ -24,10 +24,11 @@
 }
 
 .botonAgregarProducto{
-    background-color: rgb(198, 164, 136);
+    background-color: rgb(219, 108, 17);
     border: 1px solid;
     padding: 6px 6px 6px 6px;
     border-radius: 3px;
     margin: 10px 0px 10px 0px;
+    font-weight: 600;
 
 }

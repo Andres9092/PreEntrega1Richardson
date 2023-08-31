@@ -1,12 +1,16 @@
 import React from 'react'
 import '../assets/css/NavBar.css';
+import {useContext} from 'react';
+import {contexto} from './CustomProvider';
 
 
 
-export function LogoWapp({user = false}) { //Si estoy logueado como 'admin' no se muestra el logo de wapp.
+export function LogoWapp() { //Si estoy logueado como 'admin' no se muestra el logo de wapp.
 
     
-  if (! user){
+  const valorDelContexto = useContext(contexto)
+  
+  if ((valorDelContexto.user) === 'admin'){
     console.log('No se muestra el logo de wapp')
   
     return(
