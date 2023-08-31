@@ -10,9 +10,12 @@ import ramo5 from '../assets/images/Ramo5.jpg';
 import ramo6 from '../assets/images/Ramo6.jpg';
 import ramo7 from '../assets/images/Ramo7.jpg';
 import ramo8 from '../assets/images/Ramo8.jpg';
-             
+import { Button } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
-function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido! */}
+             
+                                                   {/* Si se esta logueado como 'Admin', aparecera el boton para agregar productos nuevos.*/}
+function ItemListContainer({props, admin = true})  {    {/*Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido! */}
 
   const [products, setProduct] = useState([])
     {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
@@ -136,7 +139,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
 
                           {/* etiqueta className generada con TAILWIND*/}
 
-          <h1 className="text-3xl pt-7 ... text-[#cfab35]"> {props.greeting} </h1>  {/* importo prop "greeting" con valor de saludo enviado desde Componente 'Main' para Comp. ItemListContainer  */}
+          {/*<h1 className="text-3xl pt-7 ... text-[#cfab35]"> {props.greeting} </h1>*/}  {/* importo prop "greeting" con valor de saludo enviado desde Componente 'Main' para Comp. ItemListContainer  */}
      
           {/* -----------------------------------GREETING-BEINVENIDA------------------------------------*/}
           
@@ -144,9 +147,10 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
 
           <section class="seccionCards"> 
 
-            
+            <div className = "TituloPpal-BotonAgregarProducto">
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
-               
+                {admin && <Link to ="/"> <Button className="botonAgregarProducto">(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
+            </div>
                 <ItemDetailContainer nombrePropProducts = {products}/>  
                       
          
