@@ -5,6 +5,7 @@ import Main from './Main';
 import Footer from './Footer';
 import {BrowserRouter} from 'react-router-dom';
 import CustomProvider from './CustomProvider';
+//import '../firebase'; // ejecuto el archivo creado.
 
 function App() { 
   return (  

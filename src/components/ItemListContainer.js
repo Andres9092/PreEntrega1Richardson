@@ -14,6 +14,8 @@ import { Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {useContext} from 'react';
 import {contexto} from './CustomProvider';
+import {db} from '../firebase';
+import {getDocs, collection} from 'firebase/firestore';
 
              
                                                    {/* Si se esta logueado como 'Admin', aparecera el boton para agregar productos nuevos.*/}
@@ -22,12 +24,23 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
   const valorDelContexto = useContext(contexto)
 
   const [products, setProduct] = useState([])
-    {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
-  useEffect( () => {      
-        
-    getProducts (products)  
+    
+  {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
+   
+    useEffect( () => {
+      
+      const productCollection = collection(db, 'productos')
+      const laConsulta = getDocs (productCollection)
 
-  }, [])
+      laConsulta
+          .then((resultado)  => {
+            console.log(resultado.docs[0].data)
+            setProduct(resultado.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+          })
+        
+    {/*  getProducts (products)  */}
+
+  }, []);
 
   const handleAddProduct = () => {     {/* funcion para agregar producto nuevo si se esta logueado como User.*/}
 
@@ -46,13 +59,15 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
 
 
     ])
-  }
-                     {/*Se crea la fc */}
-  const getProducts = () => {   
+  };
+                     
+  {/*Se crea la fc */}
+    {/* const getProducts = () => {   */}
 
-    console.log('Arranca el pedido a la API..')
+    
+     {/* console.log('Arranca el pedido a la API..')  */}
                               {/*Retardo de carga de data para simular pedido a API */}
-    setTimeout( () => {  
+     {/* setTimeout( () => {  
 
       console.log('Termina el pedido a la API..')
       let products = [
@@ -143,7 +158,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
 
       }]          
       setProduct(products)  
-    },2000)          
+    },2000)          */}
 
  {/*Modifico edo vacio inicial de 'products */}
       {/*fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a")  // npm i cors  INSTALADO EN TERMINAL DEL BACKEND PARA QUE FUNCIONE EL FETCH DE LA API Y SE VEA POR NAVEGADOR LOS RESULTADOS.
@@ -153,9 +168,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
               console.log(data)
         })
         .catch(error => console.log(error))*/}
-
-  }
-      
+    
   return (  
       
       <div> 
