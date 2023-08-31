@@ -87,7 +87,7 @@ function NavInferior({open}) {
                     
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
-                        <i class="fa-solid fa-burst"></i>
+                        <i class="fa-solid fa-fire"></i>
                         <Link className="titulosNoCate" to = "/ofertas">Ofertas!</Link>
                     </div>
                 </div>
