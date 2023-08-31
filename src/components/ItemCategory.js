@@ -21,7 +21,8 @@ const productosHarco = [
   tamanio: 'M',
   precio: 3500,
   foto:ramo1,
-  eucalipto: 'si'
+  eucalipto: 'si',
+  stock: 10
 
 },
 {
@@ -31,7 +32,8 @@ const productosHarco = [
   tamanio: 'M',
   precio: 6000,
   foto:ramo2,
-  eucalipto: 'si'
+  eucalipto: 'si',
+  stock: 2
 
 },
 {
@@ -41,7 +43,8 @@ const productosHarco = [
   tamanio: 'L',
   precio: 2000,
   foto:ramo3,
-  eucalipto: 'no'
+  eucalipto: 'no', 
+  stock: 1
 
 },
 {
@@ -51,7 +54,8 @@ const productosHarco = [
   tamanio: 'L',
   precio: 4300,
   foto:ramo4,
-  eucalipto: 'no'
+  eucalipto: 'no',
+  stock: 10
 
 },
 {
@@ -61,7 +65,8 @@ const productosHarco = [
   tamanio: 'L',
   precio: 3600,
   foto:ramo5,
-  eucalipto: 'si'
+  eucalipto: 'si',
+  stock: 8
 
 },{
   id: 6,
@@ -70,7 +75,8 @@ const productosHarco = [
   tamanio: 'M',
   precio: 5200,
   foto:ramo6,
-  eucalipto: 'no'
+  eucalipto: 'no',
+  stock: 0
 
 },{
   id: 7,
@@ -79,7 +85,8 @@ const productosHarco = [
   tamanio: 'M',
   precio: 2600,
   foto:ramo7,
-  eucalipto: 'si'
+  eucalipto: 'si',
+  stock: 0
 
 },
 {
@@ -89,8 +96,10 @@ const productosHarco = [
   tamanio: 'M',
   precio: 4500,
   foto:ramo8,
-  eucalipto: 'no'}
-];
+  eucalipto: 'no',
+  stock: 4
+
+}];
 
 
 function ItemCategory() { 

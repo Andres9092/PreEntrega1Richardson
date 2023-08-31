@@ -13,7 +13,7 @@ import ramo8 from '../assets/images/Ramo8.jpg';
 import {useParams} from 'react-router-dom';
 
 
-let products = [
+let products =  [
     {
     id: 1,
     nombre: 'Taormina',
@@ -21,7 +21,8 @@ let products = [
     tamanio: 'M',
     precio: 3500,
     foto:ramo1,
-    eucalipto: 'si'
+    eucalipto: 'si',
+    stock: 10
 
   },
   {
@@ -31,7 +32,8 @@ let products = [
     tamanio: 'M',
     precio: 6000,
     foto:ramo2,
-    eucalipto: 'si'
+    eucalipto: 'si',
+    stock: 2
 
   },
   {
@@ -41,7 +43,8 @@ let products = [
     tamanio: 'L',
     precio: 2000,
     foto:ramo3,
-    eucalipto: 'no'
+    eucalipto: 'no', 
+    stock: 1
 
   },
   {
@@ -51,7 +54,8 @@ let products = [
     tamanio: 'L',
     precio: 4300,
     foto:ramo4,
-    eucalipto: 'no'
+    eucalipto: 'no',
+    stock: 10
 
   },
   {
@@ -61,7 +65,8 @@ let products = [
     tamanio: 'L',
     precio: 3600,
     foto:ramo5,
-    eucalipto: 'si'
+    eucalipto: 'si',
+    stock: 8
 
   },{
     id: 6,
@@ -70,7 +75,8 @@ let products = [
     tamanio: 'M',
     precio: 5200,
     foto:ramo6,
-    eucalipto: 'no'
+    eucalipto: 'no',
+    stock: 0
 
   },{
     id: 7,
@@ -79,7 +85,8 @@ let products = [
     tamanio: 'M',
     precio: 2600,
     foto:ramo7,
-    eucalipto: 'si'
+    eucalipto: 'si',
+    stock: 0
 
   },
   {
@@ -89,10 +96,10 @@ let products = [
     tamanio: 'M',
     precio: 4500,
     foto:ramo8,
-    eucalipto: 'no'
+    eucalipto: 'no',
+    stock: 4
 
-  }] 
-
+  }]
 
 function ItemDetail() { 
                                      {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams*/}
@@ -138,8 +145,8 @@ function ItemDetail() {
 
 
                 <div className = "contadorStockPhone">
-                    <div className = "numeroContador"> 1 </div>
-                    <Link to ="/"> <Button className="botonUnidadesDisponiblesPhone">Unidades disponibles</Button></Link >
+                    <div className = "numeroContador" style = {{color : producto.stock == 0 ? "red" : "green"}}> {producto.stock} </div>
+                    <Link to ="/"> <Button className="botonUnidadesDisponiblesPhone">Stock</Button></Link >
                 </div>                 
 
 
@@ -194,8 +201,8 @@ function ItemDetail() {
                                 </div>
 
                                 <div className = "contadorStockDesktop">
-                                    <div className = "numeroContador"> 1 </div>
-                                    <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Unidades disponibles</Button></Link >
+                                    <div className = "numeroContador" style = {{color : producto.stock == 0 ? "red" : "green"}}> {producto.stock} </div>
+                                    <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Stock</Button></Link >
                                 </div>                 
                         
                                 

@@ -38,6 +38,12 @@ return(
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
 
+
+                                <div className="stock">
+                                        <p className="precioProd"> $ {item.stock}</p>  {/*Condicional color stock segun prop item.stock*/}
+                                        <p style = {{color : item.stock == 0 ? "red" : "green"}}>Stock: {item.stock}</p> 
+                                </div>
+
                                
                                     <Link to ={`/productos/${item.id}`}> <Button className="botonDetalle"> {/* Al darle click al boton, redirije a la ruta ->  /item/:id , es decir conduce al Comp ItemDetail, definido en C Main. Cada id sera capturado luego de la URL por el useParams y reflejado en Comp ItemDetail */}
                                         Ver Detalle
