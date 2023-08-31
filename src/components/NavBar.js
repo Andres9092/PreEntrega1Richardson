@@ -56,7 +56,7 @@ function NavBar() {
                             <LogoWapp/> 
                             
                             <LogoFavoritos/> 
-                            <li><Link className="logo-user" to="/User"><i class=" fa-solid fa-regular fa-user"></i></Link></li>
+                            <li><Link className="logo-user" to="/login"><i class=" fa-solid fa-regular fa-user"></i></Link></li>
                         </ul>
 
                     </div>

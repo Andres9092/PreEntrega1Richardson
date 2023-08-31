@@ -66,7 +66,7 @@ function NavInferior({open}) {
 
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
-                        <i class="fa-brands fa-pagelines"></i>
+                    <Link className="titulosNoCate" to = "/"><i class="fa-brands fa-pagelines"></i></Link>    
                     <Link className="titulosNoCate" to = "/">Productos</Link>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ function NavInferior({open}) {
                     
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
-                        <i class="fa-solid fa-fire"></i>
+                    <Link className="titulosNoCate" to = "/ofertas"><i class="fa-solid fa-fire"></i></Link>
                         <Link className="titulosNoCate" to = "/ofertas">Ofertas!</Link>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ function NavInferior({open}) {
             
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
-                        <i class="fa-solid fa-book"></i>
+                        <Link className="titulosNoCate" to = "/blog"><i class="fa-solid fa-book"></i></Link>
                         <Link className="titulosNoCate" to = "/blog">Blog</Link>
                     </div>
                 </div>
@@ -103,14 +103,14 @@ function NavInferior({open}) {
                 <div className = "DivExternoIconoPalabraNoCate">
 
                     <div className = "DivInternoNoCate">
-                        <i class="fa-solid fa-house"></i>
+                        <Link className="titulosNoCate" to = "sucursales"><i class="fa-solid fa-house"></i></Link>
                         <Link className="titulosNoCate" to = "sucursales">Sucursales</Link>
                     </div>
                 </div>
 
                 <div className = "DivExternoIconoPalabraNoCate">
                     <div className = "DivInternoNoCate">
-                        <i class="fa-solid fa-phone"></i>
+                        <Link className="titulosNoCate" to = "/contacto"><i class="fa-solid fa-phone"></i></Link>
                         <Link className="titulosNoCate" to = "/contacto">Contacto</Link>
                     </div>
                 </div>              

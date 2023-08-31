@@ -1,0 +1,74 @@
+.divContenedorLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(249, 247, 223);
+    margin-top: 20px;
+    border: 1px solid #c99d0b;
+    border-radius: 3px;
+}
+
+.loginTitulo{
+
+    font-size: 20px;
+    color:#c99d0b;
+    text-decoration: underline;
+    padding: 20px 0px 20px 0px;
+}
+
+
+.divNombre{
+    display: flex;
+    flex-direction: column;
+    align-items:self-start;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+}
+
+
+.divCorreo{
+    display: flex;
+    flex-direction: column;
+    align-items:self-start;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+}
+
+
+.divPassword{
+    display: flex;
+    flex-direction: column;
+    align-items:self-start;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+}
+
+#username{
+    border: 1px solid #c99d0b;
+    border-radius: 3px;
+}
+
+#mail{
+    border: 1px solid #c99d0b;
+    border-radius: 3px;
+}
+
+#password{
+    border: 1px solid #c99d0b;
+    border-radius: 3px;
+}
+
+
+.botonLogin{
+    background-color:rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+    font-weight: 600;
+}
+
+.titulosLabel{
+    color: #6b5715;
+}
