@@ -12,7 +12,7 @@ const CustomProvider = (props) => {         // 1) Creo archivo con componente Cu
 
         carrito: [],
         montoTotal: 0,
-        cantidadTotal: 10
+        cantidadTotal: 0
   }
 
 
