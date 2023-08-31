@@ -17,7 +17,7 @@ import {contexto} from './CustomProvider';
 import {db} from '../firebase';
 import {getDocs, collection} from 'firebase/firestore';
 
-             
+          
                                                    {/* Si se esta logueado como 'Admin', aparecera el boton para agregar productos nuevos.*/}
 function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Componenete 'Main' -> greeting = Bienvenido! */}
   
