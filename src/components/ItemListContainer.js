@@ -24,6 +24,25 @@ function ItemListContainer({props, admin = true})  {    {/*Las Props vienen defi
     getProducts (products)  
 
   }, [])
+
+  const handleAddProduct = () => {     {/* funcion para agregar producto nuevo si se esta logueado como User.*/}
+
+    setProduct([                       // ...products -> trae el array de objetos de los productos incial y le agrega al final el producto nuevo.
+      ... products, 
+
+        {id: products.length + 1,
+        nombre: 'Nuevo prod agregado',
+        descripcion: 'A',
+        tamanio: 'M',
+        precio: 3500,
+        foto:ramo1,
+        eucalipto: 'si',
+        stock: 10
+      }
+
+
+    ])
+  }
                      {/*Se crea la fc */}
   const getProducts = () => {   
 
@@ -120,7 +139,8 @@ function ItemListContainer({props, admin = true})  {    {/*Las Props vienen defi
 
       }]          
       setProduct(products)  
-    },2000)                 
+    },2000)          
+
  {/*Modifico edo vacio inicial de 'products */}
       {/*fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=a")  // npm i cors  INSTALADO EN TERMINAL DEL BACKEND PARA QUE FUNCIONE EL FETCH DE LA API Y SE VEA POR NAVEGADOR LOS RESULTADOS.
         .then(response => response.json())
@@ -149,7 +169,7 @@ function ItemListContainer({props, admin = true})  {    {/*Las Props vienen defi
 
             <div className = "TituloPpal-BotonAgregarProducto">
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
-                {admin && <Link to ="/"> <Button className="botonAgregarProducto">(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
+                {admin && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
             </div>
                 <ItemDetailContainer nombrePropProducts = {products}/>  
                       
