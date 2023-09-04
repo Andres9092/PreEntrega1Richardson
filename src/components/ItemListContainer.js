@@ -24,6 +24,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
   const valorDelContexto = useContext(contexto)
 
   const [products, setProduct] = useState([])
+  const [error, setError] = useState("")
     
   {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
    
@@ -34,15 +35,36 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
 
       laConsulta
           .then((resultado)  => {
-            console.log(resultado.docs[0].data)
-            setProduct(resultado.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+
+            console.log('Representacion del doc :', resultado.docs[0].data)
+            console.log('Id del doc :', resultado.docs[0].id)
+            console.log('Data del doc :', resultado.docs[0].data())
+            //resultado.docs es un array de objetos, pero esos objetos no son los documentos de Firestore con la info directamente, sino una 'representacion'.
+            // Cada objeto tiene un Id y un metodo que le extrae la info.
+
+            //Podria poner todo en una misma linea -> setProduct(resultado.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+            const aux = resultado.docs.map((doc) => {
+
+              const producto = doc.data()  
+              producto.id = doc.id     // agrego key 'id' con value 'doc.id'ca cada objet -> es lo mismo que: {id: doc.id, ...doc.data()}
+              console.log('producto :',producto)
+              return producto
+            })
+            console.log('aux :', aux)
+            setProduct(aux)
+
           })
+
+          .catch((error) => {
+            console.log('Dio Mal')
+          })
+          setError(error)
         
-    {/*  getProducts (products)  */}
+                                      //  getProducts (products)
 
   }, []);
 
-  const handleAddProduct = () => {     {/* funcion para agregar producto nuevo si se esta logueado como User.*/}
+  const handleAddProduct = () => {     //funcion para agregar producto nuevo si se esta logueado como User.
 
     setProduct([                       // ...products -> trae el array de objetos de los productos incial y le agrega al final el producto nuevo.
       ... products, 
@@ -189,7 +211,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
                 {valorDelContexto.user === 'admin' && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
             </div>
             
-            <ItemDetailContainer nombrePropProducts = {products}/>    {/* Paso prop  'products' con nombre 'nombrePropProducts' al Comp hijo ItemDetailContainer*/}
+            {error ? <p>{error}</p> : <ItemDetailContainer nombrePropProducts = {products}/>}   {/* Paso prop  'products' con nombre 'nombrePropProducts' al Comp hijo ItemDetailContainer*/}
        
                       
          
