@@ -188,7 +188,8 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
                 {valorDelContexto.user === 'admin' && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
             </div>
-                <ItemDetailContainer nombrePropProducts = {products}/>  
+            
+            <ItemDetailContainer nombrePropProducts = {products}/>  
                       
          
           </section>

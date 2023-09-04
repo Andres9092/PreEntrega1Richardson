@@ -10,10 +10,10 @@ import ramo5 from '../assets/images/Ramo5.jpg';
 import ramo6 from '../assets/images/Ramo6.jpg';
 import ramo7 from '../assets/images/Ramo7.jpg';
 import ramo8 from '../assets/images/Ramo8.jpg';
-import {useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom'; 
 
 
-let products =  [
+const products =  [
     {
     id: 1,
     nombre: 'Taormina',
@@ -99,14 +99,21 @@ let products =  [
     eucalipto: 'no',
     stock: 4
 
-  }]
+  }];
+     
 
-function ItemDetail() { 
-                                     {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams*/}
+function ItemDetail(nombrePropProducts) { 
+     
+    console.log('props.nombrePropProducts :', nombrePropProducts)
+    
+    {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
     const {id} = useParams()   
-    console.log(id)
+    console.log('id :', id)
 
     const producto = products.find((prod) => prod.id === Number(id));   {/* barro la data y me quedo con el objeto cuyo id == id capturado por el useParams*/}
+    console.log('producto :', producto)
+
+
 
     return (  
       
