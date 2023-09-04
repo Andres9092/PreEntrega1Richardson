@@ -11,8 +11,11 @@ import ramo6 from '../assets/images/Ramo6.jpg';
 import ramo7 from '../assets/images/Ramo7.jpg';
 import ramo8 from '../assets/images/Ramo8.jpg';
 import {useParams} from 'react-router-dom'; 
+import {db} from '../firebase';
+import {getDocs, collection} from 'firebase/firestore';
+import {useEffect, useState} from 'react';
 
-
+{/*
 const products =  [
     {
     id: 1,
@@ -99,46 +102,70 @@ const products =  [
     eucalipto: 'no',
     stock: 4
 
-  }];
-     
+  }]*/};
 
-function ItemDetail(nombrePropProducts) { 
-     
-    console.log('props.nombrePropProducts :', nombrePropProducts)
-    
-    {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
+
+function ItemDetail() { 
+
     const {id} = useParams()   
     console.log('id :', id)
+    
+    const [products, setProduct] = useState([])
+  
+  {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
+   
+    useEffect( () => {
+      
+      const productCollection = collection(db, 'productos')
+      const laConsulta = getDocs (productCollection)
 
-    const producto = products.find((prod) => prod.id === Number(id));   {/* barro la data y me quedo con el objeto cuyo id == id capturado por el useParams*/}
-    console.log('producto :', producto)
+      laConsulta
+          .then((resultado)  => {
+            console.log(resultado.docs[0].data)
+            setProduct(resultado.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+          })
+        
+          
 
+          
+          const productsDetalle = products.find((prod) => prod.id === Number(id));   {/* barro la data y me quedo con el objeto cuyo id == id capturado por el useParams*/}
+          console.log('producto :', productsDetalle)
+          
+    {/*  getProducts (products)  */}
+    
+  }, []);
+
+      
+    
+  {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
 
 
     return (  
+        
       
     <div className="ItemDet">  
+   
   
         <div className="divContenedorPhone">
 
             
             <div className = "nombreVolverPhone">        
                     
-                <h1 className="nombreProdPhone">{producto.nombre}</h1>
+                <h1 className="nombreProdPhone">{productsDetalle.nombre}</h1>
                 <Link to ="/"> <Button className="botonVolverPhone">Volver a Listado</Button></Link>
                 
             </div>
             
             <div className="divFotoDetailPhone">                  
                         
-                <img className="ramoPhone" src={producto.foto} alt={producto.nombre}/>
+                <img className="ramoPhone" src={productsDetalle.foto} alt={productsDetalle.nombre}/>
                             
             </div>  
             
             
             <div className = "detailProdPhone">                   
-                <p className="precioProdPhone" >${producto.precio}</p>
-                <p className="tamanioProdPhone">Tamanio: {producto.tamanio}</p>
+                <p className="precioProdPhone" >${productsDetalle.precio}</p>
+                <p className="tamanioProdPhone">Tamanio: {productsDetalle.tamanio}</p>
                 
             </div>
 
@@ -152,7 +179,7 @@ function ItemDetail(nombrePropProducts) {
 
 
                 <div className = "contadorStockPhone">
-                    <div className = "numeroContador" style = {{color : producto.stock == 0 ? "red" : "green"}}> {producto.stock} </div>
+                    <div className = "numeroContador" style = {{color : productsDetalle.stock == 0 ? "red" : "green"}}> {productsDetalle.stock} </div>
                     <Link to ="/"> <Button className="botonUnidadesDisponiblesPhone">Stock</Button></Link >
                 </div>                 
 
@@ -176,7 +203,7 @@ function ItemDetail(nombrePropProducts) {
             
             <div className="divFotoDesktop">                  
                         
-                <img className="ramoDesktop" src={producto.foto} alt={producto.nombre}/>
+                <img className="ramoDesktop" src={productsDetalle.foto} alt={productsDetalle.nombre}/>
                                     
             </div>  
 
@@ -186,15 +213,15 @@ function ItemDetail(nombrePropProducts) {
                          
                         <div className = "divDetailProdDesktop">  
 
-                            <h1 className="nombreProdDesktop">{producto.nombre}</h1>       
+                            <h1 className="nombreProdDesktop">{productsDetalle.nombre}</h1>       
                             
 
                             <div className = "divPrecioDektop"> 
-                                <p className="precioDesktop">${producto.precio}</p>
+                                <p className="precioDesktop">${productsDetalle.precio}</p>
                             </div>
 
                             <div className = "divTamanioDektop"> 
-                                <p className="tamanioProd">Tamanio:{producto.tamanio}</p>
+                                <p className="tamanioProd">Tamanio:{productsDetalle.tamanio}</p>
                             </div>
 
                             <br/>
@@ -208,7 +235,7 @@ function ItemDetail(nombrePropProducts) {
                                 </div>
 
                                 <div className = "contadorStockDesktop">
-                                    <div className = "numeroContador" style = {{color : producto.stock == 0 ? "red" : "green"}}> {producto.stock} </div>
+                                    <div className = "numeroContador" style = {{color : productsDetalle.stock == 0 ? "red" : "green"}}> {productsDetalle.stock} </div>
                                     <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Stock</Button></Link >
                                 </div>                 
                         

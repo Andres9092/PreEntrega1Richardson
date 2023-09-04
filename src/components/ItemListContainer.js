@@ -189,7 +189,8 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
                 {valorDelContexto.user === 'admin' && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
             </div>
             
-            <ItemDetailContainer nombrePropProducts = {products}/>  
+            <ItemDetailContainer nombrePropProducts = {products}/>    {/* Paso prop  'products' con nombre 'nombrePropProducts' al Comp hijo ItemDetailContainer*/}
+       
                       
          
           </section>
