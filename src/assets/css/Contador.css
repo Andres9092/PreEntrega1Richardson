@@ -4,3 +4,30 @@
     align-items: center;
     justify-content: center;
 }
+
+.botonesContador{
+    background-color: white;
+    border: solid 1px;
+    border-radius: 2px;
+    padding: 6px 8px 6px 8px;
+}
+
+.numeroContador{
+    background-color: white;
+    border: solid 1px;
+    border-radius: 2px;
+    padding: 6px 8px 6px 8px;
+    margin: 0px 3px 0px 3px;
+}
+
+.divContador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center
+    
+}
+
+.botonResetear{
+    margin: 10px 0px 6px 0px;
+}

@@ -107,10 +107,10 @@ const products =  [
   }]*/};
 
 
-function ItemDetail({contador}) { 
+function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre la prop del C hijo Contador.
 
     const {id} = useParams()   
-    console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer
+    console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer.
 
 
   //const resultado = useParams()   // useParams() ES UN OBJETO. Captura el objeto obtenido por la ruta. VALORES POSIBLES PARA EL OBJETO useParams.-> {} si se pasa la ruta /, {id: M} si se pasa la ruta /categoria/M, {id: L} si se pasa la ruta /categoria/L}
@@ -121,9 +121,11 @@ function ItemDetail({contador}) {
     
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState("")
+
     const [cantidad, setCantidad] = useState(0)
     const [confirmado, setConfirmado] = useState(false)
-    const [error, setError] = useState("")
+    
 
     const loaderProps = {
       loading,
@@ -208,10 +210,16 @@ function ItemDetail({contador}) {
             </div>  
             
             
-            <div className = "detailProdPhone">                   
-                <p className="precioProdPhone" >${product.precio}</p>
+            <div className = "detailProdPhone">    
+                <p className="frasePrecioUnitario">Precio unitario:</p>               
+                <p className="precioProdPhone" >Ar$ {product.precio}</p>
                 <p className="tamanioProdPhone">Tamanio: {product.tamanio}</p>
                 
+            </div>
+             
+            <div>
+              <Link to ="/favoritos"> <Button className="botonFavoritoPhone"><i class="fa-solid fa-regular fa-heart"></i>  Agregar a Favoritos </Button> </Link >
+                                    
             </div>
 
             
@@ -219,25 +227,20 @@ function ItemDetail({contador}) {
 
 
                 <div className = "contadorStockPhone">
-                    <div className = "numeroContador" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
-                    <Link to ="/"> <Button className="botonUnidadesDisponiblesPhone">Stock</Button></Link >
+                    <div className = "numeroStock" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
+                    <Button className="botonUnidadesDisponiblesPhone">Stock</Button>
                 </div>     
              
 
                 <div>
-                    <Link to ="/carrito"> <Button className="botonAgregarCarritoPhone"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button> </Link >
+                    <Button className="botonAgregarCarritoPhone"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button>
                     
                 </div>
+            
+
                 <br></br>
                 <Contador  handleCallback = {handleCallback}/>
                 <br></br>
-
-                <div>
-                    <Link to ="/favoritos"> <Button className="botonFavoritoPhone"><i class="fa-solid fa-regular fa-heart"></i>  Agregar a Favoritos </Button> </Link >
-                                    
-                </div>
-
-
                
 
                  <div className = "precioTotal">
@@ -278,40 +281,40 @@ function ItemDetail({contador}) {
                             
 
                             <div className = "divPrecioDektop"> 
-                                <p className="precioDesktop">${product.precio}</p>
+                                <p className="frasePrecioUnitario">Precio unitario:</p>     
+                                <p className="precioDesktop">Ar$ {product.precio}</p>
                             </div>
 
                             <div className = "divTamanioDektop"> 
                                 <p className="tamanioProd">Tamanio:{product.tamanio}</p>
                             </div>
-
                             <br/>
-                            <br/>
+                            <div>
+                                    <Link to ="/favoritos"> <Button className="botonFavoritosDesktop"><i class="fa-solid fa-regular fa-heart"></i>  Agregar a Favoritos </Button> </Link >
+                                    
+                            </div>
                                     
                             <div className = "botonesDetalleDesktop"> 
 
                                 <div className = "contadorStockDesktop">
-                                    <div className = "numeroContador" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
-                                    <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Stock</Button></Link >
+                                    <div className = "numeroStock" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
+                                    <Button className="botonUnidadesDisponiblesDesktop">Stock</Button>
                                 </div>    
+                                <br/>
+                                
+                                
+                                <div>
+                                  <Button className="botonAgregarCarritoDesktop"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button>
+                                </div>
+                                <br></br>
+                                <div className = "precioTotal">  
+                                    <p className = "precioTotal" >Total: $ {product.precio}  </p>
+                                </div> 
                                
-                                
-                                
-                                <div>
-                                    <Link to ="/carrito"> <Button className="botonAgregarCarritoDesktop"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button> </Link >
-                                    
-                                </div>
-
-                                <div>
-                                    <Link to ="/favoritos"> <Button className="botonFavoritosDesktop"><i class="fa-solid fa-regular fa-heart"></i>  Agregar a Favoritos </Button> </Link >
-                                    
-                                </div>
                                 <br></br>
                                 <Contador  handleCallback = {handleCallback}/>
                                 <br></br>
-                                <div className = "precioTotal">  {/*   Total: $ {product.precio} */}
-                                    <p className = "precioTotal" >{cantidad} </p>
-                                </div> 
+                                
 
                             </div>
                             <br></br>

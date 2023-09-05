@@ -19,18 +19,20 @@ function Contador(props) {
 
   return (
 
-    <div>
+    <div className="divContador">
         <div className="funcionContador">
-            <button onClick={sumar}> + </button>
-            <p>{contador}</p>
-            <button onClick={restar}> - </button>
+            <button className="botonesContador"onClick={sumar}> + </button>
+            <p className="numeroContador">{contador}</p>
+            <button  className="botonesContador" onClick={restar}> - </button>
         </div>
+        <button  className="botonResetear" onClick={resetear}> Resetear </button>
         <br></br>
+        
         <div>
             <button onClick={handleConfirmar}> Confirmar </button>
         </div>
-        <br></br>
-        <button onClick={resetear}> Resetear </button>
+       
+       
     </div>
   )
 }

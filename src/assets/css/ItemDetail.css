@@ -85,8 +85,8 @@
 }
 
 .precioProdPhone{
-    padding-bottom:15px ;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .botonesDetallePhone{
@@ -116,7 +116,7 @@
     margin: 10px 0px 10px 10px;
 }
 
-.numeroContador{
+.numeroStock{
     background-color: white;
     border: solid 1px;
     border-radius: 2px;
@@ -161,6 +161,18 @@
     width: 200px;
     margin: 10px 0px 10px 0px;
 }
+
+.precioTotal{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.frasePrecioUnitario{
+    font-weight: 300;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
 /* -------------------------------------------PHONE----------------------------------------- */
 
 
@@ -233,6 +245,10 @@
 .divPrecioDektop{
     font-weight: 600;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .botonesDetalleDesktop{
@@ -293,6 +309,17 @@
     
       }
 
+
+.precioTotal{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.precioDesktop{
+    font-weight: 600;
+    font-size: 20px;
+
+}
 
 
 }
