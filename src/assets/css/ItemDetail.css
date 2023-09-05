@@ -143,6 +143,24 @@
 
 }
 
+.botonAgregarCarritoPhone{
+    background-color:rgb(170, 194, 119);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+.botonFavoritoPhone{
+    background-color:rgb(225, 192, 134);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 10px 0px 10px 0px;
+}
 /* -------------------------------------------PHONE----------------------------------------- */
 
 
@@ -235,6 +253,15 @@
     width: 200px;
     margin: 10px 0px 10px 0px;
     
+}
+
+.botonFavoritosDesktop{
+    background-color:rgb(225, 192, 134);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 10px 0px 10px 0px;
 }
 
 

@@ -7,6 +7,7 @@ import Carrito from './Carrito';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import CheckOut from './CheckOut';
+import Favoritos from './Favoritos';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -35,7 +36,7 @@ function Main() {
 
                 <Route path = "/createUser" element = {<CreateUser/>} /> 
 
-                <Route path = "/favoritos" element = {<p>Hola</p>} />   
+                <Route path = "/favoritos" element = {<Favoritos/>}  />   
 
                 <Route path = "/ofertas" element = {<Ejemplo/>}/>   
 

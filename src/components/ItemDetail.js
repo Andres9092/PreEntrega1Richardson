@@ -2,6 +2,7 @@ import React from 'react'
 import '../assets/css/ItemDetail.css';
 import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
+import Contador from './Contador';
 import ramo1 from '../assets/images/Ramo1.jpg';
 import ramo2 from '../assets/images/Ramo2.jpg';
 import ramo3 from '../assets/images/Ramo3.jpg';
@@ -106,7 +107,7 @@ const products =  [
   }]*/};
 
 
-function ItemDetail() { 
+function ItemDetail({contador}) { 
 
     const {id} = useParams()   
     console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer
@@ -120,6 +121,8 @@ function ItemDetail() {
     
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
+    const [cantidad, setCantidad] = useState(0)
+    const [confirmado, setConfirmado] = useState(false)
     const [error, setError] = useState("")
 
     const loaderProps = {
@@ -166,7 +169,16 @@ function ItemDetail() {
     
   }, []);
 
-      
+      const handleCallback = (cantidadConfirmada) => {
+
+        setCantidad(cantidadConfirmada)
+        setConfirmado(true)
+      }
+
+      if (confirmado) return (
+        <button>Agregar al carrito : {cantidad} unidades</button>
+        
+      )
     
   {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
 
@@ -205,17 +217,33 @@ function ItemDetail() {
             
             <div className = "botonesDetallePhone"> 
 
-                <div>
-                    <Link to ="/carrito"> <Button className="botonAgregarCarrito">Agregar al Carrito </Button> </Link >
-                    
-                </div>
-
 
                 <div className = "contadorStockPhone">
                     <div className = "numeroContador" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
                     <Link to ="/"> <Button className="botonUnidadesDisponiblesPhone">Stock</Button></Link >
-                </div>                 
+                </div>     
+             
 
+                <div>
+                    <Link to ="/carrito"> <Button className="botonAgregarCarritoPhone"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button> </Link >
+                    
+                </div>
+                <br></br>
+                <Contador  handleCallback = {handleCallback}/>
+                <br></br>
+
+                <div>
+                    <Link to ="/favoritos"> <Button className="botonFavoritoPhone"><i class="fa-solid fa-regular fa-heart"></i>  Agregar a Favoritos </Button> </Link >
+                                    
+                </div>
+
+
+               
+
+                 <div className = "precioTotal">
+                    <p className = "precioTotal" >Total: $ {product.precio} * {cantidad} </p>
+                 </div>             
+                <br></br>
 
             </div>
 
@@ -262,20 +290,31 @@ function ItemDetail() {
                                     
                             <div className = "botonesDetalleDesktop"> 
 
-                                <div>
-                                    <Link to ="/carrito"> <Button className="botonAgregarCarritoDesktop">Agregar al Carrito </Button> </Link >
-                                    
-                                </div>
-
                                 <div className = "contadorStockDesktop">
                                     <div className = "numeroContador" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
                                     <Link to ="/products"> <Button className="botonUnidadesDisponiblesDesktop">Stock</Button></Link >
-                                </div>                 
-                        
+                                </div>    
+                               
                                 
+                                
+                                <div>
+                                    <Link to ="/carrito"> <Button className="botonAgregarCarritoDesktop"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button> </Link >
+                                    
+                                </div>
+
+                                <div>
+                                    <Link to ="/favoritos"> <Button className="botonFavoritosDesktop"><i class="fa-solid fa-regular fa-heart"></i>  Agregar a Favoritos </Button> </Link >
+                                    
+                                </div>
+                                <br></br>
+                                <Contador  handleCallback = {handleCallback}/>
+                                <br></br>
+                                <div className = "precioTotal">  {/*   Total: $ {product.precio} */}
+                                    <p className = "precioTotal" >{cantidad} </p>
+                                </div> 
 
                             </div>
-
+                            <br></br>
                             <div className = "divDescripDektop"> 
                                 <p className="descripDesk"> Soft pastel tones set in a mini gold pot with a wooden stand. Featuring preserved Colombian Roses, Hydrangeas, Ruscus, Ming Ferns and Palms.
                             

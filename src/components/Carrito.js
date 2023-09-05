@@ -12,18 +12,28 @@ import ramo8 from '../assets/images/Ramo8.jpg';
 function CartItem({ item, onRemove, onIncrement, onDecrement }) {
   
   return (
+
     <div className="cart-item">
+
       <img src={item.foto} alt={item.nombre} />
+
       <div className="item-details">
+
         <span className="item-name">{item.nombre}</span>
         <span className="item-price">${item.precio}</span>
+
         <div className="item-quantity">
+
           <button onClick={() => onDecrement(item)}>-</button>
           <span>{item.quantity}</span>
           <button onClick={() => onIncrement(item)}>+</button>
+
         </div>
+
         <button className="remove-button" onClick={() => onRemove(item)}>Remove</button>
+
       </div>
+      
     </div>
   );
 }

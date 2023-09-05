@@ -22,7 +22,7 @@ export function LogoFavoritos() { //Si estoy logueado como 'admin' no se muestra
       
     
     <div>
-       <li><Link className="logo-favoritos" to="/Favoritos"><i class="fa-solid fa-regular fa-heart"></i></Link></li>
+       <li><Link className="logo-favoritos" to="/favoritos"><i class="fa-solid fa-regular fa-heart"></i></Link></li>
   
     </div>
     )
