@@ -10,6 +10,7 @@ import ramo8 from '../assets/images/Ramo8.jpg';
 
 
 function CartItem({ item, onRemove, onIncrement, onDecrement }) {
+  
   return (
     <div className="cart-item">
       <img src={item.foto} alt={item.nombre} />

@@ -14,6 +14,7 @@ import ramo7 from '../assets/images/Ramo7.jpg';
 import ramo8 from '../assets/images/Ramo8.jpg';
 import {db} from '../firebase';
 import {getDocs, collection, query, where} from 'firebase/firestore';
+import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 
  {/*
 const productosHarco = [
@@ -111,13 +112,20 @@ function ItemCategory() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
+  const loaderProps = {
+    loading,
+    size: 40,
+    duration: 1,
+    colors: ['#c99d0b', '#cfab35']}
+
   const resultado = useParams()   // useParams() ES UN OBJETO. Captura el objeto obtenido por la ruta. VALORES POSIBLES PARA EL OBJETO useParams.-> {} si se pasa la ruta /, {id: M} si se pasa la ruta /categoria/M, {id: L} si se pasa la ruta /categoria/L}
   console.log('resultado: ', resultado)
 
   const id = resultado.id //Accedo a =l value de la key.
   console.log('id: ',id)   //{ VALORES POSIBLES PARA EL OBJETO useParams.-> 'undefined' si se pasa la ruta /, M si se pasa la ruta /categoria/M, L si se pasa la ruta /categoria/L}
   
-    
+  
+
   
   useEffect( () => {      // Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
    
@@ -169,7 +177,7 @@ function ItemCategory() {
       }, [id]) 
 
 
-      if (loading) return  <p>Cargando...</p>
+      //if (loading) return  <p>Cargando...</p>
     
     
       {/*
@@ -218,7 +226,9 @@ function ItemCategory() {
     return (  
       
       <div className="ComponenteCOntenedorTarjetas">   {/* etiqueta unica que contiene la aplicacion completa */}
-  
+        
+        <BarsLoader {...loaderProps} />
+
         <section className="ContenedorDeTarjetas">   {/* {products.filter(prod => prod.tamanio == 'L') */}
               
           {products.map(

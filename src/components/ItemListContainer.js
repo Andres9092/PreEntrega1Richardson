@@ -16,6 +16,7 @@ import {useContext} from 'react';
 import {contexto} from './CustomProvider';
 import {db} from '../firebase';
 import {getDocs, collection} from 'firebase/firestore';
+import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 
           
                                                    {/* Si se esta logueado como 'Admin', aparecera el boton para agregar productos nuevos.*/}
@@ -28,7 +29,13 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
   const [error, setError] = useState("")
     
   {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
-   
+  
+  const loaderProps = {
+    loading,
+    size: 40,
+    duration: 1,
+    colors: ['#c99d0b', '#cfab35']
+}
     useEffect( () => {
       
       const productCollection = collection(db, 'productos')
@@ -195,9 +202,9 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
               console.log(data)
         })
         .catch(error => console.log(error))*/}
-    
+     
 
-  if (loading) return  <p>Cargando...</p>
+  //if (loading) return  <p>Cargando...</p>
 
   return (  
       
@@ -213,7 +220,8 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
           {/* -----------------------------------SECTION CARDS------------------------------------*/}
 
           <section class="seccionCards"> 
-
+            <BarsLoader {...loaderProps} />
+           
             <div className = "TituloPpal-BotonAgregarProducto">
                 <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
                 {valorDelContexto.user === 'admin' && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}

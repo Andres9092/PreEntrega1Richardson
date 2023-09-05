@@ -14,6 +14,7 @@ import {useParams} from 'react-router-dom';
 import {db} from '../firebase';
 import {getDoc, collection, doc} from 'firebase/firestore';
 import {useEffect, useState} from 'react';
+import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 
 {/*
 const products =  [
@@ -120,6 +121,12 @@ function ItemDetail() {
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
+
+    const loaderProps = {
+      loading,
+      size: 40,
+      duration: 1,
+      colors: ['#c99d0b', '#cfab35']}
   
   {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
    
@@ -163,14 +170,15 @@ function ItemDetail() {
     
   {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
 
-    if (loading) return  <p>Cargando...</p>
-    
+    //if (loading) return  <p>Cargando...</p>
+
     return (  
         
       
     <div className="ItemDet">  
    
-  
+            
+        <BarsLoader {...loaderProps} />
         <div className="divContenedorPhone">
 
             
@@ -223,7 +231,7 @@ function ItemDetail() {
 
 
         {/* -----------------------------------------DESKTOP----------------------------------------- */}
-
+  
         <div className="divContenedorDesktop">
             
             <div className="divFotoDesktop">                  

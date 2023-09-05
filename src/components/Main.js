@@ -5,6 +5,7 @@ import ItemCategory from './ItemCategory';
 import Ejemplo from './Ejemplo';
 import Carrito from './Carrito';
 import Login from './Login';
+import CheckOut from './CheckOut';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -23,9 +24,13 @@ function Main() {
                 <Route path = "/productos/:id" element = {<ItemDetail/>}/>     {/* id es la 'clave' del 'value' capturado por en URL por useParams */}
                 
                 <Route path = "/categorias/:id" element = {<ItemCategory/>}/>
-                                                                                        {/* <Route path = "/categorias/:id" element = {<ItemCategory2/>}/>       */}
+                                                                                        
 
                 <Route path = "/carrito" element = {<Carrito/>} />   
+
+                <Route path = "/checkOut" element = {<CheckOut/>} />   
+
+
 
                 <Route path = "/favoritos" element = {<p>Hola</p>} />   
 
