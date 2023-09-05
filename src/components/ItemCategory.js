@@ -108,6 +108,7 @@ const productosHarco = [
 function ItemCategory() { 
   
   const [products, setProduct] = useState([])
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
   const resultado = useParams()   // useParams() ES UN OBJETO. Captura el objeto obtenido por la ruta. VALORES POSIBLES PARA EL OBJETO useParams.-> {} si se pasa la ruta /, {id: M} si se pasa la ruta /categoria/M, {id: L} si se pasa la ruta /categoria/L}
@@ -159,10 +160,19 @@ function ItemCategory() {
         })
         setError(error)
 
+
+        setTimeout(() => {
+          setLoading(false)
+        },1000)
+
+
       }, [id]) 
 
 
-    {/*
+      if (loading) return  <p>Cargando...</p>
+    
+    
+      {/*
 
       if (id) {             //si se pasa un valor luego de /productos/  =>, si existe L o M
 

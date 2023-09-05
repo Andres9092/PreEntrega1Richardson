@@ -24,6 +24,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
   const valorDelContexto = useContext(contexto)
 
   const [products, setProduct] = useState([])
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
     
   {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
@@ -59,6 +60,10 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
             console.log('Dio Mal')
           })
           setError(error)
+
+          setTimeout(() => {
+            setLoading(false)
+          },1000)
         
                                       //  getProducts (products)
 
@@ -191,6 +196,9 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
         })
         .catch(error => console.log(error))*/}
     
+
+  if (loading) return  <p>Cargando...</p>
+
   return (  
       
       <div> 

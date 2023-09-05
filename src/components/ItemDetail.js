@@ -118,6 +118,7 @@ function ItemDetail() {
   //console.log('id: ',id)   
     
     const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
   
   {/*Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion. */}
@@ -144,6 +145,11 @@ function ItemDetail() {
           })
           setError(error)
         
+
+          setTimeout(() => {
+            setLoading(false)
+          },1000)
+  
                    
           //const productsDetalle = products.find((prod) => prod.id === Number(id)); // barro la data y me quedo con el objeto cuyo id == id capturado por el useParams
                                                                                       
@@ -157,7 +163,8 @@ function ItemDetail() {
     
   {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
 
-
+    if (loading) return  <p>Cargando...</p>
+    
     return (  
         
       
