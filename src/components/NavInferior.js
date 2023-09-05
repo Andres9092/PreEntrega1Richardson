@@ -78,8 +78,8 @@ function NavInferior({open}) {
                         
                     </div>
                     <div class="dropdown-content">
-                        <Link className="categoria" to = "/categorias/L">Tamanio Large (L)</Link>
-                        <Link className="categoria" to = "/categorias/M">Tamanio Medium (M)</Link>
+                        <Link className="categoria" to = "/categorias/L">Tamanio Large (L)</Link>    {/* /L es el valor -> value del key -> 'id' enviado por ruta y campurado por el useParams */}
+                        <Link className="categoria" to = "/categorias/M">Tamanio Medium (M)</Link>   {/* /M es el valor -> value del key -> 'id' enviado por ruta y campurado por el useParams */}
                     </div>
 
                 </div>

@@ -12,7 +12,10 @@ import ramo5 from '../assets/images/Ramo5.jpg';
 import ramo6 from '../assets/images/Ramo6.jpg';
 import ramo7 from '../assets/images/Ramo7.jpg';
 import ramo8 from '../assets/images/Ramo8.jpg';
+import {db} from '../firebase';
+import {getDocs, collection, query, where} from 'firebase/firestore';
 
+ {/*
 const productosHarco = [
   {
   id: 1,
@@ -99,12 +102,13 @@ const productosHarco = [
   eucalipto: 'no',
   stock: 4
 
-}];
+}];*/}
 
 
 function ItemCategory() { 
   
-  const [products,setProduct] = useState([])
+  const [products, setProduct] = useState([])
+  const [error, setError] = useState("")
 
   const resultado = useParams()   // useParams() ES UN OBJETO. Captura el objeto obtenido por la ruta. VALORES POSIBLES PARA EL OBJETO useParams.-> {} si se pasa la ruta /, {id: M} si se pasa la ruta /categoria/M, {id: L} si se pasa la ruta /categoria/L}
   console.log('resultado: ', resultado)
@@ -112,8 +116,54 @@ function ItemCategory() {
   const id = resultado.id //Accedo a =l value de la key.
   console.log('id: ',id)   //{ VALORES POSIBLES PARA EL OBJETO useParams.-> 'undefined' si se pasa la ruta /, M si se pasa la ruta /categoria/M, L si se pasa la ruta /categoria/L}
   
-    useEffect( () => {      // Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
+    
+  
+  useEffect( () => {      // Hook para ejecutar la funcion 1 vez unicamente, que cambia el estado inicial vacio de 'products', por medio de setProduct con la data array traida de la variable creada dentro de la funcion.
    
+
+      const productCollection = collection(db, 'productos')
+
+      const filtroCategoria = query(productCollection,  // filtro todos los productos incluidos en la coleccion 'productos', donde "tamanio" == al 'id' caputrado por ruta a traves del useParams, osea 'M' o 'L' 
+
+                  where("tamanio", "==", id)
+        )
+
+
+      const laConsulta = getDocs (filtroCategoria)   // obtengo todos los productos filtrados.
+
+      laConsulta
+      .then((resultado)  => {
+
+        console.log('Representacion del doc :', resultado.docs[0].data)
+        console.log('Id del doc :', resultado.docs[0].id)
+        console.log('Data del doc :', resultado.docs[0].data())
+        //resultado.docs es un array de objetos, pero esos objetos no son los documentos de Firestore con la info directamente, sino una 'representacion'.
+        // Cada objeto tiene un Id y un metodo que le extrae la info.
+
+        //Podria poner todo en una misma linea -> setProduct(resultado.docs.map((doc) => ({id: doc.id, ...doc.data()})))
+          const aux = resultado.docs.map((doc) => {
+
+          const producto = doc.data()  
+          producto.id = doc.id     // agrego key 'id' con value 'doc.id'ca cada objet -> es lo mismo que: {id: doc.id, ...doc.data()}
+          console.log('producto :',producto)
+          return producto
+
+        })
+        console.log('aux :', aux)
+        setProduct(aux)
+
+        })
+
+        .catch((error) => {
+          console.log('Dio Mal')
+        })
+        setError(error)
+
+      }, [id]) 
+
+
+    {/*
+
       if (id) {             //si se pasa un valor luego de /productos/  =>, si existe L o M
 
         console.log("Filtro talle:" + id);
@@ -139,9 +189,9 @@ function ItemCategory() {
           setProduct(productosHarco) //'products' cambia de estado y ahora tiene los objetos de 'productosHarco', osea TODOS.
       }
    
-  }, [id])  // Corre todo el efecto del pedido a la 'API' cada vez que se clique en otro link de categoria. 
+  }, [id])  // Corre todo el efecto del pedido a la 'API' cada vez que se clique en otro link de categoria. */}
 
-  
+  {/*
   const getProducts = () => {
     
     const pedido = new Promise((res, rej) => {
@@ -151,7 +201,8 @@ function ItemCategory() {
     })
 
     return pedido
-  }
+
+  }  */}
  
                    
     return (  
