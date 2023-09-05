@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 
-const Login = () => {
+const CreateUser = () => {
 
   const [username, setUsername] = useState('');
   const [mail, setMail] = useState('');
@@ -43,7 +43,7 @@ const Login = () => {
   return (
 
     <div className = "divContenedorLogin">
-      <h2 className = "loginTitulo">Login</h2>
+      <h2 className = "loginTitulo">Creacion de cuenta</h2>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -78,13 +78,13 @@ const Login = () => {
 
       </div>
 
-      <button className="botonLogin" onClick={handleLogin}>Login</button>
+      <button className="botonLogin" onClick={handleLogin}>Crear cuenta</button>
 
-      <Link to ="/createUser" className="botonCrearUsuario"><button >Crear usuario</button></Link>
+
 
     </div>
 
   );
 };
 
-export default Login;
+export default CreateUser;
