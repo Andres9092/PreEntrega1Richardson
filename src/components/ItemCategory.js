@@ -230,7 +230,7 @@ function ItemCategory() {
                           </div>
 
                           <Link to ={`/productos/${item.id}`}> <Button className="botonDetalle">
-                              Ver Detalle
+                              Ver Detalle    {/* Al darle click al boton, redirije a la ruta ->  /item/:id , es decir conduce al Comp ItemDetail, definido en C Main. Cada id sera capturado luego de la URL por el useParams y reflejado en Comp ItemDetail. El  id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer */}
                           </Button> </Link >
 
 
