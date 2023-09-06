@@ -13,7 +13,7 @@ function App() {
     
     <BrowserRouter className="App"> {/* Etiqueta unica que contiene la aplicacion completa. Dentro del C Padre App(), se incluyen el resto de los Componentes Hijos de la aplicacion, sobre los cuales iran nuevos C Hijos ta su vez. */}
 
-      <CustomProvider>       {/* C que posibilita la obtencion de variable global, en sus C hijos, a partir del Provider creado en el Contexto.*/}
+      <CustomProvider>       {/* C PASO 2) DE CREACION DE COMP CUSTOM PROVIDER, que posibilita la obtencion de variable global, en sus C hijos, a partir del Provider creado en el Contexto.*/}
           
           <NavBar></NavBar>  {/* C Padre que contiene a Compts hijos 'CartsWidget', 'NavInferior' en su interior. */}
 
