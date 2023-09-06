@@ -167,7 +167,9 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
 
         setCantidad(cantidadConfirmada)  // setea nuevo valor a 'cantidad'
         console.log("La cantidad confirmada es: ", cantidadConfirmada )
-       
+       const item ={
+        id
+       }
       }
    
 
@@ -219,12 +221,16 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
                     <div className = "numeroStock" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
                     <Button className="botonUnidadesDisponiblesPhone">Stock</Button>
                 </div>     
+                <p>---------------------------</p>
+                <div className = "contadorProdAgregados">
+                      <p>Unidades confirmadas: {cantidad} </p>
+                </div>
                 <br></br>     
                                 
                 <div>
                   {  
                     cantidad > 0 ? (  // Inicialmente el link no se ve ya que 'cantidad = 0' y se muestra el boton del Comp COntador 'Agregar al carrito'. Al re setearse el valor de 'cantidad', se muestra el link 'Terminar compra' y desaparece el boton 'Agregar al carrito'
-                    <Link to ="/carrito" className="botonTerminarCompra">Terminar compra</Link>
+                    <Link to ="/carrito" className="botonTerminarCompra"><i class="fa-solid fa-money-check-dollar"></i> Terminar compra</Link>
                     ) : (
                         <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */
                     )
@@ -288,25 +294,31 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
                                 <div className = "contadorStockDesktop">
                                     <div className = "numeroStock" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
                                     <Button className="botonUnidadesDisponiblesDesktop">Stock</Button>
-                                </div>    
-                                                            
+                                </div> 
+                                <br></br>   
+                                <p>---------------------------</p>
+
+                                <div className = "contadorProdAgregados">
+                                  <p>Unidades confirmadas: {cantidad} </p>
+                                </div>                        
                                 <br></br>
                                 
+                               
+                                <div className = "precioTotal">  
+                                    <p className = "precioTotal">Total: $ {product.precio * cantidad}</p>
+                                </div> 
+                              
+                                <br></br>
                                 <div>
                                   {  
                                     cantidad > 0 ? (
-                                          <Link to ="/carrito" className="botonTerminarCompra" >Terminar compra</Link>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */
+                                          <Link to ="/carrito" className="botonTerminarCompra"><i class="fa-solid fa-money-check-dollar"></i> Terminar compra</Link>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */
                                     ) : (
                                         <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  
                                     )
                                   }
                                 </div>
                                 <br></br>
-                                <div className = "precioTotal">  
-                                    <p className = "precioTotal">Total: $ {product.precio * cantidad}</p>
-                                </div> 
-                                
-
                             </div>
                             <br></br>
                             <div className = "divDescripDektop"> 
