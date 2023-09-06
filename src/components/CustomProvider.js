@@ -13,13 +13,6 @@ const CustomProvider = (props) => {         // 1) Creo archivo con componente Cu
   
   const [cantidad, setCantidad] = useState(4)
 
-
-  const handleCallback = (cantidadConfirmada) => {  //'cantidadConfirmada' trae el valor seteado en el C hijo 'Contador'
-
-    setCantidad(cantidadConfirmada)  // setea nuevo valor a 'cantidad'
-     
-  }
-
   const valorDelContexto = {                // valorDelContexto -> asigno objeto con pares de key,values que luego podran ser utilizados en el resto de los C hijos.
 
     carrito: [],

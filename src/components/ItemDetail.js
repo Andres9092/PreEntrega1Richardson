@@ -116,7 +116,7 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
     const [error, setError] = useState("")
 
     const [cantidad, setCantidad] = useState(0)
-    const [confirmado, setConfirmado] = useState(false)
+    
     
 
     const loaderProps = {
@@ -166,18 +166,11 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
       const handleCallback = (cantidadConfirmada) => {  //'cantidadConfirmada' trae el valor seteado en el C hijo 'Contador'
 
         setCantidad(cantidadConfirmada)  // setea nuevo valor a 'cantidad'
-      
-        setConfirmado(true)
+        console.log("La cantidad confirmada es: ", cantidadConfirmada )
+       
       }
    
 
-      if (confirmado) 
-      
-      return (
-        <button>Agregar al carrito: {cantidad} unidades</button> 
-        
-      )
-    
   {/* id es la 'clave' del 'value' a capturar por URL del objeto useParams, cuando apreto el boton 'ver detalle' que esta asociado a la ruta "/productos/:id"*/}
 
     //if (loading) return  <p>Cargando...</p>
@@ -226,16 +219,17 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
                     <div className = "numeroStock" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
                     <Button className="botonUnidadesDisponiblesPhone">Stock</Button>
                 </div>     
-             
-
+                <br></br>     
+                                
                 <div>
-                    <Button className="botonAgregarCarritoPhone"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button>
-                    
+                  {  
+                    cantidad > 0 ? (  // Inicialmente el link no se ve ya que 'cantidad = 0' y se muestra el boton del Comp COntador 'Agregar al carrito'. Al re setearse el valor de 'cantidad', se muestra el link 'Terminar compra' y desaparece el boton 'Agregar al carrito'
+                    <Link to ="/carrito" className="botonTerminarCompra">Terminar compra</Link>
+                    ) : (
+                        <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */
+                    )
+                   }
                 </div>
-            
-
-                <br></br>
-                <Contador  nombrePropHandleCallback = {handleCallback}/> { /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */}
                 <br></br>
                
                  <div className = "precioTotal">
@@ -295,17 +289,18 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
                                     <div className = "numeroStock" style = {{color : product.stock == 0 ? "red" : "green"}}> {product.stock} </div>
                                     <Button className="botonUnidadesDisponiblesDesktop">Stock</Button>
                                 </div>    
-                                <br/>
-                                
+                                                            
+                                <br></br>
                                 
                                 <div>
-                                  <Button className="botonAgregarCarritoDesktop"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button>
+                                  {  
+                                    cantidad > 0 ? (
+                                          <Link to ="/carrito" className="botonTerminarCompra" >Terminar compra</Link>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */
+                                    ) : (
+                                        <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  
+                                    )
+                                  }
                                 </div>
-                                <br></br>
-                               
-                               
-                                <br></br>
-                                <Contador  nombrePropHandleCallback = {handleCallback}/>  { /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */}
                                 <br></br>
                                 <div className = "precioTotal">  
                                     <p className = "precioTotal">Total: $ {product.precio * cantidad}</p>

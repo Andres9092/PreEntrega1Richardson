@@ -31,3 +31,13 @@
 .botonResetear{
     margin: 10px 0px 6px 0px;
 }
+
+.botonAgregarCarritoDesktop{
+    background-color:rgb(170, 194, 119);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 10px 0px 10px 0px;
+    
+}
