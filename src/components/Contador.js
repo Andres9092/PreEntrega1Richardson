@@ -4,16 +4,16 @@ import { Button } from 'react-bootstrap'
 import '../assets/css/Contador.css';
 
 
-function Contador(props) {
+function Contador(props) { //recibe de C padre la prop 'nombrePropHandleCallback' 
 
-    const [contador, setContador] = useState(0);
+    const [contador, setContador] = useState(1);
 
     const sumar = () => setContador(contador + 1)
     const restar = () => setContador(contador - 1)
     const resetear = () => setContador(0)
     
-    const handleConfirmar = () => {
-        props.handleCallback(contador)
+    const handleConfirmar = () => { //le devuelve al C padre la misma prop 'nombrePropHandleCallback' con el valor de 'contador'
+        props.nombrePropHandleCallback(contador)  
     }
 
 
@@ -22,14 +22,16 @@ function Contador(props) {
     <div className="divContador">
         <div className="funcionContador">
             <button className="botonesContador"onClick={sumar}> + </button>
+            
             <p className="numeroContador">{contador}</p>
+
             <button  className="botonesContador" onClick={restar}> - </button>
         </div>
         <button  className="botonResetear" onClick={resetear}> Resetear </button>
         <br></br>
         
         <div>
-            <button onClick={handleConfirmar}> Confirmar </button>
+            <button onClick={handleConfirmar}> -- Confirmar cantidad --</button>
         </div>
        
        

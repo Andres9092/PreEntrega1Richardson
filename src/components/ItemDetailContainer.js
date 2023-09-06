@@ -6,9 +6,6 @@ import {Button} from 'react-bootstrap'
 import '../assets/css/ItemDetail.css';
 
 
-
-
-
 function ItemDetailContainer(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada nombrePropProducts = {products} */
     console.log('props :', props)
 

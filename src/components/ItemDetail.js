@@ -3,14 +3,6 @@ import '../assets/css/ItemDetail.css';
 import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 import Contador from './Contador';
-import ramo1 from '../assets/images/Ramo1.jpg';
-import ramo2 from '../assets/images/Ramo2.jpg';
-import ramo3 from '../assets/images/Ramo3.jpg';
-import ramo4 from '../assets/images/Ramo4.jpg';
-import ramo5 from '../assets/images/Ramo5.jpg';
-import ramo6 from '../assets/images/Ramo6.jpg';
-import ramo7 from '../assets/images/Ramo7.jpg';
-import ramo8 from '../assets/images/Ramo8.jpg';
 import {useParams} from 'react-router-dom'; 
 import {db} from '../firebase';
 import {getDoc, collection, doc} from 'firebase/firestore';
@@ -107,7 +99,7 @@ const products =  [
   }]*/};
 
 
-function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre la prop del C hijo Contador.
+function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDetail' la prop del C hijo Contador.
 
     const {id} = useParams()   
     console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer.
@@ -149,7 +141,7 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre la prop d
           .then((res)  => {
             console.log('res :',res)
             console.log('res.data) :', res.data)
-            setProduct(res.data())
+            setProduct(res.data())  //actualiza  valor para 'product'
           })
 
           .catch((error) => {
@@ -171,14 +163,18 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre la prop d
     
   }, []);
 
-      const handleCallback = (cantidadConfirmada) => {
+      const handleCallback = (cantidadConfirmada) => {  //'cantidadConfirmada' trae el valor seteado en el C hijo 'Contador'
 
-        setCantidad(cantidadConfirmada)
+        setCantidad(cantidadConfirmada)  // setea nuevo valor a 'cantidad'
+      
         setConfirmado(true)
       }
+   
 
-      if (confirmado) return (
-        <button>Agregar al carrito : {cantidad} unidades</button>
+      if (confirmado) 
+      
+      return (
+        <button>Agregar al carrito: {cantidad} unidades</button> 
         
       )
     
@@ -239,12 +235,11 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre la prop d
             
 
                 <br></br>
-                <Contador  handleCallback = {handleCallback}/>
+                <Contador  nombrePropHandleCallback = {handleCallback}/> { /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */}
                 <br></br>
                
-
                  <div className = "precioTotal">
-                    <p className = "precioTotal" >Total: $ {product.precio} * {cantidad} </p>
+                    <p className = "precioTotal" >Total: $ {product.precio * cantidad} </p>
                  </div>             
                 <br></br>
 
@@ -307,13 +302,14 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre la prop d
                                   <Button className="botonAgregarCarritoDesktop"><i class="fa-solid fa-cart-plus"></i> Agregar al Carrito </Button>
                                 </div>
                                 <br></br>
-                                <div className = "precioTotal">  
-                                    <p className = "precioTotal" >Total: $ {product.precio}  </p>
-                                </div> 
+                               
                                
                                 <br></br>
-                                <Contador  handleCallback = {handleCallback}/>
+                                <Contador  nombrePropHandleCallback = {handleCallback}/>  { /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */}
                                 <br></br>
+                                <div className = "precioTotal">  
+                                    <p className = "precioTotal">Total: $ {product.precio * cantidad}</p>
+                                </div> 
                                 
 
                             </div>
