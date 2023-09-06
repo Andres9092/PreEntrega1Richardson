@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../assets/css/ItemDetail.css';
 import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
@@ -8,6 +8,7 @@ import {db} from '../firebase';
 import {getDoc, collection, doc} from 'firebase/firestore';
 import {useEffect, useState} from 'react';
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
+import {contexto} from './CustomProvider';
 
 
 function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDetail' la prop del C hijo Contador.
@@ -26,7 +27,10 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
       duration: 1,
       colors: ['#c99d0b', '#cfab35']}
   
-  
+    const {addItem} = useContext(contexto)
+
+    console.log('addItem :',addItem)
+      
     useEffect( () => {
       
       const productCollection = collection(db, 'productos')
@@ -63,11 +67,14 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
         
         
         const item ={                             //creo item con caracteristicas del producto y la cantidad confirmada del mismo.
-          product, cantidadConfirmada
-    
+          product
+          
        }
        console.log("item: ", item )
        console.log("item.product.precio: ", item.product.precio)
+      
+       addItem(item,cantidadConfirmada)
+      
       }
  
     return (  
