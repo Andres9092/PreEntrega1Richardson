@@ -20,7 +20,7 @@ function Cart() {
     return (
 
       <div className="divCarritoVacio">
-        <p>No hay productos en el carrito.</p>
+        <p className='textoCarritoVacio'>No hay productos en el carrito.</p>
         <div className="divBotonVolverPhoneCarritoVacio">
             <Link to ="/" className=""><i class="fa-solid fa-arrow-rotate-left"></i> Productos</Link>
         </div>

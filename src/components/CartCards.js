@@ -9,7 +9,21 @@ function CartCards() {
   
   const valorDelContexto = useContext(contexto)  
 
+  const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
 
+    setCantidad(cantidadConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
+    console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContador )
+    
+    
+  //   const item ={                             //creo item con data del producto.
+  //     product
+      
+  //  }
+   console.log("product: ", product )
+   console.log("product.precio: ", product.precio)
+  
+   addItem(product,cantidadConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadConfirmadaPorElContador'
+  }
 return (
   
     <div>
@@ -41,7 +55,11 @@ return (
                              <div className="precioTamanio">
                                      <p className="precioProd">Subtotal</p>
                                      <p className="tamanioProd">$ {item.tamanio}</p>
-                             </div>                                      
+                             </div>    
+
+                              <div className="precioTamanio">
+                                <button className="remove-button" onClick={() => valorDelContexto.removeItem(handleCallback)}>ELIMINAR PRODUCTO</button> 
+                             </div>                                   
              
                          </div>
                      )

@@ -13,7 +13,6 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
   const [cantidadItemsDistintosAgregados, setCantidadItemsDistintosAgregados] = useState([])
   console.log("cantidadItemsDistintosAgregados :", cantidadItemsDistintosAgregados)
   console.log("cantidadItemsDistintosAgregados-Length :", cantidadItemsDistintosAgregados.length)
-
     
   const [cantidadTotalProductosAgregados, setCantidadTotalProductosAgregados] = useState(0)
   console.log("cantidadTotalProductosAgregados :", cantidadTotalProductosAgregados)
@@ -34,35 +33,33 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
 
   }
 
-
-
-  // const removeItem = (itemId) => {  // 
-
-  //   cartUpdated = cantidadItemsDistintosAgregados.filter(prod  => prod.id !== itemId)
-  //   setCantidadItemsDistintosAgregados(cartUpdated) 
-    
-
-  //   setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados -prod)
+  const removeItem = (product,cantidadItemsDistintosAgregados) => {  
   
-  //   setMontoTotalProductosAgregados(montoTotalProductosAgregados + (cantidadConfirmadaPorElContador * product.precio))
+    const cartUpdated = cantidadItemsDistintosAgregados.filter((prod) => prod.id !== product.id)
+    console.log('cartUpdated :', cartUpdated)
+    setCantidadItemsDistintosAgregados(cartUpdated) 
+   
+    //setCantidadTotalProductosAgregados(0)
+    //setMontoTotalProductosAgregados([])
 
-  // }
+    }
 
 
-  const clearCart = () => {  // 
+  const clearCart = (product) => {  // 
 
     setCantidadItemsDistintosAgregados([])
-    setCantidadTotalProductosAgregados([])
+    setCantidadTotalProductosAgregados(0)
     setMontoTotalProductosAgregados([])
 
   }
 
 
-  const valorDelContexto = {   //variable, con funciones, a ser exportada a los C. hijos
+   const valorDelContexto = {   //variable, con funciones, a ser exportada a los C. hijos
     
     addItem:addItem,
-    //removeItem:removeItem,
+    removeItem:removeItem,
     clearCart:clearCart,
+    removeItem:removeItem,
     cantidadItemsDistintosAgregados: cantidadItemsDistintosAgregados,
     cantidadTotalProductosAgregados:cantidadTotalProductosAgregados, 
     montoTotalProductosAgregados: montoTotalProductosAgregados,

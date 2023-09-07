@@ -13,14 +13,19 @@
     margin: 50px 0px 50px 0px;
 }
 
+.textoCarritoVacio{
+    font-size: 18px;
+}
+
 .divBotonVolverPhoneCarritoVacio{
-    width: 90px;
-    font-size: 14px;
+    width: 150px;
+    font-size: 16px;
     background-color: rgb(198, 164, 136);
     border: 1px solid;
     padding: 2px 2px 2px 2px;
     border-radius: 3px;
-    margin: 10px 0px 10px 150px;
+    margin: 20px 0px 10px 0px;
+    text-align: center;
 }
 
 
