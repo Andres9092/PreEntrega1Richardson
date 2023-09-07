@@ -97,7 +97,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
             <BarsLoader {...loaderProps} />
            
             <div className = "TituloPpal-BotonAgregarProducto">
-                <h4 className="tituloListadoProd">LISTADO DE PRODUCTOS</h4>
+                <h4 className="tituloListadoProd">Productos</h4>
                 {valorDelContexto.user === 'admin' && <Link to ="/"> <Button className="botonAgregarProducto" onClick={handleAddProduct}>(+) Agregar Producto</Button></Link >}      {/* Condicional &&, se muestra boton si se esta logueado como 'Admin'*/}
             </div>
             

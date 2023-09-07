@@ -9,21 +9,19 @@ function CartCards() {
   
   const valorDelContexto = useContext(contexto)  
 
-  const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
 
-    setCantidad(cantidadConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
-    console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContador )
+
+  // const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
+
+  //   setCantidad(cantidadConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
+  //   console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContador )
     
-    
-  //   const item ={                             //creo item con data del producto.
-  //     product
-      
-  //  }
-   console.log("product: ", product )
-   console.log("product.precio: ", product.precio)
+
+  //  console.log("product: ", product )
+  //  console.log("product.precio: ", product.precio)
   
-   addItem(product,cantidadConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadConfirmadaPorElContador'
-  }
+  //  addItem(product,cantidadConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadConfirmadaPorElContador'
+  // }
 return (
   
     <div>
@@ -43,22 +41,31 @@ return (
                              </div>
                                      
                              <div className="nombreDescripcion">
-                                    <p className="nombreProd">Producto</p>
-                                     <p className="nombreProd">-{item.nombre}-</p>
+                                    <p className="titulosColumnas">Producto</p>
+                                     <p className="dataColumnas">{item.nombre}</p>
                              </div>
 
-                             <div className="precioTamanio">
-                                     <p className="precioProd">Precio unitario</p>
-                                     <p className="precioProd"> $ {item.precio}</p>
+                             <div className="cantidadUnidades">
+                                     <p className="titulosColumnas">Unidad</p>
+                                     <p className="dataColumnas"> $ {item.precio}</p>
                                      
                              </div>  
+
                              <div className="precioTamanio">
-                                     <p className="precioProd">Subtotal</p>
-                                     <p className="tamanioProd">$ {item.tamanio}</p>
+                                     <p className="titulosColumnas">Cantidad</p>
+                                     <p className="dataColumnas"> {valorDelContexto.cantidadTotalProductosAgregados}</p>
+                                     
+                             </div>  
+
+                             
+
+                             <div className="precioTamanio">
+                                     <p className="titulosColumnas">Subtotal</p>
+                                     <p className="dataColumnas">$ {item.tamanio}</p>
                              </div>    
 
-                              <div className="precioTamanio">
-                                <button className="remove-button" onClick={() => valorDelContexto.removeItem(handleCallback)}>ELIMINAR PRODUCTO</button> 
+                              <div className="divRemoveButton">
+                                <button className="removeProduct-button" onClick={() => valorDelContexto.removeItem()}><i class="fa-solid fa-circle-xmark"></i></button> 
                              </div>                                   
              
                          </div>

@@ -54,7 +54,13 @@ return (
             <p>Cantidad total de unidades agregadas: {valorDelContexto.cantidadTotalProductosAgregados}</p> */}
         <br></br>
         <br></br>
-        <p className ="montoTotalPhone">Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p>
+        <h2 className='tituloOrden'>Su orden:</h2>
+        <div className='divDataCompra'>
+          
+          <p className ="unidadesTotalPhone">- Items: {valorDelContexto.cantidadItemsDistintosAgregados.length}</p>
+          <p className ="unidadesTotalPhone">- Total Unidades: {valorDelContexto.cantidadTotalProductosAgregados}</p>
+        </div>
+        <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p>
 
       </div>
 
