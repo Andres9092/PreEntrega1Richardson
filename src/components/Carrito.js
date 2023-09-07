@@ -3,7 +3,6 @@ import {useContext} from 'react';
 import {contexto} from './CustomProvider';
 
 
-
 function CartItem() {
   
   const valorDelContexto = useContext(contexto)   //valorDelContexto va sin llaves, porque estoy llamando a una variable, no una funcion como en el caso de {addItem}
@@ -11,6 +10,8 @@ function CartItem() {
 
   console.log('valorDelContexto :', valorDelContexto)
   console.log('valorDelContexto.cantidadItemsDistintosAgregados :', valorDelContexto.cantidadItemsDistintosAgregados.length)
+
+
 
   return (
 
@@ -22,8 +23,8 @@ function CartItem() {
           <p>Total de su compra: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p>
 
         </div>
-
-
+                                                                {/* //valorDelContexto.clearCart()  -> funcion que proviene del CustomProvider */}
+        <button className="remove-button" onClick={() => valorDelContexto.clearCart()}>Remove</button> 
 
 
       {/* <img src={item.foto} alt={item.nombre} />

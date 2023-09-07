@@ -52,6 +52,8 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
   const clearCart = () => {  // 
 
     setCantidadItemsDistintosAgregados([])
+    setCantidadTotalProductosAgregados([])
+    setMontoTotalProductosAgregados([])
 
   }
 
