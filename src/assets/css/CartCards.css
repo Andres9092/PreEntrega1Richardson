@@ -1,0 +1,13 @@
+.boxCartCardsCart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: solid 1px;
+    border-radius: 2px;
+    margin: 5px 5px 5px 5px;
+}
+
+.divImagenProdCardCartPhone{
+    width: 30%;
+}

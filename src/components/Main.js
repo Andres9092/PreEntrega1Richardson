@@ -3,7 +3,7 @@ import ItemListContainer from './ItemListContainer';
 import ItemDetail from './ItemDetail';
 import ItemCategory from './ItemCategory';
 import Ejemplo from './Ejemplo';
-import Carrito from './Carrito';
+import Cart from './Cart';
 import Login from './Login';
 import CreateUser from './CreateUser';
 import CheckOut from './CheckOut';
@@ -25,10 +25,9 @@ function Main() {
 
                 <Route path = "/productos/:id" element = {<ItemDetail/>}/>     {/* id es la 'clave' del 'value' capturado por en URL por useParams */}
                 
-                <Route path = "/categorias/:id" element = {<ItemCategory/>}/>
-                                                                                        
+                <Route path = "/categorias/:id" element = {<ItemCategory/>}/>                                                             
 
-                <Route path = "/carrito" element = {<Carrito/>} />   
+                <Route path = "/carrito" element = {<Cart/>} />   
 
                 <Route path = "/checkOut" element = {<CheckOut/>} />   
 

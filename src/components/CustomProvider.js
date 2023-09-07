@@ -12,7 +12,7 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
   
   const [cantidadItemsDistintosAgregados, setCantidadItemsDistintosAgregados] = useState([])
   console.log("cantidadItemsDistintosAgregados :", cantidadItemsDistintosAgregados)
-  console.log("cantidadItemsDistintosAgregados :", cantidadItemsDistintosAgregados.length)
+  console.log("cantidadItemsDistintosAgregados-Length :", cantidadItemsDistintosAgregados.length)
 
     
   const [cantidadTotalProductosAgregados, setCantidadTotalProductosAgregados] = useState(0)
