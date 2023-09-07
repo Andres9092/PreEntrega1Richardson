@@ -70,7 +70,7 @@ function NavBar() {
                 </div>
             
             </div>
-                <NavInferior/>
+                {/* <NavInferior/> */}
         </header>
     )
   }

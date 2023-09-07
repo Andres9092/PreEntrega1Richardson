@@ -1,0 +1,90 @@
+.carritoGlobal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloCarrito{
+
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #c99d0b;
+    padding-left: 5px;
+
+}
+
+.cart-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cfab35;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    background-color: rgb(249, 247, 223)
+}
+
+
+
+.divTituloCarritoIconoPhone{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 10px;
+}
+
+
+
+
+.iconoBag{
+    color:#c99d0b;
+    text-decoration: none;
+    list-style: none;
+}
+
+.botonVolverPhone{
+
+    width: 90px;
+    font-size: 14px;
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 150px;
+   
+}
+
+
+
+.divCheckOut-remove{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+
+.checkOut-button{
+    background-color:rgb(226, 191, 95);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+}
+.remove-button{
+
+    background-color:rgb(231, 142, 33);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 120px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+}
