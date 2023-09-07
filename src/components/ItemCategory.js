@@ -16,95 +16,7 @@ import {db} from '../firebase';
 import {getDocs, collection, query, where} from 'firebase/firestore';
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 
- {/*
-const productosHarco = [
-  {
-  id: 1,
-  nombre: 'Taormina',
-  descripcion: 'A',
-  tamanio: 'M',
-  precio: 3500,
-  foto:ramo1,
-  eucalipto: 'si',
-  stock: 10
-
-},
-{
-  id: 2,
-  nombre: 'Bellagio',
-  descripcion: 'B',
-  tamanio: 'M',
-  precio: 6000,
-  foto:ramo2,
-  eucalipto: 'si',
-  stock: 2
-
-},
-{
-  id: 3,
-  nombre: 'Milano',
-  descripcion: 'C',
-  tamanio: 'L',
-  precio: 2000,
-  foto:ramo3,
-  eucalipto: 'no', 
-  stock: 1
-
-},
-{
-  id: 4,
-  nombre: 'Eucalipto',
-  descripcion: 'D',
-  tamanio: 'L',
-  precio: 4300,
-  foto:ramo4,
-  eucalipto: 'no',
-  stock: 10
-
-},
-{
-  id: 5,
-  nombre: 'Eucalipto',
-  descripcion: 'D',
-  tamanio: 'L',
-  precio: 3600,
-  foto:ramo5,
-  eucalipto: 'si',
-  stock: 8
-
-},{
-  id: 6,
-  nombre: 'Eucalipto',
-  descripcion: 'D',
-  tamanio: 'M',
-  precio: 5200,
-  foto:ramo6,
-  eucalipto: 'no',
-  stock: 0
-
-},{
-  id: 7,
-  nombre: 'Eucalipto',
-  descripcion: 'D',
-  tamanio: 'M',
-  precio: 2600,
-  foto:ramo7,
-  eucalipto: 'si',
-  stock: 0
-
-},
-{
-  id: 8,
-  nombre: 'Eucalipto',
-  descripcion: 'D',
-  tamanio: 'M',
-  precio: 4500,
-  foto:ramo8,
-  eucalipto: 'no',
-  stock: 4
-
-}];*/}
-
+ 
 
 function ItemCategory() { 
   
@@ -175,52 +87,6 @@ function ItemCategory() {
 
 
       }, [id]) 
-
-
-      //if (loading) return  <p>Cargando...</p>
-    
-    
-      {/*
-
-      if (id) {             //si se pasa un valor luego de /productos/  =>, si existe L o M
-
-        console.log("Filtro talle:" + id);
-        console.log('productosHarco: ', productosHarco) ;
-
-        const productosFiltrados = []
-
-        for(let i=0; i < productosHarco.length; i++){
-          
-          const prod = productosHarco[i]
-
-          if(prod.tamanio === id){
-            productosFiltrados.push(prod)
-
-          }
-          
-        }
-        console.log('productosFiltrados: ', productosFiltrados) 
-     
-        setProduct(productosFiltrados)   //'products' cambia de estado y ahora tiene los objetos de 'productosFiltrados'.
-    
-        }else{
-          setProduct(productosHarco) //'products' cambia de estado y ahora tiene los objetos de 'productosHarco', osea TODOS.
-      }
-   
-  }, [id])  // Corre todo el efecto del pedido a la 'API' cada vez que se clique en otro link de categoria. */}
-
-  {/*
-  const getProducts = () => {
-    
-    const pedido = new Promise((res, rej) => {
-      setTimeout(() => {
-        res(productosHarco)
-      },2000)
-    })
-
-    return pedido
-
-  }  */}
  
                    
     return (  

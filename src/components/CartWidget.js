@@ -7,7 +7,7 @@ import {contexto} from './CustomProvider';
 
 export function CartWidget() { //Si no estoy logueado como 'user' no se muestra el logo de Carrito.
 
-  const valorDelContexto = useContext(contexto)
+  const valorDelContexto = useContext(contexto) //Se imoporta la variable global exportada 'valorDelContexto' del contexto creado en el Compon 'CustomProvider'
   const cantidadComprasCarrito = valorDelContexto.cantidadTotal
     
   if ((valorDelContexto.user) === 'admin'){

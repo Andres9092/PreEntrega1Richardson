@@ -11,30 +11,30 @@ import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import {contexto} from './CustomProvider';
 
 
-function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDetail' la prop del C hijo Contador.
+function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C padre 'ItemDetail' la prop del C hijo Contador.
 
-    const {id} = useParams()   
-    console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer.
+    const {id} = useParams()   //Se captura el id pasado por ruta desde ItemDetailContainer ->  Link to ={`/productos/${item.id}`}
+    console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado inicialmente por props 'nombrePropProducts'y de value 'products' desde ItemListContainer a ItemDetailContainer, y luego de ItemDetailContainer a ItemDetail por ruta ->  Link to ={`/productos/${item.id}`}
 
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState("")
     const [cantidad, setCantidad] = useState(0)
-    
-    const loaderProps = {
+    const [error, setError] = useState("")
+
+    const loaderProps = {    //seteo de Loader
       loading,
       size: 40,
       duration: 1,
       colors: ['#c99d0b', '#cfab35']}
   
-    const {addItem} = useContext(contexto)
+    const addItem = useContext(contexto)    //StateUpLifting -> //Se imoporta la funcion global exportada 'addItem' del contexto creado en el Compon 'CustomProvider'
 
     console.log('addItem :',addItem)
       
     useEffect( () => {
       
-      const productCollection = collection(db, 'productos')
-      const referenciaDelDocumento = doc(productCollection, id)
+      const productCollection = collection(db, 'productos')  
+      const referenciaDelDocumento = doc(productCollection, id)  //Busca en la coleccion 'productos', el 'documento' de producto cuyo 'id' coincide con el captado por el useParams.
 
       console.log('referenciaDelDocumento :', referenciaDelDocumento)
 
@@ -43,9 +43,9 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
 
       consulta
           .then((res)  => {
-            console.log('res :',res)
-            console.log('res.data) :', res.data)
-            setProduct(res.data())  //actualiza  valor para 'product'
+            console.log('res :', res)
+            console.log('res.data) :', res.data)  //Devuelve la data asociada al producto seleccionado por id.
+            setProduct(res.data())  //actualiza valor para 'product' cuyo valor inicial es 'vacio', ofreciendo la data asociada al mismo.
           })
 
           .catch((error) => {
@@ -54,38 +54,37 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
           setError(error)
         
 
-          setTimeout(() => {
+          setTimeout(() => {      // seteo del funcionamiento del Loader programado. Corta el Loader luego de 1000 ms cambiando el edo a 'false'
             setLoading(false)
           },1000)
     
   }, []);
+                                                  // Contador devuelve a C ItemDetail -> nombrePropHandleCallback(contador) 
+      const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
 
-      const handleCallback = (cantidadConfirmada) => {  //'cantidadConfirmada' trae el valor seteado en el C hijo 'Contador'
-
-        setCantidad(cantidadConfirmada)  // setea nuevo valor a 'cantidad'
-        console.log("La cantidad confirmada es: ", cantidadConfirmada )
+        setCantidad(cantidadConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
+        console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContador )
         
         
-        const item ={                             //creo item con caracteristicas del producto y la cantidad confirmada del mismo.
-          product
+      //   const item ={                             //creo item con data del producto.
+      //     product
           
-       }
-       console.log("item: ", item )
-       console.log("item.product.precio: ", item.product.precio)
+      //  }
+       console.log("product: ", product )
+       console.log("product.precio: ", product.precio)
       
-       addItem(item,cantidadConfirmada)
-      
+       addItem(product,cantidadConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadConfirmadaPorElContador'
       }
  
     return (  
         
     <div className="ItemDet">  
-   
-            
-        <BarsLoader {...loaderProps} />
+    
+                                         
+        <BarsLoader {...loaderProps} />     {/*Implementacion del Loader seteado por 1000ms inicialemente */}
+        
         <div className="divContenedorPhone">
 
-            
             <div className = "nombreVolverPhone">        
                     
                 <h1 className="nombreProdPhone">{product.nombre}</h1>
@@ -122,22 +121,23 @@ function ItemDetail({contador}) { //StateUpLifting. Le paso al C padre 'ItemDeta
                 </div>     
                 <p>---------------------------</p>
                 <div className = "contadorProdAgregados">
-                      <p>Unidades confirmadas: {cantidad} </p>
+                                                                {/* 'cantidad' seteada en 0 inicialmente */}
+                      <p>Unidades confirmadas: {cantidad} </p>    
                 </div>
                 <br></br>     
                                 
                 <div>
                   {  
-                    cantidad > 0 ? (  // Inicialmente el link no se ve ya que 'cantidad = 0' y se muestra el boton del Comp COntador 'Agregar al carrito'. Al re setearse el valor de 'cantidad', se muestra el link 'Terminar compra' y desaparece el boton 'Agregar al carrito'
+                    cantidad > 0 ? (  // Inicialmente el link no se ve ya que 'cantidad = 0' y se muestra el boton del Comp Contador 'Agregar al carrito'. Al re setearse el valor de 'cantidad', se muestra el link 'Terminar compra' y desaparece el boton 'Agregar al carrito'
                     <Link to ="/carrito" className="botonTerminarCompra"><i class="fa-solid fa-money-check-dollar"></i> Finalizar compra</Link>
                     ) : (
-                        <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback'  */
+                        <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback', 'stock' e 'initial' -> seteado por default en 1.  */
                     )
                    }
                 </div>
                 <br></br>
-               
-                 <div className = "precioTotal">
+                                                      {/* // 'Total' Inicialmente seteado en 0 */}
+                 <div className = "precioTotal">   
                     <p className = "precioTotal" >Total: $ {product.precio * cantidad} </p>
                  </div>             
                 <br></br>
