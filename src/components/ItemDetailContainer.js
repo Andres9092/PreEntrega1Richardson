@@ -35,9 +35,9 @@ return(
                                         <p className="tamanioProd">Tamanio: {item.tamanio}</p>
                                 </div>
 
-
+                                <br></br>
                                 <div className="stock">
-                                        <p className="precioProd"> $ {item.stock}</p>  {/*Condicional color stock segun prop item.stock*/}
+                                       {/*Condicional color stock segun prop item.stock*/}
                                         <p style = {{color : item.stock == 0 ? "red" : "green"}}>Stock: {item.stock}</p> 
                                 </div>
 

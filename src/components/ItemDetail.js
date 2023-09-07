@@ -27,7 +27,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
       duration: 1,
       colors: ['#c99d0b', '#cfab35']}
   
-    const addItem = useContext(contexto)    //StateUpLifting -> //Se imoporta la funcion global exportada 'addItem' del contexto creado en el Compon 'CustomProvider'
+    const {addItem} = useContext(contexto)    //StateUpLifting -> //Se importa la funcion global exportada 'addItem' del contexto creado en el Compon 'CustomProvider'
 
     console.log('addItem :',addItem)
       
@@ -88,7 +88,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
             <div className = "nombreVolverPhone">        
                     
                 <h1 className="nombreProdPhone">{product.nombre}</h1>
-                <Link to ="/"> <Button className="botonVolverPhone">Volver a Listado</Button></Link>
+                <Link to ="/"> <Button className="botonVolverPhone"><i class="fa-solid fa-arrow-rotate-left"></i> Productos</Button></Link>
                 
             </div>
             
@@ -231,7 +231,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
                 </div>
 
                 <div>
-                    <Link to ="/"> <Button className="botonVolverDesktop">Volver a Listado</Button></Link>
+                    <Link to ="/"> <Button className="botonVolverDesktop"><i class="fa-solid fa-arrow-rotate-left"></i> Productos</Button></Link>
                 </div>
 
                 
