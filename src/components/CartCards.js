@@ -8,20 +8,10 @@ import { Button } from 'react-bootstrap'
 function CartCards() {
   
   const valorDelContexto = useContext(contexto)  
-  const cantUnitaria = valorDelContexto.arrayDeObjetosDeProductosAgregados.cantidadConfirmadaPorElContadorDelProducto
-  console.log('cantUnitaria :',cantUnitaria)
 
-  // const handleCallback = (cantidadConfirmadaPorElContadorDelProducto) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
+  const {removeFromCart} = useContext(contexto) 
 
-  //   setCantidad(cantidadConfirmadaPorElContadorDelProducto)  // setea nuevo valor a 'cantidad'
-  //   console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContadorDelProducto )
-    
-
-  //  console.log("product: ", product )
-  //  console.log("product.precio: ", product.precio)
   
-  //  addItem(product,cantidadConfirmadaPorElContadorDelProducto)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadConfirmadaPorElContadorDelProducto'
-  // }
 return (
   
     <div>
@@ -67,7 +57,7 @@ return (
                              </div>    
 
                               <div className="divRemoveButton">
-                                <button className="removeProduct-button" onClick={() => valorDelContexto.removeItem()}><i class="fa-solid fa-circle-xmark"></i></button> 
+                                <button className="removeProduct-button" onClick={() => valorDelContexto.removeFromCart([i])}><i class="fa-solid fa-circle-xmark"></i></button> 
                              </div>                                   
              
                          </div>

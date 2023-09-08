@@ -65,7 +65,7 @@ return (
       </div>
 
       <div className="divCheckOut-remove">
-        <Link to="/checkOut" className="checkOut-button"><i class="fa-solid fa-money-bill"></i>   CheckOut</Link>
+        <Link to="/checkOut" className="checkOut-button"><i class="fa-solid fa-money-bill"></i> CheckOut</Link>
                                                                                   {/* //valorDelContexto.clearCart()  -> funcion que proviene del CustomProvider */}
         <button className="remove-button" onClick={() => valorDelContexto.clearCart()}>Limpiar carrito</button> 
       </div>

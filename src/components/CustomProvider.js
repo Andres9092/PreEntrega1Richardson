@@ -37,7 +37,6 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
     // Compara el producto seleccionado con su cantidad respectiva al array de objetos ya existente. Inicialmente 'arrayDeObjetosDeProductosAgregados' esta [], por lo que no existe igualdad
     
 
-
     if (existingProduct) { //En la 1ra vuelta, agrega el 1er producto, ya que 'existingProduct' no existe. Cuando se confirma un producto repetido, entra a la condicion.
       // Product is already in the cart, update the quantity. A la cantidad original confirmada del prodcuto existente, le agrega la nueva cantidad confirmada para ese mismo producto.
       const updatedCart = arrayDeObjetosDeProductosAgregados.map((item) =>
@@ -57,14 +56,14 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
 }
 
 
-  const removeItem = (product,arrayDeObjetosDeProductosAgregados) => {  
+  const removeFromCart = (product) => {  
   
     const cartUpdated = arrayDeObjetosDeProductosAgregados.filter((prod) => prod.id !== product.id)
-    console.log('cartUpdated :', cartUpdated)
     setArrayDeObjetosDeProductosAgregados(cartUpdated) 
-   
-    //setCantidadTotalProductosAgregados(0)
-    //setMontoTotalProductosAgregados([])
+    console.log('ObjetosDeProductosAgregados luego de borrado :',arrayDeObjetosDeProductosAgregados )
+ 
+    //setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados - cantidadConfirmadaPorElContadorDelProducto)
+    //setMontoTotalProductosAgregados(montoTotalProductosAgregados - (cantidadConfirmadaPorElContadorDelProducto * product.precio))  //Guarda la sumatoria total de monto de productos agregados, a traves de ( 'cantidadConfirmadaPorElContadorDelProducto' * el precio de cada producto) para cada producto.
 
     }
 
@@ -82,9 +81,8 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
    const valorDelContexto = {   //variable, con funciones, a ser exportada a los C. hijos
     
     addItem:addItem,
-    removeItem:removeItem,
     clearCart:clearCart,
-    removeItem:removeItem,
+    removeFromCart:removeFromCart,
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
     cantidadTotalProductosAgregados:cantidadTotalProductosAgregados, 
     montoTotalProductosAgregados: montoTotalProductosAgregados,
