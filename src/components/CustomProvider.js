@@ -12,27 +12,12 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
   
   const [arrayDeObjetosDeProductosAgregados, setArrayDeObjetosDeProductosAgregados] = useState([])
   console.log("arrayDeObjetosDeProductosAgregados :", arrayDeObjetosDeProductosAgregados)
-  
-  
-  
-  
   console.log("arrayDeObjetosDeProductosAgregados-Length :", arrayDeObjetosDeProductosAgregados.length)
     
-  const [cantidadTotalProductosAgregados, setCantidadTotalProductosAgregados] = useState(0)
-  console.log("cantidadTotalProductosAgregados :", cantidadTotalProductosAgregados)
-
-  const [montoTotalProductosAgregados, setMontoTotalProductosAgregados] = useState(0)
-  console.log("montoTotalProductosAgregados :", montoTotalProductosAgregados)
-
-  const [total, setTotal] = useState(0);
-
-
-
                     //product -> objeto producto con su data.
   const addItem = (product,cantidadConfirmadaPorElContadorDelProducto) => {  // Funcion 'addItem' a pasarle a C hijos children que engloba el Provider, para que al interacturar con los hijos, en este caso con ItemDetail, la cual le devuelve 2 valores a la funcion (product,cantidadConfirmadaPorElContadorDelProducto) y se actualice el valor de 'cantidadCart'
 
-    
-    //setArrayDeObjetosDeProductosAgregados(prev => [...prev, {...product,cantidadConfirmadaPorElContadorDelProducto}]) // Guarda la sumatoria de productos 'item' y cantidades seleccionadas 'cantidadConfirmada' para cada caso y actualiza 'arrayDeObjetosDeProductosAgregados'
+        //setArrayDeObjetosDeProductosAgregados(prev => [...prev, {...product,cantidadConfirmadaPorElContadorDelProducto}]) // Guarda la sumatoria de productos 'item' y cantidades seleccionadas 'cantidadConfirmada' para cada caso y actualiza 'arrayDeObjetosDeProductosAgregados'
     
 
     const existingProduct = arrayDeObjetosDeProductosAgregados.find((item) => item.id === product.id);
@@ -51,39 +36,23 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
       setArrayDeObjetosDeProductosAgregados([...arrayDeObjetosDeProductosAgregados, { ...product, cantidadConfirmadaPorElContadorDelProducto }]);
     }
   
-
-  setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados + cantidadConfirmadaPorElContadorDelProducto) // Guarda la sumatoria de productos 'cantidadConfirmadaPorElContadorDelProducto' 
-  setMontoTotalProductosAgregados(montoTotalProductosAgregados + (cantidadConfirmadaPorElContadorDelProducto * product.precio))  //Guarda la sumatoria total de monto de productos agregados, a traves de ( 'cantidadConfirmadaPorElContadorDelProducto' * el precio de cada producto) para cada producto.
-
 }
 
   const removeFromCart = (product) => {  
   
     const cartUpdated = arrayDeObjetosDeProductosAgregados.filter((prod) => prod.id !== product.id)
     setArrayDeObjetosDeProductosAgregados(cartUpdated) //actualizo array.
-
-    setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados) // Guarda la sumatoria de productos 'cantidadConfirmadaPorElContadorDelProducto' 
-    //setMontoTotalProductosAgregados(montoTotalProductosAgregados)  //Guarda la sumatoria total de monto de productos agregados, a traves de ( 'cantidadConfirmadaPorElContadorDelProducto' * el precio de cada producto) para cada producto.
-
     }
-
-
 
   const clearCart = (product) => {  // 
 
     setArrayDeObjetosDeProductosAgregados([])
-    setCantidadTotalProductosAgregados(0)
-    setMontoTotalProductosAgregados([])
 
   }
-
-  const calculateTotal = () => {
-    const newTotal = arrayDeObjetosDeProductosAgregados.reduce(
-      (total, item) => total + item.price * item.cantidadTotalProductosAgregados,
-      0
-    );
-    setTotal(newTotal);
-  };
+    
+  
+          
+  
 
 
    const valorDelContexto = {   //variable, con funciones, a ser exportada a los C. hijos
@@ -91,16 +60,11 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
     addItem:addItem,
     clearCart:clearCart,
     removeFromCart:removeFromCart,
-    calculateTotal:calculateTotal,
-    total:total,
+
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
-    cantidadTotalProductosAgregados:cantidadTotalProductosAgregados, 
-    montoTotalProductosAgregados: montoTotalProductosAgregados,
     user : "fg"    
   }
   
-  console.log('valorDelContexto :', valorDelContexto)
-
     return (  
                                             //  5) Se usa el 'Provider' dentro del return. Le provee a la parte de la aplicacion que englobe el CustomProvider, en este caso los children, del valor del Contexto, a traves de 'value'.
 

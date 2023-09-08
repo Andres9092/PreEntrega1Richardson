@@ -13,9 +13,18 @@ function Cart() {
 
   console.log('valorDelContexto :', valorDelContexto)
   console.log('valorDelContexto.arrayDeObjetosDeProductosAgregados :', valorDelContexto.arrayDeObjetosDeProductosAgregados.length)
+  console.log('valorDelContexto.calculateTotal :', valorDelContexto.calculateTotal)
 
 
+  //creo variable local con data imoportada del CustomProvider. -> const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
   
+  const MontoTotal = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
+    (total, item) => total + item.precio * item.cantidadConfirmadaPorElContadorDelProducto, 0)
+
+  const unidadesTotal = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
+      (total, item) => total + item.cantidadConfirmadaPorElContadorDelProducto, 0)
+  
+
   if (valorDelContexto.arrayDeObjetosDeProductosAgregados.length === 0){
     return (
 
@@ -58,9 +67,9 @@ return (
         <div className='divDataCompra'>
           
           <p className ="unidadesTotalPhone">- Items: {valorDelContexto.arrayDeObjetosDeProductosAgregados.length}</p>
-          <p className ="unidadesTotalPhone">- Total Unidades: {valorDelContexto.cantidadTotalProductosAgregados}</p>
+          <p className ="unidadesTotalPhone">- Total Unidades: {unidadesTotal}</p>
         </div>
-        <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.calculateTotal()}</p>
+        <p className ="montoTotalPhone">Monto Total: Ar$ {MontoTotal}</p>
         {/* <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p> */}
       </div>
 
