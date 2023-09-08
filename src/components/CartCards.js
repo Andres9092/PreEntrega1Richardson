@@ -9,8 +9,6 @@ function CartCards() {
   
   const valorDelContexto = useContext(contexto)  
 
-  const {removeFromCart} = useContext(contexto) 
-
   
 return (
   
@@ -57,7 +55,7 @@ return (
                              </div>    
 
                               <div className="divRemoveButton">
-                                <button className="removeProduct-button" onClick={() => valorDelContexto.removeFromCart([i])}><i class="fa-solid fa-circle-xmark"></i></button> 
+                                <button className="removeProduct-button" onClick={() => valorDelContexto.removeFromCart(item)}><i class="fa-solid fa-circle-xmark"></i></button> 
                              </div>                                   
              
                          </div>

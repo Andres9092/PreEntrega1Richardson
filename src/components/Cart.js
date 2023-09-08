@@ -44,7 +44,7 @@ return (
     <div className="cart-item">
 
       <div className="divBotonVolverPhone">
-          <Link to ="/"> <Button className="botonVolverPhone"><i class="fa-solid fa-arrow-rotate-left"></i> Productos</Button></Link>
+          <Link to ="/"> <Button className="botonVolverPhone"><i class="fa-solid fa-arrow-rotate-left"></i> Seguir comprando</Button></Link>
       </div>
 
       <CartCards/>
@@ -60,8 +60,8 @@ return (
           <p className ="unidadesTotalPhone">- Items: {valorDelContexto.arrayDeObjetosDeProductosAgregados.length}</p>
           <p className ="unidadesTotalPhone">- Total Unidades: {valorDelContexto.cantidadTotalProductosAgregados}</p>
         </div>
-        <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p>
-
+        <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.calculateTotal()}</p>
+        {/* <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p> */}
       </div>
 
       <div className="divCheckOut-remove">

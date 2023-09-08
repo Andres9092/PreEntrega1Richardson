@@ -24,6 +24,8 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
   const [montoTotalProductosAgregados, setMontoTotalProductosAgregados] = useState(0)
   console.log("montoTotalProductosAgregados :", montoTotalProductosAgregados)
 
+  const [total, setTotal] = useState(0);
+
 
 
                     //product -> objeto producto con su data.
@@ -55,15 +57,13 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
 
 }
 
-
   const removeFromCart = (product) => {  
   
     const cartUpdated = arrayDeObjetosDeProductosAgregados.filter((prod) => prod.id !== product.id)
-    setArrayDeObjetosDeProductosAgregados(cartUpdated) 
-    console.log('ObjetosDeProductosAgregados luego de borrado :',arrayDeObjetosDeProductosAgregados )
- 
-    //setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados - cantidadConfirmadaPorElContadorDelProducto)
-    //setMontoTotalProductosAgregados(montoTotalProductosAgregados - (cantidadConfirmadaPorElContadorDelProducto * product.precio))  //Guarda la sumatoria total de monto de productos agregados, a traves de ( 'cantidadConfirmadaPorElContadorDelProducto' * el precio de cada producto) para cada producto.
+    setArrayDeObjetosDeProductosAgregados(cartUpdated) //actualizo array.
+
+    setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados) // Guarda la sumatoria de productos 'cantidadConfirmadaPorElContadorDelProducto' 
+    //setMontoTotalProductosAgregados(montoTotalProductosAgregados)  //Guarda la sumatoria total de monto de productos agregados, a traves de ( 'cantidadConfirmadaPorElContadorDelProducto' * el precio de cada producto) para cada producto.
 
     }
 
@@ -77,12 +77,22 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
 
   }
 
+  const calculateTotal = () => {
+    const newTotal = arrayDeObjetosDeProductosAgregados.reduce(
+      (total, item) => total + item.price * item.cantidadTotalProductosAgregados,
+      0
+    );
+    setTotal(newTotal);
+  };
+
 
    const valorDelContexto = {   //variable, con funciones, a ser exportada a los C. hijos
     
     addItem:addItem,
     clearCart:clearCart,
     removeFromCart:removeFromCart,
+    calculateTotal:calculateTotal,
+    total:total,
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
     cantidadTotalProductosAgregados:cantidadTotalProductosAgregados, 
     montoTotalProductosAgregados: montoTotalProductosAgregados,
