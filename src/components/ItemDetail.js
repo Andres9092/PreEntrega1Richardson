@@ -58,17 +58,17 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
           },1000)
     
   }, []);
-                                                  // Contador devuelve a C ItemDetail -> nombrePropHandleCallback(contador) que es (cantidadConfirmadaPorElContador)
-      const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
+                                                  // Contador devuelve a C ItemDetail -> nombrePropHandleCallback(contador) que es (cantidadDeCadaProductoConfirmadaPorElContador)
+      const handleCallback = (cantidadDeCadaProductoConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
 
-        setCantidad(cantidadConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
-        console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContador )
+        setCantidad(cantidadDeCadaProductoConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
+        console.log("La cantidad confirmada por el contador es: ", cantidadDeCadaProductoConfirmadaPorElContador )
         
         
        console.log("product: ", product )
        console.log("product.precio: ", product.precio)
       
-       addItem(product,cantidadConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadConfirmadaPorElContador'
+       addItem(product,cantidadDeCadaProductoConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadDeCadaProductoConfirmadaPorElContador'
       }
  
     return (  
@@ -82,7 +82,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
 
             <div className = "nombreVolverPhone">        
                     
-                <h1 className="nombreProdPhone">{product.nombre}</h1>
+                <h1 className="nombreProdPhone">-{product.nombre}-</h1>
                 <Link to ="/"> <Button className="botonVolverPhone"><i class="fa-solid fa-arrow-rotate-left"></i> Productos</Button></Link>
                 
             </div>
@@ -166,7 +166,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
                          
                         <div className = "divDetailProdDesktop">  
 
-                            <h1 className="nombreProdDesktop">{product.nombre}</h1>       
+                            <h1 className="nombreProdDesktop">-{product.nombre}-</h1>       
                             
 
                             <div className = "divPrecioDektop"> 

@@ -12,11 +12,11 @@ function Cart() {
 
 
   console.log('valorDelContexto :', valorDelContexto)
-  console.log('valorDelContexto.cantidadItemsDistintosAgregados :', valorDelContexto.cantidadItemsDistintosAgregados.length)
+  console.log('valorDelContexto.arrayDeObjetosDeProductosAgregados :', valorDelContexto.arrayDeObjetosDeProductosAgregados.length)
 
 
   
-  if (valorDelContexto.cantidadItemsDistintosAgregados.length === 0){
+  if (valorDelContexto.arrayDeObjetosDeProductosAgregados.length === 0){
     return (
 
       <div className="divCarritoVacio">
@@ -50,14 +50,14 @@ return (
       <CartCards/>
 
       <div className='divTotalesPhone'>
-            {/* <p>Cantidad de items distintos agregados: {valorDelContexto.cantidadItemsDistintosAgregados.length}</p>
+            {/* <p>Cantidad de items distintos agregados: {valorDelContexto.arrayDeObjetosDeProductosAgregados.length}</p>
             <p>Cantidad total de unidades agregadas: {valorDelContexto.cantidadTotalProductosAgregados}</p> */}
         <br></br>
         <br></br>
         <h2 className='tituloOrden'>Su orden:</h2>
         <div className='divDataCompra'>
           
-          <p className ="unidadesTotalPhone">- Items: {valorDelContexto.cantidadItemsDistintosAgregados.length}</p>
+          <p className ="unidadesTotalPhone">- Items: {valorDelContexto.arrayDeObjetosDeProductosAgregados.length}</p>
           <p className ="unidadesTotalPhone">- Total Unidades: {valorDelContexto.cantidadTotalProductosAgregados}</p>
         </div>
         <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p>
