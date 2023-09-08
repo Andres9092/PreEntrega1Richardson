@@ -226,7 +226,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
                 </div>
 
                 <div>
-                    <Link to ="/"> <Button className="botonVolverDesktop"><i class="fa-solid fa-arrow-rotate-left"></i> productos</Button></Link>
+                    <Link to ="/"> <Button className="botonVolverDesktop"><i class="fa-solid fa-arrow-rotate-left"></i> Seguir comprando</Button></Link>
                 </div>
 
                 

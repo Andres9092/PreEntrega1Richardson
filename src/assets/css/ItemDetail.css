@@ -238,13 +238,15 @@
     margin-bottom: 50px;
 }
 .botonVolverDesktop{
-    width: 120px;
-    font-size: 14px;
+    
+    font-size: 12px;
     background-color: rgb(198, 164, 136);
     border: 1px solid;
     padding: 2px 2px 2px 2px;
     border-radius: 3px;
     margin: 10px 0px 10px 0px;
+    width: 140px;
+    height: 30px;
 }
 
 
