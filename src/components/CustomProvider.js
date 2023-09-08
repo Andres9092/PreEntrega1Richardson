@@ -25,11 +25,10 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
 
   const addItem = (product,cantidadConfirmadaPorElContador) => {  // Funcion 'addItem' a pasarle a C hijos children que engloba el Provider, para que al interacturar con los hijos, en este caso con ItemDetail, la cual le devuelve 2 valores a la funcion (product,cantidadConfirmadaPorElContador) y se actualice el valor de 'cantidadCart'
 
-    setCantidadItemsDistintosAgregados(prev => [...prev, {...product,cantidadConfirmadaPorElContador}]) // Guarda la sumatoria de productos 'item' y cantidades seleccionadas 'cantidadConfirmada' para cada caso y actualiza 'cantidadCart'
     
-    setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados + cantidadConfirmadaPorElContador)
-  
-    setMontoTotalProductosAgregados(montoTotalProductosAgregados + (cantidadConfirmadaPorElContador * product.precio))
+    setCantidadItemsDistintosAgregados(prev => [...prev, {...product,cantidadConfirmadaPorElContador}]) // Guarda la sumatoria de productos 'item' y cantidades seleccionadas 'cantidadConfirmada' para cada caso y actualiza 'cantidadItemsDistintosAgregados'
+    setCantidadTotalProductosAgregados(cantidadTotalProductosAgregados + cantidadConfirmadaPorElContador) // Guarda la sumatoria de productos 'cantidadConfirmadaPorElContador' 
+    setMontoTotalProductosAgregados(montoTotalProductosAgregados + (cantidadConfirmadaPorElContador * product.precio))  //Guarda la sumatoria total de monto de productos agregados, a traves de ( 'cantidadConfirmadaPorElContador' * el precio de cada producto) para cada producto.
 
   }
 
@@ -43,6 +42,7 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
     //setMontoTotalProductosAgregados([])
 
     }
+
 
 
   const clearCart = (product) => {  // 

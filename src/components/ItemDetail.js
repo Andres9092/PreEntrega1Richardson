@@ -28,8 +28,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
       colors: ['#c99d0b', '#cfab35']}
   
     const {addItem} = useContext(contexto)    //StateUpLifting -> //Se importa la funcion global exportada 'addItem' del contexto creado en el Compon 'CustomProvider'
-
-    console.log('addItem :',addItem)
+    
       
     useEffect( () => {
       
@@ -59,17 +58,13 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
           },1000)
     
   }, []);
-                                                  // Contador devuelve a C ItemDetail -> nombrePropHandleCallback(contador) 
+                                                  // Contador devuelve a C ItemDetail -> nombrePropHandleCallback(contador) que es (cantidadConfirmadaPorElContador)
       const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
 
         setCantidad(cantidadConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
         console.log("La cantidad confirmada por el contador es: ", cantidadConfirmadaPorElContador )
         
         
-      //   const item ={                             //creo item con data del producto.
-      //     product
-          
-      //  }
        console.log("product: ", product )
        console.log("product.precio: ", product.precio)
       

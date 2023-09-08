@@ -8,8 +8,8 @@ import { Button } from 'react-bootstrap'
 function CartCards() {
   
   const valorDelContexto = useContext(contexto)  
-
-
+  const cantUnitaria = valorDelContexto.cantidadItemsDistintosAgregados.cantidadConfirmadaPorElContador
+  console.log('cantUnitaria :',cantUnitaria)
 
   // const handleCallback = (cantidadConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
 
@@ -53,7 +53,8 @@ return (
 
                              <div className="precioTamanio">
                                      <p className="titulosColumnas">Cantidad</p>
-                                     <p className="dataColumnas"> {valorDelContexto.cantidadTotalProductosAgregados}</p>
+                                     <p className="dataColumnas"> {valorDelContexto.cantidadItemsDistintosAgregados[i].cantidadConfirmadaPorElContador}</p>
+                                  
                                      
                              </div>  
 
@@ -61,7 +62,7 @@ return (
 
                              <div className="precioTamanio">
                                      <p className="titulosColumnas">Subtotal</p>
-                                     <p className="dataColumnas">$ {item.tamanio}</p>
+                                     <p className="dataColumnas">$ {item.precio * valorDelContexto.cantidadItemsDistintosAgregados[i].cantidadConfirmadaPorElContador}</p>
                              </div>    
 
                               <div className="divRemoveButton">
