@@ -43,8 +43,7 @@ return (
                                      <p className="titulosColumnas">Cantidad</p>    
                                                                                       {/*arrayDeObjetosDeProductosAgregados -> [{…}, {…}] -> por eso como se mapea cada objeto para ir imprimiendo cada Card, se barre cada posicion 'i' -> arrayDeObjetosDeProductosAgregados[i]*/} 
                                      <p className="dataColumnas"> {valorDelContexto.arrayDeObjetosDeProductosAgregados[i].cantidadConfirmadaPorElContadorDelProducto}</p>
-                                  
-                                     
+                                   
                              </div>  
 
                              
