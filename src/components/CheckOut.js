@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../CartContext";
+import {contexto} from './CustomProvider';
 import {serverTimestamp,addDoc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
 import { db } from "../db/firebaseConfig";   // serverTimestamp -> da objeto fecha de la maquina del servidor al momento de utilizarlo. Necesario para guardar fecha y hora de la compra.
 import CheckoutForm from "./CheckoutForm";
@@ -7,39 +7,50 @@ import { BarLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 
 const Checkout = () => {
+
+  const [idOrden, setIdOrden] = useState("");
   const [loading, setLoading] = useState(false);
-  const [orderId, setOrderId] = useState("");
   const [error, setError] = useState(null);
 
-  //const { cart, total, clearCart } = useContext(CartContext);
+  const productosOriginalesBaseDatos = collection(db, "products")  //traigo los documentos 'productos' existentes en la collection 'products' de la BD.
 
   const valorDelContexto = useContext(contexto) 
 
-  const createOrder = async ({ name, phone, email }) => {
-    setLoading(true);
+  const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> userData y tiene esos valores.
+    setLoading(true); //activo el 'loader'.
 
+    
+    // try {
+    //   tryCode - Code block to run
+    // }
+    // catch(err) {
+    //   catchCode - Code block to handle errors
+    // }
+    // finally {
+    //   finallyCode - Code block to be executed regardless of the try result
+    // }
+    
     try {
-      const objOrder = {
-        buyer: {
-          name,
-          phone,
+      const ordenCreada = {  //creo objeto con data.
+        cliente: {          // data traida por props del C. hijo formulario.
+          nombre,
+          telefono,
           email,
         },
-        items: cart,
-        total: total,
-        data: serverTimestamp.fromDate(new Date()),
+        itemsAgregados: valorDelContexto.arrayDeObjetosDeProductosAgregados,
+        //montototal: montototal,
+        data: serverTimestamp.fromDate(new Date()),  //crea fecha y hora por servidor, de la orden creada.
       };
 
+                                    //writeBatch(db) -> If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of set(), update(), or delete() operations.
       const batch = writeBatch(db);
 
       const outOfStock = [];
 
-      const ids = cart.map((prod) => prod.id);
-
-      const productsRef = collection(db, "products");
+      const productosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   
 
       const productsAddedFromFirestore = await getDocs(
-        query(productsRef, where(documentId(), "in", ids))
+        query(productosOriginalesBaseDatos, where(documentId(), "in", productosAgregadosAlCarrito))
       );
 
       const { docs } = productsAddedFromFirestore;
@@ -63,26 +74,34 @@ const Checkout = () => {
 
         const orderRef = collection(db, "orders");
 
-        const orderAdded = await addDoc(orderRef, objOrder);
+        const orderAdded = await addDoc(orderRef, ordenCreada);
 
         setOrderId(orderAdded.id);
         clearCart();
+
       } else {
         setError("Some products are out of stock.");
       }
-    } catch (error) {
-      setError("An error occurred while processing your order.");
+
+    } 
+    
+    catch (error) {
+      setError("An error occurred while processing your order."); //setea el valor de 'error'
       console.error(error);
-    } finally {
-      setLoading(false);
+
+    }
+    
+    finally {  
+      setLoading(false);  //corta el 'loader' mas all del resultado del 'try'.
     }
   };
 
-  if (loading) {
+
+  if (loading) {  // Si loading:true -> seteo el 'loader' con sus propiedades directamente, fuera del return. En otros C, lo incorporo dentro del return como <BarsLoader {...loaderProps} />
     return (
       <>
         <h1 className="text-center py-4 text-5xl bg-[#F3F4F6]">
-          PROCESSING ORDER
+        Por favor, espere. Su orden esta siendo procesada en estos momentos.
         </h1>
         <div className="my-5 flex justify-center">
           <BarLoader color="#111312" height={7} width={100} className="my-5" />
@@ -92,28 +111,28 @@ const Checkout = () => {
   }
 
   if (orderId) {
-    return (
+    return (   // el return devuelve info directamente.
       <>
-        <h1 className="text-center py-14 text-5xl bg-[#F3F4F6]">
-          Your Order Id is: {orderId}
+        <p className="fraseCompra">Gracias por confiar en nosotros!</p>
+        <h1 className="fraseNroCompra">
+         Su numero de compra es: {orderId}
         </h1>
-        <p className="text-center py-28 text-2xl">Thanks for trusting us!</p>
-        <Link to="/" className="flex justify-center">
-          <button className="rounded-full border border-[#E5E7EB] py-5 px-5 my-10 text-base font-medium text-body-color transition hover:border-white hover:bg-black hover:text-white uppercase">
-            BUY AGAIN
-          </button>
-        </Link>
+        
+        <Link to="/" className="linkALandingProductos"><button className="botonSeguirComprando">
+            Seguir comprando </button></Link>
       </>
     );
   }
 
   return (
     <>
-      <h1 className="text-center py-14 mb-2 text-5xl bg-[#F3F4F6]">Checkout</h1>
+      <h1 className="text-center py-14 mb-2 text-5xl bg-[#F3F4F6]">CheckOut</h1>
       {error && (
         <p className="text-center text-red-500 text-lg mt-4">{error}</p>
       )}
-      <CheckoutForm onConfirm={createOrder} />
+
+            {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckoutForm' */}
+      <CheckoutForm onConfirm={createOrder} />  
     </>
   );
 };
