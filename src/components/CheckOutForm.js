@@ -53,11 +53,11 @@ function CheckOutForm({onConfirm}) {
         telefono,
         email,
       };
-      console.log("userData:", userData)
+      console.log("userDataCreado:", userData)
       
-      const handleConfirm = () => {
-        onConfirm(userData); //devuelve al C. padre la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
-      }
+      onConfirm(userData); //devuelve al C. padre la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
+      
+      
     } else {
       setErrors(validationErrors); //re setea el valor de la constante 'errors' que inicialmente esta vacia y dispara los alerts cargados en los inputs del formu -> {errors.nombre && (<p className="textoError">{errors.nombre}</p>)}
     }

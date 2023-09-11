@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import {contexto} from './CustomProvider';
-import {serverTimestamp,addDoc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
+import {Timestamp,addDoc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
 import {db} from '../firebase';   // serverTimestamp -> da objeto fecha de la maquina del servidor al momento de utilizarlo. Necesario para guardar fecha y hora de la compra.
 import CheckOutForm from "./CheckOutForm";
 //import { BarLoader } from "react-spinners";
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import '../assets/css/CheckOut.css';
 
-
+//npm i --save @google-cloud/firestore
 function CheckOut() {
 
   const [idOrden, setIdOrden] = useState("");
@@ -18,11 +18,11 @@ function CheckOut() {
   const valorDelContexto = useContext(contexto) 
 
   const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos los documentos 'productos' existentes en la collection 'products' de la BD.
+  console.log("productosOriginalesBaseDatos:", productosOriginalesBaseDatos)
 
   const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> userData y tiene esos valores.
     setLoading(true); //activo el 'loader'.
 
-     console.log("createOrder: ", createOrder )
     // try {
     //   tryCode - Code block to run
     // }
@@ -42,20 +42,20 @@ function CheckOut() {
         },
         itemsAgregados: valorDelContexto.arrayDeObjetosDeProductosAgregados,
         //montototal: montototal,
-        data: serverTimestamp.fromDate(new Date()),  //crea fecha y hora por servidor, de la orden creada.
+        data: Timestamp.fromDate(new Date()),  //crea fecha y hora por servidor, de la orden creada.
       };
-      console.log("ordenCreada:", ordenCreada)
+      console.log("ordenCreadaEnCheckOut:", ordenCreada)
 
                                     //writeBatch(db) -> If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of set(), update(), or delete() operations.
       const batch = writeBatch(db);
 
       const productosFueraDeStock = [];
 
-      const productosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrit.
-      console.log("productosAgregadosAlCarrito:", productosAgregadosAlCarrito)
+      const idProductosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrit.
+      console.log("idProductosAgregadosAlCarrito:", idProductosAgregadosAlCarrito)
 
       const productosAgregadosAlCarritoCoincidentesEnBD = await getDocs(     //obtengo productos de la BD original que coinciden con los agregados al carrito.
-        query(productosOriginalesBaseDatos, where(documentId(), "in", productosAgregadosAlCarrito))
+        query(productosOriginalesBaseDatos, where(documentId(), "in", idProductosAgregadosAlCarrito))
       );
 
       console.log("productosAgregadosAlCarritoCoincidentesEnBD:", productosAgregadosAlCarritoCoincidentesEnBD)
@@ -64,7 +64,7 @@ function CheckOut() {
 
 //Barro los productos productos Agregados Al Carrito Coincidentes En BD y para cada uno:
       
-docs.forEach((doc) => {  ///De cada producto obtengo la 'data()' y el 'stock'
+      docs.forEach((doc) => {  ///De cada producto obtengo la 'data()' y el 'stock'
         const dataDelDocEnDB = doc.data();
         const stockProductoEnDB = dataDelDocEnDB.stock;
 
