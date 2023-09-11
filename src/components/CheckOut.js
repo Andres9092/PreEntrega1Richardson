@@ -5,17 +5,19 @@ import {db} from '../firebase';   // serverTimestamp -> da objeto fecha de la ma
 import CheckOutForm from "./CheckOutForm";
 //import { BarLoader } from "react-spinners";
 import { Link } from "react-router-dom";
-import {BarLoader} from 'react-loaders-kit/lib/bars/BarsLoader'
+import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
+import '../assets/css/CheckOut.css';
+
 
 function CheckOut() {
 
   const [idOrden, setIdOrden] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos los documentos 'productos' existentes en la collection 'products' de la BD.
+  const [error, setError] = useState("");
 
   const valorDelContexto = useContext(contexto) 
+
+  const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos los documentos 'productos' existentes en la collection 'products' de la BD.
 
   const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> userData y tiene esos valores.
     setLoading(true); //activo el 'loader'.
@@ -114,7 +116,7 @@ docs.forEach((doc) => {  ///De cada producto obtengo la 'data()' y el 'stock'
         Por favor, espere. Su orden esta siendo procesada en estos momentos.
         </h1>
         <div className="my-5 flex justify-center">
-          <BarLoader color="#111312" height={7} width={100} className="my-5" />
+          <BarsLoader color="#111312" height={7} width={100} className="my-5" />
         </div>
       </>
     );
@@ -135,12 +137,14 @@ docs.forEach((doc) => {  ///De cada producto obtengo la 'data()' y el 'stock'
   }
 
   return (
-    <div>
-      <h1 className="text-center py-14 mb-2 text-5xl bg-[#F3F4F6]">CheckOut</h1>
+    <div className="divPaginaCheckOut">
+
+      <h1 className="tituloCheckOut">CheckOut</h1>
       {error && (<p className="text-center text-red-500 text-lg mt-4">{error}</p>)}
 
-            {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckoutForm' */}
+            {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckOutForm' */}
       <CheckOutForm onConfirm = {createOrder} />  
+
     </div>
   );
 };

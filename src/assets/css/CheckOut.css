@@ -1,0 +1,16 @@
+
+.divPaginaCheckOut{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloCheckOut{
+
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-decoration: underline;
+    color: #c99d0b;
+
+}

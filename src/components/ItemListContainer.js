@@ -72,7 +72,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
   const handleAddProduct = () => {     //funcion para agregar producto nuevo si se esta logueado como User.
 
     setProduct([                       // ...products -> trae el array de objetos de los productos incial y le agrega al final el producto nuevo.
-      ... products, 
+      ...products, 
 
         {id: products.length + 1,
         nombre: 'Nuevo prod agregado',
