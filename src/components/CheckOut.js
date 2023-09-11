@@ -12,7 +12,7 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const productosOriginalesBaseDatos = collection(db, "products")  //traigo los documentos 'productos' existentes en la collection 'products' de la BD.
+  const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos los documentos 'productos' existentes en la collection 'products' de la BD.
 
   const valorDelContexto = useContext(contexto) 
 
@@ -45,39 +45,47 @@ const Checkout = () => {
                                     //writeBatch(db) -> If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of set(), update(), or delete() operations.
       const batch = writeBatch(db);
 
-      const outOfStock = [];
+      const productosFueraDeStock = [];
 
-      const productosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   
+      const productosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrit.
+      console.log("productosAgregadosAlCarrito:", productosAgregadosAlCarrito)
 
-      const productsAddedFromFirestore = await getDocs(
+      const productosAgregadosAlCarritoCoincidentesEnBD = await getDocs(     //obtengo productos de la BD original que coinciden con los agregados al carrito.
         query(productosOriginalesBaseDatos, where(documentId(), "in", productosAgregadosAlCarrito))
       );
 
-      const { docs } = productsAddedFromFirestore;
+      console.log("productosAgregadosAlCarritoCoincidentesEnBD:", productosAgregadosAlCarritoCoincidentesEnBD)
 
-      docs.forEach((doc) => {
-        const dataDoc = doc.data();
-        const stockDb = dataDoc.stock;
+      const { docs } = productosAgregadosAlCarritoCoincidentesEnBD;
 
-        const productAddedToCart = cart.find((prod) => prod.id === doc.id);
-        const prodQuantity = productAddedToCart?.quantity;
+//Barro los productos productos Agregados Al Carrito Coincidentes En BD y para cada uno:
+      
+docs.forEach((doc) => {  ///De cada producto obtengo la 'data()' y el 'stock'
+        const dataDelDocEnDB = doc.data();
+        const stockProductoEnDB = dataDelDocEnDB.stock;
 
-        if (stockDb >= prodQuantity) {
-          batch.update(doc.ref, { stock: stockDb - prodQuantity });
+        const productoAgregadoACarritoExistenteEnDB = valorDelContexto.arrayDeObjetosDeProductosAgregados.find((prod) => prod.id === doc.id);
+        console.log("productoAgregadoACarritoExistenteEnDB:", productoAgregadoACarritoExistenteEnDB)
+       
+        const prodQuantity = productoAgregadoACarritoExistenteEnDB?.cantidadConfirmadaPorElContadorDelProducto;
+        console.log("prodQuantity:", prodQuantity) // la cantidad seleccionada por el usuario del producto agregado y existente en la DB.
+
+        if (stockProductoEnDB >= prodQuantity) {    // si el stock de un producto de la DB coincidente con el agregado por el cliente al carrito, es >= a la cantidad seleccionada por el usuario del producto agregado.
+          batch.update(doc.ref, { stock: stockProductoEnDB - prodQuantity });
         } else {
-          outOfStock.push({ id: doc.id, ...dataDoc });
+          productosFueraDeStock.push({ id: doc.id, ...dataDelDocEnDB });
         }
       });
 
-      if (outOfStock.length === 0) {
+      if (productosFueraDeStock.length === 0) {
         await batch.commit();
 
-        const orderRef = collection(db, "orders");
+        const coleccionDeOrdenesDeVentasEnDB = collection(db, "ordenes_ventas"); //creo coleccion en DB 'ordenes_ventas'
 
-        const orderAdded = await addDoc(orderRef, ordenCreada);
+        const ordenCreadaEnDB = await addDoc(coleccionDeOrdenesDeVentasEnDB, ordenCreada); //agrego documento con data de 'ordenCreada' a la coleccion creada 'coleccionDeOrdenesDeVentasEnDB'
 
-        setOrderId(orderAdded.id);
-        clearCart();
+        setIdOrden(ordenCreadaEnDB.id);
+        clearvalorDelContexto.arrayDeObjetosDeProductosAgregados();
 
       } else {
         setError("Some products are out of stock.");

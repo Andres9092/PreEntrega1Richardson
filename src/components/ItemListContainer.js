@@ -47,7 +47,7 @@ function ItemListContainer(props)  {    {/*Las Props vienen definidas por el Com
             const aux = resultado.docs.map((doc) => {
 
               const producto = doc.data()  
-              producto.id = doc.id     // agrego key 'id' con value 'doc.id'ca cada objet -> es lo mismo que: {id: doc.id, ...doc.data()}
+              producto.id = doc.id     // agrego key 'id' con value 'doc.id' a cada objeto -> es lo mismo que: {id: doc.id, ...doc.data()}
               console.log('producto :',producto)
               return producto
             })
