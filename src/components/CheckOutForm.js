@@ -1,6 +1,9 @@
 import { useState } from "react";
+import React from 'react'
+import '../assets/css/CheckOutForm.css';
 
-const CheckoutForm = ({ onConfirm }) => {  //recive prop 'onConfirm' del C. padre CheckOut.
+
+function CheckOutForm(onConfirm) {  //recive prop 'onConfirm' del C. padre CheckOut.
 
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -29,7 +32,9 @@ const CheckoutForm = ({ onConfirm }) => {  //recive prop 'onConfirm' del C. padr
 
 
     return errors;  // devolucion de la funcion: todo el objeto 'errors' completo con los errores que se hayan detectado.
-  };
+  }
+}
+
 
     const handleConfirm = (event) => {   // event.preventDefault()  -> previene del comportamiento por default, es decir de enviar la informacion al clickear 'submit'
     event.preventDefault();
@@ -37,16 +42,18 @@ const CheckoutForm = ({ onConfirm }) => {  //recive prop 'onConfirm' del C. padr
     const validationErrors = validateForm();  //Guardo la cte de la funcion creada que devuelve el objeto 'errors'
     console.log('validationErrors :', validationErrors)
 
-    if (Object.keys(validationErrors).length === 0) {  //Analiza la cte creada y revisa que no exista 'errors' -> busca que no existan 'keys' en el objeto 'errors', es decir que el objeto: { }
+    if (Object.keys(validationErrors || {}).length === 0) {  //Analiza la cte creada y revisa que no exista 'errors' -> busca que no existan 'keys' en el objeto 'errors', es decir que el objeto: { }
       
       const userData = { // creo cte de tipo 'objeto' con la data ingresada por formulario
         nombre,
         telefono,
         email,
       };
-
-      onConfirm(userData); //devuelve al C. padre la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
-
+      console.log("userData:", userData)
+      
+      const handleConfirm = () => {
+        onConfirm(userData); //devuelve al C. padre la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
+      }
     } else {
       setErrors(validationErrors); //re setea el valor de la constante 'errors' que inicialmente esta vacia y dispara los alerts cargados en los inputs del formu -> {errors.nombre && (<p className="textoError">{errors.nombre}</p>)}
     }
@@ -76,7 +83,7 @@ const CheckoutForm = ({ onConfirm }) => {  //recive prop 'onConfirm' del C. padr
             //onClick={handleConfirm}  -> al evento 'click' llama a la funcion declarada 'handleConfirm'
           
     
-    <form>
+    <form className="formulario">
       
       <div className="divInputs-Labels">
         <label className="labelValues">Nombre</label>  
@@ -104,6 +111,6 @@ const CheckoutForm = ({ onConfirm }) => {  //recive prop 'onConfirm' del C. padr
 
     </form>
   );
-};
+
 }
-export default CheckoutForm;
+export default CheckOutForm;

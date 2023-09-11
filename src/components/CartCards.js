@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {useContext} from 'react';
 import {contexto} from './CustomProvider';
 import '../assets/css/CartCards.css';
-import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 
 function CartCards() {

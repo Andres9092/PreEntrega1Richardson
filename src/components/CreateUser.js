@@ -4,8 +4,6 @@ import '../assets/css/CreateUser.css';
 import {Link} from 'react-router-dom';
 
 
-
-
 const CreateUser = () => {
 
   const [username, setUsername] = useState('');

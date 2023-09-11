@@ -1,0 +1,13 @@
+.formulario{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.labelValues{
+    font-size: 14px;
+    color: black;
+}
