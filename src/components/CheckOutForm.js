@@ -25,28 +25,18 @@ function CheckOutForm({onConfirm}) {
     // }
 
 
-    if (!nombre.trim() ) {  //si no existe el value del nombre en el formulario (al valor le paso el metodo .trim() para remover los espacios ingresados posibles en blanco.)
-      errors.nombre = "El campo 'Nombre' es obligatorio";  // agrego 'key' -> 'nombre' con value
+    if (nombre.trim().length < 8 ) {  //si no existe el value del nombre en el formulario (al valor le paso el metodo .trim() para remover los espacios ingresados posibles en blanco.)
+    errors.nombre = "El campo 'Nombre' es obligatorio y debe tener al menos 8 caracteres.";  // agrego 'key' -> 'nombre' con value
     }
-    
-    if (nombre.trim().length < 15 ) {  //si no existe el value del nombre en el formulario (al valor le paso el metodo .trim() para remover los espacios ingresados posibles en blanco.)
-    errors.nombre = "El campo 'Nombre' debe tener al menos 10 caracteres.";  // agrego 'key' -> 'nombre' con value
-      }
+
     if (!telefono.trim()) {
       errors.telefono = "El campo 'Telefono' es obligatorio.";
     }
 
-    if (!email.trim()) {
-      errors.email = "El campo 'E-mail' es obligatorio.";
-    }
-
     if (!email.includes("@")) {
-      errors.email = "El campo 'E-mail' debe contener el caracter '@'."
+      errors.email = "El campo 'E-mail' es obligatorio es y debe contener el caracter '@'."
     }
-
-
-    return errors;  // devolucion de la funcion: todo el objeto 'errors' completo con los errores que se hayan detectado.
-  
+    return errors;  // devolucion de la funcion: todo el objeto 'errors' completo con los errores que se hayan detectado. 
 }
 
 
