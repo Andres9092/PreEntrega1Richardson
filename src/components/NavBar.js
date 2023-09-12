@@ -8,6 +8,8 @@ import LogoWapp from './LogoWapp';
 import LogoFavoritos from './LogoFavoritos';
 import Burger from './Burger';
 import {Link} from 'react-router-dom';
+import BarraBuscadora from './BarraBuscadora';
+
 
 
 
@@ -30,7 +32,10 @@ function NavBar() {
                 </div>
 
                 <div>
-                    <div className="barraBuscadora">
+
+                    <BarraBuscadora onSearch={handleSearch} />
+                    
+                    {/* <div className="barraBuscadora">
                             
 
                             <input type="text" name="buscar" className="textoBuscarEnBarra" placeholder="Buscar..."/>
@@ -38,9 +43,8 @@ function NavBar() {
                             <button className="botonSearch-Desktop" type="submit"><i className="fa-solid fa-magnifying-glass botonSearchDektop"></i></button>
 
 
-                    </div>
+                    </div> */}
 
-                
                 </div>
 
                     

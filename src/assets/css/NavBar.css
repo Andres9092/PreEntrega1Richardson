@@ -235,9 +235,6 @@ body{
     text-decoration: none;
 }
 
-.barraBuscadora{
-    display: none;
-}
 
 .linksPhone li {
     
@@ -385,55 +382,8 @@ body{
 }
 
 
-.barraBuscadora{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: white;
-    border-radius: 8px;
-    border: solid 1px white;
-    align-items: center;
-    justify-content: space-between;
-    width: 30vw;
-    height: 30px;
-    }
 
 
-.textoBuscarEnBarra {
-        color: rgb(185, 123, 15);
-        
-        font-size: 13px;
-        padding-left: 15px;
-        height: 20px;
-        border-radius: 8px;
-        width: 60%;
-        border: solid 0px white;
-        outline: none;
-        font-weight: 800;
-    
-            /*para sacar el borde negro del input al darle un click */
-    }
-
-.textoBuscarEnBarra::placeholder {
-    color:rgb(181, 164, 116);
-}
-    
-
-.botonSearch-Desktop{
-
-    background-color: white;
-    border: none;
-    position: relative;
-    right: 3px;
-    padding-right: 10px;
-  
-}
-
-
-.botonSearch-Desktop i{
-    color: #cfab35;
-    font-weight: 600;
-}
 
  
  }
