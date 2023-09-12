@@ -87,10 +87,14 @@ function ItemFiltrado() {
         <BarsLoader {...loaderProps} />
 
         <div className = "divTituloProductoFiltradoBarra">
-                <h4 className="tituloProdFiltrado">Productos filtrados</h4>
+          
+          <h4 className="tituloProdFiltrado">Productos filtrados</h4>
                 
         </div>
             
+        <div className='divBotonVolver'>
+          <Link to ="/"> <Button className="botonVolver"><i class="fa-solid fa-arrow-rotate-left"></i> Productos</Button></Link>
+        </div>
 
         <section className="ContenedorDeTarjetas">   {/* {products.filter(prod => prod.tamanio == 'L') */}
               

@@ -14,3 +14,23 @@
     align-items: center;
     justify-content: center;
 }
+
+.botonVolver{
+
+    width: 30vw;
+    font-size: 14px;
+
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+   
+}
+
+.divBotonVolver{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}

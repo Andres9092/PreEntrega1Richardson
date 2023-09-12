@@ -4,8 +4,6 @@ import '../assets/css/CreateUser.css';
 import {Link} from 'react-router-dom';
 
 
-
-
 const Login = () => {
 
   const [username, setUsername] = useState('');
@@ -49,32 +47,17 @@ const Login = () => {
 
       <div className ="divNombre">
         <label className="titulosLabel" htmlFor="username">Nombre de usuario: </label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
       </div>
 
       <div className ="divCorreo">
         <label className="titulosLabel" htmlFor="mail">Correo electrónico: </label>
-        <input
-          type="email"
-          id="mail"
-          value={mail}
-          onChange={(e) => setMail(e.target.value)}
-        />
+        <input type="email" id="mail" value={mail} onChange={(e) => setMail(e.target.value)}/>
       </div>
 
       <div className ="divPassword">
         <label  className="titulosLabel" htmlFor="password">Contraseña: </label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
       </div>
 
