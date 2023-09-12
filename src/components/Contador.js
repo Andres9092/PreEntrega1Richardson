@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 import '../assets/css/Contador.css';
 
 
-function Contador({nombrePropHandleCallback,stock,initial}) { //recibe de C padre la prop 'nombrePropHandleCallback' bajo el nompre 'props', ademas de las props stock,initial
+function Contador({nombrePropHandleCallback,stock,initial}) { //recibe de C padre la prop 'nombrePropHandleCallback' , ademas de las props 'stock','initial'
 
     const [contador, setContador] = useState(initial);   // valor de 'contador' por default: 1
 

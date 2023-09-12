@@ -10,6 +10,27 @@ const Provider = contexto.Provider          // 4) Sacar 'Provider' de adentro de
 const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componente NORMAL CustomProvider.
                                             // 2) Colocar al componente creado CustomProvider 'Provider' donde convenga, englobando a los C hijos que se requiera (En este caso dentro de App, englobando a 'NavBar', 'Main' y 'Footer')
   
+
+
+  const [searchTerminoBuscadoEnBarra, setSearchTerminoBuscadoEnBarra] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
+  const items = ['Apple', 'Banana', 'Cherry', 'Grapes', 'Orange'];
+
+
+  const handleSearch = (terminoBuscadoEnBarra) => {  //'terminoBuscadoEnBarra' es el valor obtenido en C. de barra buscadora -> 'searchTerm'
+    setSearchTerminoBuscadoEnBarra(terminoBuscadoEnBarra);  // setea valor para 'searchTerminoBuscadoEnBarra' con valor importado de 
+
+  console.log('searchTerminoBuscadoEnBarra :',searchTerminoBuscadoEnBarra)
+
+  const filteredItems = items.filter((item) =>
+      item.toLowerCase().includes(terminoBuscadoEnBarra.toLowerCase())
+    );
+    setFilteredItems(filteredItems);
+  };
+  console.log('filteredItems :',filteredItems)
+
+
+
   const [arrayDeObjetosDeProductosAgregados, setArrayDeObjetosDeProductosAgregados] = useState([])
   console.log("arrayDeObjetosDeProductosAgregados :", arrayDeObjetosDeProductosAgregados)
   console.log("arrayDeObjetosDeProductosAgregados-Length :", arrayDeObjetosDeProductosAgregados.length)
@@ -56,7 +77,9 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
     addItem:addItem,
     clearCart:clearCart,
     removeFromCart:removeFromCart,
-
+    handleSearch:handleSearch,
+    filteredItems,    
+    searchTerminoBuscadoEnBarra,
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
     user : "fg"    
   }

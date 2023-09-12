@@ -8,6 +8,7 @@ import Login from './Login';
 import CreateUser from './CreateUser';
 import CheckOut from './CheckOut';
 import Favoritos from './Favoritos';
+import ItemFiltrado from './ItemFiltrado';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -29,7 +30,9 @@ function Main() {
 
                 <Route path = "/carrito" element = {<Cart/>} />   
 
-                <Route path = "/checkOut" element = {<CheckOut/>} />   
+                <Route path = "/checkOut" element = {<CheckOut/>} />  
+                
+                <Route path = "/filtroBarraBuscadora" element = {<ItemFiltrado/>} /> 
 
                 <Route path = "/login" element = {<Login/>} /> 
 

@@ -9,12 +9,13 @@ import LogoFavoritos from './LogoFavoritos';
 import Burger from './Burger';
 import {Link} from 'react-router-dom';
 import BarraBuscadora from './BarraBuscadora';
-
-
+import {contexto} from './CustomProvider';
+import { useContext } from 'react'
 
 
 function NavBar() { 
 
+    const {handleSearch} = useContext(contexto)
 
     return (  
      
@@ -32,9 +33,9 @@ function NavBar() {
                 </div>
 
                 <div>
+                                                {/* envio prop de nombre 'onSearch' y valor {handleSearch} */}
+                    <BarraBuscadora onSearch = {handleSearch} />  
 
-                    <BarraBuscadora onSearch={handleSearch} />
-                    
                     {/* <div className="barraBuscadora">
                             
 
