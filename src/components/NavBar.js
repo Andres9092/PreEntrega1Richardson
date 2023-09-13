@@ -1,12 +1,11 @@
 import React from 'react'
 import '../assets/css/NavBar.css';
-import '../assets/css/Burger.css';
 import imagenlogo from '../assets/images/logoEnj.png';
 import CartWidget from './CartWidget';
 import NavInferior from './NavInferior';
 import LogoWapp from './LogoWapp';
 import LogoFavoritos from './LogoFavoritos';
-import Burger from './Burger';
+import SideBar from './SideBar';
 import {Link} from 'react-router-dom';
 import BarraBuscadora from './BarraBuscadora';
 import {contexto} from './CustomProvider';
@@ -26,7 +25,7 @@ function NavBar() {
             <div className="NavHeader">
                 <div className="burger-logo-Phone">   
 
-                   <Burger/>
+                   <SideBar/>
             
                 
                     <Link to ="/"><img className="logoEnjDeco" src={imagenlogo} alt="ImagenmLogo Enjoying Deco"/></Link>
@@ -75,7 +74,7 @@ function NavBar() {
                 </div>
             
             </div>
-                {/* <NavInferior/> */}
+                <NavInferior/> 
         </header>
     )
   }

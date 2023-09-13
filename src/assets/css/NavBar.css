@@ -25,135 +25,6 @@ body{
     
 }
 
-/* ------------------------------------------------------------------ */
-
-
-.leftBottomHeader{
-    display: flex;
-    flex-direction: column;
-}
-
-
-
-.DivExternoIconoPalabraCate {
-    float: left;
-    overflow: hidden;
-
-  }
-
-  
-  .DivExternoIconoPalabraCate .BotonCategorias,  .DivExternoIconoPalabraNoCate {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: #cfab35;
-    padding: 14px 8px;
-    background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
-  }
-
-  .DivExternoIconoPalabraCate:hover .dropdown-content {
-    display: block;
-  }
-
-
-  .DivInternoBotonCate {
-   
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-
-  .DivInternoBotonCate i{
-    color: #cfab35;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-
-  .DivInternoBotonCate:hover .BotonCategorias {
-    background-color:  #f0d374;
-  }
-
-
-  .BotonCategorias{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
- 
-  }
-
-  .BotonCategorias i{
-    padding-left: 10px;
-  }
-
-
-  .categoria{
-
-    color: #cfab35;
-    text-decoration: none;
-    font-weight: 400;
-    padding: 0 0 0 6px;
-  
-
-}
-
- /* Dropdown content (hidden by default) */
- .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color:   rgb(249, 247, 223);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    
-  }
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    float: none;
-    color:  #cfab35;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  /* Add a grey background color to dropdown links on hover */
-  .dropdown-content a:hover {
-    background-color:  #f0d374;
-  }
-  
-  /* Show the dropdown menu on hover */
-
-.DivInternoNoCate {
-    
-    color: #cfab35;
-  }
-
-
-
-  .DivExternoIconoPalabraNoCate:hover{
-    background-color:  #f0d374;
-  }
-
-
-
-  .titulosNoCate{
-    color: #cfab35;
-    text-decoration: none;
-    font-weight: 400;
-    padding: 0 0 0 6px;
-
-    
-    }
-  
-
-
 
 /* ------------------------------------------------------------------ */
 .NavHeader {
@@ -181,27 +52,6 @@ body{
 }
 
 
-.burger-menu{
-    
-    color: white;
-    margin-left: 10px;
-    padding: 4px;
-    border: #cfab35 solid 1.5px;
-    border-radius: 3px;
-    margin-top: 5px;
-    
-    
-}
-
-.botonBurger{
-    background-color: #cfab35;
-    border: none;
-    color:white;
-    width: 40px;
-    height: 30px;
-
-}
-
 .logoEnjDeco{
 
     height: 60px;
@@ -216,8 +66,6 @@ body{
     flex-direction: row;
     align-items: center;
     padding-right: 5px;
-
-
 
 
 }
@@ -383,9 +231,6 @@ body{
 
 
 
-
-
- 
  }
 /* ------------------------------------------------------------------ */
  @media (min-width:530px) {
@@ -413,157 +258,10 @@ body{
     padding-right: 40px;
     
    }
- .leftBottomHeader{
-
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: space-around;
-    margin-left: 20px;
-    padding: 0 30px 0 30px;
-    width: 1100px;
-
-}
-
-
-.burger-menu{
-
-    display: none;
-}
-.DivExternoIconoPalabraCate {
-    float: left;
-    overflow: hidden;
-  
-  }
-
-  
-  .DivExternoIconoPalabraCate .BotonCategorias,  .DivExternoIconoPalabraNoCate {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: #cfab35;
-    padding: 14px 8px;
-    background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
-  }
-
-  .DivExternoIconoPalabraCate:hover .dropdown-content {
-    display: block;
-  }
-
-
-  .DivInternoBotonCate {
-   
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-
-  .DivInternoBotonCate i{
-    color: #cfab35;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-
-  .DivInternoBotonCate:hover .BotonCategorias {
-    background-color:  #f0d374;
-  }
-
-
-  .BotonCategorias{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
  
+
+
   }
-
-  .BotonCategorias i{
-    padding-left: 10px;
-  }
-
-
-  .categoria{
-
-    color: #cfab35;
-    text-decoration: none;
-    font-weight: 400;
-    padding: 0 0 0 6px;
-  
-
-}
-
- /* Dropdown content (hidden by default) */
- .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color:   rgb(249, 247, 223);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    float: none;
-    color:  #cfab35;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  /* Add a grey background color to dropdown links on hover */
-  .dropdown-content a:hover {
-    background-color:  #f0d374;
-  }
-  
-  /* Show the dropdown menu on hover */
-
-
-
-
-
-.DivExternoIconoPalabraNoCate {
-    float: left;
-    overflow: hidden;
-  
-  }
-
-.DivInternoNoCate {
-   
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: #cfab35;
-  }
-
-  .DivInternoNoCate i{
-    display: none
-  
-  }
-
-  .DivExternoIconoPalabraNoCate:hover{
-    background-color:  #f0d374;
-  }
-
-
-
-  .titulosNoCate{
-    color: #cfab35;
-    text-decoration: none;
-    font-weight: 400;
-    padding: 0 0 0 6px;
-
-    
-    }
-  
-
-}
    
 /* ------------------------------------------------------------------ */
 @media (min-width:650px) {
@@ -576,17 +274,6 @@ body{
         padding-left: 10px;
         
        }
-
-       
-    .fa-brands, .fa-list, .fa-burst, .fa-book, .fa-house, .fa-list, .fa-phone{
-
-        display: none
-
-}
-
-
-
-
 }
 
 /* ------------------------------------------------------------------ */
@@ -601,9 +288,6 @@ body{
         padding-left: 0px;
           
     }
-
-
-
 
     .logo-wapp-desktop{
 
@@ -625,14 +309,7 @@ body{
         padding-left: 25px;
     }
 
-    
-    .DivInternoNoCate i{
-   
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        color: #cfab35;
-      }
+ 
 
       .linksyCarritoPhone{
      
