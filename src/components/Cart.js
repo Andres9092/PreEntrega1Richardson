@@ -11,9 +11,9 @@ function Cart() {
   const valorDelContexto = useContext(contexto)   //valorDelContexto va sin llaves, porque estoy llamando a una variable, no una funcion como en el caso de {addItem}
 
 
-  console.log('valorDelContexto :', valorDelContexto)
-  console.log('valorDelContexto.arrayDeObjetosDeProductosAgregados :', valorDelContexto.arrayDeObjetosDeProductosAgregados.length)
-  console.log('valorDelContexto.calculateTotal :', valorDelContexto.calculateTotal)
+  // console.log('valorDelContexto :', valorDelContexto)
+  // console.log('valorDelContexto.arrayDeObjetosDeProductosAgregados :', valorDelContexto.arrayDeObjetosDeProductosAgregados.length)
+  // console.log('valorDelContexto.calculateTotal :', valorDelContexto.calculateTotal)
 
 
   //creo variable local con data imoportada del CustomProvider. -> const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
@@ -53,7 +53,7 @@ return (
     <div className="cart-item">
 
       <div className="divBotonVolverPhone">
-          <Link to ="/"> <Button className="botonVolverPhone"><i class="fa-solid fa-arrow-rotate-left"></i> Seguir comprando</Button></Link>
+          <Link to ="/"> <Button className="botonVolverPhone"><i class="fa-solid fa-arrow-rotate-left"></i>Seguir comprando</Button></Link>
       </div>
 
       <CartCards/>

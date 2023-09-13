@@ -10,32 +10,32 @@ import '../assets/css/CheckOut.css';
 import 'firebase/firestore'; // Import other Firebase services you need
 
 
-
-
 function CheckOut() {
 
+  const valorDelContexto = useContext(contexto) 
+  
   const [idOrden, setIdOrden] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
   const [fechaCompra, setFechaCompra] = useState("");
   const [horaCompra, setHoraCompra] = useState("");
   const [nombreCliente, setNombreCliente] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
-  const [nombreProducto, setNombreProducto] = useState("");
-  const [precio, setPrecio] = useState("");
-  const [tamanioProducto, setTamanioProducto] = useState("");
-  const [fotoProducto, setFotoProducto] = useState("");
-
-  
-  const valorDelContexto = useContext(contexto) 
+  const [montoTotal, setMontoTotal] = useState("");
+  const [unidadesTotal, setUnidadesTotal] = useState("");
+  const [productos, setProductos] = useState("");
 
   const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos la coleccion de 'productos' existentes en la BD. NO tiene la data directamente.
-  console.log("productosOriginalesBaseDatos:", productosOriginalesBaseDatos)
 
-  console.log("nombre:", nombreCliente)
-  console.log("telefono:", telefono)
-  console.log("email:", email)
+
+  const loaderProps = {
+    loading,
+    size: 40,
+    duration: 1,
+    colors: ['#c99d0b', '#cfab35']
+}
 
   const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> tiene la info de la cte creada 'userData' y tiene esos valores.
     setLoading(true); //activo el 'loader'.
@@ -63,11 +63,15 @@ function CheckOut() {
           email,
         },
         itemsAgregados: valorDelContexto.arrayDeObjetosDeProductosAgregados,
-        //montototal: valorDelContexto.montototal,
+
         dataDate: formattedDate,  //crea fecha y hora por servidor, de la orden creada.
         dataTime: formattedTime,
+        
       };
       console.log("ordenCreadaEnCheckOut:", ordenCreada)
+
+      //console.log("ordenCreadaEnCheckOut.itemsAgregados:", ordenCreada.itemsAgregados[0].cantidadConfirmadaPorElContadorDelProducto)
+  
    
                                     //writeBatch(db) -> If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of set(), update(), or delete() operations.
       const batch = writeBatch(db);
@@ -75,7 +79,7 @@ function CheckOut() {
       const productosFueraDeStock = [];
 
       const idProductosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrito -> devuelve el 'id'
-      console.log("idProductosAgregadosAlCarrito:", idProductosAgregadosAlCarrito)
+      //console.log("idProductosAgregadosAlCarrito:", idProductosAgregadosAlCarrito)
    
      //obtengo 'QuerySnapshot' de productos de la BD original que coinciden con los agregados al carrit -> Comparo base completa de prods con los Agregados al Carrito. -> NO DEVUELVE LOS PRODS DIRECTAMETNE.
      //IMPORTANTE: expresion funciona si: los 'id' de los productos cargados en la BD Firestore, son de tipo 'String'.
@@ -83,7 +87,7 @@ function CheckOut() {
         query(productosOriginalesBaseDatos, where(documentId(), "in", idProductosAgregadosAlCarrito))
       );
 
-      console.log("productosEnBDCoincidentesAgregadosAlCarrito:", productosEnBDCoincidentesAgregadosAlCarrito)
+      //console.log("productosEnBDCoincidentesAgregadosAlCarrito:", productosEnBDCoincidentesAgregadosAlCarrito)
 
       const { docs } = productosEnBDCoincidentesAgregadosAlCarrito;
 
@@ -95,10 +99,10 @@ function CheckOut() {
         const stockProductoEnDB = dataDelDocEnDB.stock;
 
         const productoAgregadoACarritoExistenteEnDB = valorDelContexto.arrayDeObjetosDeProductosAgregados.find((prod) => prod.id === doc.id); //devuelve 1 prod por cada vuelta del forEach.
-        console.log("productoAgregadoACarritoExistenteEnDB:", productoAgregadoACarritoExistenteEnDB)
+        //console.log("productoAgregadoACarritoExistenteEnDB:", productoAgregadoACarritoExistenteEnDB)
        
         const prodQuantityProductoAgregadoACarrito = productoAgregadoACarritoExistenteEnDB?.cantidadConfirmadaPorElContadorDelProducto;
-        console.log("prodQuantityProductoAgregadoACarrito:", prodQuantityProductoAgregadoACarrito) // la cantidad seleccionada por el usuario del producto agregado y existente en la DB.
+        //console.log("prodQuantityProductoAgregadoACarrito:", prodQuantityProductoAgregadoACarrito) // la cantidad seleccionada por el usuario del producto agregado y existente en la DB.
 
         if (stockProductoEnDB >= prodQuantityProductoAgregadoACarrito) {    // si el stock de un producto de la DB coincidente con el agregado por el cliente al carrito, es >= a la cantidad seleccionada por el usuario del producto agregado.
           batch.update(doc.ref, { stock: stockProductoEnDB - prodQuantityProductoAgregadoACarrito }); //actualiza el Stock del producto ageregado al Carrito, en la BD.
@@ -107,7 +111,6 @@ function CheckOut() {
         }     
     } 
       );
-   
 
       if (productosFueraDeStock.length === 0) {
         await batch.commit();
@@ -119,49 +122,56 @@ function CheckOut() {
         setIdOrden(ordenCreadaEnDB.id);  // re-setea el valor 'vacio' de 'id' de 'idOrden'
         valorDelContexto.clearCart();
 
+
+        
+        const montoTotal$ = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
+          (total, item) => total + item.precio * item.cantidadConfirmadaPorElContadorDelProducto, 0)
+      
+        const unidadesTotal = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
+            (total, item) => total + item.cantidadConfirmadaPorElContadorDelProducto, 0)
+        
+
+        
         setFechaCompra(ordenCreada.dataDate)
         setHoraCompra(ordenCreada.dataTime)
         setNombreCliente(ordenCreada.cliente.nombre)
         setTelefono(ordenCreada.cliente.telefono)
         setEmail(ordenCreada.cliente.email)
-
-        setNombreProducto(ordenCreada.itemsAgregados[0].nombre)
-        setPrecio(ordenCreada.itemsAgregados[0].precio)
-        setTamanioProducto(ordenCreada.itemsAgregados[0].tamanio)
-        setFotoProducto(ordenCreada.itemsAgregados[0].foto)
-
-
+        setMontoTotal(montoTotal$)
+        setUnidadesTotal(unidadesTotal)
+        setProductos(valorDelContexto.arrayDeObjetosDeProductosAgregados)
+       
+       
+       
+   
       } else {
         setError("Some products are out of stock.");
       }
-
     } 
     
     catch (error) {
       setError("Error de procesamiento de orden."); //setea el valor de 'error', si no hay un resultado en el 'try' 
       console.error(error);
-
     }
-
-    
     finally {  
       setLoading(false);  //corta el 'loader' mas all del resultado del 'try'.
     }
   };
 
-
   if (loading) {  // Si loading:true -> seteo el 'loader' con sus propiedades directamente, fuera del return. En otros C, lo incorporo dentro del return como <BarsLoader {...loaderProps} />
     return (
       <>
-        <h1 className="text-center py-4 text-5xl bg-[#F3F4F6]">
-        Por favor, espere. Su orden esta siendo procesada en estos momentos.
+        <h1 className="avisoOrdenProcesada">
+          Por favor, espere. Su orden esta siendo procesada en estos momentos. Muchas gracias.
         </h1>
         <div className="my-5 flex justify-center">
-          <BarsLoader color="#111312" height={7} width={100} className="my-5" />
+          <BarsLoader {...loaderProps} />
         </div>
       </>
     );
   }
+
+
 
   if (idOrden) {
     return (   // el return devuelve info directamente.
@@ -169,40 +179,83 @@ function CheckOut() {
         <p className="fraseCompra">Gracias por confiar en nosotros!</p>
         <br></br>
         <h1 className="fraseNroCompra">Su numero de compra es:</h1>
-        <p className="nroCompra">{idOrden}</p>
-        <br></br>
-        <p className="fraseDatosCompra">Los datos de su compra son:</p>
-
-        <p className="fechaCompraCompra">Fecha de compra: {fechaCompra}</p>
-        <p className="fechaCompraCompra">Hora de compra: {horaCompra}</p>
-
+        <div className="divIdNro">
+          <p className="nroCompra">{idOrden}</p>
+        </div>
+        
         <p className="titulos">Cliente:</p>
         <div className="divDatosCliente">
           <p className="titulosCompra">Nombre: {nombreCliente}</p>
           <p className="titulosCompra">Telefono: {telefono}</p>
           <p className="titulosCompra">E-mail: {email}</p>
         </div>
-        <p className="titulos">Productos:</p>
-        <div className="divDatosDeCompraProductos">
-          <p className="titulosCompra">Ramo: {nombreProducto}</p>
-          <p className="titulosCompra">Precio: {precio}</p>
-          <p className="titulosCompra">Tamanio: {tamanioProducto}</p>
-          <p className="titulosCompra">Foto: {fotoProducto}</p>
+        <p className="fraseDatosCompra">Compra:</p>
+        <div className="divDatosFechaHoraCompra">
+          <p className="fechaCompra">Fecha de compra: {fechaCompra}</p>
+          <p className="HoraCompra">Hora de compra: {horaCompra}</p>
+          <p className="HoraCompra">Monto total: $ {montoTotal}</p>
+          <p className="HoraCompra">Total unidades: {unidadesTotal}</p>
         </div>
 
-        <Link to="/" className="linkALandingProductos"><button className="botonSeguirComprando">
-            Seguir comprando </button></Link>
-      </div>
-    );
-  }
 
+        <p className="titulos">Productos:</p>
+      
+        {productos.map(   
+                  (item,i) => {
+                     console.log('item,i :', item,i)
+                     return(
+                         
+                         <div key={i} className="boxCartCardsCart">
+                         
+                             <div className="divImagenProdCardCartPhone">
+                                 <img className="imagenProdCardCartPhone" src = {item.foto} alt="Imagen del producto"/>
+                             </div>
+                                     
+                             <div className="divColumnasPhone">
+                                    <p className="titulosColumnas">Producto</p>
+                                     <p className="dataColumnas">{item.nombre}</p>
+                             </div>
+
+                             <div className="divColumnasPhone">
+                                     <p className="titulosColumnas">Unidad</p>
+                                     <p className="dataColumnas"> $ {item.precio}</p>
+                                     
+                             </div>  
+                                                                      
+                             <div className="divColumnasPhone">
+                                     <p className="titulosColumnas">Cantidad</p>    
+                                                                                      {/*arrayDeObjetosDeProductosAgregados -> [{…}, {…}] -> por eso como se mapea cada objeto para ir imprimiendo cada Card, se barre cada posicion 'i' -> arrayDeObjetosDeProductosAgregados[i]*/} 
+                                     <p className="dataColumnas"> {productos[i].cantidadConfirmadaPorElContadorDelProducto}</p>
+                                   
+                             </div>  
+
+                             
+
+                             <div className="precioTamanio">
+                                     <p className="titulosColumnas">Subtotal</p>
+                                     <p className="dataColumnas">$ {item.precio * productos[i].cantidadConfirmadaPorElContadorDelProducto}</p>
+                             </div>    
+                            
+             
+                         </div>
+                     )
+                 }
+             )}
+
+       
+
+        <Link to="/" className="linkALandingProductos"><button className="botonSeguirComprando"> Seguir comprando </button></Link>
+      </div>
+      )
+    }
+ 
   return (
     <div className="divPaginaCheckOut">
 
       <h1 className="tituloCheckOut">CheckOut</h1>
       {error && (<p className="text-center text-red-500 text-lg mt-4">{error}</p>)}
 
-            {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckOutForm' */}
+             {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckOutForm' */}
              {/* El Compo hijo 'CheckOutForm' le devuelve a C. CheckOut', la cte creada 'userData' a traves de onConfirm(userData), al clickear Submit y correr la Fc 'handleConfirm'  */}
       <CheckOutForm onConfirm = {createOrder} />  
 
