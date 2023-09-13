@@ -41,12 +41,13 @@ body{
 
 }
 
+
+
 .burger-logo-Phone {
 
     display: flex;
     align-items: center;
     width: 160px;
-    color:white;
     margin-left: 15px;
     justify-content: flex-end;
 }
@@ -158,22 +159,7 @@ body{
 
         display: none;
     }
-
-
-    .NavHeader {
-
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 100%;
-      background-color: rgb(249, 247, 223);
-      border: solid 1px  #cfab35;
-      padding: 15px 0px 15px 0px;
-      align-items: center;
-     
-  
-  }
-    
+   
 
 }
 
@@ -202,18 +188,6 @@ body{
 }
 
   
-.NavHeader{
-    
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-
-
-
 .logoEnjDeco{
 
     height: 60px;
@@ -309,15 +283,11 @@ body{
         padding-left: 25px;
     }
 
- 
-
-      .linksyCarritoPhone{
+       .linksyCarritoPhone{
      
         padding-right: 25px;
-    
-    
-    
-    
+      
+        
     }
 
 

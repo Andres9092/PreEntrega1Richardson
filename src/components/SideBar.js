@@ -1,30 +1,34 @@
 import '../assets/css/NavBar.css';
 import '../assets/css/SideBar.css';
-import {Link} from 'react-router-dom';
 import {useState} from 'react';
 
 
 function SideBar() {
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
-const [isOpen, setIsOpen] = useState(false)
-
-const toggleSidebar = () => {
-  setIsOpen(!isOpen);
-};
-
-
- //L es el valor -> value del key -> 'id' enviado por ruta y campurado por el useParams */}
-  //M es el valor -> value del key -> 'id' enviado por ruta y campurado por el useParams */}
   return (
     <>
-      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-            
-          <button className="toggle-button" onClick={toggleSidebar}><i class="fa-solid fa-bars"></i></button>
-        
-      </div>  
+      <div className={`navbar ${isOpen ? 'open' : ''}`}>
+        {/* Toggle button block within the navbar */}
+        <div className="toggle-button-block">
+          <button className="toggle-button" onClick={toggleSidebar}>
+            Toggle
+          </button>
+        </div>
+        {/* End of toggle button block */}
+      </div>
+    </>
+  );
+}
 
-      {/* <div>
+export default SideBar;
+      
+
+{/* <div>
             <ul className="leftBottomHeader">
             
 
@@ -84,8 +88,8 @@ const toggleSidebar = () => {
         </div>
                        <NavInferior open = {open}/> */}
 
-    </>
-    )
-}
+//     </>
+//     )
+// }
 
-export default SideBar
+// export default SideBar

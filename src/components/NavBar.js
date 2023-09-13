@@ -23,12 +23,13 @@ function NavBar() {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/> {/* Importar estilos para el logo burger menu */}
   
             <div className="NavHeader">
-                <div className="burger-logo-Phone">   
 
-                   <SideBar/>
-            
-                
-                    <Link to ="/"><img className="logoEnjDeco" src={imagenlogo} alt="ImagenmLogo Enjoying Deco"/></Link>
+                <SideBar/>
+                <div className="burger-logo-Phone">   
+                           
+                    <Link to ="/">
+                        <img className="logoEnjDeco" src={imagenlogo} alt="Imagen Logo Enjoying Deco"/>
+                    </Link>
                 </div>
 
                 <div>
