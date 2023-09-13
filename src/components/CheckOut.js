@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import '../assets/css/CheckOut.css';
 import 'firebase/firestore'; // Import other Firebase services you need
+import DownloadButton from './DownloadButton';
 
 
 function CheckOut() {
@@ -28,8 +29,17 @@ function CheckOut() {
   const [productos, setProductos] = useState("");
 
   const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos la coleccion de 'productos' existentes en la BD. NO tiene la data directamente.
-
-
+  
+  const purchaseResult = {
+    Numero_Orden: idOrden,
+    Fecha:fechaCompra,
+    Hora: horaCompra,
+    Telefono:telefono,
+    Email:email,
+    Monto_Total:montoTotal,
+    Unidades_Total:unidadesTotal
+  }
+  console.log("purchaseResult:", purchaseResult)
   const loaderProps = {
     loading,
     size: 40,
@@ -55,6 +65,7 @@ function CheckOut() {
     const formattedDate = date.toLocaleDateString('es-ES')  //transformo fecha a string para poder ser leida.
     const formattedTime = date.toLocaleTimeString('es-ES')
 
+  
     try {
       const ordenCreada = {  //creo objeto con data.
         cliente: {          // data traida por props del C. hijo formulario.
@@ -141,8 +152,7 @@ function CheckOut() {
         setUnidadesTotal(unidadesTotal)
         setProductos(valorDelContexto.arrayDeObjetosDeProductosAgregados)
        
-       
-       
+
    
       } else {
         setError("Some products are out of stock.");
@@ -172,10 +182,11 @@ function CheckOut() {
   }
 
 
-
   if (idOrden) {
     return (   // el return devuelve info directamente.
       <div className="divDetalleCompra">
+        <p className="fraseCompra"><i class="fa-solid fa-hands-clapping"></i>  Felicitaciones! </p>
+        <p className="fraseCompra">Su compra fue procesada con exito!</p>
         <p className="fraseCompra">Gracias por confiar en nosotros!</p>
         <br></br>
         <h1 className="fraseNroCompra">Su numero de compra es:</h1>
@@ -196,7 +207,6 @@ function CheckOut() {
           <p className="HoraCompra">Monto total: $ {montoTotal}</p>
           <p className="HoraCompra">Total unidades: {unidadesTotal}</p>
         </div>
-
 
         <p className="titulos">Productos:</p>
       
@@ -242,9 +252,16 @@ function CheckOut() {
                  }
              )}
 
-       
+  
+        <div className="divBotonDescarga">
+        
+          <DownloadButton purchaseResult ={purchaseResult} fileName="comprobante_compra.json" />
 
-        <Link to="/" className="linkALandingProductos"><button className="botonSeguirComprando"> Seguir comprando </button></Link>
+        </div>   
+        <Link to="/" ><button className="botonSeguirComprandoDetalle"> Seguir comprando </button></Link>
+                 
+              
+
       </div>
       )
     }

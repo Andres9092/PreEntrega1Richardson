@@ -21,7 +21,7 @@
     border: solid 1px #c99d0b;
     border-radius: 4px;
     background-color: #edd585;
-    width: 50vw;
+    width: 100%;
 }
 
 
@@ -31,6 +31,7 @@
     justify-content: center;
     align-items: center;
 }
+
 
 .nroCompra{
     font-weight: 600;
@@ -112,6 +113,47 @@ margin-top: 5px;
     padding-top: 10px;
 }
 
-.imagenProdDetalle{
-    width: 20%;
+.divImagenProdCardCartPhone{
+    width: 40%;
+}
+
+
+.imagenProdCardCartPhone{
+    width: 30%;
+}
+
+.divImagenProdCardCartPhone{
+    width: 40%;
+}
+
+
+.divBotonDescarga{
+    width: 190px;
+    height: 30px;
+    font-size: 14px;
+    background-color: rgb(244, 212, 186);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+
+}
+
+.botonSeguirComprandoDetalle{
+    width: 250px;
+    height: 30px;
+    font-size: 14px;
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 10px 0px 10px 0px;
+    text-align: center;
+    align-items: center;
+    font-weight: 600;
 }
