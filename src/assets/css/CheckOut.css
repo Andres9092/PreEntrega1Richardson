@@ -32,6 +32,11 @@
     align-items: center;
 }
 
+.nroCompra{
+    font-weight: 600;
+    color: #c87106;
+}
+
 .divDatosDeCompra{
     display: flex;
     flex-direction: column;
@@ -75,4 +80,6 @@
 
 .titulos{
     margin: 15px 0px 0px 0px;
+    text-decoration: underline;
 }
+

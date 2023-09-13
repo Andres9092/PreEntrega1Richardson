@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import {contexto} from './CustomProvider';
-import {Timestamp,addDoc,collection, getFirestore,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
+import {Timestamp,addDoc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
 import {db} from '../firebase';   // serverTimestamp -> da objeto fecha de la maquina del servidor al momento de utilizarlo. Necesario para guardar fecha y hora de la compra.
 import CheckOutForm from "./CheckOutForm";
 //import { BarLoader } from "react-spinners";
@@ -17,6 +17,8 @@ function CheckOut() {
   const [idOrden, setIdOrden] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [fechaCompra, setFechaCompra] = useState("");
+  const [horaCompra, setHoraCompra] = useState("");
   const [nombreCliente, setNombreCliente] = useState("");
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
@@ -47,7 +49,12 @@ function CheckOut() {
     // finally {
     //   finallyCode - Code block to be executed regardless of the try result
     // }
-    
+    var timestamp = Timestamp.fromDate(new Date()); //fecha de servidor.
+    var date = new Date(timestamp.toMillis());   //transformo fecha
+
+    const formattedDate = date.toLocaleDateString('es-ES')  //transformo fecha a string para poder ser leida.
+    const formattedTime = date.toLocaleTimeString('es-ES')
+
     try {
       const ordenCreada = {  //creo objeto con data.
         cliente: {          // data traida por props del C. hijo formulario.
@@ -57,7 +64,8 @@ function CheckOut() {
         },
         itemsAgregados: valorDelContexto.arrayDeObjetosDeProductosAgregados,
         //montototal: valorDelContexto.montototal,
-        data: Timestamp.fromDate(new Date()),  //crea fecha y hora por servidor, de la orden creada.
+        dataDate: formattedDate,  //crea fecha y hora por servidor, de la orden creada.
+        dataTime: formattedTime,
       };
       console.log("ordenCreadaEnCheckOut:", ordenCreada)
    
@@ -110,6 +118,9 @@ function CheckOut() {
 
         setIdOrden(ordenCreadaEnDB.id);  // re-setea el valor 'vacio' de 'id' de 'idOrden'
         valorDelContexto.clearCart();
+
+        setFechaCompra(ordenCreada.dataDate)
+        setHoraCompra(ordenCreada.dataTime)
         setNombreCliente(ordenCreada.cliente.nombre)
         setTelefono(ordenCreada.cliente.telefono)
         setEmail(ordenCreada.cliente.email)
@@ -161,7 +172,10 @@ function CheckOut() {
         <p className="nroCompra">{idOrden}</p>
         <br></br>
         <p className="fraseDatosCompra">Los datos de su compra son:</p>
-        <br></br>
+
+        <p className="fechaCompraCompra">Fecha de compra: {fechaCompra}</p>
+        <p className="fechaCompraCompra">Hora de compra: {horaCompra}</p>
+
         <p className="titulos">Cliente:</p>
         <div className="divDatosCliente">
           <p className="titulosCompra">Nombre: {nombreCliente}</p>
@@ -175,7 +189,7 @@ function CheckOut() {
           <p className="titulosCompra">Tamanio: {tamanioProducto}</p>
           <p className="titulosCompra">Foto: {fotoProducto}</p>
         </div>
-        
+
         <Link to="/" className="linkALandingProductos"><button className="botonSeguirComprando">
             Seguir comprando </button></Link>
       </div>
