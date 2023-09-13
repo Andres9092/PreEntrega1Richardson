@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import '../assets/css/CheckOut.css';
 import 'firebase/firestore'; // Import other Firebase services you need
-//import { initializeApp } from 'firebase/app';
+
 
 
 
@@ -17,29 +17,25 @@ function CheckOut() {
   const [idOrden, setIdOrden] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [nombreCliente, setNombreCliente] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [email, setEmail] = useState("");
+  const [nombreProducto, setNombreProducto] = useState("");
+  const [precio, setPrecio] = useState("");
+  const [tamanioProducto, setTamanioProducto] = useState("");
+  const [fotoProducto, setFotoProducto] = useState("");
 
-  // const firebaseConfig = {
-  //   apiKey: "AIzaSyBrbfAbVE9s5z0LCI29ATkFWNxu4RBbbqc",
-  //   authDomain: "enjoyingdecoproject.firebaseapp.com",
-  //   projectId: "enjoyingdecoproject",
-  //   storageBucket: "enjoyingdecoproject.appspot.com",
-  //   messagingSenderId: "274338518777",
-  //   appId: "1:274338518777:web:8b37b1e55e3c194e0eb428",
-  //   measurementId: "G-LVDJD5K69B"
-  // };
   
-  // const app = initializeApp(firebaseConfig);
-  
-  // const firestore = getFirestore(app); // Initialize your Firestore instance
-
-
-
   const valorDelContexto = useContext(contexto) 
 
-  const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos la coleccion de 'productos' existentes en la BD.
+  const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos la coleccion de 'productos' existentes en la BD. NO tiene la data directamente.
   console.log("productosOriginalesBaseDatos:", productosOriginalesBaseDatos)
 
-  const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> userData y tiene esos valores.
+  console.log("nombre:", nombreCliente)
+  console.log("telefono:", telefono)
+  console.log("email:", email)
+
+  const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> tiene la info de la cte creada 'userData' y tiene esos valores.
     setLoading(true); //activo el 'loader'.
 
     // try {
@@ -60,62 +56,69 @@ function CheckOut() {
           email,
         },
         itemsAgregados: valorDelContexto.arrayDeObjetosDeProductosAgregados,
-        //montototal: montototal,
+        //montototal: valorDelContexto.montototal,
         data: Timestamp.fromDate(new Date()),  //crea fecha y hora por servidor, de la orden creada.
       };
       console.log("ordenCreadaEnCheckOut:", ordenCreada)
-
+   
                                     //writeBatch(db) -> If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of set(), update(), or delete() operations.
       const batch = writeBatch(db);
 
       const productosFueraDeStock = [];
 
-      const idProductosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrit.
+      const idProductosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrito -> devuelve el 'id'
       console.log("idProductosAgregadosAlCarrito:", idProductosAgregadosAlCarrito)
-       
-      // const queryRef = query(productosOriginalesBaseDatos,where(firebase.firestore.FieldPath.documentId(), 'in', idProductosAgregadosAlCarrito));
-      
-      // const productosAgregadosAlCarritoCoincidentesEnBD = await getDocs(queryRef);
-
-
-      // //obtengo productos de la BD original que coinciden con los agregados al carrito.
-      
-      const productosAgregadosAlCarritoCoincidentesEnBD = await getDocs(     
+   
+     //obtengo 'QuerySnapshot' de productos de la BD original que coinciden con los agregados al carrit -> Comparo base completa de prods con los Agregados al Carrito. -> NO DEVUELVE LOS PRODS DIRECTAMETNE.
+     //IMPORTANTE: expresion funciona si: los 'id' de los productos cargados en la BD Firestore, son de tipo 'String'.
+      const productosEnBDCoincidentesAgregadosAlCarrito = await getDocs(     
         query(productosOriginalesBaseDatos, where(documentId(), "in", idProductosAgregadosAlCarrito))
       );
 
-      // console.log("productosAgregadosAlCarritoCoincidentesEnBD:", productosAgregadosAlCarritoCoincidentesEnBD)
+      console.log("productosEnBDCoincidentesAgregadosAlCarrito:", productosEnBDCoincidentesAgregadosAlCarrito)
 
-      const { docs } = productosAgregadosAlCarritoCoincidentesEnBD;
+      const { docs } = productosEnBDCoincidentesAgregadosAlCarrito;
 
-//Barro los productos productos Agregados Al Carrito Coincidentes En BD y para cada uno:
+          //Barro los productos productos Agregados Al Carrito Coincidentes En BD y para cada uno:
       
-      docs.forEach((doc) => {  ///De cada producto obtengo la 'data()' y el 'stock'
+        docs.forEach((doc) => {  ///De cada producto DE LA BD, que coinciden con los agregados al carrito, obtengo la 'data()' y el 'stock'
         const dataDelDocEnDB = doc.data();
+       
         const stockProductoEnDB = dataDelDocEnDB.stock;
 
-        const productoAgregadoACarritoExistenteEnDB = valorDelContexto.arrayDeObjetosDeProductosAgregados.find((prod) => prod.id === doc.id);
+        const productoAgregadoACarritoExistenteEnDB = valorDelContexto.arrayDeObjetosDeProductosAgregados.find((prod) => prod.id === doc.id); //devuelve 1 prod por cada vuelta del forEach.
         console.log("productoAgregadoACarritoExistenteEnDB:", productoAgregadoACarritoExistenteEnDB)
        
-        const prodQuantity = productoAgregadoACarritoExistenteEnDB?.cantidadConfirmadaPorElContadorDelProducto;
-        console.log("prodQuantity:", prodQuantity) // la cantidad seleccionada por el usuario del producto agregado y existente en la DB.
+        const prodQuantityProductoAgregadoACarrito = productoAgregadoACarritoExistenteEnDB?.cantidadConfirmadaPorElContadorDelProducto;
+        console.log("prodQuantityProductoAgregadoACarrito:", prodQuantityProductoAgregadoACarrito) // la cantidad seleccionada por el usuario del producto agregado y existente en la DB.
 
-        if (stockProductoEnDB >= prodQuantity) {    // si el stock de un producto de la DB coincidente con el agregado por el cliente al carrito, es >= a la cantidad seleccionada por el usuario del producto agregado.
-          batch.update(doc.ref, { stock: stockProductoEnDB - prodQuantity });
+        if (stockProductoEnDB >= prodQuantityProductoAgregadoACarrito) {    // si el stock de un producto de la DB coincidente con el agregado por el cliente al carrito, es >= a la cantidad seleccionada por el usuario del producto agregado.
+          batch.update(doc.ref, { stock: stockProductoEnDB - prodQuantityProductoAgregadoACarrito }); //actualiza el Stock del producto ageregado al Carrito, en la BD.
         } else {
           productosFueraDeStock.push({ id: doc.id, ...dataDelDocEnDB });
-        }
-      });
+        }     
+    } 
+      );
+   
 
       if (productosFueraDeStock.length === 0) {
         await batch.commit();
 
         const coleccionDeOrdenesDeVentasEnDB = collection(db, "ordenes_ventas"); //creo coleccion en DB 'ordenes_ventas'
 
-        const ordenCreadaEnDB = await addDoc(coleccionDeOrdenesDeVentasEnDB, ordenCreada); //agrego documento con data de 'ordenCreada' a la coleccion creada 'coleccionDeOrdenesDeVentasEnDB'
+        const ordenCreadaEnDB = await addDoc(coleccionDeOrdenesDeVentasEnDB, ordenCreada); //agrego documento con data de 'ordenCreada' a la coleccion creada en FireStore 'coleccionDeOrdenesDeVentasEnDB  -> 'ordenes_ventas'
 
-        setIdOrden(ordenCreadaEnDB.id);
+        setIdOrden(ordenCreadaEnDB.id);  // re-setea el valor 'vacio' de 'id' de 'idOrden'
         valorDelContexto.clearCart();
+        setNombreCliente(ordenCreada.cliente.nombre)
+        setTelefono(ordenCreada.cliente.telefono)
+        setEmail(ordenCreada.cliente.email)
+
+        setNombreProducto(ordenCreada.itemsAgregados[0].nombre)
+        setPrecio(ordenCreada.itemsAgregados[0].precio)
+        setTamanioProducto(ordenCreada.itemsAgregados[0].tamanio)
+        setFotoProducto(ordenCreada.itemsAgregados[0].foto)
+
 
       } else {
         setError("Some products are out of stock.");
@@ -151,15 +154,31 @@ function CheckOut() {
 
   if (idOrden) {
     return (   // el return devuelve info directamente.
-      <>
+      <div className="divDetalleCompra">
         <p className="fraseCompra">Gracias por confiar en nosotros!</p>
-        <h1 className="fraseNroCompra">
-         Su numero de compra es: {idOrden}
-        </h1>
+        <br></br>
+        <h1 className="fraseNroCompra">Su numero de compra es:</h1>
+        <p className="nroCompra">{idOrden}</p>
+        <br></br>
+        <p className="fraseDatosCompra">Los datos de su compra son:</p>
+        <br></br>
+        <p className="titulos">Cliente:</p>
+        <div className="divDatosCliente">
+          <p className="titulosCompra">Nombre: {nombreCliente}</p>
+          <p className="titulosCompra">Telefono: {telefono}</p>
+          <p className="titulosCompra">E-mail: {email}</p>
+        </div>
+        <p className="titulos">Productos:</p>
+        <div className="divDatosDeCompraProductos">
+          <p className="titulosCompra">Ramo: {nombreProducto}</p>
+          <p className="titulosCompra">Precio: {precio}</p>
+          <p className="titulosCompra">Tamanio: {tamanioProducto}</p>
+          <p className="titulosCompra">Foto: {fotoProducto}</p>
+        </div>
         
         <Link to="/" className="linkALandingProductos"><button className="botonSeguirComprando">
             Seguir comprando </button></Link>
-      </>
+      </div>
     );
   }
 
@@ -170,6 +189,7 @@ function CheckOut() {
       {error && (<p className="text-center text-red-500 text-lg mt-4">{error}</p>)}
 
             {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckOutForm' */}
+             {/* El Compo hijo 'CheckOutForm' le devuelve a C. CheckOut', la cte creada 'userData' a traves de onConfirm(userData), al clickear Submit y correr la Fc 'handleConfirm'  */}
       <CheckOutForm onConfirm = {createOrder} />  
 
     </div>

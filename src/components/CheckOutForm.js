@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from 'react'
 import '../assets/css/CheckOutForm.css';
 
-//recive prop 'onConfirm' del C. padre CheckOut.
+//recive prop 'onConfirm' del C. padre 'CheckOut'.
 function CheckOutForm({onConfirm}) {  
 
   const [nombre, setNombre] = useState("");
@@ -16,9 +16,9 @@ function CheckOutForm({onConfirm}) {
   console.log('errors: ', errors)
 
   const validateForm = () => { //Fc que analiza los valores ingresados como 'values' en los inputs del formulario y devuelve 'errores' en caso de existir.
-    const errors = {};  // creo constante 'errors' de tipo objeto, vacia inicialmente.
+    const errors = {};  // creo constante 'errors' de tipo 'objeto', vacia inicialmente.
     
-    // error = {
+    // Seria: -> error = {
     //   nombre : "El campo 'Nombre' es obligatorio",
     //   telefono : El campo 'Telefono' es obligatorio",
     //   email :  "El campo 'E-mail' es obligatorio",
@@ -55,17 +55,17 @@ function CheckOutForm({onConfirm}) {
       };
       console.log("userDataCreado:", userData)
       
-      onConfirm(userData); //devuelve al C. padre la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
+      onConfirm(userData); //devuelve al C. padre 'CheckOut' la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
       
       
     } else {
-      setErrors(validationErrors); //re setea el valor de la constante 'errors' que inicialmente esta vacia y dispara los alerts cargados en los inputs del formu -> {errors.nombre && (<p className="textoError">{errors.nombre}</p>)}
+      setErrors(validationErrors); //re-setea el valor de la constante 'errors' que inicialmente esta vacia y dispara los alerts cargados en los inputs del formu -> {errors.nombre && (<p className="textoError">{errors.nombre}</p>)}
     }
   };
 
   const handleCancel = (event) => {  //funcion que previene el envio de informacion del formulario. Setea todos los campos en vacio.
     event.preventDefault();
-                                    //Al clickear el 'cancel' re setea las constates de los inputs a 'vacio'.
+                                    //Al clickear el 'cancel' re-setea las constates de los inputs a 'vacio' -> vacia los campos del formulario.
     setNombre("");  
     setTelefono("");
     setEmail("");
@@ -83,7 +83,7 @@ function CheckOutForm({onConfirm}) {
                         //   }
                         // }
             
-            //onChange={({ target }) => setNombre(target.value)} -> setea a la cte 'nombre' el valor ingresado y capturado del input.
+            //onChange={({ e }) => setNombre(e.target.value)} -> setea a la cte 'nombre' el valor ingresado y capturado del input.
             //onClick={handleConfirm}  -> al evento 'click' llama a la funcion declarada 'handleConfirm'
           
     
@@ -112,7 +112,7 @@ function CheckOutForm({onConfirm}) {
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="inputValues" placeholder="Escriba su E-mail..."/>
           {errors.email && (<p className="textoError">{errors.email}</p>)}
         </div>
-
+                                                              {/* handleConfirm -> fc que analiza si existe errores de validacion, crea cte con data 'userData' y genera -> onConfirm(userData) */}
         <button className="botonSubmit" type="submit" onClick={handleConfirm}>Submit</button>
         
         <button className="botonCancel" type="button" onClick={handleCancel} > Cancel </button>

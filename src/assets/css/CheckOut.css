@@ -6,6 +6,8 @@
     justify-content: center;
 }
 
+
+
 .tituloCheckOut{
 
     margin-bottom: 15px;
@@ -13,4 +15,64 @@
     text-decoration: underline;
     color: #c99d0b;
 
+}
+
+.divDetalleCompra{
+    border: solid 1px #c99d0b;
+    border-radius: 4px;
+    background-color: #edd585;
+    width: 50vw;
+}
+
+
+.divDetalleCompra{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.divDatosDeCompra{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: flex-start;
+    width: 40%;
+}
+
+.divDatosDeCompraProductos{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: flex-start;
+    width: 40%;
+    margin: 15px 0px 0px 0px;
+}
+
+
+.divDatosCliente{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: flex-start;
+    width: 40%;
+    margin: 15px 0px 0px 0px;
+}
+
+
+.linkALandingProductos{
+
+    width: 10vw;
+    font-size: 14px;
+    background-color: rgb(198, 164, 136);
+    border: 1px solid;
+    padding: 2px 2px 2px 2px;
+    border-radius: 3px;
+    margin: 40px 0px 10px 0px;
+    text-align: center;
+   
+}
+
+.titulos{
+    margin: 15px 0px 0px 0px;
 }
