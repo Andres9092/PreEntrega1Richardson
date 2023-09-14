@@ -40,6 +40,7 @@ function CheckOut() {
     Unidades_Total:unidadesTotal
   }
   console.log("purchaseResult:", purchaseResult)
+  
   const loaderProps = {
     loading,
     size: 40,
@@ -167,6 +168,10 @@ function CheckOut() {
       setLoading(false);  //corta el 'loader' mas all del resultado del 'try'.
     }
   };
+
+
+
+  
 
   if (loading) {  // Si loading:true -> seteo el 'loader' con sus propiedades directamente, fuera del return. En otros C, lo incorporo dentro del return como <BarsLoader {...loaderProps} />
     return (
