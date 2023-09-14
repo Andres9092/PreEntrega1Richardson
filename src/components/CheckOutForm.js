@@ -36,6 +36,8 @@ function CheckOutForm({onConfirm}) {
     if (!email.includes("@")) {
       errors.email = "El campo 'E-mail' es obligatorio es y debe contener el caracter '@'."
     }
+
+    
     return errors;  // devolucion de la funcion: todo el objeto 'errors' completo con los errores que se hayan detectado. 
 }
 
