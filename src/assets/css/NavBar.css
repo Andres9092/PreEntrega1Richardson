@@ -40,7 +40,13 @@ body{
 
 
 }
-
+.burger-button{
+    color:  #775b00;
+    background-color: #ddb941;
+    border: 1px solid #cfab35;
+    border-radius: 2px;
+    padding: 1px 4px 1px 4px;
+}
 
 
 .burger-logo-Phone {
@@ -56,7 +62,7 @@ body{
 .logoEnjDeco{
 
     height: 60px;
-    padding-left: 30px;
+    padding-left: 0px;
     margin-left: 25px;
    
 
@@ -233,6 +239,9 @@ body{
     
    }
  
+   .burger-button{
+    display: none;
+}
 
 
   }

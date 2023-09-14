@@ -1,45 +1,176 @@
-/* Sidebar styling */
 .sidebar {
-  width: 250px;
-  height: 100vh;
-  background-color: #333;
-  color: #fff;
+  width: 250px; /* Adjust the width as needed */
+  height: 100%;
+  background-color: rgb(249, 247, 223);
+  color: #c99d0b;
   position: fixed;
-  top: 0;
-  left: -250px;
-  transition: left 0.3s ease;
+  top: 93px;
+  left: -250px; /* Initially hidden off-screen */
+  transition: left 0.3s ease; /* Transition effect for sliding in/out */
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow effect */
 }
 
 .sidebar.open {
-  left: 250px;
+  left: 0; /* Slides the sidebar in when open */
+  padding-left: 20px 0px 0px 2px;
 }
 
-/* Toggle button styling */
-.toggle-button-block {
-  display: flex;
-  justify-content: flex-end; /* Align button to the right within the block */
-  padding: 10px;
-}
-
-.toggle-button {
-  background-color: #555;
-  color: #fff;
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
-  border-radius: 4px;
-  padding: 10px 15px;
+  font-size: 24px;
+  color:#c99d0b;;
   cursor: pointer;
 }
 
-.toggle-button:hover {
-  background-color: #777;
+.leftBottomHeaderSideBar{
+
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: center;
+  padding: 0px 0px 0px 0px;
+  margin-top: 10px;
+  width: 100%;
+
 }
+
+.DivExternoIconoPalabraNoCateSideBar {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+}
+
+.DivInternoNoCateSideBar {
   
-  /* ul {
-    list-style: none;
-    padding: 0;
+  color: #cfab35;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: center;
+
+}
+
+
+
+
+.DivExternoIconoPalabraCateSideBar .BotonCategoriasSideBar,  .DivExternoIconoPalabraNoCateSideBar {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #cfab35;
+  padding: 14px 8px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.DivExternoIconoPalabraCateSideBar:hover .dropdown-contentSideBar {
+  display: block;
+}
+
+
+.DivInternoBotonCateSideBar {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+
+.DivInternoBotonCateSideBar i{
+  color: #cfab35;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.DivInternoBotonCateSideBar:hover .BotonCategoriasSideBar {
+  background-color:  #f0d374;
+}
+
+
+.BotonCategoriasSideBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.BotonCategoriasSideBar i{
+  padding-left: 10px;
+}
+
+
+.categoriaSideBar{
+
+  color: #cfab35;
+  text-decoration: none;
+  font-weight: 400;
+  padding: 0 0 0 6px;
+
+
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-contentSideBar {
+  display: none;
+  position: absolute;
+  background-color:   rgb(249, 247, 223);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  
+}
+
+/* Links inside the dropdown */
+.dropdown-contentSideBar a {
+  float: none;
+  color:  #cfab35;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-contentSideBar a:hover {
+  background-color:  #f0d374;
+}
+
+/* Show the dropdown menu on hover */
+
+
+.DivExternoIconoPalabraNoCateSideBar:hover{
+  background-color:  #f0d374;
+}
+
+
+
+.titulosNoCateSideBar{
+  color: #cfab35;
+  text-decoration: none;
+  font-weight: 400;
+  padding: 0 0 0 6px;
+
+  
   }
-  
-  li {
-    padding: 10px;
-    color: #fff;
-  } */
+
+
+  @media (min-width:600px) {
+
+    
+  .sidebar {
+    display: none
+  }
+}

@@ -6,7 +6,7 @@ import { useState} from 'react';
 import {Link} from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 
-function BarraBuscadora({ onSearch }) {  // 'onSearch'  --> prop pasada por C. Padre 'BarraBuscadora'
+function BarraBuscadora({ onSearch }) {  // 'onSearch'  --> prop pasada por C. Padre 'NavBar'
 
     const [searchTerm, setSearchTerm] = useState('');
 

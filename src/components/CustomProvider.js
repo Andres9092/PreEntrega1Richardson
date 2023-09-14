@@ -10,7 +10,11 @@ const Provider = contexto.Provider          // 4) Sacar 'Provider' de adentro de
 const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componente NORMAL CustomProvider.
                                             // 2) Colocar al componente creado CustomProvider 'Provider' donde convenga, englobando a los C hijos que se requiera (En este caso dentro de App, englobando a 'NavBar', 'Main' y 'Footer')
   
+  const [isSidebarOpen, setSidebarOpen] = useState(false);   
 
+  const toggleSidebar = () => { 
+    setSidebarOpen(!isSidebarOpen); //re-setea el edo de 'isSidebarOpen' a 'True'
+  };
 
   const [searchTerminoBuscadoEnBarra, setSearchTerminoBuscadoEnBarra] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
@@ -78,8 +82,10 @@ const CustomProvider = (props) => {         // 1) Creo ESTE archivo con componen
     clearCart:clearCart,
     removeFromCart:removeFromCart,
     handleSearch:handleSearch,
+    toggleSidebar:toggleSidebar,
     filteredItems,    
     searchTerminoBuscadoEnBarra,
+    isSidebarOpen,
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
     user : "fg"    
   }

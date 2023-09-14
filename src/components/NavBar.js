@@ -15,7 +15,10 @@ import { useContext } from 'react'
 function NavBar() { 
 
     const {handleSearch} = useContext(contexto)
-
+   
+    const valorDelContexto = useContext(contexto)
+   
+ 
     return (  
      
         <header className="Header">   {/* etiqueta unica que contiene el NavBar completo */}
@@ -24,9 +27,19 @@ function NavBar() {
   
             <div className="NavHeader">
 
-                <SideBar/>
+                
                 <div className="burger-logo-Phone">   
-                           
+                                                                {/* Boton que comanda el cambio de estado de isSidebarOpen  -> TRUE */}
+                                                            {/* En c. CustomProvider  -> const toggleSidebar = () => { 
+                                                                                        setSidebarOpen(!isSidebarOpen);
+                                                                 */}
+                    <button className="burger-button" onClick={ valorDelContexto.toggleSidebar }>
+                                &#9776; {/* Unicode for the hamburger icon */}
+                    </button>
+                                             {/* Al generarse el cambio de estado de isSidebarOpen -> lo envia al C. 'SideBar' */}
+                                             {/* 'onClose'genera -> valorDelContexto.toggleSidebar -> un nuevo cambio de estado de isSidebarOpen en Custom Provider -> FALSO y es transmitido al SideBar y provoca el cierre del mismo por condicion de clase de css.  */}
+                    <SideBar isOpen={valorDelContexto.isSidebarOpen} onClose={valorDelContexto.toggleSidebar} />
+                    
                     <Link to ="/">
                         <img className="logoEnjDeco" src={imagenlogo} alt="Imagen Logo Enjoying Deco"/>
                     </Link>
