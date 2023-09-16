@@ -21,10 +21,10 @@ function Main() {
             <Routes>
                                               
 
-                             {/*If URL del navegador = al path, entonces mostrar el Componente deseado. */}
-                <Route path = "/" exact={true}   element = {<ItemListContainer />}/>   {/*Si le paso por la ruta, dentro de ItemListContainer -> greeting = "Bienvenido!", lo puedo tomar por props. */}              
+                         
+                <Route path = "/" exact={true}   element = {<ItemListContainer />}/> 
 
-                <Route path = "/productos/:id" element = {<ItemDetail/>}/>     {/* id es la 'clave' del 'value' capturado por en URL por useParams */}
+                <Route path = "/productos/:id" element = {<ItemDetail/>}/>     
                 
                 <Route path = "/categorias/:id" element = {<ItemCategory/>}/>                                                             
 
@@ -57,9 +57,7 @@ function Main() {
 
             </Routes>
 
-            
-            {/*<ItemListContainer greeting = "Bienvenido!"> </ItemListContainer> 
-                                     paso al C hijo de su interior (ItemListContainer) la props llamada 'greeting' y su valor 'Bienvenido'. La props es un objeto, clave -valor.*/}
+         
         </div>
     )
   }

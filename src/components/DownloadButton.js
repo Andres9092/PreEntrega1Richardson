@@ -2,7 +2,7 @@ import React from 'react';
 
 const DownloadButton = ({ purchaseResult, fileName }) => {
   const downloadFile = () => {
-    const json = JSON.stringify(purchaseResult, null, 2); // Formatting JSON with 2-space indentation
+    const json = JSON.stringify(purchaseResult, null, 2);
     const blob = new Blob([json], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');

@@ -2,7 +2,7 @@ import React from 'react';
 import { Page, Text, Document, StyleSheet } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
-  // Define your PDF styles here
+
 });
 
 const PDFContent = ({ purchaseResult, content }) => (

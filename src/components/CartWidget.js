@@ -5,11 +5,11 @@ import {useContext} from 'react';
 import {contexto} from './CustomProvider';
 
 
-export function CartWidget() { //Si no estoy logueado como 'user' no se muestra el logo de Carrito.
+export function CartWidget() {
 
-  const valorDelContexto = useContext(contexto) //Se importa la variable global exportada 'valorDelContexto' del contexto creado en el Compon 'CustomProvider'
+  const valorDelContexto = useContext(contexto) 
   
-  //const [cantidadTotalProductosCarrito, setCantidadTotalProductosCarrito] = useState(0);
+
 
   if ((valorDelContexto.user) === 'admin'){
     console.log('Ud no tiene credenciales para entrar al carrito de compras')
@@ -23,17 +23,7 @@ export function CartWidget() { //Si no estoy logueado como 'user' no se muestra 
   const unidadesTotal = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
     (total, item) => total + item.cantidadConfirmadaPorElContadorDelProducto, 0)
   
-  // useEffect(() => {
-
-  //   const newTotalQuantity = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
-  //     (total, item) => total + item.cantidadConfirmadaPorElContadorDelProducto,0);
-  //   setTotalQuantity(newTotalQuantity);
-
-  // }, [valorDelContexto.arrayDeObjetosDeProductosAgregados]);
   
-
-
-
   
   return (  
       
@@ -42,10 +32,9 @@ export function CartWidget() { //Si no estoy logueado como 'user' no se muestra 
             
             <li><Link className="iconoCarrito" to = "/carrito"><i class="fa-solid fa-cart-plus"></i></Link></li>
             <div className="fondoRedondoNumeroCart" >               
-              <p className="numeroCart" style = {{color : unidadesTotal === 0 ? "red" : "green"}} >   {/*Condicional de color en linea segun valor de variable global importada */}
+              <p className="numeroCart" style = {{color : unidadesTotal === 0 ? "red" : "green"}} >  
                 {unidadesTotal}   
-                  {/* valorDelContexto es la variable prop global, proveniente de CustomProvider. */}
-                  {/* unidadesTotal === 0 ? ---> va con TRIPLE IGUALDAD = */}
+              
                </p>  
             </div>
         </ul>

@@ -5,7 +5,7 @@ import {useContext} from 'react';
 import {contexto} from './CustomProvider';
 
 
-export function LogoFavoritos() { //Si estoy logueado como 'admin' no se muestra el logo de wapp.
+export function LogoFavoritos() { 
 
   const valorDelContexto = useContext(contexto)
     

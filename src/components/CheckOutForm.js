@@ -2,7 +2,6 @@ import { useState } from "react";
 import React from 'react'
 import '../assets/css/CheckOutForm.css';
 
-//recive prop 'onConfirm' del C. padre 'CheckOut'.
 function CheckOutForm({onConfirm}) {  
 
   const [nombre, setNombre] = useState("");
@@ -15,18 +14,12 @@ function CheckOutForm({onConfirm}) {
   console.log('email: ', email)
   console.log('errors: ', errors)
 
-  const validateForm = () => { //Fc que analiza los valores ingresados como 'values' en los inputs del formulario y devuelve 'errores' en caso de existir.
-    const errors = {};  // creo constante 'errors' de tipo 'objeto', vacia inicialmente.
-    
-    // Seria: -> error = {
-    //   nombre : "El campo 'Nombre' es obligatorio",
-    //   telefono : El campo 'Telefono' es obligatorio",
-    //   email :  "El campo 'E-mail' es obligatorio",
-    // }
+  const validateForm = () => { 
+    const errors = {};  
 
 
-    if (nombre.trim().length < 8 ) {  //si no existe el value del nombre en el formulario (al valor le paso el metodo .trim() para remover los espacios ingresados posibles en blanco.)
-    errors.nombre = "El campo 'Nombre' es obligatorio y debe tener al menos 8 caracteres.";  // agrego 'key' -> 'nombre' con value
+    if (nombre.trim().length < 8 ) { 
+    errors.nombre = "El campo 'Nombre' es obligatorio y debe tener al menos 8 caracteres."; 
     }
 
     if (!telefono.trim()) {
@@ -38,55 +31,43 @@ function CheckOutForm({onConfirm}) {
     }
 
     
-    return errors;  // devolucion de la funcion: todo el objeto 'errors' completo con los errores que se hayan detectado. 
+    return errors; 
 }
 
 
-    const handleConfirm = (event) => {   // event.preventDefault()  -> previene del comportamiento por default, es decir de enviar la informacion al clickear 'submit'
+    const handleConfirm = (event) => {   
     event.preventDefault();
 
-    const validationErrors = validateForm();  //Guardo la cte de la funcion creada que devuelve el objeto 'errors'
+    const validationErrors = validateForm();  
     console.log('validationErrors :', validationErrors)
 
-    if (Object.keys(validationErrors || {}).length === 0) {  //Analiza la cte creada y revisa que no exista 'errors' -> busca que no existan 'keys' en el objeto 'errors', es decir que el objeto: { }
+    if (Object.keys(validationErrors || {}).length === 0) { 
       
-      const userData = { // creo cte de tipo 'objeto' con la data ingresada por formulario
+      const userData = { 
         nombre,
         telefono,
         email,
       };
       console.log("userDataCreado:", userData)
       
-      onConfirm(userData); //devuelve al C. padre 'CheckOut' la prop 'onConfirm' con el valor para 'createOrder' -> 'userData'
+      onConfirm(userData);
       
       
     } else {
-      setErrors(validationErrors); //re-setea el valor de la constante 'errors' que inicialmente esta vacia y dispara los alerts cargados en los inputs del formu -> {errors.nombre && (<p className="textoError">{errors.nombre}</p>)}
+      setErrors(validationErrors); 
     }
   };
 
-  const handleCancel = (event) => {  //funcion que previene el envio de informacion del formulario. Setea todos los campos en vacio.
+  const handleCancel = (event) => {  
     event.preventDefault();
-                                    //Al clickear el 'cancel' re-setea las constates de los inputs a 'vacio' -> vacia los campos del formulario.
+                                   
     setNombre("");  
     setTelefono("");
     setEmail("");
     setErrors({});
   };
 
-  return (  //planteo el cuerpo del formulario->  labels + inputs.
-            // value = {valor ingresado por formulario}
-            // {errors.nombre &&   -> condicional que confirma si existe el tipo de error y devuelve su mensaje respectivo del objeto 'errors'
-            //onChange => listen to an input’s change in value by providing the attribute onchange.\
-            //onChange generates an Event, and you access the value by event.target.value ...
-                        // event: {
-                        //   target: {
-                        //     value: "string"
-                        //   }
-                        // }
-            
-            //onChange={({ e }) => setNombre(e.target.value)} -> setea a la cte 'nombre' el valor ingresado y capturado del input.
-            //onClick={handleConfirm}  -> al evento 'click' llama a la funcion declarada 'handleConfirm'
+  return (  
           
     
     <form className="formulario">
@@ -114,7 +95,7 @@ function CheckOutForm({onConfirm}) {
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="inputValues" placeholder="Escriba su E-mail..."/>
           {errors.email && (<p className="textoError">{errors.email}</p>)}
         </div>
-                                                              {/* handleConfirm -> fc que analiza si existe errores de validacion, crea cte con data 'userData' y genera -> onConfirm(userData) */}
+                                                             
         <button className="botonSubmit" type="submit" onClick={handleConfirm}>Submit</button>
         
         <button className="botonCancel" type="button" onClick={handleCancel} > Cancel </button>

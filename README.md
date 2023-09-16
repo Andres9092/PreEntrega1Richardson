@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+Hola, como andan?
+Soy Andres Richardson, y estoy desarrollando la pagina web de tipo e-commerce respectiva a la comercializacion de arreglos florales, como parte de un emprendimiento personal real junto a mi madre, el cual ya se encuentra activo y cuyo nombre es ‘Enjoying Deco’ - @enjoyingdeco’.
+El objetivo del Proyecto es poder aplicar en este sitio las distintas tecnologias y recursos vistos durante la cursada, para luego poder publicarla y darle uso con fines de negocios.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Proyecto:
+1)	Instalacion de Visual Studio Code (VSC).
+2)	Instalacion de node.js -> version estable.
+3)	Instalacion de Git Bash Here.
+4)	Descarga de React.
+o	Crear carpeta* para alojar la carpeta del Proyecto.
+	Git bash here -> npm i -g create-react-app
+	Git Bash Here -> npx create-react-app @nombreDelProyecto -> se crea carpeta de Proyecto en carpeta* original.
 
-## Available Scripts
+5)	En carpeta de Proyecto -> Git Bash Here -> code .   -> se abre VSC.
+6)	Abro terminal de VSC -> npm start
+7)	Creacion de carpeta ‘Public’ -> inserter archive ‘index.html’
+o	Se cambia en archivo ‘index.html’:
+<link rel="icon" href="%PUBLIC_URL%/logoEnj.png" />
+<title>@EnjoyingDeco</title>  
 
-In the project directory, you can run:
+	
 
-### `npm start`
+8)	Creacion de carpetas:
+o	‘src’
+	‘assets’
+•	‘css’
+•	‘images’
+	‘components’
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+9)	Creacion de Repositorio remote – Git Hub.
+o	Gitub.com -> sign in.
+o	New repository -> colocarl nombre de Pr ->  /nombreProyecto  -> ‘Crear’
+o	Copiar direccion ‘https’
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+10)	Creacion de Repositorio Local.
+o	En carpeta de Pr -> abro Git Bash Here.
+	git init
+	git config - - global user.name “nombreDeCuentaUsuarioGitHub
+	git config - - global user.email “emailDeCuentaUsuarioGitHub’’
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+11)	Conexion de Repositorio Local con Repositorio Remoto
+o	En carpeta de Pr -> abro Git Bash Here
+	git remote add original linkCopiadoDeRepoRemoto
+	git remote -v
 
-### `npm run build`
+12)	Incluir archivos a Repositorio Local.
+o	git add .
+o	git status
+o	git commit -m “nombreDelCommit”
+o	git log
+o	git push origin master
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+13)	Clonacion de Repositorio Remoto a nuevo Repositorio Local (1ra vez)
+o	Creacion de carpeta* Local -> abro Git Bash Here.
+o	git clone linkCopiadoDeRepoRemoto
+o	Genercion automatica de Carpeta de Repo Local dentro de Carpeta* original.
+o	En carpeta de Pr -> abro Git Bash Here
+	npm  start
+o	Si existe error: ‘react script is not recognized’:
+o	npm install react-scripts –save
+o	Instalacion de dependencias necesarias
+o	npm install
+o	npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+14)	Incluir archivos a Repositorio Local creado desde Repositorio Remoto.
+o	En carpeta de Pr -> abro Git Bash Here
+o	git pull origin master.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Instalaciones dentro de proyecto en VSC – Dependecias/Librerias.
+o	npm install react -router-dom
+o	npm install prop-types –save
+o	Version utilizada de React: 18.2.0
+o	Firebase:10.3.1
+o	@google-cloud/firestore
+o	prop-types
+o	styled-components (comentado finalmente).
+o	Bootstrap (a utilizar en proximos commits).
+o	cors
+o	react-loaders-kit
+o	react-pdf (descarga de detalle de compra a pdf)
+o	szhsin/react-accordion (acordion generado en footer)
+o	tailwindcss

@@ -21,23 +21,19 @@ function NavBar() {
  
     return (  
      
-        <header className="Header">   {/* etiqueta unica que contiene el NavBar completo */}
+        <header className="Header">
 
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/> {/* Importar estilos para el logo burger menu */}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/> 
   
             <div className="NavHeader">
 
                 
                 <div className="burger-logo-Phone">   
-                                                                {/* Boton que comanda el cambio de estado de isSidebarOpen  -> TRUE */}
-                                                            {/* En c. CustomProvider  -> const toggleSidebar = () => { 
-                                                                                        setSidebarOpen(!isSidebarOpen);
-                                                                 */}
+                                                             
                     <button className="burger-button" onClick={ valorDelContexto.toggleSidebar }>
-                                &#9776; {/* Unicode for the hamburger icon */}
+                                &#9776; 
                     </button>
-                                             {/* Al generarse el cambio de estado de isSidebarOpen -> lo envia al C. 'SideBar' */}
-                                             {/* 'onClose'genera -> valorDelContexto.toggleSidebar -> un nuevo cambio de estado de isSidebarOpen en Custom Provider -> FALSO y es transmitido al SideBar y provoca el cierre del mismo por condicion de clase de css.  */}
+                                          
                     <SideBar isOpen={valorDelContexto.isSidebarOpen} onClose={valorDelContexto.toggleSidebar} />
                     
                     <Link to ="/">
@@ -46,18 +42,9 @@ function NavBar() {
                 </div>
 
                 <div>
-                                                {/* envio prop de nombre 'onSearch' y valor {handleSearch} */}
+                                              
                     <BarraBuscadora onSearch = {handleSearch} />  
 
-                    {/* <div className="barraBuscadora">
-                            
-
-                            <input type="text" name="buscar" className="textoBuscarEnBarra" placeholder="Buscar..."/>
-                                
-                            <button className="botonSearch-Desktop" type="submit"><i className="fa-solid fa-magnifying-glass botonSearchDektop"></i></button>
-
-
-                    </div> */}
 
                 </div>
 
@@ -78,11 +65,9 @@ function NavBar() {
                         </ul>
 
                     </div>
-                                                    
-                
+                                          
                     <div>
-                        <CartWidget/>          {/* Llamo a C Hijo 'CartWidget' */}
-
+                        <CartWidget/>        
                     </div>
                
                 </div>

@@ -1,69 +1,13 @@
 import '../assets/css/NavInferior.css';
 import {Link} from 'react-router-dom';
-// import styled from 'styled-components';
 
-// const DIV = styled.div`
-
-// @media (max-width: 600px){
-//     display:none
-//     flex-flow: column nowrap;
-//     background-color: rgb(249, 247, 223);
-//     top:91px;
-//     left: 0px;
-//     height: 106vh;
-//     width: 187px;
-//     padding-top:0;
-//     border: 1px solid #cfab35;
-//     transform: ${({ open }) => open ? 'translateX(-110%)' : 'translateX(0%)'};   
-//     transition: transform 0.3s easy-in-out;
-    
-//     };
-
-//     @media (min-width:600px) {
-         
-           
-//           display: flex;
-//           flex-direction: row;
-//           justify-content: space-around;
-//           align-items: center;
-//           width: 100%;
-//           position:fixed;
-//           background-color: rgb(249, 247, 223);
-//           border: solid 1px  #cfab35;
-//           height: 50px;
-//           align-items: center;
-//           top:90px;
-//           width: 105%;
-//           padding-top: 0;
-      
-//       };
-
-//       @media (min-width:650px) {
-            
-         
-//           top:100px;
-//           width: 105%;
-      
-//       };
-
-//       @media (min-width:700px) {
-        
-//             top:110px;
-//             width: 105%;
-        
-//         }
-        
-
-//     `;
-
-// function NavInferior({open}) { 
 
 function NavInferior({open}) { 
      
     
     return (  
         
-        // <DIV  open = {open}>
+       
         <div>
             <ul className="leftBottomHeader">
             
@@ -82,8 +26,8 @@ function NavInferior({open}) {
                         
                     </div>
                     <div class="dropdown-content">
-                        <Link className="categoria" to = "/categorias/L">Tamanio Large (L)</Link>    {/* /L es el valor -> value del key -> 'id' enviado por ruta y campurado por el useParams */}
-                        <Link className="categoria" to = "/categorias/M">Tamanio Medium (M)</Link>   {/* /M es el valor -> value del key -> 'id' enviado por ruta y campurado por el useParams */}
+                        <Link className="categoria" to = "/categorias/L">Tamanio Large (L)</Link>    
+                        <Link className="categoria" to = "/categorias/M">Tamanio Medium (M)</Link>  
                     </div>
 
                 </div>
@@ -121,7 +65,7 @@ function NavInferior({open}) {
             </ul>    
 
         </div>
-        // </DIV>
+     
                                 
     )
   }

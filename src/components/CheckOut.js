@@ -1,13 +1,12 @@
 import { useContext, useState } from "react";
 import {contexto} from './CustomProvider';
 import {Timestamp,addDoc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
-import {db} from '../firebase';   // serverTimestamp -> da objeto fecha de la maquina del servidor al momento de utilizarlo. Necesario para guardar fecha y hora de la compra.
+import {db} from '../firebase';
 import CheckOutForm from "./CheckOutForm";
-//import { BarLoader } from "react-spinners";
 import { Link } from "react-router-dom";
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import '../assets/css/CheckOut.css';
-import 'firebase/firestore'; // Import other Firebase services you need
+import 'firebase/firestore'; 
 import DownloadButton from './DownloadButton';
 
 
@@ -28,8 +27,8 @@ function CheckOut() {
   const [unidadesTotal, setUnidadesTotal] = useState("");
   const [productos, setProductos] = useState("");
 
-  const productosOriginalesBaseDatos = collection(db, "products")  //traigo todos la coleccion de 'productos' existentes en la BD. NO tiene la data directamente.
-  
+  const productosOriginalesBaseDatos = collection(db, "products") 
+
   const purchaseResult = {
     Numero_Orden: idOrden,
     Fecha:fechaCompra,
@@ -48,76 +47,64 @@ function CheckOut() {
     colors: ['#c99d0b', '#cfab35']
 }
 
-  const createOrder = async ({ nombre, telefono, email }) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> tiene la info de la cte creada 'userData' y tiene esos valores.
-    setLoading(true); //activo el 'loader'.
+  const createOrder = async ({ nombre, telefono, email }) => {
+    setLoading(true); 
 
-    // try {
-    //   tryCode - Code block to run
-    // }
-    // catch(err) {
-    //   catchCode - Code block to handle errors
-    // }
-    // finally {
-    //   finallyCode - Code block to be executed regardless of the try result
-    // }
-    var timestamp = Timestamp.fromDate(new Date()); //fecha de servidor.
-    var date = new Date(timestamp.toMillis());   //transformo fecha
+    
+    var timestamp = Timestamp.fromDate(new Date()); 
+    var date = new Date(timestamp.toMillis());   
 
-    const formattedDate = date.toLocaleDateString('es-ES')  //transformo fecha a string para poder ser leida.
+    const formattedDate = date.toLocaleDateString('es-ES')  
     const formattedTime = date.toLocaleTimeString('es-ES')
 
   
     try {
-      const ordenCreada = {  //creo objeto con data.
-        cliente: {          // data traida por props del C. hijo formulario.
+      const ordenCreada = {  
+        cliente: {         
           nombre,
           telefono,
           email,
         },
         itemsAgregados: valorDelContexto.arrayDeObjetosDeProductosAgregados,
 
-        dataDate: formattedDate,  //crea fecha y hora por servidor, de la orden creada.
+        dataDate: formattedDate, 
         dataTime: formattedTime,
         
       };
       console.log("ordenCreadaEnCheckOut:", ordenCreada)
 
-      //console.log("ordenCreadaEnCheckOut.itemsAgregados:", ordenCreada.itemsAgregados[0].cantidadConfirmadaPorElContadorDelProducto)
-  
+     
    
-                                    //writeBatch(db) -> If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of set(), update(), or delete() operations.
+                                
       const batch = writeBatch(db);
 
       const productosFueraDeStock = [];
 
-      const idProductosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   //objeto de productos agregados al Carrito -> devuelve el 'id'
-      //console.log("idProductosAgregadosAlCarrito:", idProductosAgregadosAlCarrito)
-   
-     //obtengo 'QuerySnapshot' de productos de la BD original que coinciden con los agregados al carrit -> Comparo base completa de prods con los Agregados al Carrito. -> NO DEVUELVE LOS PRODS DIRECTAMETNE.
-     //IMPORTANTE: expresion funciona si: los 'id' de los productos cargados en la BD Firestore, son de tipo 'String'.
+      const idProductosAgregadosAlCarrito = valorDelContexto.arrayDeObjetosDeProductosAgregados.map((prod) => prod.id);   
+     
       const productosEnBDCoincidentesAgregadosAlCarrito = await getDocs(     
         query(productosOriginalesBaseDatos, where(documentId(), "in", idProductosAgregadosAlCarrito))
       );
 
-      //console.log("productosEnBDCoincidentesAgregadosAlCarrito:", productosEnBDCoincidentesAgregadosAlCarrito)
+
 
       const { docs } = productosEnBDCoincidentesAgregadosAlCarrito;
 
-          //Barro los productos productos Agregados Al Carrito Coincidentes En BD y para cada uno:
+        
       
-        docs.forEach((doc) => {  ///De cada producto DE LA BD, que coinciden con los agregados al carrito, obtengo la 'data()' y el 'stock'
+        docs.forEach((doc) => {  
         const dataDelDocEnDB = doc.data();
        
         const stockProductoEnDB = dataDelDocEnDB.stock;
 
-        const productoAgregadoACarritoExistenteEnDB = valorDelContexto.arrayDeObjetosDeProductosAgregados.find((prod) => prod.id === doc.id); //devuelve 1 prod por cada vuelta del forEach.
-        //console.log("productoAgregadoACarritoExistenteEnDB:", productoAgregadoACarritoExistenteEnDB)
+        const productoAgregadoACarritoExistenteEnDB = valorDelContexto.arrayDeObjetosDeProductosAgregados.find((prod) => prod.id === doc.id); 
+      
        
         const prodQuantityProductoAgregadoACarrito = productoAgregadoACarritoExistenteEnDB?.cantidadConfirmadaPorElContadorDelProducto;
-        //console.log("prodQuantityProductoAgregadoACarrito:", prodQuantityProductoAgregadoACarrito) // la cantidad seleccionada por el usuario del producto agregado y existente en la DB.
+      
 
-        if (stockProductoEnDB >= prodQuantityProductoAgregadoACarrito) {    // si el stock de un producto de la DB coincidente con el agregado por el cliente al carrito, es >= a la cantidad seleccionada por el usuario del producto agregado.
-          batch.update(doc.ref, { stock: stockProductoEnDB - prodQuantityProductoAgregadoACarrito }); //actualiza el Stock del producto ageregado al Carrito, en la BD.
+        if (stockProductoEnDB >= prodQuantityProductoAgregadoACarrito) {    
+          batch.update(doc.ref, { stock: stockProductoEnDB - prodQuantityProductoAgregadoACarrito }); 
         } else {
           productosFueraDeStock.push({ id: doc.id, ...dataDelDocEnDB });
         }     
@@ -127,11 +114,11 @@ function CheckOut() {
       if (productosFueraDeStock.length === 0) {
         await batch.commit();
 
-        const coleccionDeOrdenesDeVentasEnDB = collection(db, "ordenes_ventas"); //creo coleccion en DB 'ordenes_ventas'
+        const coleccionDeOrdenesDeVentasEnDB = collection(db, "ordenes_ventas"); 
 
-        const ordenCreadaEnDB = await addDoc(coleccionDeOrdenesDeVentasEnDB, ordenCreada); //agrego documento con data de 'ordenCreada' a la coleccion creada en FireStore 'coleccionDeOrdenesDeVentasEnDB  -> 'ordenes_ventas'
+        const ordenCreadaEnDB = await addDoc(coleccionDeOrdenesDeVentasEnDB, ordenCreada); 
 
-        setIdOrden(ordenCreadaEnDB.id);  // re-setea el valor 'vacio' de 'id' de 'idOrden'
+        setIdOrden(ordenCreadaEnDB.id);  
         valorDelContexto.clearCart();
 
 
@@ -161,11 +148,11 @@ function CheckOut() {
     } 
     
     catch (error) {
-      setError("Error de procesamiento de orden."); //setea el valor de 'error', si no hay un resultado en el 'try' 
+      setError("Error de procesamiento de orden."); 
       console.error(error);
     }
     finally {  
-      setLoading(false);  //corta el 'loader' mas all del resultado del 'try'.
+      setLoading(false); 
     }
   };
 
@@ -173,7 +160,7 @@ function CheckOut() {
 
   
 
-  if (loading) {  // Si loading:true -> seteo el 'loader' con sus propiedades directamente, fuera del return. En otros C, lo incorporo dentro del return como <BarsLoader {...loaderProps} />
+  if (loading) {  
     return (
       <>
         <h1 className="avisoOrdenProcesada">
@@ -188,7 +175,7 @@ function CheckOut() {
 
 
   if (idOrden) {
-    return (   // el return devuelve info directamente.
+    return (   
       <div className="divDetalleCompra">
         <p className="fraseCompra"><i class="fa-solid fa-hands-clapping"></i>  Felicitaciones! </p>
         <p className="fraseCompra">Su compra fue procesada con exito!</p>
@@ -239,7 +226,7 @@ function CheckOut() {
                                                                       
                              <div className="divColumnasPhone">
                                      <p className="titulosColumnas">Cantidad</p>    
-                                                                                      {/*arrayDeObjetosDeProductosAgregados -> [{…}, {…}] -> por eso como se mapea cada objeto para ir imprimiendo cada Card, se barre cada posicion 'i' -> arrayDeObjetosDeProductosAgregados[i]*/} 
+                                                                                     
                                      <p className="dataColumnas"> {productos[i].cantidadConfirmadaPorElContadorDelProducto}</p>
                                    
                              </div>  
@@ -277,8 +264,6 @@ function CheckOut() {
       <h1 className="tituloCheckOut">CheckOut</h1>
       {error && (<p className="text-center text-red-500 text-lg mt-4">{error}</p>)}
 
-             {/* paso prop 'onConfirm' con valor 'createOrder' al Compo hijo 'CheckOutForm' */}
-             {/* El Compo hijo 'CheckOutForm' le devuelve a C. CheckOut', la cte creada 'userData' a traves de onConfirm(userData), al clickear Submit y correr la Fc 'handleConfirm'  */}
       <CheckOutForm onConfirm = {createOrder} />  
 
     </div>

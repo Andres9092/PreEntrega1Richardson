@@ -39,28 +39,28 @@ const CreateUser = () => {
 }
 
 
-  const createUser = async ({nombre, telefono, email, password}) => { //{ name, phone, email } provienen de -> <CheckoutForm onConfirm={createOrder} /> , donde createOrder -> tiene la info de la cte creada 'userData' y tiene esos valores.
-    setLoading(true); //activo el 'loader'.
+  const createUser = async ({nombre, telefono, email, password}) => { 
+    setLoading(true); 
 
 
-    var timestamp = Timestamp.fromDate(new Date()); //fecha de servidor.
-    var date = new Date(timestamp.toMillis());   //transformo fecha
+    var timestamp = Timestamp.fromDate(new Date()); 
+    var date = new Date(timestamp.toMillis());   
 
-    const formattedDate = date.toLocaleDateString('es-ES')  //transformo fecha a string para poder ser leida.
+    const formattedDate = date.toLocaleDateString('es-ES')  
     const formattedTime = date.toLocaleTimeString('es-ES')
 
 
 
     try {
-      const perfilCreado = {  //creo objeto con data.
-        cliente: {          // data traida por props del C. hijo formulario.
+      const perfilCreado = {  
+        cliente: {        
           nombre,
           telefono,
           email,
           password
         },
         
-        dataDate: formattedDate,  //crea fecha y hora por servidor, de la orden creada.
+        dataDate: formattedDate, 
         dataTime: formattedTime,
         
       };
@@ -70,11 +70,11 @@ const CreateUser = () => {
       const batch = writeBatch(db);
       await batch.commit();
 
-      const coleccionDePerfilesCreadosEnDB = collection(db, "alta_usuarios"); //creo coleccion en DB 'alta_usuarios'
+      const coleccionDePerfilesCreadosEnDB = collection(db, "alta_usuarios"); 
 
-      const perfilCreadoEnDB = await addDoc(coleccionDePerfilesCreadosEnDB, perfilCreado); //agrego documento con data de 'perfilCreado' a la coleccion creada en FireStore 'coleccionDePerfilesCreadosEnDB  -> 'alta_usuarios'
+      const perfilCreadoEnDB = await addDoc(coleccionDePerfilesCreadosEnDB, perfilCreado); 
 
-      setIdPerfilCreado(perfilCreadoEnDB.id);  // re-setea el valor 'vacio' de 'id' de 'idPerfilCreado'
+      setIdPerfilCreado(perfilCreadoEnDB.id);  
     
       setSubmitted(true);
      
@@ -94,17 +94,17 @@ const CreateUser = () => {
   } 
   
   catch (errors) {
-    setErrors("Error de procesamiento de solicitud de alta de usuario."); //setea el valor de 'error', si no hay un resultado en el 'try' 
+    setErrors("Error de procesamiento de solicitud de alta de usuario."); 
     console.errors(errors);
   }
   finally {  
-    setLoading(false);  //corta el 'loader' mas alla del resultado del 'try'.
+    setLoading(false);  
   }
 };
 
 
 
-if (loading) {  // Si loading:true -> seteo el 'loader' con sus propiedades directamente, fuera del return. En otros C, lo incorporo dentro del return como <BarsLoader {...loaderProps} />
+if (loading) {  
   return (
     <>
       <h1 className="avisoOrdenProcesada">
@@ -116,13 +116,7 @@ if (loading) {  // Si loading:true -> seteo el 'loader' con sus propiedades dire
     </>
   );
 }
-
-
-
-
- {/* paso prop 'onConfirm' con valor 'crearCuenta' al Compo hijo 'CreateUserForm' */}
-                  {/* El Compo hijo 'CreateUserForm' le devuelve a C. CreateUser', la cte creada 'userDataCreateUser' a traves de onConfirm(userDataCreateUser), al clickear Submit y correr la Fc 'handleConfirm'  */}
-            
+        
 
   return (
         <div className="divPaginaCheckOut">

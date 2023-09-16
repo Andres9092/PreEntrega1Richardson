@@ -5,19 +5,18 @@ import Main from './Main';
 import Footer from './Footer';
 import {BrowserRouter} from 'react-router-dom';
 import CustomProvider from './CustomProvider';
-//import '../firebase'; // ejecuto el archivo creado.
 
 function App() { 
   return (  
     
     
-    <BrowserRouter className="App"> {/* Etiqueta unica que contiene la aplicacion completa. Dentro del C Padre App(), se incluyen el resto de los Componentes Hijos de la aplicacion, sobre los cuales iran nuevos C Hijos ta su vez. */}
+    <BrowserRouter className="App"> 
 
-      <CustomProvider>       {/* C PASO 2) DE CREACION DE COMP CUSTOM PROVIDER, que posibilita la obtencion de variable global, en sus C hijos, a partir del Provider creado en el Contexto.*/}
+      <CustomProvider>     
           
-          <NavBar></NavBar>  {/* C Padre que contiene a Compts hijos 'CartsWidget', 'NavInferior' en su interior. */}
+          <NavBar></NavBar> 
 
-          <Main></Main>      {/* C que define las rutas de las vistas que cambian en la aplicacion */}
+          <Main></Main>      
           
           <Footer></Footer>
 

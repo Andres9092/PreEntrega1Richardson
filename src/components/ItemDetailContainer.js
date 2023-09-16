@@ -6,7 +6,7 @@ import {Button} from 'react-bootstrap'
 import '../assets/css/ItemDetail.css';
 
 
-function ItemDetailContainer(props){ /* Las props vienen definidas por el Componente padre ItemListContainer, que contienen la data importada nombrePropProducts = {products} */
+function ItemDetailContainer(props){ 
     console.log('props :', props)
 
 return(   
@@ -14,10 +14,10 @@ return(
         <section className="ContenedorDeTarjetas">
          
                
-            {props.nombrePropProducts.length === 0  /* Si el array 'nombrePropProducts' esta vacio */
+            {props.nombrePropProducts.length === 0  
 
                 ? <p>Cargando...</p>
-                : props.nombrePropProducts.map(   /* Si el array 'nombrePropProducts' NO ESTA vacio, mapeo cada objeto del array y crea la tarjeta con la data respectiva a cada 'value' para cada 'key' */
+                : props.nombrePropProducts.map(  
                     (item,i) => {
                         console.log(item,i)
                         return(
@@ -37,12 +37,12 @@ return(
 
                                 <br></br>
                                 <div className="stock">
-                                       {/*Condicional color stock segun prop item.stock*/}
+                                    
                                         <p style = {{color : item.stock == 0 ? "red" : "green"}}>Stock: {item.stock}</p> 
                                 </div>
 
                                
-                                    <Link to ={`/productos/${item.id}`}> <Button className="botonDetalle"> {/* Al darle click al boton, redirije a la ruta ->  /item/:id , es decir conduce al Comp ItemDetail, definido en C Main. Cada id sera capturado luego de la URL por el useParams y reflejado en Comp ItemDetail. El  id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado desde por 'products' desde ItemListContainer */}
+                                    <Link to ={`/productos/${item.id}`}> <Button className="botonDetalle">
                                         Ver Detalle     
                                     </Button> </Link >
                                

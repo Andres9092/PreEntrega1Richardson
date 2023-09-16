@@ -11,40 +11,39 @@ import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import {contexto} from './CustomProvider';
 
 
-function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C padre 'ItemDetail' la prop del C hijo Contador.
+function ItemDetail({contador}) { 
 
-    const {id} = useParams()   //Se captura el id pasado por ruta desde ItemDetailContainer ->  Link to ={`/productos/${item.id}`}
-    console.log('id :', id)   //id : 1cVNWdY0BDnjelTnoAfL -> el value es el pasado inicialmente por props 'nombrePropproducts'y de value 'products' desde ItemListContainer a ItemDetailContainer, y luego de ItemDetailContainer a ItemDetail por ruta ->  Link to ={`/productos/${item.id}`}
+    const {id} = useParams()  
+    console.log('id :', id) 
 
     const [product, setproduct] = useState([])
     const [loading, setLoading] = useState(true)
     const [cantidad, setCantidad] = useState(0)
     const [error, setError] = useState("")
 
-    const loaderProps = {    //seteo de Loader
+    const loaderProps = {    
       loading,
       size: 40,
       duration: 1,
       colors: ['#c99d0b', '#cfab35']}
   
-    const {addItem} = useContext(contexto)    //StateUpLifting -> //Se importa la funcion global exportada 'addItem' del contexto creado en el Compon 'CustomProvider'
+    const {addItem} = useContext(contexto)   
     
       
     useEffect( () => {
       
       const productCollection = collection(db, 'productos')  
-      const referenciaDelDocumento = doc(productCollection, id)  //Busca en la coleccion 'productos', el 'documento' de producto cuyo 'id' coincide con el captado por el useParams.
-
+      const referenciaDelDocumento = doc(productCollection, id) 
       console.log('referenciaDelDocumento :', referenciaDelDocumento)
 
-      const consulta = getDoc (referenciaDelDocumento)   //la consulta es 'getDoc' no 'getDocs', porque se trae 1 solo producto de Firestore.
+      const consulta = getDoc (referenciaDelDocumento)  
       console.log('consulta :', consulta)
 
       consulta
           .then((res)  => {
             console.log('res :', res)
-            console.log('res.data) :', res.data)  //Devuelve la data asociada al producto seleccionado por id.
-            setproduct(res.data())  //actualiza valor para 'product' cuyo valor inicial es 'vacio', ofreciendo la data asociada al mismo.
+            console.log('res.data) :', res.data)  
+            setproduct(res.data()) 
           })
 
           .catch((error) => {
@@ -53,22 +52,22 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
           setError(error)
         
 
-          setTimeout(() => {      // seteo del funcionamiento del Loader programado. Corta el Loader luego de 1000 ms cambiando el edo a 'false'
+          setTimeout(() => {     
             setLoading(false)
           },1000)
     
   }, []);
-                                                  // Contador devuelve a C ItemDetail -> nombrePropHandleCallback(contador) que es (cantidadDeCadaProductooConfirmadaPorElContador)
-      const handleCallback = (cantidadDeCadaproductoConfirmadaPorElContador) => {  //'cantidadConfirmada' trae el valor seteado de 'contador' en el C hijo 'Contador'
+                                                
+      const handleCallback = (cantidadDeCadaproductoConfirmadaPorElContador) => { 
 
-        setCantidad(cantidadDeCadaproductoConfirmadaPorElContador)  // setea nuevo valor a 'cantidad'
+        setCantidad(cantidadDeCadaproductoConfirmadaPorElContador)  
         console.log("La cantidad confirmada por el contador es: ", cantidadDeCadaproductoConfirmadaPorElContador )
         
         
        console.log("product: ", product )
        console.log("product.precio: ", product.precio)
       
-       addItem(product,cantidadDeCadaproductoConfirmadaPorElContador)  //Se devuelve a la funcion importada 'addItem' del C. Padre, los valores 'product' y 'cantidadDeCadaproductoConfirmadaPorElContador'
+       addItem(product,cantidadDeCadaproductoConfirmadaPorElContador) 
       }
  
     return (  
@@ -76,7 +75,7 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
     <div className="ItemDet">  
     
                                          
-        <BarsLoader {...loaderProps} />     {/*Implementacion del Loader seteado por 1000ms inicialemente */}
+        <BarsLoader {...loaderProps} />     
         
         <div className="divContenedorPhone">
 
@@ -116,22 +115,22 @@ function ItemDetail({contador}) { //El componente hijo 'Contador' le pasa al C p
                 </div>     
                 <p>---------------------------</p>
                 <div className = "contadorProdAgregados">
-                                                                {/* 'cantidad' seteada en 0 inicialmente */}
+                                                              
                       <p>Unidades confirmadas: {cantidad} </p>    
                 </div>
                 <br></br>     
                                 
                 <div>
                   {  
-                    cantidad > 0 ? (  // Inicialmente el link no se ve ya que 'cantidad = 0' y se muestra el boton del Comp Contador 'Agregar al carrito'. Al re setearse el valor de 'cantidad', se muestra el link 'Terminar compra' y desaparece el boton 'Agregar al carrito'
+                    cantidad > 0 ? ( 
                     <Link to ="/carrito" className="botonTerminarCompra"><i class="fa-solid fa-money-check-dollar"></i> Finalizar compra</Link>
                     ) : (
-                        <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  /* Le paso al C hijo Contador la prop  'nombrePropHandleCallback' cuyo contenido es la funcion 'handleCallback', 'stock' e 'initial' -> seteado por default en 1.  */
+                        <Contador  nombrePropHandleCallback = {handleCallback} stock = {product.stock} initial ={1}/>  
                     )
                    }
                 </div>
                 <br></br>
-                                                      {/* // 'Total' Inicialmente seteado en 0 */}
+                                                 
                  <div className = "precioTotal">   
                     <p className = "precioTotal" >Total: $ {product.precio * cantidad} </p>
                  </div>             

@@ -15,7 +15,7 @@ const Login = () => {
     setError('');
 
     try {
-      // Simulating an asynchronous API call to check authentication
+
       const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
@@ -25,10 +25,10 @@ const Login = () => {
       });
 
       if (response.ok) {
-        // Successful login
+    
         console.log('Login successful!');
       } else {
-        // Failed login
+   
         const errorData = await response.json();
         setError(errorData.message || 'Login failed.');
       }

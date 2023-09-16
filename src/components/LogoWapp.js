@@ -5,7 +5,7 @@ import {contexto} from './CustomProvider';
 
 
 
-export function LogoWapp() { //Si estoy logueado como 'admin' no se muestra el logo de wapp.
+export function LogoWapp() { 
 
     
   const valorDelContexto = useContext(contexto)

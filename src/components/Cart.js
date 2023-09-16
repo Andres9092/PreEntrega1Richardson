@@ -8,15 +8,9 @@ import CartCards from './CartCards';
 
 function Cart() {
   
-  const valorDelContexto = useContext(contexto)   //valorDelContexto va sin llaves, porque estoy llamando a una variable, no una funcion como en el caso de {addItem}
+  const valorDelContexto = useContext(contexto)   
 
 
-  // console.log('valorDelContexto :', valorDelContexto)
-  // console.log('valorDelContexto.arrayDeObjetosDeProductosAgregados :', valorDelContexto.arrayDeObjetosDeProductosAgregados.length)
-  // console.log('valorDelContexto.calculateTotal :', valorDelContexto.calculateTotal)
-
-
-  //creo variable local con data imoportada del CustomProvider. -> const sumWithInitial = array1.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue)
   
   const MontoTotal = valorDelContexto.arrayDeObjetosDeProductosAgregados.reduce(
     (total, item) => total + item.precio * item.cantidadConfirmadaPorElContadorDelProducto, 0)
@@ -59,8 +53,7 @@ return (
       <CartCards/>
 
       <div className='divTotalesPhone'>
-            {/* <p>Cantidad de items distintos agregados: {valorDelContexto.arrayDeObjetosDeProductosAgregados.length}</p>
-            <p>Cantidad total de unidades agregadas: {valorDelContexto.cantidadTotalProductosAgregados}</p> */}
+         
         <br></br>
         <br></br>
         <h2 className='tituloOrden'>Su orden:</h2>
@@ -70,12 +63,12 @@ return (
           <p className ="unidadesTotalPhone">- Total Unidades: {unidadesTotal}</p>
         </div>
         <p className ="montoTotalPhone">Monto Total: Ar$ {MontoTotal}</p>
-        {/* <p className ="montoTotalPhone">Monto Total: Ar$ {valorDelContexto.montoTotalProductosAgregados}</p> */}
+      
       </div>
 
       <div className="divCheckOut-remove">
         <Link to="/checkOut" className="checkOut-button"><i class="fa-solid fa-money-bill"></i>  CheckOut</Link>
-                                                                                  {/* //valorDelContexto.clearCart()  -> funcion que proviene del CustomProvider */}
+                                                                                
         <button className="remove-button" onClick={() => valorDelContexto.clearCart()}>Limpiar carrito</button> 
       </div>
     </div>  

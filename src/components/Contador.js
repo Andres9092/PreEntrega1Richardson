@@ -4,24 +4,24 @@ import { Button } from 'react-bootstrap'
 import '../assets/css/Contador.css';
 
 
-function Contador({nombrePropHandleCallback,stock,initial}) { //recibe de C padre la prop 'nombrePropHandleCallback' , ademas de las props 'stock','initial'
+function Contador({nombrePropHandleCallback,stock,initial}) { 
 
-    const [contador, setContador] = useState(initial);   // valor de 'contador' por default: 1
+    const [contador, setContador] = useState(initial); 
 
     const sumar = () => {
-        if(contador < stock) {  //validaciones de Stock
+        if(contador < stock) {  
             setContador(contador + 1)
         }}
 
 
     const restar = () => {
-        if(contador > 1) { //validaciones de Stock, no puede ser negativo el contador.
+        if(contador > 1) { 
         setContador(contador - 1)
         }}
 
     const resetear = () => setContador(0)
     
-    const handleConfirmar = () => { //StateUpLifting. Le devuelve al C. ItemDetail padre la misma prop 'nombrePropHandleCallback' recibida inicialmente, pero actualizada con el valor de 'contador'
+    const handleConfirmar = () => { 
         nombrePropHandleCallback(contador)  
     }
 
@@ -40,7 +40,7 @@ function Contador({nombrePropHandleCallback,stock,initial}) { //recibe de C padr
         <br></br>
         
         <div>
-                                        {/*Si no existe stock no se activa el boton -> disabled = {!stock}> */}
+                                      
             <button className="botonAgregarCarritoDesktop" onClick={handleConfirmar} disabled = {!stock}><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</button>
         </div>
        
