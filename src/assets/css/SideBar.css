@@ -1,5 +1,5 @@
 .sidebar {
-  width: 250px; /* Adjust the width as needed */
+  width: 160px; /* Adjust the width as needed */
   height: 100%;
   background-color: rgb(249, 247, 223);
   color: #c99d0b;
@@ -25,13 +25,14 @@
   font-size: 24px;
   color:#c99d0b;;
   cursor: pointer;
+  padding-bottom: 5px;
 }
 
 .leftBottomHeaderSideBar{
 
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items:flex-start;
   justify-content: center;
   padding: 0px 0px 0px 0px;
   margin-top: 10px;
@@ -43,8 +44,9 @@
   display: flex;
   flex-direction: row;
   align-items:center;
-  justify-content: center;
+  justify-content: flex-start ;
   width: 100%;
+  padding-top: 5px;
 }
 
 .DivInternoNoCateSideBar {

@@ -81,26 +81,26 @@ function Footer() {
             </div> 
  
         
+            <div className="footer-content">
+                <div className="divlogosWappZocalo">
+                    <div className="logosWappZocalo">                  
+                            
+                        <li><a href="https://api.whatsapp.com/send?phone=+5491168532662" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
+                    
+                            
+                    </div>  
 
-            <div className="divlogosWappZocalo">
-                <div className="logosWappZocalo">                  
-                        
-                    <li><a href="https://api.whatsapp.com/send?phone=+5491168532662" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
-                
-                        
+                </div>   
+
+                <div className="zocalo-phone"> 
+
+                    <a href="https://www.afip.gob.ar/960/formulario-960/concepto.asp"><img className="dataFiscal" src = {imageDF} alt="Data Fiscal"/></a>
+                    <div className="infoSocalo">
+                        <li >© 2023 - Enjoying Deco - Todos los derechos reservados</li>
+                    </div>                 
+                            
                 </div>  
-
-            </div>   
-
-            <div className="zocalo-phone"> 
-
-                <a href="https://www.afip.gob.ar/960/formulario-960/concepto.asp"><img className="dataFiscal" src = {imageDF} alt="Data Fiscal"/></a>
-                <div className="infoSocalo">
-                    <li >© 2023 - Enjoying Deco - Todos los derechos reservados</li>
-                </div>                 
-                           
-            </div>  
-
+            </div>
 
         </footer> 
     )

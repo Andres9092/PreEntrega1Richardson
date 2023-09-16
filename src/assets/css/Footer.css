@@ -35,6 +35,10 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+    margin-top: auto; /* Push the zocalo-phone div to the bottom */
+    text-align: center; /* Center align the content inside */
+    padding: 10px; /* Add some padding for spacing */
+    
     
  
 }
@@ -115,12 +119,29 @@ list-style: none;
    
 }
 
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto; /* Push the content to the bottom */
+    background-color: rgb(249, 247, 223);
+    width: 100%;
+
+  }
+
+
+
+
 .divlogosWappZocalo{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     width: 90vw;
+    padding-right: 15px;
+    padding-bottom: 15px;
 }
 
 .logosWappZocalo li{
