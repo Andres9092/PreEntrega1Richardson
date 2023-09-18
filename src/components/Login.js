@@ -6,13 +6,54 @@ import {Link} from 'react-router-dom';
 
 const Login = () => {
 
-  const [username, setUsername] = useState('');
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
+  const [usernameLogin, setUsernameLogin] = useState('');
+  const [mailLogin, setMailLogin] = useState('');
+  const [passwordLogin, setPasswordLogin] = useState('');
   const [error, setError] = useState('');
 
-  const handleLogin = async () => {
-    setError('');
+
+  const validateFormUserLogin = () => { 
+    const errors = {};  
+    
+ 
+
+    if (nombre.trim().length < 8 ) {  
+    errors.nombre = "El campo 'Nombre' es obligatorio y debe tener al menos 8 caracteres.";  
+    }
+
+    if (!emailLogin.includes("@")) {
+      errors.emailLogin = "El campo 'E-mailLogin' es obligatorio es y debe contener el caracter '@'."
+    }
+
+    if (passwordLogin.length < 10) {
+        errors.passwordLogin = "El campo 'Contraseña' es obligatorio es y debe contener al menos 10 caracteres."
+      }
+
+      if (!(/[A-Z]/).test(passwordLogin)) {
+        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra mayúscula.";
+      }
+      
+      if (!(/[a-z]/).test(passwordLogin)) {
+        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra minúscula.";
+      }
+      
+      if (!(/\d/).test(passwordLogin)) {
+        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un número.";
+      }
+      
+      if (!(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/).test(passwordLogin)) {
+        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un carácter especial.";
+      }
+
+    return errors;   
+}
+
+
+  const handleLogin = (event) => {  
+    event.preventDefault();
+
+    const validationErrorsUserLogin = validateFormUserLogin();  
+    console.log('validationErrorsUser :', validationErrorsUser)
 
     try {
 
@@ -21,7 +62,7 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username,mail, password }),
+        body: JSON.stringify({ usernameLogin,mailLogin, passwordLogin }),
       });
 
       if (response.ok) {
@@ -46,18 +87,18 @@ const Login = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <div className ="divNombre">
-        <label className="titulosLabel" htmlFor="username">Nombre de usuario: </label>
-        <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+        <label className="titulosLabel" htmlFor="usernameLogin">Nombre de usuario: </label>
+        <input type="text" id="usernameLogin" value={usernameLogin} onChange={(e) => setUsernameLogin(e.target.value)}/>
       </div>
 
       <div className ="divCorreo">
-        <label className="titulosLabel" htmlFor="mail">Correo electrónico: </label>
-        <input type="email" id="mail" value={mail} onChange={(e) => setMail(e.target.value)}/>
+        <label className="titulosLabel" htmlFor="mailLogin">Correo electrónico: </label>
+        <input type="emailLogin" id="mailLogin" value={mailLogin} onChange={(e) => setMailLogin(e.target.value)}/>
       </div>
 
-      <div className ="divPassword">
-        <label  className="titulosLabel" htmlFor="password">Contraseña: </label>
-        <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className ="divpasswordLogin">
+        <label  className="titulosLabel" htmlFor="passwordLogin">Contraseña: </label>
+        <input type="passwordLogin" id="passwordLogin" value={passwordLogin} onChange={(e) => setPasswordLogin(e.target.value)} />
 
       </div>
 

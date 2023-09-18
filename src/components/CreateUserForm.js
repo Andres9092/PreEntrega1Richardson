@@ -134,9 +134,9 @@ function CreateUserForm({onConfirm}) {
         </div>
 
                                                             
-        <button className="botonSubmit" type="submit" onClick={handleConfirm}>Submit</button>
+        <button className="botonSubmit" type="submit" onClick={handleConfirm}>CREAR</button>
         
-        <button className="botonCancel" type="button" onClick={handleCancel} > Cancel </button>
+        <button className="botonCancel" type="button" onClick={handleCancel} > CANCELAR </button>
 
     </form>
   );

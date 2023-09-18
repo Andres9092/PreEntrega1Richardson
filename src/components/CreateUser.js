@@ -121,7 +121,7 @@ if (loading) {
   return (
         <div className="divPaginaCheckOut">
 
-            <h2>Creacion de usuario</h2>
+            <h2 className="tituloCreacionUsiario">Creacion de usuario</h2>
                 {submitted ? (
                     <div>
                     <p>Usuario creado con exito!</p>
