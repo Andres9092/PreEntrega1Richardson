@@ -2,113 +2,182 @@ import React, { useState } from 'react';
 import '../assets/css/Login.css';
 import '../assets/css/CreateUser.css';
 import {Link} from 'react-router-dom';
+import '@firebase/firestore'
+import firebase from 'firebase/compat/app';   // resolvio problema /compat
+import 'firebase/compat/auth';                // resolvio problema /compat
+import 'firebase/compat/firestore';           // resolvio problema /compat
+import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Redirect } from 'react'; // Importa Redirect de react-router-dom
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBrbfAbVE9s5z0LCI29ATkFWNxu4RBbbqc",
+  authDomain: "enjoyingdecoproject.firebaseapp.com",
+  projectId: "enjoyingdecoproject",
+  storageBucket: "enjoyingdecoproject.appspot.com",
+  messagingSenderId: "274338518777",
+  appId: "1:274338518777:web:8b37b1e55e3c194e0eb428",
+  measurementId: "G-LVDJD5K69B"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 
 const Login = () => {
 
-  const [usernameLogin, setUsernameLogin] = useState('');
-  const [mailLogin, setMailLogin] = useState('');
+  
+  const [loading, setLoading] = useState(false);
+  const [emailLogin, setEmailLogin] = useState('');
   const [passwordLogin, setPasswordLogin] = useState('');
   const [error, setError] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
-
-  const validateFormUserLogin = () => { 
-    const errors = {};  
-    
- 
-
-    if (nombre.trim().length < 8 ) {  
-    errors.nombre = "El campo 'Nombre' es obligatorio y debe tener al menos 8 caracteres.";  
-    }
-
-    if (!emailLogin.includes("@")) {
-      errors.emailLogin = "El campo 'E-mailLogin' es obligatorio es y debe contener el caracter '@'."
-    }
-
-    if (passwordLogin.length < 10) {
-        errors.passwordLogin = "El campo 'Contraseña' es obligatorio es y debe contener al menos 10 caracteres."
-      }
-
-      if (!(/[A-Z]/).test(passwordLogin)) {
-        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra mayúscula.";
-      }
-      
-      if (!(/[a-z]/).test(passwordLogin)) {
-        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra minúscula.";
-      }
-      
-      if (!(/\d/).test(passwordLogin)) {
-        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un número.";
-      }
-      
-      if (!(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/).test(passwordLogin)) {
-        errors.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un carácter especial.";
-      }
-
-    return errors;   
+  const loaderProps = {
+    loading,
+    size: 40,
+    duration: 1,
+    colors: ['#c99d0b', '#cfab35']
 }
 
 
-  const handleLogin = (event) => {  
+
+  const validateFormUserLogin = () => { 
+    const error = {};  
+    
+      if (!emailLogin.includes("@")) {
+        error.emailLogin = "El campo 'E-emailLogin' es obligatorio es y debe contener el caracter '@'."
+      }
+
+      if (passwordLogin.length < 10) {
+          error.passwordLogin = "El campo 'Contraseña' es obligatorio es y debe contener al menos 10 caracteres."
+        }
+
+      if (!(/[A-Z]/).test(passwordLogin)) {
+        error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra mayúscula.";
+      }
+      
+      if (!(/[a-z]/).test(passwordLogin)) {
+        error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra minúscula.";
+      }
+      
+      if (!(/\d/).test(passwordLogin)) {
+        error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un número.";
+      }
+      
+      if (!(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/).test(passwordLogin)) {
+        error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un carácter especial.";
+      }
+
+    return error;   
+}
+
+  const handleLogin = async (event) => {  
     event.preventDefault();
 
-    const validationErrorsUserLogin = validateFormUserLogin();  
-    console.log('validationErrorsUser :', validationErrorsUser)
+    const validationerrorUserLogin = validateFormUserLogin();  
+    console.log('validationerrorUserLogin :', validationerrorUserLogin)
+
+    setLoading(true)
+
+    if (Object.keys(validationerrorUserLogin || {}).length === 0) {  
+      
+      const userDataLogin = {    
+        emailLogin,
+        passwordLogin,
+      };
+      console.log("userDataLogin:", userDataLogin)
 
     try {
 
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ usernameLogin,mailLogin, passwordLogin }),
-      });
-
-      if (response.ok) {
-    
-        console.log('Login successful!');
-      } else {
-   
-        const errorData = await response.json();
-        setError(errorData.message || 'Login failed.');
-      }
+            await firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin);
+         
+              setLoggedIn(true); // Establece el estado como autenticado
+               
+      // Si el inicio de sesión es exitoso, puedes redirigir al usuario a la página deseada
     } catch (error) {
-      console.error('An error occurred during login:', error);
-      setError('An error occurred during login.');
+      console.error('Error al iniciar sesión:', error);
+      setError('Hubo un problema al iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
     }
-  };
+
+    finally {  
+      setLoading(false);  
+    }
+    
+
+
+if (loading) {  
+  return (
+    <>
+      <h1 className="avisoOrdenProcesada">
+        Por favor, espere. Sus datos estan siendo procesados en estos momentos. Muchas gracias.
+      </h1>
+      <div className="my-5 flex justify-center">
+        <BarsLoader {...loaderProps} />
+      </div>
+    </>
+  );
+}
+
+} else {
+  setError(validationerrorUserLogin); 
+}
+  
+}
+
+if (loggedIn) {
+  // Si el usuario está autenticado, redirige a la página Dashboard
+  return <Redirect to="/" />;
+}
+
+
+
+
+
+const handleCancel = (event) => {  
+  event.preventDefault();
+
+  setEmailLogin("");
+  setPasswordLogin("");
+  setError({});
+};
+
+
 
   return (
 
     <div className = "divContenedorLogin">
-      <h2 className = "loginTitulo">Login</h2>
+
+      <h2 className = "loginTitulo">Iniciar sesión</h2>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <div className ="divNombre">
-        <label className="titulosLabel" htmlFor="usernameLogin">Nombre de usuario: </label>
-        <input type="text" id="usernameLogin" value={usernameLogin} onChange={(e) => setUsernameLogin(e.target.value)}/>
-      </div>
+      <form onSubmit={handleLogin}>
 
-      <div className ="divCorreo">
-        <label className="titulosLabel" htmlFor="mailLogin">Correo electrónico: </label>
-        <input type="emailLogin" id="mailLogin" value={mailLogin} onChange={(e) => setMailLogin(e.target.value)}/>
-      </div>
+        <div className ="divCorreo">
+          <label className="titulosLabel" htmlFor="emailLogin">Correo electrónico: </label>
+          <input type="eemailLogin" id="emailLogin" value={emailLogin} onChange={(e) => setEmailLogin(e.target.value)}/>
+        </div>
 
-      <div className ="divpasswordLogin">
-        <label  className="titulosLabel" htmlFor="passwordLogin">Contraseña: </label>
-        <input type="passwordLogin" id="passwordLogin" value={passwordLogin} onChange={(e) => setPasswordLogin(e.target.value)} />
+        <div className ="divPasswordLogin">
+          <label  className="titulosLabel" htmlFor="passwordLogin">Contraseña: </label>
+          <input type="passwordLogin" id="passwordLogin" value={passwordLogin} onChange={(e) => setPasswordLogin(e.target.value)} />
 
-      </div>
+        </div>
 
-      <button className="botonLogin" onClick={handleLogin}>Login</button>
+        <button className="botonLogin" type="submit"> LOGIN </button>
 
-      <Link to ="/createUser" className="botonCrearUsuario"><button >Crear usuario</button></Link>
+        <button className="botonCancel" type="button" onClick={handleCancel} > CANCELAR </button>
+
+
+        <Link to ="/createUser" className="botonCrearUsuario"><button> CREAR USUARIO</button></Link>
+
+      </form>
 
     </div>
-
+     
   );
 };
 
 export default Login;
+
+

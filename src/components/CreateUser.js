@@ -86,11 +86,6 @@ const CreateUser = () => {
       setPasswordClienteCreado(perfilCreado.cliente.password)
 
     
-
- 
-
-
-
   } 
   
   catch (errors) {
@@ -101,8 +96,6 @@ const CreateUser = () => {
     setLoading(false);  
   }
 };
-
-
 
 if (loading) {  
   return (
