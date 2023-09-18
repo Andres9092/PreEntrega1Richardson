@@ -9,6 +9,8 @@ import 'firebase/compat/firestore';           // resolvio problema /compat
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Redirect } from 'react'; // Importa Redirect de react-router-dom
+import {useEffect} from 'react';
+import Auth from './Auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBrbfAbVE9s5z0LCI29ATkFWNxu4RBbbqc",
@@ -20,6 +22,7 @@ const firebaseConfig = {
   measurementId: "G-LVDJD5K69B"
 };
 
+
 firebase.initializeApp(firebaseConfig);
 
 
@@ -27,10 +30,13 @@ const Login = () => {
 
   
   const [loading, setLoading] = useState(false);
+
   const [emailLogin, setEmailLogin] = useState('');
   const [passwordLogin, setPasswordLogin] = useState('');
+  const [user, setUser] = useState(null); // Estado para almacenar la información del usuario autenticado
+
   const [error, setError] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+
 
   const loaderProps = {
     loading,
@@ -38,7 +44,6 @@ const Login = () => {
     duration: 1,
     colors: ['#c99d0b', '#cfab35']
 }
-
 
 
   const validateFormUserLogin = () => { 
@@ -74,12 +79,12 @@ const Login = () => {
   const handleLogin = async (event) => {  
     event.preventDefault();
 
-    const validationerrorUserLogin = validateFormUserLogin();  
-    console.log('validationerrorUserLogin :', validationerrorUserLogin)
+    const validationErrorUserLogin = validateFormUserLogin();  
+    console.log('validationErrorUserLogin :', validationErrorUserLogin)
 
     setLoading(true)
 
-    if (Object.keys(validationerrorUserLogin || {}).length === 0) {  
+    if (Object.keys(validationErrorUserLogin || {}).length === 0) {  
       
       const userDataLogin = {    
         emailLogin,
@@ -87,16 +92,16 @@ const Login = () => {
       };
       console.log("userDataLogin:", userDataLogin)
 
+
     try {
 
-            await firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin);
+      await firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin);
          
-              setLoggedIn(true); // Establece el estado como autenticado
-               
+                
       // Si el inicio de sesión es exitoso, puedes redirigir al usuario a la página deseada
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      setError('Hubo un problema al iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
+      setError('Credenciales incorrectas. Por favor, inténtelo de nuevo.');
     }
 
     finally {  
@@ -105,32 +110,47 @@ const Login = () => {
     
 
 
-if (loading) {  
-  return (
-    <>
-      <h1 className="avisoOrdenProcesada">
-        Por favor, espere. Sus datos estan siendo procesados en estos momentos. Muchas gracias.
-      </h1>
-      <div className="my-5 flex justify-center">
-        <BarsLoader {...loaderProps} />
-      </div>
-    </>
-  );
-}
+    if (loading) {  
+      return (
+        <>
+          <h1 className="avisoProcesamientoLogin">
+            Por favor, espere. Sus datos estan siendo procesados en estos momentos. Muchas gracias.
+          </h1>
+          <div className="my-5 flex justify-center">
+            <BarsLoader {...loaderProps} />
+          </div>
+        </>
+      );
+    }
 
-} else {
-  setError(validationerrorUserLogin); 
-}
+    } else {
+      setError(validationErrorUserLogin); 
+  }
   
 }
 
-if (loggedIn) {
-  // Si el usuario está autenticado, redirige a la página Dashboard
-  return <Redirect to="/" />;
+useEffect(() => {
+  // Agregar un observador para el cambio de estado de autenticación
+  const unsubscribe = firebase.auth().onAuthStateChanged((authUser) => {
+    if (authUser) {
+      // El usuario está autenticado
+      setUser(authUser);
+    } else {
+      // El usuario no está autenticado
+      setUser(null);
+    }
+  });
+
+  return () => {
+    // Limpia el observador cuando el componente se desmonta
+    unsubscribe();
+  };
+}, []);
+
+if (user) {
+  // El usuario está autenticado, redirige a la página deseada o muestra el contenido autenticado
+  return <Auth user={user} />;
 }
-
-
-
 
 
 const handleCancel = (event) => {  
@@ -153,7 +173,7 @@ const handleCancel = (event) => {
 
       <form onSubmit={handleLogin}>
 
-        <div className ="divCorreo">
+        <div className ="divCorreoLogin">
           <label className="titulosLabel" htmlFor="emailLogin">Correo electrónico: </label>
           <input type="eemailLogin" id="emailLogin" value={emailLogin} onChange={(e) => setEmailLogin(e.target.value)}/>
         </div>
@@ -164,13 +184,14 @@ const handleCancel = (event) => {
 
         </div>
 
-        <button className="botonLogin" type="submit"> LOGIN </button>
+        <div className ="divBotonesLogin">
+          <button className="botonLogin" type="submit"> LOGIN </button>
 
-        <button className="botonCancel" type="button" onClick={handleCancel} > CANCELAR </button>
+          <button className="botonCancel" type="button" onClick={handleCancel} > CANCELAR </button>
 
 
-        <Link to ="/createUser" className="botonCrearUsuario"><button> CREAR USUARIO</button></Link>
-
+          <Link to ="/createUser" className="botonCrearUsuario"><button> CREAR USUARIO</button></Link>
+        </div>
       </form>
 
     </div>

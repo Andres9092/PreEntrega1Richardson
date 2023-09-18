@@ -17,46 +17,21 @@
     padding: 20px 0px 20px 0px;
 }
 
-
-.divNombre{
+.divCorreoLogin, .divPasswordLogin{
     display: flex;
     flex-direction: column;
-    align-items:self-start;
+    align-items:center;
     justify-content: center;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 25px 10px 25px;
 }
 
 
-.divCorreo{
+.divBotonesLogin{
     display: flex;
     flex-direction: column;
-    align-items:self-start;
+    align-items: center;
     justify-content: center;
-    padding: 10px 10px 10px 10px;
-}
 
-
-.divPassword{
-    display: flex;
-    flex-direction: column;
-    align-items:self-start;
-    justify-content: center;
-    padding: 10px 10px 10px 10px;
-}
-
-#username{
-    border: 1px solid #c99d0b;
-    border-radius: 3px;
-}
-
-#mail{
-    border: 1px solid #c99d0b;
-    border-radius: 3px;
-}
-
-#password{
-    border: 1px solid #c99d0b;
-    border-radius: 3px;
 }
 
 
