@@ -12,7 +12,41 @@ import 'firebase/compat/auth';                // resolvio problema /compat
 import 'firebase/compat/firestore';           // resolvio problema /compat
 import firebase from 'firebase/compat/app';   // resolvio problema /compat
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBrbfAbVE9s5z0LCI29ATkFWNxu4RBbbqc",
+  authDomain: "enjoyingdecoproject.firebaseapp.com",
+  projectId: "enjoyingdecoproject",
+  storageBucket: "enjoyingdecoproject.appspot.com",
+  messagingSenderId: "274338518777",
+  appId: "1:274338518777:web:8b37b1e55e3c194e0eb428",
+  measurementId: "G-LVDJD5K69B"
+};
 
+
+firebase.initializeApp(firebaseConfig);
+
+
+const validationSchema = Yup.object().shape({
+
+  nombre: Yup.string()
+    .required('Name is required')
+    .min(10, 'Password must be at least 10 characters'),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required('Email is required'),
+  telefono: Yup.string()
+    .required('Telefono is required'),
+  password: Yup.string()
+    .min(10, 'Password must be at least 10 characters')
+    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+    .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+    .matches(/\d/, 'Password must contain at least one number')
+    .matches(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, 'Password must contain at least one special character')
+    .required('Password is required'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    .required('Confirm password is required'),
+});
 
 const CreateUser = () => {
 
@@ -50,29 +84,6 @@ const CreateUser = () => {
 
   console.log('formData: ,', formData)
 
-const validationSchema = Yup.object().shape({
-
-  nombre: Yup.string()
-    .required('Name is required')
-    .min(10, 'Password must be at least 10 characters'),
-  email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
-  telefono: Yup.string()
-    .required('Telefono is required'),
-  password: Yup.string()
-    .min(10, 'Password must be at least 10 characters')
-    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-    .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-    .matches(/\d/, 'Password must contain at least one number')
-    .matches(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, 'Password must contain at least one special character')
-    .required('Password is required'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm password is required'),
-});
-
-
 const handleChange = (e) => {
   const { name, value } = e.target;
   setFormData({
@@ -94,9 +105,12 @@ const handleRegistration = async (e) => {
     const {nombre, telefono, email, password} = formData;
 
     console.log('userformData: ,', formData)
-  // Register user with Firebase Authentication
-  await firebase.auth().createUserWithEmailAndPassword(email, password);
+ // Register user with Firebase Authentication
+ const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+ console.log('UserCredential:', userCredential);
 
+ // Log the user's UID
+ console.log('User created with UID:', userCredential.user.uid);
   // Optionally, you can also store additional user information in Firestore
   const customDocId = `${nombre}_${email}_${telefono}`;
   
@@ -106,11 +120,13 @@ const handleRegistration = async (e) => {
     nombre,
     email,
     telefono,
-
   })
-
-  console.log('userRef: ,', userRef)
-    //history.push('/'); // Replace with the desired URL
+  .then(() => {
+    console.log('Document successfully written!');
+  })
+  .catch((error) => {
+    console.error('Error writing document: ', error);
+  });
 
   setSubmitted(true);
   
