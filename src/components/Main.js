@@ -34,7 +34,7 @@ function Main() {
                 
                 <Route path = "/filtroBarraBuscadora" element = {<ItemFiltrado/>} /> 
 
-                <Route path = "/login" element = {<Login/>} /> 
+                {/* <Route path = "/createUser" element = {<Login/>} />  */}
 
                 <Route path = "/createUser" element = {<CreateUser/>} /> 
 

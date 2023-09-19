@@ -11,6 +11,7 @@
 // import { Redirect } from 'react'; // Importa Redirect de react-router-dom
 // import {useEffect} from 'react';
 // import Auth from './Auth';
+// import * as Yup from 'yup';
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyBrbfAbVE9s5z0LCI29ATkFWNxu4RBbbqc",
@@ -46,74 +47,44 @@
 // }
 
 
-//   const validateFormUserLogin = () => { 
-//     const error = {};  
-    
-//       if (!emailLogin.includes("@")) {
-//         error.emailLogin = "El campo 'E-emailLogin' es obligatorio es y debe contener el caracter '@'."
-//       }
-
-//       if (passwordLogin.length < 10) {
-//           error.passwordLogin = "El campo 'Contraseña' es obligatorio es y debe contener al menos 10 caracteres."
-//         }
-
-//       if (!(/[A-Z]/).test(passwordLogin)) {
-//         error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra mayúscula.";
-//       }
-      
-//       if (!(/[a-z]/).test(passwordLogin)) {
-//         error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra minúscula.";
-//       }
-      
-//       if (!(/\d/).test(passwordLogin)) {
-//         error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un número.";
-//       }
-      
-//       if (!(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/).test(passwordLogin)) {
-//         error.passwordLogin = "El campo 'Contraseña' es obligatorio y debe contener al menos un carácter especial.";
-//       }
-
-//     return error;   
-// }
+// const validationSchema = Yup.object().shape({
+//   email: Yup.string()
+//     .email('Invalid email address')
+//     .required('Email is required'),
+//   password: Yup.string()
+//     .min(10, 'Password must be at least 10 characters')
+//     .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
+//     .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
+//     .matches(/\d/, 'Password must contain at least one number')
+//     .matches(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, 'Password must contain at least one special character')
+//     .required('Password is required'),
+// });
 
 //   const handleLogin = async (event) => {  
 //     event.preventDefault();
 
-//     // const validationErrorUserLogin = validateFormUserLogin();  
-//     // console.log('validationErrorUserLogin :', validationErrorUserLogin)
-
-//     // setLoading(true)
-
-//     // if (Object.keys(validationErrorUserLogin || {}).length === 0) {  
-      
-//     //   const userDataLogin = {    
-//     //     emailLogin,
-//     //     passwordLogin,
-//     //   };
-//     //   console.log("userDataLogin:", userDataLogin)
-
-
-//     try {
-
+//       try {
+//     // Validate form data
+//       await validationSchema.validate(values, { abortEarly: false });
 //       await firebase.auth().signInWithEmailAndPassword(emailLogin, passwordLogin);
          
                 
 //       // Si el inicio de sesión es exitoso, puedes redirigir al usuario a la página deseada
 //     } catch (error) {
-//       console.error('Error al iniciar sesión:', error);
-//       setError('Credenciales incorrectas. Por favor, inténtelo de nuevo.');
-//     }
+//       // Handle validation errors
+//       const validationErrors = {};
+//       error.inner.forEach((err) => {
+//       validationErrors[err.path] = err.message;})
 
+//        // Set validation errors in your component state or display them to the user
+//     setError(validationErrors);
+//     }
+   
 //     finally {  
 //       setLoading(false);  
 //     }
     
-
-//     } else {
-//       setError(validationErrorUserLogin); 
-//   }
-
-  
+ 
 //   if (loading) {  
 //     return (
 //       <>

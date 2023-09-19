@@ -15,29 +15,46 @@ function CreateUserForm({onConfirm}) {
   console.log('email: ', email)
   console.log('password: ', password)
   console.log('errors: ', errors)
-  
 
-  const validationSchema = Yup.object().shape({
+  const validateFormUser = () => { 
+    const errors = {};  
+    
+ 
 
-    name: Yup.string()
-      .required('Name is required')
-      .min(10, 'Password must be at least 10 characters'),
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    telefono: Yup.string()
-      .required('Telefono is required'),
-    password: Yup.string()
-      .min(10, 'Password must be at least 10 characters')
-      .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-      .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-      .matches(/\d/, 'Password must contain at least one number')
-      .matches(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, 'Password must contain at least one special character')
-      .required('Password is required'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm password is required'),
-  });
+    if (nombre.trim().length < 8 ) {  
+    errors.nombre = "El campo 'Nombre' es obligatorio y debe tener al menos 8 caracteres.";  
+    }
+
+    if (!telefono.trim()) {
+      errors.telefono = "El campo 'Telefono' es obligatorio.";
+    }
+
+    if (!email.includes("@")) {
+      errors.email = "El campo 'E-mail' es obligatorio es y debe contener el caracter '@'."
+    }
+
+    if (password.length < 10) {
+        errors.password = "El campo 'Contraseña' es obligatorio es y debe contener al menos 10 caracteres."
+      }
+
+      if (!(/[A-Z]/).test(password)) {
+        errors.password = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra mayúscula.";
+      }
+      
+      if (!(/[a-z]/).test(password)) {
+        errors.password = "El campo 'Contraseña' es obligatorio y debe contener al menos una letra minúscula.";
+      }
+      
+      if (!(/\d/).test(password)) {
+        errors.password = "El campo 'Contraseña' es obligatorio y debe contener al menos un número.";
+      }
+      
+      if (!(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/).test(password)) {
+        errors.password = "El campo 'Contraseña' es obligatorio y debe contener al menos un carácter especial.";
+      }
+
+    return errors;   
+}
 
 
     const handleConfirm = (event) => {  
