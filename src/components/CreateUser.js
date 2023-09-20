@@ -90,7 +90,7 @@ const CreateUser = () => {
         // Check if there are any matching documents
         if (!querySnapshot.empty) {
 
-          setAlertMessage("Un usuario con el mismo correo electrónico ya existe.");
+          setAlertMessage("Usuario con el mismo correo electrónico ya existente.");
           setShowAlert(true);
           console.log("Perfil existente:", alert)
           setLoading(false);
@@ -193,22 +193,24 @@ if (loading) {
 
             <h2 className="tituloCreacionUsiario"> Creacion de usuario</h2>
                 {submitted ? (
-                    <div>
-                      <p>Usuario creado con exito!</p>
-                      <p>Nombre de Usuario: {nombre}</p>
-                      <p>Telefono: {telefono}</p>
-                      <p>Email: {email}</p>
-                      <p>Fecha: {fechaClienteCreado}</p>
-                      <p>Hora: {horaCompraClienteCreado}</p>
+                    <div className='divUsuarioCreadoCorrectamente'>
+                        <p className='tituloUsuarioCreado'>Usuario creado con exito!</p>
+                        <p>Nombre de Usuario: {nombre}</p>
+                        <p>Telefono: {telefono}</p>
+                        <p>Email: {email}</p>
+                        <p>Fecha: {fechaClienteCreado}</p>
+                        <p>Hora: {horaCompraClienteCreado}</p>
 
-                 
-                      <Link to="/login" ><button className="botonSeguirComprandoDetalle"> Iniciar Sesion </button></Link> 
+                  
+                        <Link to="/login" ><button className="botonSeguirComprandoDetalle"> Iniciar Sesion </button></Link> 
                     </div>
                  
                 ) : (
 
                   <form onSubmit = {formik.handleSubmit} className='formularioAlta'>
 
+
+                      {showAlert && (<Alert message={alertMessage} onClose={() => setShowAlert(false)} /> )}
                       <div className="divLabels">
                           <label className="labelValues"> Nombre</label>  
                       </div>
@@ -254,13 +256,15 @@ if (loading) {
                           {formik.touched.confirmPassword && formik.errors.confirmPassword ? <p className="textoErrorAlta">{formik.errors.confirmPassword}</p> : null}
                       </div>
 
+                     
+
                       <button type='submit' className="botonSubmitAlta"><i class="fa-solid fa-user-plus"></i>  CREAR</button>
 
                       <button className="botonCancel" type="button" onClick={handleCancel}><i class="fa-sharp fa-solid fa-trash"></i> LIMPIAR </button>
 
                       <Link to="/login" ><button className="botonIniciarSesion"><i class="fa-solid fa-right-to-bracket"></i> INICIAR SESION </button></Link> 
 
-                      {showAlert && (<Alert message={alertMessage} onClose={() => setShowAlert(false)} /> )}
+                      
 
 
                   </form>

@@ -111,7 +111,13 @@ body{
 
 .logo-user{
 
+    display:none;
+}
+
+.logo-login{
     padding-left: 15px;
+    padding-right: 10px;
+       
 }
 
 .CartW{
@@ -250,10 +256,15 @@ body{
     
         padding-left: 25px;
     }
-    
+    .logo-login{
+        padding-left: 2%;
+        padding-right: 0px;
+        padding-left: 25px;
+           
+    }
     
     .logo-user{
-    
+        display: block;
         padding-left: 25px;
     }
 

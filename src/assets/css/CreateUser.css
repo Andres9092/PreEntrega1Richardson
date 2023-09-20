@@ -85,3 +85,56 @@
     width: 200px;
     margin: 10px 0px 20px 0px;
 }
+
+
+.mensajeAlertaUsuarioExistente{
+    color:red;
+    padding: 5px 0px 5px 0px;
+}
+
+.divCustomAlert{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color:rgb(230, 210, 196);
+    width: 420px;
+    height: 105px;
+    margin:10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
+}
+
+
+.botonCloseAlert{
+
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 80px;
+   
+}
+
+.icon-bigger {
+    font-size: 18px; /* Adjust the size as needed */
+}
+
+
+.divUsuarioCreadoCorrectamente{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 4px;
+    background-color:rgb(230, 210, 196);
+    width: 420px;
+    height: 220px;
+    margin:10px 0px 10px 0px;
+    padding: 10px 0px 10px 0px;
+}
+
+.tituloUsuarioCreado{
+    color: black;
+    font-size: 20px;
+}
