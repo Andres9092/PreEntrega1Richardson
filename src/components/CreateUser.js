@@ -39,11 +39,8 @@ const CreateUser = () => {
 
   const formik = useFormik({
     initialValues: {
-            nombre: "",
             email: "",
-            telefono: "",
             password: "",
-            confirmPassword: ''
     },
 
     validationSchema : Yup.object().shape({
@@ -52,7 +49,7 @@ const CreateUser = () => {
           .required('El nombre de usuario es olbigatorio')
           .min(10, 'El nombre de usuario debe contener al menos 10 caracteres'),
         email: Yup.string()
-          .email('E-mail invalido')
+          .email('E-mail invalido. Debe contener caracter "@"')
           .required('E-mail requerido'),
         telefono: Yup.string()
           .required('Telefono requerido'),

@@ -9,6 +9,7 @@ import CreateUser from './CreateUser';
 import CheckOut from './CheckOut';
 import Favoritos from './Favoritos';
 import ItemFiltrado from './ItemFiltrado';
+import Authentic from './Authentic';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -34,13 +35,15 @@ function Main() {
                 
                 <Route path = "/filtroBarraBuscadora" element = {<ItemFiltrado/>} /> 
 
-                {/* <Route path = "/createUser" element = {<Login/>} />  */}
+                <Route path = "/login" element = {<Login/>} /> 
 
                 <Route path = "/createUser" element = {<CreateUser/>} /> 
 
                 <Route path = "/favoritos" element = {<Favoritos/>}  />   
 
                 <Route path = "/ofertas" element = {<Ejemplo/>}/>   
+
+                <Route path = "/authentic" element = {<Authentic/>}/>   
 
                 <Route path = "/sucursales" element = {<p>Hola</p>} />   
 
