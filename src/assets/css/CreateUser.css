@@ -1,25 +1,80 @@
-.botonCrearUsuario{
-    background-color:rgb(198, 164, 136);
-    border: 1px solid;
-    padding: 6px 6px 6px 6px;
-    border-radius: 3px;
-    margin: 10px 0px 10px 0px;
-    font-weight: 600;
-    width: 150px;
-    text-align: center;
-}
-
-
-.divPaginaCheckOut{
-    margin-top: 20px;
-}
-
-
 .tituloCreacionUsiario{
 
-    margin-bottom: 40px;
+    margin: 40px 0px 20px 0px;
     font-size: 20px;
     text-decoration: underline;
     color: #c99d0b;
 
 }
+
+
+.formularioAlta{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    border: solid 1px #c99d0b;
+    border-radius: 4px;
+    background-color: #edd585;
+    padding: 0px 20px 0px 20px;
+    width: 500px;
+
+}
+
+.divLabels{
+    margin-top: 10px;
+}
+
+.divInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.labelValues{
+    font-size: 18px;
+    color: black;
+    font-weight: 300;
+  
+}
+
+.inputValuesAlta{
+   
+    text-align:start;
+    margin: 10px 30px 10px 30px;
+    border: solid 1px #c99d0b;
+    border-radius: 4px;
+    padding-left: 4px;
+       
+}
+
+.textoErrorAlta{
+    color: red;
+}
+
+
+
+.botonSubmit{
+    background-color:rgb(239, 225, 73);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 30px 0px 20px 0px;
+}
+
+.botonCancel{
+    background-color:rgb(255, 153, 79);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    width: 200px;
+    margin: 10px 0px 20px 0px;
+}
+
+
+

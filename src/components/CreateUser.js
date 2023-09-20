@@ -2,51 +2,18 @@ import '../assets/css/Login.css';
 import '../assets/css/CreateUser.css';
 import { useContext, useState } from "react";
 import {contexto} from './CustomProvider';
-import {Timestamp,addDoc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
+import {Timestamp,addDoc,doc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
 import { Link } from "react-router-dom";
 import {db} from '../firebase';
 import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
 //import { useHistory } from 'react-router-dom';
-import * as Yup from 'yup'; // You can still use Yup for validation
 import 'firebase/compat/auth';                // resolvio problema /compat
 import 'firebase/compat/firestore';           // resolvio problema /compat
 import firebase from 'firebase/compat/app';   // resolvio problema /compat
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBrbfAbVE9s5z0LCI29ATkFWNxu4RBbbqc",
-  authDomain: "enjoyingdecoproject.firebaseapp.com",
-  projectId: "enjoyingdecoproject",
-  storageBucket: "enjoyingdecoproject.appspot.com",
-  messagingSenderId: "274338518777",
-  appId: "1:274338518777:web:8b37b1e55e3c194e0eb428",
-  measurementId: "G-LVDJD5K69B"
-};
+import { useFormik } from 'formik';
+import * as Yup from 'yup'; // You can still use Yup for validation
 
 
-firebase.initializeApp(firebaseConfig);
-
-
-const validationSchema = Yup.object().shape({
-
-  nombre: Yup.string()
-    .required('Name is required')
-    .min(10, 'Password must be at least 10 characters'),
-  email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
-  telefono: Yup.string()
-    .required('Telefono is required'),
-  password: Yup.string()
-    .min(10, 'Password must be at least 10 characters')
-    .matches(/[A-Z]/, 'Password must contain at least one uppercase letter')
-    .matches(/[a-z]/, 'Password must contain at least one lowercase letter')
-    .matches(/\d/, 'Password must contain at least one number')
-    .matches(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, 'Password must contain at least one special character')
-    .required('Password is required'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password'), null], 'Passwords must match')
-    .required('Confirm password is required'),
-});
 
 const CreateUser = () => {
 
@@ -55,16 +22,10 @@ const CreateUser = () => {
   const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //const [fechaClienteCreado, setFechaClienteCreado] = useState("");
-  //const [horaCompraClienteCreado, setHoraClienteCreado] = useState("");
-  //const [idPerfilCreado, setIdPerfilCreado] = useState("");
+  const [fechaClienteCreado, setFechaClienteCreado] = useState("");
+  const [horaCompraClienteCreado, setHoraClienteCreado] = useState("");
+  const [idPerfilCreado, setIdPerfilCreado] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  const [formErrors, setFormErrors] = useState({
-    nombre: '',
-    email: '',
-    password: '',
-  });
 
   const loaderProps = {
     loading,
@@ -74,81 +35,123 @@ const CreateUser = () => {
 }
 
 
-  //const history = useHistory();
+  const formik = useFormik({
+    initialValues: {
+            nombre: "",
+            email: "",
+            telefono: "",
+            password: "",
+            confirmPassword: ''
+    },
 
-  const [formData, setFormData] = useState({
-    nombre: '',
-    email: '',
-    password: '',
-  });
+    validationSchema : Yup.object().shape({
 
-  console.log('formData: ,', formData)
-
-const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFormData({
-    ...formData,
-    [name]: value,
-  });
-}
-
-
-   
-const handleRegistration = async (e) => {
-  e.preventDefault();
-   
-  try {
-    // Validate form data
-    await validationSchema.validate(formData, { abortEarly: false });
-
-    // Form data is valid, proceed with registration
-    const {nombre, telefono, email, password} = formData;
-
-    console.log('userformData: ,', formData)
- // Register user with Firebase Authentication
- const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
- console.log('UserCredential:', userCredential);
-
- // Log the user's UID
- console.log('User created with UID:', userCredential.user.uid);
-  // Optionally, you can also store additional user information in Firestore
-  const customDocId = `${nombre}_${email}_${telefono}`;
+        nombre: Yup.string()
+          .required('El nombre de usuario es olbigatorio')
+          .min(10, 'El nombre de usuario debe contener al menos 10 caracteres'),
+        email: Yup.string()
+          .email('E-mail invalido')
+          .required('E-mail requerido'),
+        telefono: Yup.string()
+          .required('Telefono requerido'),
+        password: Yup.string()
+          .min(10, 'La contraseña debe contener al menos 10 caracteres')
+          .matches(/[A-Z]/, 'La contraseña debe contener al menos una letra mayuscula')
+          .matches(/[a-z]/, 'La contraseña debe contener al menos una letra minuscula')
+          .matches(/\d/, 'La contraseña debe contener al menos un numero')
+          .matches(/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/, 'La contraseña debe contener al menos un caracter especial')
+          .required('La contraseña es obligatoria'),
+        confirmPassword: Yup.string()
+          .oneOf([Yup.ref('password'), null], 'Las contraseñas ingresadas deben coincidir')
+          .required('Las confirmacion de contraseña es requerida'),
+        
+        }),
   
-  const userRef = firebase.firestore().collection('users').doc(customDocId);
-  
-  await userRef.set({
-    nombre,
-    email,
-    telefono,
+    onSubmit: async   (values,  { resetForm }) => {
+        console.log('values Formulario :', values);
+        
+        setLoading(true);
+       
+      try {
+
+          var timestamp = Timestamp.fromDate(new Date()); 
+          var date = new Date(timestamp.toMillis());   
+        
+          const formattedDate = date.toLocaleDateString('es-ES')  
+          const formattedTime = date.toLocaleTimeString('es-ES')
+
+          const perfilCreado = {  
+            cliente: {        
+              nombre: values.nombre,
+              email: values.email,
+              telefono: values.telefono,
+              password:values.password
+            },
+            
+            dataDate: formattedDate, 
+            dataTime: formattedTime,
+            
+          };
+
+        console.log("perfilCreadoEnCreateUser:", perfilCreado)
+
+        const coleccionDePerfilesCreadosEnDB = collection(db, "alta_usuarios"); 
+
+       // Perform Firestore write operations within a batch
+       const batch = writeBatch(db);
+
+       // Example: Add a document to the batch
+       const perfilCreadoDocRef = await addDoc(coleccionDePerfilesCreadosEnDB, perfilCreado);
+
+       batch.set(perfilCreadoDocRef, perfilCreado);
+
+       // Commit the batch
+       await batch.commit();
+
+         // Get the Firestore-generated ID from the document reference
+        const generatedId = perfilCreadoDocRef.id;
+
+        // Set the generated ID to state
+        setIdPerfilCreado(generatedId);
+     
+        setSubmitted(true);
+
+        setIdPerfilCreado(perfilCreadoDocRef.id); 
+        setNombre(perfilCreado.cliente.nombre);  
+        setTelefono(perfilCreado.cliente.telefono);
+        setEmail(perfilCreado.cliente.email);
+        setPassword(perfilCreado.cliente.password);
+        setFechaClienteCreado(perfilCreado.dataDate)
+        setHoraClienteCreado(perfilCreado.dataTime)
+          
+        console.log('idPerfilCreado :', generatedId);
+        console.log('Data ingresada a Firestore satisfactoriamente');
+
+
+      
+      } catch (error) {
+        console.error('Error al intentar cargar la data a Firestore:', error);
+
+      } finally {  
+        setLoading(false); 
+        resetForm() 
+      }
+
+    }
   })
-  .then(() => {
-    console.log('Document successfully written!');
-  })
-  .catch((error) => {
-    console.error('Error writing document: ', error);
-  });
 
-  setSubmitted(true);
-  
-
-} catch (error) {
-  if (error instanceof Yup.ValidationError) {
-    // Handle validation errors
-    const newErrors = {};
-    error.inner.forEach((err) => {
-      newErrors[err.path] = err.message;
-    });
-    setFormErrors(newErrors);
-  } else {
-    // Handle other errors
-    console.error('Error:', error);
+  const handleCancel = (event) => {  
+    event.preventDefault();
+    console.log('CANCEL button clicked');
+    // Rest of your cancel logic
+    // Reset the form using Formik's resetForm function
+    formik.resetForm();
+    
+    setNombre("");
+    setTelefono("");
+    setEmail("");
+    setPassword("");
   }
-}
-
-finally {  
-  setLoading(false);  
-}
-};
 
 if (loading) {  
   return (
@@ -163,72 +166,77 @@ if (loading) {
   );
 }
      
-const handleCancel = (event) => {  
-  event.preventDefault();
-                                  
-  setNombre("");  
-  setTelefono("");
-  setEmail("");
-  setPassword("");
-
-};
-
-
   return (
         <div className="divPaginaCheckOut">
 
-            <h2 className="tituloCreacionUsiario">Creacion de usuario</h2>
+            <h2 className="tituloCreacionUsiario"> Creacion de usuario</h2>
                 {submitted ? (
                     <div>
-                    <p>Usuario creado con exito!</p>
-                    <p>Name: {formData.nombre}</p>
-                    <p>Email: {formData.email}</p>
-                    <p>Telefono: {formData.telefono}</p>
-                    <Link to="/login" ><button className="botonSeguirComprandoDetalle"> Iniciar Sesion </button></Link> 
+                      <p>Usuario creado con exito!</p>
+                      <p>Nombre de Usuario: {nombre}</p>
+                      <p>Telefono: {telefono}</p>
+                      <p>Email: {email}</p>
+                      <p>Fecha: {fechaClienteCreado}</p>
+                      <p>Hora: {horaCompraClienteCreado}</p>
+
+                 
+                      <Link to="/login" ><button className="botonSeguirComprandoDetalle"> Iniciar Sesion </button></Link> 
                     </div>
                  
                 ) : (
 
-                  <form className="formulario">
-      
+                  <form onSubmit = {formik.handleSubmit} className='formularioAlta'>
+
                       <div className="divLabels">
-                        <label className="labelValues">Nombre</label>  
+                          <label className="labelValues"> Nombre</label>  
                       </div>
-                      <div className="divInputs">
-                        <input type="text"   name="nombre" value={formData.nombre} onChange={handleChange} required className="inputValues" placeholder="Escriba su nombre..."/>
-                          {formErrors.nombre && (<p className="textoError">{formErrors.nombre}</p>)}
+
+                      <div className='divInputs'>
+                          <input className="inputValuesAlta"  id="nombre" name="nombre" type="text" placeholder="Nombre..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.nombre} />
+                          {formik.touched.nombre && formik.errors.nombre ? <p className="textoErrorAlta">{formik.errors.nombre}</p> : null}
                       </div>
-              
+
                       <div className="divLabels">
-                        <label className="labelValues">Telefono</label>
+                        <label className="labelValues"> Telefono</label>
                       </div>
-                      <div className="divInputs">
-                        <input type="tel"   name="telefono" value={formData.telefono} onChange={handleChange} required className="inputValues" placeholder="011-6854-4567..."/>
-                        {formErrors.telefono && (<p className="textoError">{formErrors.telefono}</p>)}
+
+                      <div className='divInputs'>
+                          <input className="inputValuesAlta" id="telefono" name="telefono" type="text" placeholder="Telefono..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.telefono} />
+                          {formik.touched.telefono && formik.errors.telefono ? <p className="textoErrorAlta">{formik.errors.telefono}</p> : null}
                       </div>
-              
+
                       <div className="divLabels">  
-                        <label className="labelValues">Email</label>
-                      </div>  
-                      <div className="divInputs">  
-                        <input type="email"  name="email" value={formData.email} onChange={handleChange} required className="inputValues" placeholder="Escriba su E-mail..."/>
-                        {formErrors.email && (<p className="textoError">{formErrors.email}</p>)}
+                        <label className="labelValues"> Email</label>
+                      </div> 
+
+                      <div className='divInputs'>
+                          <input className="inputValuesAlta"  id="email" name="email" type="email" placeholder="E-mail..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
+                          {formik.touched.email && formik.errors.email ? <p className="textoErrorAlta">{formik.errors.email}</p> : null}
                       </div>
-              
+
                       <div className="divLabels">  
-                        <label className="labelValues">Contraseña</label>
+                        <label className="labelValues"> Contraseña</label>
                       </div>  
-                      <div className="divInputs">  
-                        <input type="password"  name="password" value={formData.password} onChange={handleChange} required className="inputValues" placeholder="Escriba su contraseña..."/>
-                        {formErrors.password && (<p className="textoError">{formErrors.password}</p>)}
+
+                      <div className='divInputs'>
+                          <input className="inputValuesAlta" id="password" name="password" type="password" placeholder="Contraseña..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} />
+                          {formik.touched.password && formik.errors.password ? <p className="textoErrorAlta">{formik.errors.password}</p> : null}
                       </div>
-              
-                     
-                      <button className="botonSubmit" type="submit" onClick={handleRegistration}> CREAR </button>
-                      
-                      <button className="botonCancel" type="button" onClick={handleCancel} > CANCELAR </button>
-          
-              </form>
+
+                      <div className="divLabels">  
+                        <label className="labelValues"> Confirmar contraseña</label>
+                      </div>  
+
+                      <div className='divInputs'>
+                          <input className="inputValuesAlta" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirmar Contraseña..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.confirmPassword} />
+                          {formik.touched.confirmPassword && formik.errors.confirmPassword ? <p className="textoErrorAlta">{formik.errors.confirmPassword}</p> : null}
+                      </div>
+
+                      <button type='submit' className="botonSubmit"> CREAR</button>
+
+                      <button className="botonCancel" type="button" onClick={handleCancel} > LIMPIAR </button>
+
+                  </form>
             )}
         </div>
           
