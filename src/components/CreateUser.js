@@ -12,7 +12,7 @@ import 'firebase/compat/firestore';           // resolvio problema /compat
 import firebase from 'firebase/compat/app';   // resolvio problema /compat
 import { useFormik } from 'formik';
 import * as Yup from 'yup'; // You can still use Yup for validation
-
+import Alert from "./Alert";
 
 
 const CreateUser = () => {
@@ -26,6 +26,8 @@ const CreateUser = () => {
   const [horaCompraClienteCreado, setHoraClienteCreado] = useState("");
   const [idPerfilCreado, setIdPerfilCreado] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   const loaderProps = {
     loading,
@@ -74,28 +76,48 @@ const CreateUser = () => {
        
       try {
 
-          var timestamp = Timestamp.fromDate(new Date()); 
-          var date = new Date(timestamp.toMillis());   
         
-          const formattedDate = date.toLocaleDateString('es-ES')  
-          const formattedTime = date.toLocaleTimeString('es-ES')
-
-          const perfilCreado = {  
-            cliente: {        
-              nombre: values.nombre,
-              email: values.email,
-              telefono: values.telefono,
-              password:values.password
-            },
-            
-            dataDate: formattedDate, 
-            dataTime: formattedTime,
-            
-          };
-
-        console.log("perfilCreadoEnCreateUser:", perfilCreado)
-
         const coleccionDePerfilesCreadosEnDB = collection(db, "alta_usuarios"); 
+
+        // Query Firestore to check if a user with the same email exists
+        const q = query(
+          coleccionDePerfilesCreadosEnDB,
+          where("cliente.email", "==", values.email)
+        );
+
+        const querySnapshot = await getDocs(q)
+
+        // Check if there are any matching documents
+        if (!querySnapshot.empty) {
+
+          setAlertMessage("Un usuario con el mismo correo electrónico ya existe.");
+          setShowAlert(true);
+          console.log("Perfil existente:", alert)
+          setLoading(false);
+          
+          return;
+        }
+
+        var timestamp = Timestamp.fromDate(new Date()); 
+        var date = new Date(timestamp.toMillis());   
+      
+        const formattedDate = date.toLocaleDateString('es-ES')  
+        const formattedTime = date.toLocaleTimeString('es-ES')
+
+        const perfilCreado = {  
+          cliente: {        
+            nombre: values.nombre,
+            email: values.email,
+            telefono: values.telefono,
+            password:values.password
+          },
+          
+          dataDate: formattedDate, 
+          dataTime: formattedTime,
+          
+        };
+
+      console.log("perfilCreadoEnCreateUser:", perfilCreado)
 
        // Perform Firestore write operations within a batch
        const batch = writeBatch(db);
@@ -232,9 +254,14 @@ if (loading) {
                           {formik.touched.confirmPassword && formik.errors.confirmPassword ? <p className="textoErrorAlta">{formik.errors.confirmPassword}</p> : null}
                       </div>
 
-                      <button type='submit' className="botonSubmit"> CREAR</button>
+                      <button type='submit' className="botonSubmitAlta"><i class="fa-solid fa-user-plus"></i>  CREAR</button>
 
-                      <button className="botonCancel" type="button" onClick={handleCancel} > LIMPIAR </button>
+                      <button className="botonCancel" type="button" onClick={handleCancel}><i class="fa-sharp fa-solid fa-trash"></i> LIMPIAR </button>
+
+                      <Link to="/login" ><button className="botonIniciarSesion"><i class="fa-solid fa-right-to-bracket"></i> INICIAR SESION </button></Link> 
+
+                      {showAlert && (<Alert message={alertMessage} onClose={() => setShowAlert(false)} /> )}
+
 
                   </form>
             )}
