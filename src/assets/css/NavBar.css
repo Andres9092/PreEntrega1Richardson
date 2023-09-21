@@ -120,6 +120,11 @@ body{
        
 }
 
+.logo-logOut{
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
 .CartW{
     display: flex;
     flex-direction: row;
@@ -257,11 +262,17 @@ body{
         padding-left: 25px;
     }
     .logo-login{
-        padding-left: 2%;
+      
         padding-right: 0px;
         padding-left: 25px;
            
     }
+
+    .logo-logOut{
+        padding-right: 0px;
+        padding-left: 25px;
+    }
+    
     
     .logo-user{
         display: block;

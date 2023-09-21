@@ -10,6 +10,7 @@ function Auth() {
   const queryParams = new URLSearchParams(location.search);
   const userNombreImportado = queryParams.get('nombre');   //'nombre' es el nombre de las prop recibida por ruta, cuyo contenido es userNombre. Lo guardo a su resultado en una variable 'userNombreImportado'
 
+
   return (
     <div  className='divBienvenidaUsuario'>
       <h2 className='tituloBienvenido'>Bienvenido! <i class="fa-regular fa-face-smile"></i></h2>
@@ -17,6 +18,9 @@ function Auth() {
       <h2 className='mailBienvenida'>{userNombreImportado}</h2>
 
       <Link to ="/" ><button className="botonProductos"><i class="fa-solid fa-arrow-right"></i> PRODUCTOS </button></Link>
+
+
+      <Link to ="/logOut" >CERRAR SESION</Link>
 
       {/* Add your authenticated content here */}
     </div>

@@ -5,6 +5,9 @@ import CartWidget from './CartWidget';
 import NavInferior from './NavInferior';
 import LogoWapp from './LogoWapp';
 import LogoFavoritos from './LogoFavoritos';
+import LogoCreateUser from './LogoCreateUser';
+import LogoLogIn from './LogoLogIn';
+import LogoLogOut from './LogoLogOut';
 import SideBar from './SideBar';
 import {Link} from 'react-router-dom';
 import BarraBuscadora from './BarraBuscadora';
@@ -15,6 +18,7 @@ import { useContext } from 'react'
 function NavBar() { 
 
     const {handleSearch} = useContext(contexto)
+
    
     const valorDelContexto = useContext(contexto)
    
@@ -41,11 +45,8 @@ function NavBar() {
                     </Link>
                 </div>
 
-                <div>
-                                              
+                <div>                   
                     <BarraBuscadora onSearch = {handleSearch} />  
-
-
                 </div>
 
                     
@@ -59,10 +60,11 @@ function NavBar() {
                             
                             
                             <LogoWapp/> 
-                            
                             <LogoFavoritos/> 
-                            <li><Link to="/login" className="logo-login"><i class="fa-solid fa-right-to-bracket"></i></Link></li>
-                            <li><Link className="logo-user" to="/createUser"><i class="fa-solid fa-user-plus"></i></Link></li>
+                            <LogoLogIn/>    
+                            <LogoLogOut/>                         
+                            <LogoCreateUser/> 
+                 
                         </ul>
 
                     </div>

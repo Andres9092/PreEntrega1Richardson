@@ -35,7 +35,7 @@ const CustomProvider = (props) => {
   };
   console.log('filteredItems :',filteredItems)
 
- console.log('searchTerminoBuscadoEnBarra :',searchTerminoBuscadoEnBarra)
+  console.log('searchTerminoBuscadoEnBarra :',searchTerminoBuscadoEnBarra)
 
   const [arrayDeObjetosDeProductosAgregados, setArrayDeObjetosDeProductosAgregados] = useState([])
   console.log("arrayDeObjetosDeProductosAgregados :", arrayDeObjetosDeProductosAgregados)
@@ -71,8 +71,17 @@ const CustomProvider = (props) => {
     setArrayDeObjetosDeProductosAgregados([])
 
   }
-    
   
+
+  const [user, setUser] = useState('');  
+  
+  
+  const userEntered = (nombreUsuarioLogueado) => {  //nombreUsuarioLogueado -> valor traido de userEntered(userNombre)
+    setUser(nombreUsuarioLogueado);  
+  }
+  console.log('user :',user)
+
+
    
   const valorDelContexto = {  
     
@@ -81,11 +90,13 @@ const CustomProvider = (props) => {
     removeFromCart:removeFromCart,
     handleSearch:handleSearch,
     toggleSidebar:toggleSidebar,
+    userEntered:userEntered,
+    user,
     filteredItems,    
     searchTerminoBuscadoEnBarra,
     isSidebarOpen,
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
-    user : "admin"    
+   
   }
   
     return (  

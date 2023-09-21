@@ -22,10 +22,12 @@ import {useContext} from 'react';
 import {contexto} from './CustomProvider';
 
 
-const Login = ({value}) => {
+const Login = () => {
 
  
 const valorDelContexto = useContext(contexto) 
+const {userEntered} = useContext(contexto)  //me traigo cte de fucnion creada, cuyo valor sera devuelto al C. CustomProvider.
+
 
 const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -113,6 +115,9 @@ const formik = useFormik({
                     const userNombre = userData[0].cliente.nombre
                     console.log('userNombre:', userData[0].cliente.nombre);
 
+                    
+                    userEntered(userNombre);  //valor de cte de funcion creada 'userNombre', devuelta al C. CustomProvider.
+
                     var timestamp = Timestamp.fromDate(new Date()); 
                     var date = new Date(timestamp.toMillis());   
                   
@@ -168,14 +173,16 @@ const formik = useFormik({
     
     if (loading) {  
       return (
-        <>
+        <div className='divLoading'>
+
+          <div className="my-5 flex justify-center">
+                      <BarsLoader {...loaderProps} />
+          </div>
           <h1 className="avisoOrdenProcesada">
             Por favor, espere. Sus datos estan siendo procesados en estos momentos. Muchas gracias.
           </h1>
-          <div className="my-5 flex justify-center">
-            <BarsLoader {...loaderProps} />
-          </div>
-        </>
+   
+        </div>
       );
     }
 
