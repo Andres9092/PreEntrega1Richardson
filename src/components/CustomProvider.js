@@ -20,10 +20,13 @@ const CustomProvider = (props) => {
   const items = ['Apple', 'Banana', 'Cherry', 'Grapes', 'Orange'];
 
 
+
   const handleSearch = (terminoBuscadoEnBarra) => {  
     setSearchTerminoBuscadoEnBarra(terminoBuscadoEnBarra);  
 
   console.log('searchTerminoBuscadoEnBarra :',searchTerminoBuscadoEnBarra)
+
+
 
   const filteredItems = items.filter((item) =>
       item.toLowerCase().includes(terminoBuscadoEnBarra.toLowerCase())
@@ -32,21 +35,16 @@ const CustomProvider = (props) => {
   };
   console.log('filteredItems :',filteredItems)
 
-
+ console.log('searchTerminoBuscadoEnBarra :',searchTerminoBuscadoEnBarra)
 
   const [arrayDeObjetosDeProductosAgregados, setArrayDeObjetosDeProductosAgregados] = useState([])
   console.log("arrayDeObjetosDeProductosAgregados :", arrayDeObjetosDeProductosAgregados)
   console.log("arrayDeObjetosDeProductosAgregados-Length :", arrayDeObjetosDeProductosAgregados.length)
     
                     
-  const addItem = (product,cantidadConfirmadaPorElContadorDelProducto) => { 
-
-       
+  const addItem = (product,cantidadConfirmadaPorElContadorDelProducto) => {     
     
-
-    const existingProduct = arrayDeObjetosDeProductosAgregados.find((item) => item.id === product.id);
-    
-    
+    const existingProduct = arrayDeObjetosDeProductosAgregados.find((item) => item.id === product.id);    
 
     if (existingProduct) {
      
@@ -87,7 +85,7 @@ const CustomProvider = (props) => {
     searchTerminoBuscadoEnBarra,
     isSidebarOpen,
     arrayDeObjetosDeProductosAgregados: arrayDeObjetosDeProductosAgregados,
-    user : "fg"    
+    user : "admin"    
   }
   
     return (  

@@ -18,8 +18,14 @@ import { useFormik } from 'formik';
 import {Timestamp,addDoc,doc,collection,documentId,query,where,writeBatch,getDocs} from "firebase/firestore";
 import AlertNoExistente from "./AlertNoExistente";
 import { signOut } from 'firebase/auth';
+import {useContext} from 'react';
+import {contexto} from './CustomProvider';
 
-const Login = () => {
+
+const Login = ({value}) => {
+
+ 
+const valorDelContexto = useContext(contexto) 
 
 const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -66,7 +72,7 @@ const formik = useFormik({
   
     onSubmit: async   (values,  { resetForm }) => {
                 console.log('values Formulario :', values);
-                    
+             
                 setLoading(true);
 
                 try {
@@ -77,17 +83,35 @@ const formik = useFormik({
 
                     const coleccionDePerfilesCreadosEnDB = collection(db, "alta_usuarios");
 
-                    // Query Firestore to check if a user with the same email exists
-                    // const q = query(coleccionDePerfilesCreadosEnDB, where("cliente.email", "==", values.email));
+                    //Query Firestore to check if a user with the same email exists
+                    const q = query(coleccionDePerfilesCreadosEnDB, where("cliente.email", "==", values.email));
             
-                    // const querySnapshot = await getDocs(q)
-            
-                    // if (querySnapshot.empty) {
-                    //     setAlertMessage("Usuario no encontrado.");
-                    //     setShowAlert(true);
-                    //     setLoading(false);
-                    //     return;
-                    // }
+                    const querySnapshot = await getDocs(q)
+    
+                    
+                    if (querySnapshot.empty) {
+                        setAlertMessage("Usuario no encontrado.");
+                        setShowAlert(true);
+                        setLoading(false);
+                      
+                        
+                        return;
+                    }
+
+                    const userData = [];
+
+                    // Loop through the documents and extract data
+                    querySnapshot.forEach((doc) => {
+                      // Access the data of each document using .data()
+                      const user = doc.data();
+                      userData.push(user);
+                    });
+
+                    // Now, userData array contains the data from all matching documents
+                    console.log('userData:', userData);
+
+                    const userNombre = userData[0].cliente.nombre
+                    console.log('userNombre:', userData[0].cliente.nombre);
 
                     var timestamp = Timestamp.fromDate(new Date()); 
                     var date = new Date(timestamp.toMillis());   
@@ -97,39 +121,37 @@ const formik = useFormik({
 
                     const datosSignIn = {  
                         cliente: {        
-                      
                         email: values.email,
                         },
                         
                         dataDate: formattedDate, 
                         dataTime: formattedTime,
-                        
+                                                    
                     };
-            
+                  
                     console.log("datosSignInINgresados:", datosSignIn)
+                   
 
-                        try {
-                            // Replace with your Firebase authentication code
-                            await signInWithEmailAndPassword(auth, values.email, values.password);
+                    // Authenticate the user using Firebase Auth
+                    const authInstance = getAuth();
+                    const userCredential = await signInWithEmailAndPassword(authInstance, values.email, values.password);
+                    const userUid = userCredential.user.uid;
 
-                            // If authentication is successful, you can redirect or set user context values
-                            navigate.push('/'); // Redirect to the dashboard or any other page
 
-                        } catch (error) {
-                            console.error('Error al autenticar con Firebase:', error);
-                            setAlertMessage("Error al iniciar sesión. Verifique sus credenciales.");
-                            setShowAlert(true);
+                    // If authentication is successful, you can redirect or set user context values.  //'email' o 'nombre', son los nombres de las props a enviar por ruta y {userNombre} es el contenido.
+                    navigate(`/authentic?nombre=${userNombre}`); // Redirect to the dashboard or any other page
 
-                        }
-        } catch (error) {
-            console.error('Error al intentar autenticar:', error);
-            setError('Error al iniciar sesión. Verifique sus credenciales.'); // Set the error state
-        } finally {
-            setLoading(false);
-            resetForm()
-        }
-    
-    }
+
+                  } catch (error) {
+                    console.error('Firebase Error:', error.code, error.message);
+                    setError('Error al iniciar sesión. Verifique sus credenciales.');
+
+                  } finally {
+                    setLoading(false);
+                    resetForm();
+                  }
+                }
+
 
 })
 

@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
-import '../assets/css/Login.css';
-import '../assets/css/CreateUser.css';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import '../assets/css/Authentic.css';
 import {Link} from 'react-router-dom';
-import '@firebase/firestore'
-import firebase from 'firebase/compat/app';   // resolvio problema /compat
-import 'firebase/compat/auth';                // resolvio problema /compat
-import 'firebase/compat/firestore';           // resolvio problema /compat
-import BarsLoader from 'react-loaders-kit/lib/bars/BarsLoader'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Redirect } from 'react'; // Importa Redirect de react-router-dom
-import {useEffect} from 'react';
+
+
+function Auth() {
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const userNombreImportado = queryParams.get('nombre');   //'nombre' es el nombre de las prop recibida por ruta, cuyo contenido es userNombre. Lo guardo a su resultado en una variable 'userNombreImportado'
+
+  return (
+    <div  className='divBienvenidaUsuario'>
+      <h2 className='tituloBienvenido'>Bienvenido! <i class="fa-regular fa-face-smile"></i></h2>
+      <br></br>
+      <h2 className='mailBienvenida'>{userNombreImportado}</h2>
+
+      <Link to ="/" ><button className="botonProductos"><i class="fa-solid fa-arrow-right"></i> PRODUCTOS </button></Link>
+
+      {/* Add your authenticated content here */}
+    </div>
+  );
+}
+
+export default Auth;
+
+//In the Auth component, we use useLocation() to access the current location and URLSearchParams to parse the query parameters. We then retrieve the email and display it in the component.
+
+//With these changes, when a user successfully signs in, they will be redirected to the Auth component with their email included in the URL as a query parameter, and the Auth component will display the email.
 
 
 
-function Auth({ user }) {
-    return (
-      <div>
-        <h2>Bienvenido, {user.email}</h2>
-        {/* Agrega aquí el contenido autenticado */}
-      </div>
-    );
-  }
-  
-  export default Auth;
+
+
