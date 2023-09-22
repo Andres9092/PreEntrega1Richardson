@@ -4,7 +4,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    color: black;
+    border: solid 1px #c99d0b;
+    border-radius: 4px;
+    background-color: #edd585;
+    padding: 0px 20px 0px 20px;
+    width: 400px;
+    margin: 50px 50px;
+    padding-top: 20px;
 }
 
 
@@ -28,4 +35,17 @@
     text-align: center;
     font-weight: 600;
     width: 150px;
+}
+
+
+.botonCerrarSesion{
+    background-color:rgb(255, 153, 79);
+    border: 1px solid;
+    padding: 6px 6px 6px 6px;
+    border-radius: 3px;
+    margin: 30px 0px 30px 0px;
+    text-align: center;
+    font-weight: 600;
+    width: 190px;
+
 }

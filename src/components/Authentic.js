@@ -19,8 +19,8 @@ function Auth() {
 
       <Link to ="/" ><button className="botonProductos"><i class="fa-solid fa-arrow-right"></i> PRODUCTOS </button></Link>
 
-
-      <Link to ="/logOut" >CERRAR SESION</Link>
+      <h2>-----------------------------------------------------</h2>
+      <Link to ="/logOut"><button className="botonCerrarSesion"><i class="fa-solid fa-arrow-right-from-bracket"></i> CERRAR SESION</button></Link>
 
       {/* Add your authenticated content here */}
     </div>
