@@ -1,33 +1,26 @@
-import React from 'react'
+import React from 'react';
 import '../assets/css/NavBar.css';
-import {useContext} from 'react';
-import {contexto} from './CustomProvider';
-import {Link} from 'react-router-dom';
-import 'firebase/compat/auth';                // resolvio problema /compat
-import 'firebase/compat/firestore';           // resolvio problema /compat
-import firebase from 'firebase/compat/app';   // resolvio problema /compat
+import { useContext } from 'react';
+import { contexto } from './CustomProvider';
+import { Link } from 'react-router-dom';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import firebase from 'firebase/compat/app';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
- function LogoLogOut() { 
+function LogoLogOut() {
+  const navigate = useNavigate();
+  const valorDelContexto = useContext(contexto);
 
-    
-  const valorDelContexto = useContext(contexto)
-  
-  if ((valorDelContexto.user)){
-    console.log('Se muestra el logo de Log Out')
-  
-    return(
-      <li><Link className="logo-logOut" to="/logOut"><button><i className="fa-solid fa-arrow-right-from-bracket"></i></button></Link></li>
-    )
-    
-  }
-   
-  return (  
-      
+     
+
+  return (
     <div>
-      <h1></h1>
-  
+      <li><button className="logout-button" onClick={handleLogout} ><i className="fa-solid fa-arrow-right-from-bracket"></i></button></li>
     </div>
-    )
-  }
-  
-  export default LogoLogOut;
+  );
+}
+
+export default LogoLogOut;

@@ -21,6 +21,26 @@ function NavBar() {
 
    
     const valorDelContexto = useContext(contexto)
+
+
+    const handleLogout = async () => {
+        console.log('Logging out user...');
+        
+        if (auth.currentUser) { // Check if a user is signed in
+          console.log('User is signed in:', auth.currentUser);
+          
+          try {
+            await signOut(auth); // Sign out the user
+            console.log('User successfully logged out');
+            navigate('/'); // Redirect to the home page or any other desired page after logout
+          } catch (error) {
+            console.error('Logout Error:', error.code, error.message);
+            // Handle logout error if needed
+          }
+        } else {
+          console.log('No user is signed in.');
+        }
+      };
    
  
     return (  
@@ -62,7 +82,7 @@ function NavBar() {
                             <LogoWapp/> 
                             <LogoFavoritos/> 
                             <LogoLogIn/>    
-                            <Link to ="/logOut"><LogoLogOut/></Link>                         
+                            <Link to ="/logOut"><LogoLogOut  logOut={handleLogout}/></Link>                         
                             <LogoCreateUser/> 
                  
                         </ul>

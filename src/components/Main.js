@@ -10,7 +10,7 @@ import CheckOut from './CheckOut';
 import Favoritos from './Favoritos';
 import ItemFiltrado from './ItemFiltrado';
 import Authentic from './Authentic';
-import LogOut from './LogOut';
+import LogoLogOut from './LogoLogOut';
 import '../assets/css/Main.css'
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -24,7 +24,7 @@ function Main() {
                                               
 
                          
-                <Route path = "/" exact={true}   element = {<ItemListContainer />}/> 
+                <Route path = "/" exact={true}   element = {<ItemListContainer/>}/> 
 
                 <Route path = "/productos/:id" element = {<ItemDetail/>}/>     
                 
@@ -38,7 +38,7 @@ function Main() {
 
                 <Route path = "/login" element = {<Login/>} /> 
 
-                <Route path = "/logOut" element = {<LogOut/>} /> 
+                <Route path = "/logOut" element = {<LogoLogOut/>} /> 
 
                 <Route path = "/createUser" element = {<CreateUser/>} /> 
 
