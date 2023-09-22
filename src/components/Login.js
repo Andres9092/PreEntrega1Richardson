@@ -200,27 +200,33 @@ const formik = useFormik({
 
         {showAlert && (<AlertNoExistente message={alertMessage} onClose={() => setShowAlert(false)} /> )}
 
+          <div className="divLabels">
+            <label className="titulosLabelLogin"> Correo electrónico: </label>
+          </div>
 
-        <div className ="divCorreoLogin">
-          <label className="titulosLabel"> Correo electrónico: </label>
-          <input type="email" id="email" name="email"  placeholder="E-mail..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email}/>
+          <div className='divInputs'>
+            <input className="inputValuesLogin" type="email" id="email" name="email"  placeholder="E-mail..." onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email}/>
           {formik.touched.email && formik.errors.email ? <p className="textoErrorAlta">{formik.errors.email}</p> : null}
-        </div>
+          </div>
+        
 
-        <div className ="divPasswordLogin">
-          <label  className="titulosLabel"> Contraseña: </label>
-          <input type="password" id="password"  name="password" placeholder="Contraseña..." onChange={formik.handleChange} onBlur={formik.handleBlur} value = {formik.values.password} />
+          <div className="divLabels">
+            <label  className="titulosLabelLogin"> Contraseña: </label>
+          </div>
+          <div className='divInputs'>
+            <input className="inputValuesLogin" type="password" id="password"  name="password" placeholder="Contraseña..." onChange={formik.handleChange} onBlur={formik.handleBlur} value = {formik.values.password} />
           {formik.touched.password && formik.errors.password ? <p className="textoErrorAlta">{formik.errors.password}</p> : null}
-        </div>
+          </div>
+       
 
         <div className ="divBotonesLogin">
 
-          <button className="botonLogin" type="submit"> INICIAR SESION </button>
+          <button className="botonLogin" type="submit"><i class="fa-solid fa-right-to-bracket"></i> INICIAR SESION </button>
 
-          <button className="botonCancel" type="button" onClick={handleCancel}><i class="fa-sharp fa-solid fa-trash"></i> LIMPIAR </button>
+          <button className="botonLimpiar" type="button" onClick={handleCancel}><i class="fa-sharp fa-solid fa-trash"></i> LIMPIAR </button>
 
 
-          <Link to ="/createUser" className="botonCrearUsuario"><button> CREAR USUARIO</button></Link>
+          <Link to ="/createUser" className="botonCrearUsuario"><button><i class="fa-solid fa-user-plus"></i> CREAR USUARIO</button></Link>
         </div>
 
       </form>
