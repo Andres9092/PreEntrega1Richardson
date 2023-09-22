@@ -13,7 +13,9 @@ import {Link} from 'react-router-dom';
 import BarraBuscadora from './BarraBuscadora';
 import {contexto} from './CustomProvider';
 import { useContext } from 'react'
-
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() { 
 
@@ -21,26 +23,7 @@ function NavBar() {
 
    
     const valorDelContexto = useContext(contexto)
-
-
-    const handleLogout = async () => {
-        console.log('Logging out user...');
-        
-        if (auth.currentUser) { // Check if a user is signed in
-          console.log('User is signed in:', auth.currentUser);
-          
-          try {
-            await signOut(auth); // Sign out the user
-            console.log('User successfully logged out');
-            navigate('/'); // Redirect to the home page or any other desired page after logout
-          } catch (error) {
-            console.error('Logout Error:', error.code, error.message);
-            // Handle logout error if needed
-          }
-        } else {
-          console.log('No user is signed in.');
-        }
-      };
+    console.log('auth.currentUser : ', auth.currentUser)
    
  
     return (  
@@ -81,9 +64,12 @@ function NavBar() {
                             
                             <LogoWapp/> 
                             <LogoFavoritos/> 
-                            <LogoLogIn/>    
-                            <Link to ="/logOut"><LogoLogOut  logOut={handleLogout}/></Link>                         
-                            <LogoCreateUser/> 
+
+                            {valorDelContexto.user ? <h1></h1>: <LogoLogIn/>}
+
+                            {valorDelContexto.user ? <LogoLogOut/> : <h1></h1>}   
+                                              
+                            {!valorDelContexto.user ? <LogoCreateUser/> : <h1></h1>}
                  
                         </ul>
 
