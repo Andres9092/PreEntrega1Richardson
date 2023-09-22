@@ -14,21 +14,9 @@ import firebase from 'firebase/compat/app';   // resolvio problema /compat
   
   if ((valorDelContexto.user)){
     console.log('Se muestra el logo de Log Out')
-
-    const handleLogout = () => {
-      firebase.auth().signOut()
-        .then(() => {
-          // Sign-out successful.
-          console.log("User signed out");
-        })
-        .catch(error => {
-          // An error happened.
-          console.error(error);
-        });
-    };
   
     return(
-        <li><Link className="logo-logOut" to="/"><button onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i></button></Link></li>
+      <li><Link className="logo-logOut" to="/logOut"><button><i className="fa-solid fa-arrow-right-from-bracket"></i></button></Link></li>
     )
     
   }

@@ -62,7 +62,7 @@ function NavBar() {
                             <LogoWapp/> 
                             <LogoFavoritos/> 
                             <LogoLogIn/>    
-                            <LogoLogOut/>                         
+                            <Link to ="/logOut"><LogoLogOut/></Link>                         
                             <LogoCreateUser/> 
                  
                         </ul>
