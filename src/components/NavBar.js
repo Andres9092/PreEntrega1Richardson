@@ -65,9 +65,9 @@ function NavBar() {
                             <LogoWapp/> 
                             <LogoFavoritos/> 
 
-                            {valorDelContexto.user ? <h1></h1>: <LogoLogIn/>}
+                            <LogoLogIn/>
 
-                            {valorDelContexto.user ? <LogoLogOut/> : <h1></h1>}   
+                            <LogoLogOut/>   
                                               
                             {!valorDelContexto.user ? <LogoCreateUser/> : <h1></h1>}
                  

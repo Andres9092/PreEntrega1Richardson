@@ -35,15 +35,15 @@ function ItemListContainer(props)  {
       laConsulta
           .then((resultado)  => {
 
-            console.log('Representacion del doc :', resultado.docs[0].data)
-            console.log('Id del doc :', resultado.docs[0].id)
-            console.log('Data del doc :', resultado.docs[0].data())
+            // console.log('Representacion del doc :', resultado.docs[0].data)
+            // console.log('Id del doc :', resultado.docs[0].id)
+            // console.log('Data del doc :', resultado.docs[0].data())
           
             const aux = resultado.docs.map((doc) => {
 
               const producto = doc.data()  
               producto.id = doc.id   
-              console.log('producto :',producto)
+              // console.log('producto :',producto)
               return producto
             })
             console.log('aux :', aux)

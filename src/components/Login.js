@@ -27,6 +27,7 @@ const Login = () => {
  
 const valorDelContexto = useContext(contexto) 
 const {userEntered} = useContext(contexto)  //me traigo cte de fucnion creada, cuyo valor sera devuelto al C. CustomProvider.
+const {showUser} = useContext(contexto) 
 
 
 const navigate = useNavigate();
@@ -72,7 +73,7 @@ const formik = useFormik({
           .required('La contraseña es obligatoria'),
         }),
   
-    onSubmit: async   (values,  { resetForm }) => {
+    onSubmit: async(values, { resetForm }) => {
                 console.log('values Formulario :', values);
              
                 setLoading(true);
@@ -89,17 +90,13 @@ const formik = useFormik({
                     const q = query(coleccionDePerfilesCreadosEnDB, where("cliente.email", "==", values.email));
             
                     const querySnapshot = await getDocs(q)
-    
-                    
+                        
                     if (querySnapshot.empty) {
                         setAlertMessage("Usuario no encontrado.");
                         setShowAlert(true);
-                        setLoading(false);
-                      
-                        
+                        setLoading(false);                       
                         return;
                     }
-
                     const userData = [];
 
                     // Loop through the documents and extract data
@@ -115,9 +112,13 @@ const formik = useFormik({
                     const userNombre = userData[0].cliente.nombre
                     console.log('userNombre:', userData[0].cliente.nombre);
 
-                    
                     userEntered(userNombre);  //valor de cte de funcion creada 'userNombre', devuelta al C. CustomProvider.
+                    console.log('userNombre:', userNombre);
 
+                    const displayName = userNombre ? userNombre : null;
+                    console.log("displayName:", displayName)
+                    
+                    showUser(displayName);
                     var timestamp = Timestamp.fromDate(new Date()); 
                     var date = new Date(timestamp.toMillis());   
                   
@@ -141,6 +142,8 @@ const formik = useFormik({
                     const authInstance = getAuth();
                     const userCredential = await signInWithEmailAndPassword(authInstance, values.email, values.password);
                     const userUid = userCredential.user.uid;
+                 
+     
 
 
                     // If authentication is successful, you can redirect or set user context values.  //'email' o 'nombre', son los nombres de las props a enviar por ruta y {userNombre} es el contenido.

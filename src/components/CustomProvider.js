@@ -74,13 +74,17 @@ const CustomProvider = (props) => {
   
 
   const [user, setUser] = useState('');  
-  
+  const [displayUser, setDisplayUser] = useState('');  
   
   const userEntered = (nombreUsuarioLogueado) => {  //nombreUsuarioLogueado -> valor traido de userEntered(userNombre)
     setUser(nombreUsuarioLogueado);  
   }
   console.log('user :',user)
 
+  const showUser = (displayUserrName) => {  //nombreUsuarioLogueado -> valor traido de userEntered(userNombre)
+    setDisplayUser(displayUserrName);  
+  }
+  console.log('displayUser :',displayUser)
 
    
   const valorDelContexto = {  
@@ -91,6 +95,8 @@ const CustomProvider = (props) => {
     handleSearch:handleSearch,
     toggleSidebar:toggleSidebar,
     userEntered:userEntered,
+    showUser:showUser,
+    displayUser,
     user,
     filteredItems,    
     searchTerminoBuscadoEnBarra,
